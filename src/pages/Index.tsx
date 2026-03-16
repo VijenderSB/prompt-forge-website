@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
-import { Phone, Eye, Shield, Award, MapPin, Star, ChevronRight } from "lucide-react";
+import { Phone, Star, MapPin, Eye, Shield, Award, Zap, Heart, Stethoscope, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import ProcedureCard from "@/components/ProcedureCard";
 import CTABanner from "@/components/CTABanner";
+import StatsBar from "@/components/StatsBar";
+import ComparisonTable from "@/components/ComparisonTable";
+import ConsultationForm from "@/components/ConsultationForm";
 import { Button } from "@/components/ui/button";
-import { BRAND, PROCEDURES, STATES, TOP_CITIES, FAQS, TESTIMONIALS, CENTRES, formatPrice, discountedPrice, slugify } from "@/data/siteData";
+import { BRAND, PROCEDURES, FAQS, TESTIMONIALS, formatPrice } from "@/data/siteData";
 import heroImage from "@/assets/hero-lasik.jpg";
 import {
   Accordion,
@@ -15,155 +18,136 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+/* ─── Hero ─── */
 const Hero = () => (
-  <section className="relative hero-gradient overflow-hidden">
-    <div className="container grid lg:grid-cols-2 gap-12 items-center py-20 md:py-28 px-4 md:px-8">
+  <section className="relative overflow-hidden">
+    <div className="absolute inset-0 z-0">
+      <img src={heroImage} alt="LASIK eye surgery" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(222,47%,11%)]/90 via-[hsl(222,47%,11%)]/80 to-[hsl(222,47%,11%)]/40" />
+    </div>
+    <div className="container relative z-10 grid lg:grid-cols-5 gap-8 lg:gap-12 items-center py-16 md:py-24 px-4 md:px-8">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        className="lg:col-span-3"
       >
-        <span className="discount-badge text-sm mb-4 inline-block">30% OFF This Month</span>
-        <h1 className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-tight mb-6">
-          India's Leading LASIK Eye Surgery Centre
+        <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full mb-5">
+          <Eye className="w-4 h-4" /> WaveLight Plus InnovEyes
+        </div>
+        <h1 className="font-display font-black text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary-foreground leading-[1.1] mb-6">
+          See the World <span className="text-accent">Without Glasses</span>
         </h1>
-        <p className="text-primary-foreground/80 text-lg mb-8 max-w-lg">
-          Contoura Vision from ₹25,500/eye. ReLEx SMILE, InnovEyes, SMILE Pro & more across 3,700+ cities. Book your free consultation today.
+        <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 max-w-xl leading-relaxed">
+          Just 10 minutes to crystal-clear vision. Safe, painless, and trusted by millions worldwide. Starting at just <strong className="text-primary-foreground">₹8,999</strong> per eye.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button asChild size="lg" className="bg-card text-foreground hover:bg-card/90 font-semibold px-8 h-12">
-            <Link to="/am-i-a-candidate">Book Free Consultation</Link>
-          </Button>
-          <a href={`tel:${BRAND.phone}`} className="flex items-center justify-center gap-2 text-primary-foreground font-medium h-12 px-6 rounded-lg border border-primary-foreground/20 hover:bg-primary-foreground/5 transition-colors">
-            <Phone className="w-5 h-5" /> {BRAND.phoneDisplay}
-          </a>
-        </div>
-        <div className="flex items-center gap-6 mt-8 text-primary-foreground/60 text-sm">
-          <span className="flex items-center gap-1"><Star className="w-4 h-4 text-yellow-400 fill-yellow-400" /> 4.9/5 Rating</span>
-          <span>1,200+ Reviews</span>
-          <span>3,700+ Cities</span>
+        <div className="flex items-center gap-8 mb-6">
+          <div className="flex -space-x-2">
+            {["K", "S", "H", "P"].map((l, i) => (
+              <div key={i} className="w-9 h-9 rounded-full bg-primary/60 border-2 border-[hsl(222,47%,11%)] flex items-center justify-center text-primary-foreground text-xs font-bold">
+                {l}
+              </div>
+            ))}
+          </div>
+          <div className="text-primary-foreground/80 text-sm">
+            <span className="font-bold text-primary-foreground">Trusted by 10L+ patients</span>
+            <span className="block">97% satisfaction rate</span>
+          </div>
         </div>
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="hidden lg:block"
-      >
-        <img src={heroImage} alt="Advanced LASIK eye surgery facility" className="rounded-2xl shadow-2xl w-full" />
-      </motion.div>
+      <div className="lg:col-span-2">
+        <ConsultationForm variant="hero" />
+      </div>
     </div>
   </section>
 );
 
-const ProceduresSection = () => (
+/* ─── Quick Pricing Strip ─── */
+const QuickPricing = () => (
   <section className="section-padding bg-surface">
     <div className="container">
-      <SectionHeading title="Our LASIK Procedures" subtitle="Six advanced vision correction procedures to suit every need and budget" />
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <SectionHeading
+        title="LASIK Eye Surgery Cost & Technologies"
+        subtitle="Over 10,00,000 procedures performed since 2004. All packages include pre-op diagnostics, surgery, eye drops & follow-up visits. No hidden charges. EMI from ₹1,500/month."
+      />
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {PROCEDURES.map((p, i) => (
+          <motion.div
+            key={p.slug}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.06 }}
+          >
+            <Link
+              to={`/procedures/${p.slug}`}
+              className={`block bg-card rounded-xl p-4 text-center card-elevated group h-full ${
+                p.badge ? "border-2 border-primary/20" : "border border-border"
+              }`}
+            >
+              <h3 className="font-display font-bold text-sm text-foreground group-hover:text-primary transition-colors mb-1 leading-tight">{p.name}</h3>
+              <p className="font-display font-black text-xl text-primary mb-1">{formatPrice(p.price)}<span className="text-xs font-normal text-muted-foreground">/eye</span></p>
+              <p className="text-[11px] text-muted-foreground leading-snug">{p.tagline}</p>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-4 mt-8 text-xs text-muted-foreground">
+        {["US-FDA approved platforms", "97% satisfaction rate", "Free 90-minute evaluation", "Both eyes treated same day"].map(item => (
+          <span key={item} className="flex items-center gap-1"><span className="w-1 h-1 rounded-full bg-accent" />{item}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── Procedures Grid ─── */
+const ProceduresSection = () => (
+  <section className="section-padding">
+    <div className="container">
+      <div className="text-center mb-4">
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">Our Procedures</span>
+      </div>
+      <SectionHeading title="Choose Your Path to Clear Vision" subtitle="Globally trusted LASIK options with 25+ years of proven outcomes on millions of patients." />
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
       </div>
     </div>
   </section>
 );
 
-const StatesSection = () => (
-  <section className="section-padding">
-    <div className="container">
-      <SectionHeading title="LASIK Centres Across India" subtitle="Available in 28+ states and 3,700+ cities" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
-        {STATES.map((state) => (
-          <Link
-            key={state}
-            to={`/${slugify(state)}`}
-            className="bg-card border border-border rounded-lg px-3 py-2.5 text-sm text-center font-medium text-foreground hover:border-primary hover:text-primary transition-colors card-elevated"
-          >
-            {state}
-          </Link>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const TopCitiesSection = () => (
-  <section className="section-padding bg-surface">
-    <div className="container">
-      <SectionHeading title="Top 10 Cities" subtitle="Most popular destinations for LASIK surgery" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-        {TOP_CITIES.map((city, i) => (
-          <motion.div
-            key={city.slug}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.05 }}
-          >
-            <Link
-              to={`/${slugify(city.state)}/${city.slug}`}
-              className="block bg-card border border-border rounded-xl p-5 text-center card-elevated group"
-            >
-              <MapPin className="w-6 h-6 mx-auto mb-2 text-primary" />
-              <h3 className="font-display font-bold text-foreground group-hover:text-primary transition-colors">{city.name}</h3>
-              <span className="text-xs text-muted-foreground">{city.state}</span>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const CostTable = () => (
-  <section className="section-padding">
-    <div className="container">
-      <SectionHeading title="LASIK Surgery Cost in India" subtitle="Transparent pricing with 30% discount on all procedures" />
-      <div className="max-w-3xl mx-auto bg-card rounded-xl border border-border overflow-hidden">
-        <div className="grid grid-cols-4 gap-px bg-border text-sm font-display font-semibold text-foreground">
-          <div className="bg-secondary p-4">Procedure</div>
-          <div className="bg-secondary p-4 text-center">Standard Price</div>
-          <div className="bg-secondary p-4 text-center">After 30% Off</div>
-          <div className="bg-secondary p-4 text-center">You Save</div>
-        </div>
-        {PROCEDURES.map((p) => (
-          <div key={p.id} className="grid grid-cols-4 gap-px bg-border text-sm">
-            <div className="bg-card p-4 font-medium text-foreground">{p.name}</div>
-            <div className="bg-card p-4 text-center text-muted-foreground line-through">{formatPrice(p.price)}/eye</div>
-            <div className="bg-card p-4 text-center font-bold text-primary">{formatPrice(discountedPrice(p.price))}/eye</div>
-            <div className="bg-card p-4 text-center text-accent font-semibold">{formatPrice(p.price - discountedPrice(p.price))}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
+/* ─── Why Choose Us ─── */
 const WhyUsSection = () => {
   const points = [
-    { icon: Eye, title: "Latest Technology", desc: "FDA-approved lasers including VisuMax 800, WaveLight EX500, and elita platforms" },
-    { icon: Award, title: "Expert Surgeons", desc: "Board-certified ophthalmologists with 10,000+ successful procedures" },
-    { icon: MapPin, title: "26 Centres Nationwide", desc: "Convenient access across major Indian cities with standardized quality" },
-    { icon: Shield, title: "99%+ Success Rate", desc: "Proven track record with thousands of satisfied patients across India" },
+    { icon: Zap, title: "WaveLight Plus InnovEyes", desc: "AI-guided laser with PerfectPulse Technology® — 400 Hz speed, 1,050 eye-tracking points per second for sub-micron precision." },
+    { icon: Eye, title: "SMILE Pro & SiLK", desc: "Flapless lenticule-based surgery — no corneal flap, 2mm incision, minimal dry eye, fastest recovery." },
+    { icon: Shield, title: "US-FDA Approved", desc: "All platforms are US-FDA approved. Over 10,00,000 procedures performed since 2004 with 97% satisfaction rate." },
+    { icon: Award, title: "Expert Surgeons", desc: "Refractive surgeons with 20+ years of experience across all flap-based and lenticule-based technologies." },
+    { icon: Stethoscope, title: "Free 90-Min Evaluation", desc: "Pentacam, Topography, Aberrometry, Pachymetry — full diagnostic before any commitment, at no cost." },
+    { icon: Heart, title: "Painless & Quick", desc: "Just 10 minutes per eye with zero pain. Both eyes same day. Walk in with glasses, walk out without." },
   ];
   return (
     <section className="section-padding bg-surface">
       <div className="container">
-        <SectionHeading title="Why Choose Centre for Lasik?" subtitle="India's most trusted LASIK surgery platform" />
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="text-center mb-4">
+          <span className="text-xs font-bold uppercase tracking-wider text-primary">Why Choose Us</span>
+        </div>
+        <SectionHeading title="Your Vision, Our Expertise" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {points.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-card border border-border rounded-xl p-6 text-center card-elevated"
+              transition={{ delay: i * 0.08 }}
+              className="bg-card border border-border rounded-xl p-6 card-elevated"
             >
-              <div className="w-12 h-12 rounded-xl cta-gradient flex items-center justify-center mx-auto mb-4">
-                <Icon className="w-6 h-6 text-primary-foreground" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <Icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-display font-bold text-foreground mb-2">{title}</h3>
-              <p className="text-sm text-muted-foreground">{desc}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </motion.div>
           ))}
         </div>
@@ -172,33 +156,40 @@ const WhyUsSection = () => {
   );
 };
 
+/* ─── Testimonials ─── */
 const TestimonialsSection = () => (
   <section className="section-padding">
     <div className="container">
-      <SectionHeading title="Patient Testimonials" subtitle="Hear from real patients who trusted Centre for Lasik" />
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="text-center mb-4">
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">Patient Stories</span>
+      </div>
+      <SectionHeading title="Life After LASIK" subtitle="Real experiences from patients who chose to see the world differently." />
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {TESTIMONIALS.map((t, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
+            transition={{ delay: i * 0.08 }}
             className="bg-card border border-border rounded-xl p-6 card-elevated"
           >
-            <div className="flex gap-1 mb-3">
-              {Array.from({ length: t.rating }).map((_, j) => (
-                <Star key={j} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-              ))}
-            </div>
-            <p className="text-muted-foreground text-sm mb-4 leading-relaxed">"{t.text}"</p>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full cta-gradient flex items-center justify-center text-primary-foreground text-xs font-bold">
-                {t.name.charAt(0)}
+            <div className="text-3xl text-primary/30 font-serif mb-2">"</div>
+            <p className="text-muted-foreground text-sm mb-5 leading-relaxed">"{t.text}"</p>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full cta-gradient flex items-center justify-center text-primary-foreground text-sm font-bold">
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">Age {t.age}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-medium text-foreground">{t.name}</p>
-                <p className="text-xs text-muted-foreground">{t.city}</p>
+              <div className="flex gap-0.5">
+                {Array.from({ length: t.rating }).map((_, j) => (
+                  <Star key={j} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+                ))}
               </div>
             </div>
           </motion.div>
@@ -208,14 +199,52 @@ const TestimonialsSection = () => (
   </section>
 );
 
-const FAQSection = () => (
+/* ─── Expert Insights ─── */
+const ExpertInsights = () => (
   <section className="section-padding bg-surface">
+    <div className="container max-w-4xl">
+      <div className="text-center mb-4">
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">Expert Insights</span>
+      </div>
+      <SectionHeading title="Best LASIK Eye Surgery in India" />
+      <div className="prose prose-sm max-w-none text-muted-foreground space-y-5">
+        <p>
+          Centre For Lasik has performed over <strong className="text-foreground">10,00,000 LASIK procedures since 2004</strong>, maintaining a 97% patient satisfaction rate across both flap-based and lenticule-based technologies. Our facility offers every clinically validated vision correction platform available in India — from Standard LASIK starting at ₹8,999/eye to the premium SiLK lenticule procedure. All surgeries use US-FDA approved equipment; all packages include pre-surgery diagnostics, procedure, medications, and follow-up.
+        </p>
+        <h3 className="text-foreground font-display font-bold text-lg">Which Technology Is Right for You?</h3>
+        <ul className="space-y-2 list-none pl-0">
+          {[
+            { bold: "Active lifestyle / sports / thin corneas:", text: "SMILE Pro or SiLK (flapless, no dry eye risk)" },
+            { bold: "Corneal irregularities / astigmatism:", text: "HD Contoura Vision or Femto + Contoura" },
+            { bold: "Best overall precision, flap-based:", text: "WaveLight Plus InnovEyes" },
+            { bold: "Budget-conscious, lower prescription:", text: "Standard LASIK (₹8,999/eye)" },
+          ].map(({ bold, text }) => (
+            <li key={bold} className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+              <span><strong className="text-foreground">{bold}</strong> {text}</span>
+            </li>
+          ))}
+        </ul>
+        <p>
+          Pricing starts at ₹8,999/eye (Standard LASIK) up to ₹75,000/eye (SiLK). EMI from ₹1,500/month. No hidden charges. <Link to="/am-i-a-candidate" className="text-primary font-semibold hover:underline">Book your free evaluation today.</Link>
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── FAQ ─── */
+const FAQSection = () => (
+  <section className="section-padding">
     <div className="container max-w-3xl">
-      <SectionHeading title="Frequently Asked Questions" />
+      <div className="text-center mb-4">
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">Got Questions?</span>
+      </div>
+      <SectionHeading title="Frequently Asked Questions" subtitle="Everything you need to know about LASIK eye surgery." />
       <Accordion type="single" collapsible className="space-y-3">
-        {FAQS.slice(0, 5).map((faq, i) => (
+        {FAQS.slice(0, 8).map((faq, i) => (
           <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-sm">
-            <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-4">{faq.q}</AccordionTrigger>
+            <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-4 text-sm">{faq.q}</AccordionTrigger>
             <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4">{faq.a}</AccordionContent>
           </AccordionItem>
         ))}
@@ -229,49 +258,19 @@ const FAQSection = () => (
   </section>
 );
 
-const CentresPreview = () => (
-  <section className="section-padding">
-    <div className="container">
-      <SectionHeading title="Our LASIK Centres" subtitle="Conveniently located across major cities" />
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        {CENTRES.slice(0, 5).map((c, i) => (
-          <motion.div
-            key={c.slug}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
-          >
-            <Link to={`/centres/${c.slug}`} className="block bg-card border border-border rounded-xl p-5 card-elevated group">
-              <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors mb-1">{c.name}</h3>
-              <p className="text-xs text-muted-foreground mb-2">{c.hospital}</p>
-              <p className="text-sm text-muted-foreground flex items-start gap-1">
-                <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0" />{c.address}
-              </p>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-      <div className="text-center mt-8">
-        <Button asChild variant="outline">
-          <Link to="/centres">View All Centres <ChevronRight className="w-4 h-4 ml-1" /></Link>
-        </Button>
-      </div>
-    </div>
-  </section>
-);
-
+/* ─── Homepage ─── */
 const Homepage = () => (
   <Layout>
     <Hero />
+    <QuickPricing />
     <ProceduresSection />
-    <StatesSection />
-    <TopCitiesSection />
-    <CostTable />
+    <StatsBar />
+    <ComparisonTable />
     <WhyUsSection />
     <TestimonialsSection />
+    <CTABanner withForm />
+    <ExpertInsights />
     <FAQSection />
-    <CentresPreview />
     <CTABanner />
   </Layout>
 );
