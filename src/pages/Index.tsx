@@ -10,7 +10,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import ConsultationForm from "@/components/ConsultationForm";
 import { Button } from "@/components/ui/button";
 import { BRAND, PROCEDURES, FAQS, TESTIMONIALS, formatPrice } from "@/data/siteData";
-import heroImage from "@/assets/hero-lasik.jpg";
+import heroImage from "@/assets/hero-lasik.png";
 import {
   Accordion,
   AccordionContent,
