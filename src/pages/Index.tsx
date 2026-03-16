@@ -10,7 +10,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import ConsultationForm from "@/components/ConsultationForm";
 import { Button } from "@/components/ui/button";
 import { BRAND, PROCEDURES, FAQS, TESTIMONIALS, formatPrice } from "@/data/siteData";
-import heroImage from "@/assets/hero-lasik.jpg";
+import heroImage from "@/assets/hero-lasik.png";
 import {
   Accordion,
   AccordionContent,
@@ -22,7 +22,7 @@ import {
 const Hero = () => (
   <section className="relative overflow-hidden">
     <div className="absolute inset-0 z-0">
-      <img src={heroImage} alt="LASIK eye surgery" className="w-full h-full object-cover" />
+      <img src={heroImage} alt="Young woman happy after LASIK eye surgery" className="w-full h-full object-cover object-top" />
       <div className="absolute inset-0 bg-gradient-to-r from-[hsl(222,47%,11%)]/90 via-[hsl(222,47%,11%)]/80 to-[hsl(222,47%,11%)]/40" />
     </div>
     <div className="container relative z-10 grid lg:grid-cols-5 gap-8 lg:gap-12 items-center py-16 md:py-24 px-4 md:px-8">
