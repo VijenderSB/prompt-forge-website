@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
 import ProcedureCard from "@/components/ProcedureCard";
-import { PROCEDURES, TOP_CITIES, slugify } from "@/data/siteData";
+import { PROCEDURES, TOP_CITIES, slugify, discountedPrice } from "@/data/siteData";
 import { motion } from "framer-motion";
 import { MapPin, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
