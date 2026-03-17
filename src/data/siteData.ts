@@ -172,6 +172,279 @@ export const TESTIMONIALS = [
   { name: "Priya S.", city: "Mumbai", age: 28, rating: 5, text: "Got SMILE Pro done and the laser was over in 7 seconds! I was back at work in 2 days. The team at Centre for Lasik is incredibly professional." },
 ];
 
+export interface ProcedureTestimonial {
+  name: string;
+  city: string;
+  age: number;
+  rating: number;
+  text: string;
+  procedure: string;
+}
+
+export const PROCEDURE_TESTIMONIALS: ProcedureTestimonial[] = [
+  // Standard LASIK
+  { name: "Amit R.", city: "Delhi", age: 24, rating: 5, text: "Got Standard LASIK at ₹8,999/eye — best value for money! I had -3.5 power and now I can see perfectly without glasses. The entire process took 15 minutes.", procedure: "standard-lasik" },
+  { name: "Neha T.", city: "Noida", age: 27, rating: 5, text: "I was on a tight budget and Standard LASIK was perfect. Clear vision from day 2 and EMI option made it super affordable. Highly recommend!", procedure: "standard-lasik" },
+  { name: "Rohit V.", city: "Gurgaon", age: 30, rating: 5, text: "Wearing glasses for 12 years was frustrating. Standard LASIK gave me freedom at an unbeatable price. The team was very supportive.", procedure: "standard-lasik" },
+
+  // WaveLight Plus InnovEyes
+  { name: "Ankita M.", city: "Delhi", age: 32, rating: 5, text: "The PerfectPulse Technology tracking 1,050 times/sec gave me so much confidence. My vision is sharper than 6/6 now. Worth every rupee of the ₹49,000.", procedure: "innovEyes" },
+  { name: "Vikram S.", city: "Mumbai", age: 35, rating: 5, text: "Had high astigmatism and was told WaveLight InnovEyes is the best option. The 400 Hz laser was incredibly fast. No halos, no glare — perfect night vision.", procedure: "innovEyes" },
+  { name: "Deepa K.", city: "Bangalore", age: 29, rating: 5, text: "The AI-guided 6D eye tracking made me feel completely safe. My -7 power was corrected flawlessly. I can see individual leaves on trees now!", procedure: "innovEyes" },
+
+  // HD Contoura Vision
+  { name: "Meera J.", city: "Delhi", age: 26, rating: 5, text: "22,000-point mapping showed irregularities my regular prescription missed. After Contoura Vision, I achieved 6/4 super vision! Everything looks HD now.", procedure: "contoura-vision" },
+  { name: "Arjun P.", city: "Hyderabad", age: 33, rating: 5, text: "Had -5 with -2 cylinder. Contoura Vision at ₹25,500/eye was the best decision. Zero glare at night and vision sharper than contacts ever gave me.", procedure: "contoura-vision" },
+  { name: "Kavita R.", city: "Chennai", age: 28, rating: 5, text: "The topography-guided precision is incredible. My doctor showed me the 22,000-point map — every micro-irregularity was corrected. Best investment in myself.", procedure: "contoura-vision" },
+
+  // EPI LASIK
+  { name: "Capt. Ravi M.", city: "Delhi", age: 25, rating: 5, text: "Needed EPI LASIK for my armed forces medical. No flap means no detection — passed the medical with flying colors! Vision is crystal clear.", procedure: "epi-lasik" },
+  { name: "Sneha D.", city: "Pune", age: 30, rating: 5, text: "Had thin corneas so regular LASIK wasn't possible. EPI LASIK was perfect — no cutting, structurally safe. Recovery took a week but totally worth it.", procedure: "epi-lasik" },
+  { name: "Aakash G.", city: "Jaipur", age: 22, rating: 5, text: "As a boxer, I needed a flapless procedure. EPI LASIK at ₹18,000/eye was affordable and safe for contact sports. My cornea is untouched structurally.", procedure: "epi-lasik" },
+
+  // SiLK
+  { name: "Nisha A.", city: "Delhi", age: 31, rating: 5, text: "SiLK's ultra-smooth stromal bed technology gave me the best night vision I've ever had. Zero starbursts while driving at night. Premium experience!", procedure: "silk" },
+  { name: "Dr. Sameer K.", city: "Mumbai", age: 38, rating: 5, text: "As a surgeon, I researched extensively. SiLK by J&J has the most predictable outcomes and sub-2mm incision. My vision is flawless at ₹75,000/eye.", procedure: "silk" },
+  { name: "Tanya B.", city: "Gurgaon", age: 27, rating: 5, text: "Chose SiLK for the latest lenticule technology. The procedure was painless and I was back to work next day. Night vision is noticeably better than SMILE.", procedure: "silk" },
+
+  // SMILE Pro
+  { name: "Rahul T.", city: "Delhi", age: 29, rating: 5, text: "7 seconds laser time — I blinked and it was done! SMILE Pro's 2mm incision healed so fast. Back to gym in a week. Incredible technology.", procedure: "smile-pro" },
+  { name: "Ishita N.", city: "Noida", age: 25, rating: 5, text: "Had dry eye concerns and SMILE Pro was recommended as it preserves more corneal nerves. Zero dry eye issues post-surgery. Best ₹65,000 I ever spent.", procedure: "smile-pro" },
+  { name: "Manish C.", city: "Kolkata", age: 34, rating: 5, text: "The flapless approach of SMILE Pro gave me peace of mind. No flap displacement risk, minimal dry eye. Carl Zeiss VisuMax 800 is cutting-edge.", procedure: "smile-pro" },
+];
+
+export interface ProcedureFAQ {
+  q: string;
+  a: string;
+  procedure: string;
+}
+
+export const PROCEDURE_FAQS: ProcedureFAQ[] = [
+  // Standard LASIK
+  { q: "What is Standard LASIK?", a: "Standard LASIK uses a proven excimer laser platform to reshape the cornea and correct refractive errors like myopia, hyperopia, and astigmatism. It's the most affordable laser vision correction available.", procedure: "standard-lasik" },
+  { q: "How much does Standard LASIK cost?", a: "Standard LASIK costs ₹8,999 per eye (MRP ₹15,000 — 40% OFF). Both eyes: ₹17,998. EMI available from ₹750/month. Price includes diagnostics, surgery, drops, and follow-ups.", procedure: "standard-lasik" },
+  { q: "Who is a good candidate for Standard LASIK?", a: "Adults aged 18+ with stable prescription, myopia up to -6D, hyperopia up to +3D, and astigmatism up to 3D. Best for patients seeking affordable vision correction with proven technology.", procedure: "standard-lasik" },
+  { q: "What laser technology is used in Standard LASIK?", a: "Standard LASIK uses a proven excimer laser platform operating at 250 Hz. A corneal flap is created using a microkeratome, and the underlying tissue is reshaped for correction.", procedure: "standard-lasik" },
+  { q: "What is the recovery time for Standard LASIK?", a: "Most patients achieve functional vision within 24-48 hours. Full recovery takes 2-3 days. You can return to desk work in 2 days and driving in 3-4 days.", procedure: "standard-lasik" },
+  { q: "Is Standard LASIK painful?", a: "No. Numbing eye drops are applied before the procedure. You may feel mild pressure for a few seconds. The entire procedure takes 10-15 minutes per eye.", procedure: "standard-lasik" },
+  { q: "What are the risks of Standard LASIK?", a: "Standard LASIK has a moderate dry eye risk and requires adequate corneal thickness. Temporary halos and glare may occur for 2-4 weeks. Over 98% of patients achieve 6/6 vision.", procedure: "standard-lasik" },
+  { q: "Can I get EMI for Standard LASIK?", a: "Yes! EMI starts from just ₹750/month for both eyes. No-cost EMI available on select bank credit cards. We also accept all major insurance and corporate plans.", procedure: "standard-lasik" },
+  { q: "How is Standard LASIK different from Contoura Vision?", a: "Standard LASIK corrects based on your spectacle prescription only. Contoura Vision uses 22,000-point topographic mapping for personalized treatment that can achieve better-than-6/6 vision.", procedure: "standard-lasik" },
+  { q: "Is the 40% discount on Standard LASIK genuine?", a: "Yes, the discounted price of ₹8,999/eye (from ₹15,000) is a special offer available at Centre for Lasik. The price is all-inclusive with no hidden charges.", procedure: "standard-lasik" },
+
+  // WaveLight Plus InnovEyes
+  { q: "What is WaveLight Plus InnovEyes technology?", a: "WaveLight Plus InnovEyes by Alcon is the most advanced flap-based refractive laser system. It combines the WaveLight EX500 excimer laser with InnovEyes software and PerfectPulse Technology® that tracks your eye 1,050 times per second.", procedure: "innovEyes" },
+  { q: "How much does WaveLight InnovEyes cost?", a: "WaveLight Plus InnovEyes costs ₹49,000 per eye (MRP ₹70,000 — 30% OFF). Both eyes: ₹98,000. EMI available from ₹4,083/month. Price is all-inclusive.", procedure: "innovEyes" },
+  { q: "What is PerfectPulse Technology®?", a: "PerfectPulse Technology® is Alcon's proprietary 6D eye-tracking system that monitors eye position 1,050 times per second. It ensures every laser pulse lands with sub-micron accuracy, even if your eye moves during the procedure.", procedure: "innovEyes" },
+  { q: "Why is InnovEyes better than regular LASIK?", a: "InnovEyes operates at 400 Hz (vs 250 Hz standard), has 6D eye tracking (1,050 readings/sec), offers personalized ablation profiles, and creates thinner 80μ flaps — preserving more corneal tissue.", procedure: "innovEyes" },
+  { q: "What prescription range can InnovEyes treat?", a: "InnovEyes can treat myopia up to -12D, hyperopia up to +6D, and astigmatism up to 6D. Its topography-guided mode handles complex corneal irregularities and high astigmatism.", procedure: "innovEyes" },
+  { q: "Is InnovEyes safe for thin corneas?", a: "Yes. InnovEyes creates an ultra-thin 80μ flap (vs 100μ standard), preserving significantly more corneal tissue. This makes it suitable for borderline thin corneas where standard LASIK may not be recommended.", procedure: "innovEyes" },
+  { q: "What is the recovery time for InnovEyes?", a: "Most patients achieve clear vision within 4-6 hours. Full functional recovery in 1 day. The 400 Hz speed means less corneal tissue exposure time, leading to faster healing.", procedure: "innovEyes" },
+  { q: "Does InnovEyes cause dry eye?", a: "InnovEyes has a low dry eye risk due to its thinner flap profile and faster ablation speed. Most patients experience minimal dryness that resolves within 2-4 weeks with prescribed drops.", procedure: "innovEyes" },
+  { q: "Is InnovEyes US-FDA approved?", a: "Yes. The WaveLight Refractive Suite including the EX500 excimer laser and FS200 femtosecond laser are US-FDA approved. InnovEyes is the latest software upgrade on this proven platform.", procedure: "innovEyes" },
+  { q: "Can I get the 30% discount on InnovEyes?", a: "Yes! The special price of ₹49,000/eye (from ₹70,000) is available at Centre for Lasik. EMI from ₹4,083/month. Book a free consultation to lock in this offer.", procedure: "innovEyes" },
+
+  // HD Contoura Vision
+  { q: "What is HD Contoura Vision?", a: "HD Contoura Vision is a topography-guided LASIK procedure that maps 22,000 unique elevation points on your cornea using the Topolyzer Vario diagnostic system. It creates a fully personalized ablation profile for potentially sharper-than-6/6 vision.", procedure: "contoura-vision" },
+  { q: "How much does Contoura Vision cost?", a: "HD Contoura Vision costs ₹25,500 per eye (MRP ₹42,500 — 40% OFF). Both eyes: ₹51,000. EMI available from ₹2,125/month. All-inclusive pricing.", procedure: "contoura-vision" },
+  { q: "What makes Contoura Vision different from standard LASIK?", a: "Standard LASIK corrects your glasses prescription. Contoura Vision goes beyond — mapping 22,000 corneal points to correct micro-irregularities invisible to standard diagnostics. It treats on the visual axis, not the pupillary axis.", procedure: "contoura-vision" },
+  { q: "Can Contoura Vision give better than 6/6 vision?", a: "Yes. Clinical studies show over 30% of Contoura Vision patients achieve 6/4 (super vision) or better. The topography-guided approach corrects imperfections beyond what glasses can address.", procedure: "contoura-vision" },
+  { q: "Is Contoura Vision safe for high power?", a: "Yes. Contoura Vision treats myopia up to -12D and astigmatism up to 6D. It's especially effective for high cylindrical power and irregular astigmatism due to its 22,000-point mapping precision.", procedure: "contoura-vision" },
+  { q: "Does Contoura Vision cause halos or glare?", a: "Contoura Vision significantly reduces the risk of halos and glare compared to standard LASIK. By treating corneal micro-irregularities, it improves contrast sensitivity and night vision quality.", procedure: "contoura-vision" },
+  { q: "What laser is used for Contoura Vision?", a: "Contoura Vision uses the WaveLight EX500 excimer laser (400 Hz speed) combined with the Topolyzer Vario diagnostic system for topographic mapping. Both are manufactured by Alcon.", procedure: "contoura-vision" },
+  { q: "What is the recovery time for Contoura Vision?", a: "Visual recovery begins within hours. Most patients achieve 6/6 or better vision within 1-2 days. Full stabilization occurs over 1-3 months. Return to desk work in 1-2 days.", procedure: "contoura-vision" },
+  { q: "Is Contoura Vision US-FDA approved?", a: "Yes. The WaveLight EX500 and Topolyzer Vario are US-FDA approved. Contoura Vision is the most widely performed topography-guided LASIK procedure globally.", procedure: "contoura-vision" },
+  { q: "Is the 40% discount on Contoura Vision genuine?", a: "Yes. ₹25,500/eye (MRP ₹42,500) is a verified special offer at Centre for Lasik. No hidden charges — includes pre-op diagnostics, surgery, post-op drops, and follow-up visits.", procedure: "contoura-vision" },
+
+  // EPI LASIK
+  { q: "What is EPI LASIK?", a: "EPI LASIK is a non-detectable, flapless surface ablation procedure. Unlike traditional LASIK, no corneal flap is cut. The epithelial layer is gently separated using an epi-separator, the cornea is reshaped with an excimer laser, and the epithelium heals naturally.", procedure: "epi-lasik" },
+  { q: "How much does EPI LASIK cost?", a: "EPI LASIK costs ₹18,000 per eye (MRP ₹30,000 — 40% OFF). Both eyes: ₹36,000. EMI available from ₹1,500/month. All-inclusive pricing with no hidden charges.", procedure: "epi-lasik" },
+  { q: "Why is EPI LASIK called 'non-detectable'?", a: "EPI LASIK doesn't create a corneal flap or leave any structural scar in the stroma. Post-surgery, the cornea looks completely natural — making it undetectable in medical examinations, which is why armed forces prefer it.", procedure: "epi-lasik" },
+  { q: "Is EPI LASIK approved for armed forces?", a: "Yes. EPI LASIK is the preferred LASIK variant for Indian Armed Forces (Army, Navy, Air Force) candidates because it leaves no detectable flap. Surgery should be done 6-12 months before the medical examination.", procedure: "epi-lasik" },
+  { q: "Is EPI LASIK safe for thin corneas?", a: "Yes. EPI LASIK is the safest option for thin corneas because no corneal tissue is removed for flap creation. The full stromal thickness is preserved for laser correction.", procedure: "epi-lasik" },
+  { q: "What is the recovery time for EPI LASIK?", a: "EPI LASIK has a longer recovery: Days 1-3 mild discomfort, Days 3-5 vision gradually improving, Day 5-7 bandage contact lens removed, Week 2-3 functional vision, Month 1-3 full stabilization.", procedure: "epi-lasik" },
+  { q: "Why is EPI LASIK recovery longer than regular LASIK?", a: "In EPI LASIK, the surface epithelium needs to regenerate naturally (5-7 days). Regular LASIK repositions the flap immediately. The trade-off is that EPI LASIK is structurally safer with zero flap-related complications.", procedure: "epi-lasik" },
+  { q: "Is EPI LASIK good for contact sports athletes?", a: "Absolutely. EPI LASIK is the gold standard for athletes in boxing, martial arts, wrestling, cricket, and other contact sports. No flap means zero risk of flap displacement from physical impact.", procedure: "epi-lasik" },
+  { q: "What laser technology is used in EPI LASIK?", a: "EPI LASIK uses an advanced excimer laser (400 Hz) with an epi-separator device. The epi-separator gently lifts the epithelial sheet without cutting into the corneal stroma.", procedure: "epi-lasik" },
+  { q: "Can I get the 40% discount on EPI LASIK?", a: "Yes! ₹18,000/eye (from ₹30,000) is available at Centre for Lasik. EMI from ₹1,500/month. Book your free consultation to confirm eligibility and lock the discounted price.", procedure: "epi-lasik" },
+
+  // SiLK
+  { q: "What is SiLK eye surgery?", a: "SiLK (Smooth Incision Lenticule Keratomileusis) is the latest evolution of flapless lenticule surgery by Johnson & Johnson Vision. It uses the elita™ platform to create an ultra-smooth stromal bed through a sub-2mm incision.", procedure: "silk" },
+  { q: "How much does SiLK surgery cost?", a: "SiLK costs ₹75,000 per eye (MRP ₹95,000 — 20% OFF). Both eyes: ₹1,50,000. EMI available from ₹6,250/month. All-inclusive pricing.", procedure: "silk" },
+  { q: "How is SiLK different from SMILE Pro?", a: "SiLK uses J&J's elita™ platform with an optimized laser pattern for an ultra-smooth stromal bed, while SMILE Pro uses Carl Zeiss VisuMax 800. Clinical data suggests SiLK delivers better contrast sensitivity and superior night vision.", procedure: "silk" },
+  { q: "What is the elita™ platform?", a: "The elita™ platform by Johnson & Johnson Vision is a next-generation femtosecond laser designed specifically for lenticule extraction. It creates smoother lenticule surfaces than previous-generation systems.", procedure: "silk" },
+  { q: "Does SiLK cause dry eye?", a: "SiLK has the lowest dry eye risk among all LASIK procedures. The sub-2mm incision preserves maximum corneal nerves, and the flapless approach eliminates flap-related nerve damage.", procedure: "silk" },
+  { q: "What is the recovery time for SiLK?", a: "Most patients achieve functional vision within 4-6 hours. Full recovery in 1 day. Return to work next day. The ultra-smooth stromal bed promotes faster and more predictable healing.", procedure: "silk" },
+  { q: "Is SiLK better than LASIK for night vision?", a: "Yes. SiLK's ultra-smooth stromal bed reduces higher-order aberrations that cause starbursts and halos at night. Clinical evidence shows SiLK delivers superior night vision compared to both flap-based LASIK and earlier lenticule procedures.", procedure: "silk" },
+  { q: "Who should choose SiLK over other procedures?", a: "SiLK is ideal for patients who want the latest flapless technology, best night vision outcomes, lowest dry eye risk, and can invest in premium treatment. It's the most advanced lenticule procedure available in 2026.", procedure: "silk" },
+  { q: "Is SiLK US-FDA approved?", a: "The J&J elita™ platform has received regulatory approvals and is being adopted at leading centres globally. It represents the newest advancement in lenticule extraction technology.", procedure: "silk" },
+  { q: "Is the 20% discount on SiLK available now?", a: "Yes! ₹75,000/eye (from ₹95,000) at Centre for Lasik. EMI from ₹6,250/month. This offer includes comprehensive diagnostics, surgery, medications, and all follow-up visits.", procedure: "silk" },
+
+  // SMILE Pro
+  { q: "What is SMILE Pro surgery?", a: "SMILE Pro (Small Incision Lenticule Extraction) is a flapless laser eye surgery using the Carl Zeiss VisuMax 800 femtosecond laser. Instead of creating a flap, a lenticule is extracted through a tiny 2mm incision.", procedure: "smile-pro" },
+  { q: "How much does SMILE Pro cost?", a: "SMILE Pro costs ₹65,000 per eye (MRP ₹85,000 — 20% OFF). Both eyes: ₹1,30,000. EMI available from ₹5,417/month. All-inclusive pricing.", procedure: "smile-pro" },
+  { q: "How fast is the SMILE Pro laser?", a: "The SMILE Pro laser completes corneal treatment in just 7 seconds per eye — making it the fastest lenticule extraction procedure. Total procedure time is 8-12 minutes including preparation.", procedure: "smile-pro" },
+  { q: "What is the VisuMax 800?", a: "VisuMax 800 by Carl Zeiss is the latest femtosecond laser platform for SMILE procedures. It operates at 500 Hz with enhanced precision and speed compared to the previous VisuMax 500.", procedure: "smile-pro" },
+  { q: "Does SMILE Pro cause dry eye?", a: "SMILE Pro has significantly lower dry eye risk than flap-based LASIK. The 2mm incision preserves 80% more corneal nerves compared to a flap procedure. Most patients experience minimal or no dry eye symptoms.", procedure: "smile-pro" },
+  { q: "What is the recovery time for SMILE Pro?", a: "Vision improves within hours. Most patients return to work the next day. Full stabilization in 1-4 weeks. The small incision and nerve preservation enable rapid healing.", procedure: "smile-pro" },
+  { q: "Is SMILE Pro better than LASIK?", a: "SMILE Pro is flapless (no flap displacement risk), has lower dry eye incidence, and preserves more corneal biomechanical strength. However, it cannot treat hyperopia and has a narrower treatment range for astigmatism compared to Contoura Vision.", procedure: "smile-pro" },
+  { q: "Can SMILE Pro treat astigmatism?", a: "Yes, SMILE Pro can treat astigmatism up to 5D. For higher or irregular astigmatism, topography-guided procedures like Contoura Vision or WaveLight InnovEyes may be more suitable.", procedure: "smile-pro" },
+  { q: "Is SMILE Pro safe for active lifestyles?", a: "Absolutely. No flap means zero risk of flap displacement during physical activities. SMILE Pro is ideal for athletes, gym enthusiasts, swimmers, and anyone with an active lifestyle.", procedure: "smile-pro" },
+  { q: "Can I get the 20% discount on SMILE Pro?", a: "Yes! ₹65,000/eye (from ₹85,000) is available at Centre for Lasik. EMI from ₹5,417/month. Book a free consultation to confirm eligibility.", procedure: "smile-pro" },
+];
+
+export const PROCEDURE_TECH_DETAILS: Record<string, { overview: string; howItWorks: string[]; idealFor: string[]; techSpecs: { label: string; value: string }[] }> = {
+  "standard-lasik": {
+    overview: "Standard LASIK uses a well-established excimer laser platform to reshape the cornea and correct refractive errors. A thin corneal flap is created using a microkeratome, the underlying tissue is precisely reshaped, and the flap is repositioned. It's the most affordable and widely performed laser vision correction worldwide.",
+    howItWorks: [
+      "Numbing eye drops are applied — zero pain throughout",
+      "A thin corneal flap (~100μ) is created using a precision microkeratome",
+      "The excimer laser (250 Hz) reshapes the corneal tissue based on your prescription",
+      "The flap is gently repositioned — it bonds naturally within minutes",
+      "Both eyes completed in 10-15 minutes total",
+    ],
+    idealFor: [
+      "Budget-conscious patients seeking freedom from glasses",
+      "Myopia up to -6D, hyperopia up to +3D, astigmatism up to 3D",
+      "Patients with adequate corneal thickness (>500μ)",
+      "First-time LASIK candidates with standard prescriptions",
+    ],
+    techSpecs: [
+      { label: "Laser Type", value: "Excimer Laser" },
+      { label: "Speed", value: "250 Hz" },
+      { label: "Flap Method", value: "Microkeratome (100μ)" },
+      { label: "Treatment Time", value: "10-15 min/eye" },
+      { label: "Recovery", value: "2-3 days" },
+      { label: "FDA Approved", value: "Yes" },
+    ],
+  },
+  "innovEyes": {
+    overview: "WaveLight Plus InnovEyes by Alcon represents the pinnacle of flap-based refractive surgery. The system combines the WaveLight EX500 excimer laser (fastest at 400 Hz) with the FS200 femtosecond laser and InnovEyes intelligent software. Its PerfectPulse Technology® monitors eye position 1,050 times per second across 6 dimensions, ensuring every pulse lands with sub-micron accuracy.",
+    howItWorks: [
+      "The FS200 femtosecond laser creates an ultra-thin 80μ flap — preserving maximum corneal tissue",
+      "InnovEyes software generates a personalized ablation map using topographic and wavefront data",
+      "PerfectPulse Technology® engages 6D eye tracking at 1,050 readings/second",
+      "The EX500 excimer laser delivers treatment at 400 Hz — completing a -6D correction in under 6 seconds",
+      "The flap is repositioned for rapid visual recovery within hours",
+    ],
+    idealFor: [
+      "Patients seeking the most advanced flap-based LASIK available",
+      "High prescriptions: myopia up to -12D, hyperopia up to +6D, astigmatism up to 6D",
+      "Complex cases with high astigmatism or corneal irregularities",
+      "Borderline thin corneas (80μ thin flap preserves tissue)",
+      "Patients wanting fastest possible procedure and recovery",
+    ],
+    techSpecs: [
+      { label: "Laser Platform", value: "WaveLight EX500 + FS200" },
+      { label: "Speed", value: "400 Hz (fastest excimer)" },
+      { label: "Eye Tracking", value: "6D, 1,050 readings/sec" },
+      { label: "Flap Thickness", value: "80μ (ultra-thin)" },
+      { label: "Software", value: "InnovEyes + PerfectPulse®" },
+      { label: "FDA Approved", value: "Yes" },
+    ],
+  },
+  "contoura-vision": {
+    overview: "HD Contoura Vision is a topography-guided LASIK procedure that goes far beyond standard prescription correction. Using the Topolyzer Vario diagnostic system, it captures 22,000 unique elevation data points on your cornea — creating a treatment plan as unique as your fingerprint. By treating on the visual axis rather than the pupillary axis, it can deliver vision sharper than what glasses or contacts ever provided.",
+    howItWorks: [
+      "The Topolyzer Vario captures 22,000 elevation points across your entire cornea",
+      "Software generates a unique ablation profile addressing micro-irregularities beyond your prescription",
+      "A femtosecond laser creates a precise corneal flap",
+      "The WaveLight EX500 excimer laser (400 Hz) delivers the personalized treatment on the visual axis",
+      "Post-treatment, over 30% of patients achieve 6/4 super vision",
+    ],
+    idealFor: [
+      "Patients wanting the sharpest possible vision (potential 6/4 super vision)",
+      "High astigmatism and irregular astigmatism cases",
+      "Patients concerned about night-time halos and glare",
+      "Those with corneal micro-irregularities not addressed by standard LASIK",
+      "Best value premium LASIK at ₹25,500/eye",
+    ],
+    techSpecs: [
+      { label: "Diagnostic", value: "Topolyzer Vario (22,000 points)" },
+      { label: "Laser", value: "WaveLight EX500 (400 Hz)" },
+      { label: "Treatment Axis", value: "Visual Axis" },
+      { label: "Mapping Points", value: "22,000 corneal elevation" },
+      { label: "Recovery", value: "1-2 days" },
+      { label: "FDA Approved", value: "Yes" },
+    ],
+  },
+  "epi-lasik": {
+    overview: "EPI LASIK is a surface ablation technique designed for patients who need structurally the safest laser vision correction. Unlike traditional LASIK, no corneal flap is cut into the stroma. Instead, the thin epithelial layer is gently separated using an epi-separator device and repositioned after laser reshaping. The cornea remains structurally intact, making this procedure undetectable in post-operative examinations.",
+    howItWorks: [
+      "An epi-separator gently lifts the epithelial sheet (surface layer only) without cutting the stroma",
+      "The excimer laser (400 Hz) precisely reshapes the exposed corneal surface",
+      "The epithelial sheet is repositioned over the treated area",
+      "A bandage contact lens is placed for 5-7 days while the epithelium regenerates",
+      "Complete structural integrity of the cornea is maintained throughout",
+    ],
+    idealFor: [
+      "Indian Armed Forces candidates (Army, Navy, Air Force) — undetectable",
+      "Contact sports athletes (boxing, martial arts, wrestling)",
+      "Patients with thin corneas (preserves full stromal thickness)",
+      "Patients who want zero flap-related risk",
+      "Budget-friendly flapless option at ₹18,000/eye",
+    ],
+    techSpecs: [
+      { label: "Technique", value: "Surface Ablation (Flapless)" },
+      { label: "Laser", value: "Excimer Laser (400 Hz)" },
+      { label: "Incision", value: "No incision / No flap" },
+      { label: "Detection", value: "Non-detectable post-op" },
+      { label: "Recovery", value: "5-7 days" },
+      { label: "Armed Forces", value: "Approved / Preferred" },
+    ],
+  },
+  "silk": {
+    overview: "SiLK (Smooth Incision Lenticule Keratomileusis) represents the newest generation of flapless lenticule extraction surgery. Developed by Johnson & Johnson Vision on their elita™ platform, SiLK uses an optimized femtosecond laser pattern to create an ultra-smooth stromal bed — a key advancement that improves visual quality, reduces higher-order aberrations, and delivers clinically superior night vision compared to earlier lenticule procedures.",
+    howItWorks: [
+      "The J&J elita™ femtosecond laser creates a thin lenticule (disc) of corneal tissue inside the cornea",
+      "An optimized laser pattern ensures the stromal bed has ultra-smooth surface quality",
+      "The lenticule is extracted through a sub-2mm incision — no flap, minimal nerve disruption",
+      "The cornea naturally reshapes as the void left by the lenticule changes its curvature",
+      "Recovery begins immediately — most patients see clearly within hours",
+    ],
+    idealFor: [
+      "Patients wanting the latest and most advanced lenticule technology",
+      "Those prioritizing best night vision and contrast sensitivity",
+      "Active lifestyles — flapless with sub-2mm incision",
+      "Patients with dry eye concerns (lowest dry eye risk)",
+      "Patients willing to invest in premium outcomes",
+    ],
+    techSpecs: [
+      { label: "Platform", value: "J&J elita™" },
+      { label: "Technique", value: "Lenticule Extraction (Flapless)" },
+      { label: "Incision Size", value: "Sub-2mm" },
+      { label: "Laser Speed", value: "500 Hz" },
+      { label: "Stromal Bed", value: "Ultra-smooth (optimized pattern)" },
+      { label: "Dry Eye Risk", value: "Lowest" },
+    ],
+  },
+  "smile-pro": {
+    overview: "SMILE Pro (Small Incision Lenticule Extraction) is a third-generation flapless refractive surgery performed on the Carl Zeiss VisuMax 800 platform. The femtosecond laser creates a thin lenticule of corneal tissue which is extracted through a tiny 2mm keyhole incision. With a laser time of just 7 seconds per eye, SMILE Pro is the fastest lenticule extraction procedure available, offering minimal dry eye and excellent biomechanical stability.",
+    howItWorks: [
+      "The VisuMax 800 femtosecond laser creates a precise lenticule inside the cornea in just 7 seconds",
+      "A 2mm micro-incision is created — 80% smaller than a LASIK flap cut",
+      "The surgeon extracts the lenticule through the micro-incision",
+      "The cornea naturally changes shape to correct the refractive error",
+      "No flap, no excimer laser, minimal nerve disruption — rapid recovery",
+    ],
+    idealFor: [
+      "Patients wanting a flapless, minimally invasive procedure",
+      "Active individuals, athletes, and sports enthusiasts",
+      "Those concerned about dry eye after surgery",
+      "Myopia up to -10D and astigmatism up to 5D",
+      "Patients seeking fastest procedure time (7 seconds laser)",
+    ],
+    techSpecs: [
+      { label: "Platform", value: "Carl Zeiss VisuMax 800" },
+      { label: "Laser Time", value: "7 seconds/eye" },
+      { label: "Incision Size", value: "2mm micro-incision" },
+      { label: "Technique", value: "Lenticule Extraction (Flapless)" },
+      { label: "Laser Speed", value: "500 Hz" },
+      { label: "Dry Eye Risk", value: "Lowest" },
+    ],
+  },
+};
+
 export const slugify = (text: string) =>
   text.toLowerCase().replace(/[&\s]+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-");
 
