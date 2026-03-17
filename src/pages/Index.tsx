@@ -252,6 +252,54 @@ const FAQSection = () => {
   );
 };
 
+/* ─── Resources / Blog Preview ─── */
+const blogPreview = [
+  { slug: "contoura-vision-explained", title: "Contoura Vision Explained: How 22,000-Point Mapping Transforms Your Vision", excerpt: "Understanding the advanced topographic technology behind India's most popular LASIK procedure.", category: "LASIK Technology", date: "2026-03-10" },
+  { slug: "lasik-risks-complications", title: "LASIK Risks & Complications: What the Data Actually Shows", excerpt: "A transparent look at LASIK safety statistics, side effects, and how modern technology minimizes risk.", category: "Safety & Risk", date: "2026-03-08" },
+  { slug: "how-much-lasik-costs", title: "How Much Does LASIK Cost in India in 2026?", excerpt: "Complete pricing breakdown for all LASIK procedures, EMI options, and insurance coverage.", category: "LASIK Cost", date: "2026-03-05" },
+];
+
+const ResourcesSection = () => (
+  <section className="section-padding">
+    <div className="container">
+      <div className="text-center mb-4">
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">Resources</span>
+      </div>
+      <SectionHeading title="Latest from Our Blog" subtitle="Expert articles on LASIK technology, costs, recovery, and eligibility." />
+      <div className="grid md:grid-cols-3 gap-8">
+        {blogPreview.map((post, i) => (
+          <motion.article
+            key={post.slug}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.08 }}
+          >
+            <Link to={`/blog/${post.slug}`} className="block bg-card border border-border rounded-xl overflow-hidden card-elevated group h-full">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">{post.category}</span>
+                  <span className="text-xs text-muted-foreground">{post.date}</span>
+                </div>
+                <h3 className="font-display font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">{post.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
+                <span className="text-sm text-primary font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Read article <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          </motion.article>
+        ))}
+      </div>
+      <div className="text-center mt-8">
+        <Button asChild variant="outline">
+          <Link to="/blog">View All Articles <ChevronRight className="w-4 h-4 ml-1" /></Link>
+        </Button>
+      </div>
+    </div>
+  </section>
+);
+
 /* ─── Homepage ─── */
 const Homepage = () => (
   <Layout>
@@ -263,6 +311,7 @@ const Homepage = () => (
     <CTABanner withForm />
     <ExpertInsights />
     <FAQSection />
+    <ResourcesSection />
     <CTABanner />
   </Layout>
 );
