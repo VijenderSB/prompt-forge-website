@@ -1,11 +1,19 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
-import CTABanner from "@/components/CTABanner";
+import ConsultationForm from "@/components/ConsultationForm";
+import ProcedureNavStrip from "@/components/ProcedureNavStrip";
+import { PAGE_FAQS } from "@/data/siteData";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Search } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const blogPosts = [
   { slug: "contoura-vision-explained", title: "Contoura Vision Explained: How 22,000-Point Mapping Transforms Your Vision", excerpt: "Understanding the advanced topographic technology behind India's most popular LASIK procedure.", category: "LASIK Technology", date: "2026-03-10", featured: true },
@@ -20,6 +28,7 @@ const blogPosts = [
 ];
 
 const categories = ["All", ...Array.from(new Set(blogPosts.map(p => p.category)))];
+const faqs = PAGE_FAQS["blog"] || [];
 
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -35,19 +44,28 @@ const BlogPage = () => {
 
   return (
     <Layout>
-      {/* Hero */}
+      {/* Hero with Lead Form */}
       <section className="hero-gradient section-padding">
-        <div className="container text-center max-w-3xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Eye Surgery Blog</h1>
-            <p className="text-primary-foreground/80 text-lg">Expert insights on LASIK technology, costs, recovery, and eligibility from Centre for Lasik.</p>
-          </motion.div>
+        <div className="container max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Eye Surgery Blog</h1>
+              <p className="text-primary-foreground/80 text-lg mb-4">Expert insights on LASIK technology, costs, recovery, and eligibility from Centre for Lasik.</p>
+              <ul className="space-y-2 text-primary-foreground/70 text-sm">
+                <li>✓ Latest LASIK technology updates</li>
+                <li>✓ Honest cost breakdowns & EMI options</li>
+                <li>✓ Recovery guides & patient stories</li>
+                <li>✓ Eligibility criteria for all procedures</li>
+              </ul>
+            </motion.div>
+            <ConsultationForm variant="hero" />
+          </div>
         </div>
       </section>
 
       {/* Featured Articles */}
       <section className="section-padding bg-surface">
-        <div className="container">
+        <div className="container max-w-5xl">
           <SectionHeading title="Featured Articles" />
           <div className="grid md:grid-cols-3 gap-6">
             {featured.map((post, i) => (
@@ -70,17 +88,10 @@ const BlogPage = () => {
       <section className="section-padding">
         <div className="container max-w-5xl">
           <SectionHeading title="All Articles" />
-
-          {/* Filters */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <div className="relative flex-1 max-w-sm">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input
-                placeholder="Search articles..."
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                className="pl-10"
-              />
+              <Input placeholder="Search articles..." value={search} onChange={e => setSearch(e.target.value)} className="pl-10" />
             </div>
             <div className="flex flex-wrap gap-2">
               {categories.map(cat => (
@@ -88,9 +99,7 @@ const BlogPage = () => {
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                    activeCategory === cat
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                    activeCategory === cat ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-muted/80"
                   }`}
                 >
                   {cat}
@@ -98,17 +107,9 @@ const BlogPage = () => {
               ))}
             </div>
           </div>
-
-          {/* Articles Grid */}
           <div className="grid md:grid-cols-2 gap-6">
             {filtered.map((post, i) => (
-              <motion.article
-                key={post.slug}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-              >
+              <motion.article key={post.slug} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
                 <Link to={`/blog/${post.slug}`} className="block bg-card border border-border rounded-xl p-6 card-elevated group h-full">
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">{post.category}</span>
@@ -123,7 +124,6 @@ const BlogPage = () => {
               </motion.article>
             ))}
           </div>
-
           {filtered.length === 0 && (
             <div className="text-center py-12 text-muted-foreground">
               <p>No articles found matching your search.</p>
@@ -131,7 +131,33 @@ const BlogPage = () => {
           )}
         </div>
       </section>
-      <CTABanner />
+
+      {/* FAQ */}
+      <section className="section-padding bg-surface">
+        <div className="container max-w-4xl">
+          <SectionHeading title="LASIK Knowledge Base — FAQs" subtitle="Quick answers to your most common LASIK questions" />
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-sm">
+                <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-4 text-sm">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4">{faq.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* Procedure Navigation */}
+      <ProcedureNavStrip />
+
+      {/* Bottom CTA */}
+      <section className="section-padding hero-gradient">
+        <div className="container max-w-2xl text-center">
+          <h2 className="font-display font-bold text-2xl text-primary-foreground mb-3">Ready to Start Your LASIK Journey?</h2>
+          <p className="text-primary-foreground/80 mb-6">Book a free consultation — our specialist will recommend the best procedure for your eyes.</p>
+          <ConsultationForm variant="compact" />
+        </div>
+      </section>
     </Layout>
   );
 };
