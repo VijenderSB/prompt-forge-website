@@ -292,6 +292,15 @@ const ProcedureHubPage = () => {
                 ))}
               </div>
 
+              {/* USP callout */}
+              <div className="bg-primary/5 border border-primary/15 rounded-lg p-4 mb-6">
+                <p className="text-xs font-bold text-primary uppercase tracking-wide mb-1">Why is this price lower?</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Centre for Lasik is India's largest LASIK aggregator. Our patient volume unlocks <strong className="text-foreground">exclusive institutional pricing</strong> — same surgeon, same technology, up to 30% less than walk-in MRP.{" "}
+                  <Link to="/why-us" className="text-primary font-semibold hover:underline">Learn more →</Link>
+                </p>
+              </div>
+
               <Button
                 asChild
                 className="w-full cta-gradient border-0 text-primary-foreground h-12 font-semibold"
