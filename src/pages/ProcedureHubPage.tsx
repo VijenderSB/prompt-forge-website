@@ -43,6 +43,7 @@ const ProcedureHubPage = () => {
   const techDetails = PROCEDURE_TECH_DETAILS[procedure.slug];
   const procedureFaqs = PROCEDURE_FAQS.filter((f) => f.procedure === procedure.slug);
   const procedureTestimonials = PROCEDURE_TESTIMONIALS.filter((t) => t.procedure === procedure.slug);
+  const clinicalStudies = PROCEDURE_CLINICAL_STUDIES[procedure.slug];
 
   return (
     <Layout>
