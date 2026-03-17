@@ -125,6 +125,10 @@ const EyeAnatomyPage = () => (
             </div>
           </div>
         </div>
+
+        <div className="mt-16 max-w-lg mx-auto">
+          <ConsultationForm variant="section" />
+        </div>
       </div>
     </section>
     <CTABanner />

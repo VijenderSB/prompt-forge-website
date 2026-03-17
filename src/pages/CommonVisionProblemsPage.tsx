@@ -109,11 +109,8 @@ const CommonVisionProblemsPage = () => (
           ))}
         </div>
 
-        <div className="text-center mb-8">
-          <p className="text-muted-foreground mb-4">Not sure which condition you have? Our free 90-minute diagnostic evaluation will identify your exact refractive error and recommend the best procedure.</p>
-          <Button asChild className="cta-gradient border-0 text-primary-foreground">
-            <Link to="/am-i-a-candidate">Book Free Eye Evaluation</Link>
-          </Button>
+        <div className="mt-12 max-w-lg mx-auto">
+          <ConsultationForm variant="section" />
         </div>
       </div>
     </section>

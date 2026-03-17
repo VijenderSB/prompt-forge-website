@@ -92,6 +92,10 @@ const CandidatePage = () => {
               )}
             </motion.div>
           )}
+
+          <div className="mt-12 max-w-lg mx-auto">
+            <ConsultationForm variant="section" />
+          </div>
         </div>
       </section>
       <CTABanner />
