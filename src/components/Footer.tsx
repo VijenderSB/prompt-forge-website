@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import { BRAND, CENTRES } from "@/data/siteData";
+import { BRAND } from "@/data/siteData";
 
 const candidateLinks = [
   { label: "Am I a Candidate?", href: "/am-i-a-candidate" },
@@ -107,40 +107,21 @@ const Footer = () => (
         </div>
       </div>
 
-      {/* Centres & Cities */}
+      {/* Top Cities */}
       <div className="border-t border-primary-foreground/10 pt-8 mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Our Centres */}
-          <div>
-            <h4 className="font-display font-semibold text-sm mb-4 text-primary-foreground">Our Centres</h4>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-              {CENTRES.map((c) => (
-                <li key={c.slug}>
-                  <Link to={`/centres/${c.slug}`} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                    {c.name.replace("Centre for Lasik - ", "")}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Top Cities */}
-          <div>
-            <h4 className="font-display font-semibold text-sm mb-4 text-primary-foreground">Top Cities</h4>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-sm">
-              {topCities.map((city) => (
-                <li key={city.href}>
-                  <Link to={city.href} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                    {city.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link to="/centres" className="inline-block mt-4 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-              View All Locations →
-            </Link>
-          </div>
-        </div>
+        <h4 className="font-display font-semibold text-sm mb-4 text-primary-foreground">Top Cities</h4>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-2 text-sm">
+          {topCities.map((city) => (
+            <li key={city.href}>
+              <Link to={city.href} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                {city.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link to="/centres" className="inline-block mt-4 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+          View All Locations →
+        </Link>
       </div>
 
       {/* Copyright */}
