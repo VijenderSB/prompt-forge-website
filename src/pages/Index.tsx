@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Star, MapPin, Eye, Shield, Award, Zap, Heart, Stethoscope, ChevronRight, Clock, Users, BadgeCheck, Sparkles, TrendingUp, CheckCircle2 } from "lucide-react";
+import { Phone, Star, MapPin, Eye, Shield, Award, Zap, Heart, Stethoscope, ChevronRight, Clock, Users, BadgeCheck, Sparkles, TrendingUp, CheckCircle2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
@@ -38,7 +38,7 @@ const Hero = () => (
           See the World <span className="text-accent">Without Glasses</span>
         </h1>
         <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 max-w-xl leading-relaxed">
-          Just 10 minutes to crystal-clear vision. Safe, painless, and trusted by millions worldwide. Starting at just <strong className="text-primary-foreground">₹18,000</strong> per eye.
+          Just 10 minutes to crystal-clear vision. Safe, painless, and trusted by millions worldwide. Starting at just <strong className="text-primary-foreground">₹8,999</strong> per eye.
         </p>
         <div className="flex items-center gap-8 mb-6">
           <div className="flex -space-x-2">
@@ -95,7 +95,7 @@ const WhyUsSection = () => {
   ];
   return (
     <section className="section-padding bg-surface">
-      <div className="px-4 md:px-8 lg:px-12 xl:px-16">
+      <div className="container">
         <div className="text-center mb-4">
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Why Choose Us</span>
         </div>
@@ -126,7 +126,7 @@ const WhyUsSection = () => {
 /* ─── Testimonials — Full Width ─── */
 const TestimonialsSection = () => (
   <section className="section-padding">
-    <div className="px-4 md:px-8 lg:px-12 xl:px-16">
+    <div className="container">
       <div className="text-center mb-4">
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Patient Stories</span>
       </div>
@@ -168,8 +168,8 @@ const TestimonialsSection = () => (
 
 /* ─── Expert Insights — Full Width, Detailed SEO Content ─── */
 const ExpertInsights = () => (
-  <section className="section-padding bg-surface">
-    <div className="px-4 md:px-8 lg:px-12 xl:px-16">
+    <section className="section-padding bg-surface">
+      <div className="container">
       <div className="text-center mb-4">
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Expert Insights</span>
       </div>
@@ -216,15 +216,16 @@ const ExpertInsights = () => (
   </section>
 );
 
-/* ─── FAQ — 20 Questions, Two Columns ─── */
+/* ─── FAQ — Two Columns (no SMILE Pro) ─── */
 const FAQSection = () => {
-  const half = Math.ceil(FAQS.length / 2);
-  const col1 = FAQS.slice(0, half);
-  const col2 = FAQS.slice(half);
+  const filteredFaqs = FAQS.filter(f => !f.q.toLowerCase().includes("smile pro") && !f.a.toLowerCase().includes("smile pro"));
+  const half = Math.ceil(filteredFaqs.length / 2);
+  const col1 = filteredFaqs.slice(0, half);
+  const col2 = filteredFaqs.slice(half);
 
   return (
     <section className="section-padding">
-      <div className="px-4 md:px-8 lg:px-12 xl:px-16">
+      <div className="container">
         <div className="text-center mb-4">
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Got Questions?</span>
         </div>
@@ -251,6 +252,54 @@ const FAQSection = () => {
   );
 };
 
+/* ─── Resources / Blog Preview ─── */
+const blogPreview = [
+  { slug: "contoura-vision-explained", title: "Contoura Vision Explained: How 22,000-Point Mapping Transforms Your Vision", excerpt: "Understanding the advanced topographic technology behind India's most popular LASIK procedure.", category: "LASIK Technology", date: "2026-03-10" },
+  { slug: "lasik-risks-complications", title: "LASIK Risks & Complications: What the Data Actually Shows", excerpt: "A transparent look at LASIK safety statistics, side effects, and how modern technology minimizes risk.", category: "Safety & Risk", date: "2026-03-08" },
+  { slug: "how-much-lasik-costs", title: "How Much Does LASIK Cost in India in 2026?", excerpt: "Complete pricing breakdown for all LASIK procedures, EMI options, and insurance coverage.", category: "LASIK Cost", date: "2026-03-05" },
+];
+
+const ResourcesSection = () => (
+  <section className="section-padding">
+    <div className="container">
+      <div className="text-center mb-4">
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">Resources</span>
+      </div>
+      <SectionHeading title="Latest from Our Blog" subtitle="Expert articles on LASIK technology, costs, recovery, and eligibility." />
+      <div className="grid md:grid-cols-3 gap-8">
+        {blogPreview.map((post, i) => (
+          <motion.article
+            key={post.slug}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.08 }}
+          >
+            <Link to={`/blog/${post.slug}`} className="block bg-card border border-border rounded-xl overflow-hidden card-elevated group h-full">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">{post.category}</span>
+                  <span className="text-xs text-muted-foreground">{post.date}</span>
+                </div>
+                <h3 className="font-display font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">{post.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
+                <span className="text-sm text-primary font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Read article <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          </motion.article>
+        ))}
+      </div>
+      <div className="text-center mt-8">
+        <Button asChild variant="outline">
+          <Link to="/blog">View All Articles <ChevronRight className="w-4 h-4 ml-1" /></Link>
+        </Button>
+      </div>
+    </div>
+  </section>
+);
+
 /* ─── Homepage ─── */
 const Homepage = () => (
   <Layout>
@@ -262,6 +311,7 @@ const Homepage = () => (
     <CTABanner withForm />
     <ExpertInsights />
     <FAQSection />
+    <ResourcesSection />
     <CTABanner />
   </Layout>
 );

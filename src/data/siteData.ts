@@ -34,6 +34,19 @@ export interface Procedure {
 
 export const PROCEDURES: Procedure[] = [
   {
+    id: "0", name: "Standard LASIK", slug: "standard-lasik", price: 8999, originalPrice: 15000, discountPercent: 40,
+    tagline: "Affordable bladeless laser vision correction — proven & trusted",
+    usp: "Budget-friendly LASIK with proven excimer laser technology for clear vision",
+    technology: "Excimer Laser Platform",
+    duration: "10–15 minutes per eye",
+    recovery: "2–3 days",
+    description: "Standard LASIK is the most affordable entry point to laser vision correction. Using a proven excimer laser platform, it corrects myopia, hyperopia, and astigmatism with a quick, painless procedure. Ideal for patients seeking freedom from glasses at the most accessible price point.",
+    features: ["Most Affordable", "Proven Technology", "Quick Procedure", "EMI from ₹750/mo"],
+    badge: "Value",
+    techType: "flap", bladeFree: false, flapless: false, topoGuided: false,
+    incision: "100μ flap", laserSpeed: "250 Hz", dryEyeRisk: "Moderate", thinCorneaSafe: false,
+  },
+  {
     id: "1", name: "WaveLight Plus InnovEyes", slug: "innovEyes", price: 49000, originalPrice: 70000, discountPercent: 30,
     tagline: "AI-guided 400 Hz — 1,050 eye-tracking points per second",
     usp: "PerfectPulse Technology® tracks eye 1,050 times/sec for sub-micron precision",
