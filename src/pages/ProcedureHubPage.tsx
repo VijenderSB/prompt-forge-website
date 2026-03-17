@@ -10,8 +10,10 @@ import {
   PROCEDURE_FAQS,
   PROCEDURE_TESTIMONIALS,
   PROCEDURE_TECH_DETAILS,
+  PROCEDURE_CLINICAL_STUDIES,
   formatPrice,
 } from "@/data/siteData";
+import ClinicalStudiesTable from "@/components/ClinicalStudiesTable";
 import { motion } from "framer-motion";
 import {
   Check,
