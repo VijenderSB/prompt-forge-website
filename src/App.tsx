@@ -15,6 +15,8 @@ import CentresPage from "./pages/CentresPage";
 import CentreDetailPage from "./pages/CentreDetailPage";
 import ProcedureHubPage from "./pages/ProcedureHubPage";
 import BlogPage from "./pages/BlogPage";
+import InternationalGuidelinesPage from "./pages/InternationalGuidelinesPage";
+import LasikTechnologyPage from "./pages/LasikTechnologyPage";
 import { StateHubPage, CityHubPage, LocalityHubPage, ProcedureCityPage } from "./pages/GeoPages";
 
 const queryClient = new QueryClient();
