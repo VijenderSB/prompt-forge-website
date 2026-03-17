@@ -105,10 +105,7 @@ const InternationalGuidelinesPage = () => {
   const faqs = PAGE_FAQS["international-guidelines"] || [];
 
   return (
-    <Layout
-      title="International LASIK Guidelines & Safety Standards | Centre for Lasik"
-      description="LASIK safety guidelines from FDA, WHO, AAO, ESCRS, AIOS, and NICE. Learn about international standards that govern laser eye surgery procedures and patient safety."
-    >
+    <Layout>
       {/* Hero */}
       <section className="section-padding bg-gradient-to-b from-surface to-background">
         <div className="container max-w-6xl">

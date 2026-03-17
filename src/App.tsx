@@ -39,6 +39,8 @@ const App = () => (
           <Route path="/centres/:slug" element={<CentreDetailPage />} />
           <Route path="/procedures/:slug" element={<ProcedureHubPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/international-guidelines" element={<InternationalGuidelinesPage />} />
+          <Route path="/lasik-technology" element={<LasikTechnologyPage />} />
           <Route path="/:state" element={<StateHubPage />} />
           <Route path="/:state/:city" element={<CityHubPage />} />
           <Route path="/:state/:city/:locality" element={<LocalityHubPage />} />

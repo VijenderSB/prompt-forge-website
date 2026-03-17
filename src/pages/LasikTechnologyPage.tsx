@@ -174,7 +174,7 @@ const LasikTechnologyPage = () => {
                     <div className="space-y-1.5">
                       {gen.pros.map((p) => (
                         <div key={p} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                          <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                           <span className="text-sm text-foreground">{p}</span>
                         </div>
                       ))}
