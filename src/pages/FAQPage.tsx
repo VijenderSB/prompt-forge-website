@@ -66,8 +66,6 @@ const FAQPage = () => (
       </div>
     </section>
 
-    {/* USP Section */}
-    <USPBanner variant="full" />
 
     {/* Two-column FAQ sections */}
     <section className="section-padding">
