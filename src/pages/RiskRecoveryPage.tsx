@@ -1,8 +1,16 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
-import CTABanner from "@/components/CTABanner";
+import ConsultationForm from "@/components/ConsultationForm";
+import ProcedureNavStrip from "@/components/ProcedureNavStrip";
+import { PAGE_FAQS } from "@/data/siteData";
 import { motion } from "framer-motion";
-import { Clock, Eye, Shield, AlertTriangle } from "lucide-react";
+import { Eye, Shield, AlertTriangle } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const timeline = [
   { day: "Day 1", title: "Surgery Day", desc: "Procedure takes 15–30 minutes. You may experience mild discomfort, tearing, and light sensitivity. Rest with eyes closed for 4–6 hours." },
@@ -20,20 +28,32 @@ const risks = [
   { title: "Infection", severity: "Very Rare", desc: "Prevented by strict sterile protocols and post-op antibiotics.", percentage: "<0.1%" },
 ];
 
+const faqs = PAGE_FAQS["risk-recovery"] || [];
+
 const RiskRecoveryPage = () => (
   <Layout>
+    {/* Hero with Lead Form */}
     <section className="hero-gradient section-padding">
-      <div className="container text-center max-w-3xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Risks, Recovery & Side Effects</h1>
-          <p className="text-primary-foreground/80 text-lg">A complete, honest guide to what you can expect before, during, and after LASIK eye surgery.</p>
-        </motion.div>
+      <div className="container max-w-5xl">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Risks, Recovery & Side Effects</h1>
+            <p className="text-primary-foreground/80 text-lg mb-4">A complete, honest guide to what you can expect before, during, and after LASIK eye surgery.</p>
+            <ul className="space-y-2 text-primary-foreground/70 text-sm">
+              <li>✓ 99.5% safety record across all procedures</li>
+              <li>✓ Day-by-day recovery timeline</li>
+              <li>✓ Transparent risk data with percentages</li>
+              <li>✓ Post-operative care instructions</li>
+            </ul>
+          </motion.div>
+          <ConsultationForm variant="hero" />
+        </div>
       </div>
     </section>
 
     {/* Recovery Timeline */}
     <section className="section-padding">
-      <div className="container max-w-3xl">
+      <div className="container max-w-4xl">
         <SectionHeading title="Day-by-Day Recovery Timeline" />
         <div className="space-y-6">
           {timeline.map((item, i) => (
@@ -54,7 +74,7 @@ const RiskRecoveryPage = () => (
 
     {/* Risks */}
     <section className="section-padding bg-surface">
-      <div className="container max-w-3xl">
+      <div className="container max-w-4xl">
         <SectionHeading title="Risks & Side Effects" subtitle="LASIK is one of the safest elective procedures. Here's what the data shows:" />
         <div className="space-y-4">
           {risks.map((risk, i) => (
@@ -76,7 +96,7 @@ const RiskRecoveryPage = () => (
 
     {/* Post-op care */}
     <section className="section-padding">
-      <div className="container max-w-3xl">
+      <div className="container max-w-4xl">
         <SectionHeading title="Post-Procedure Care Instructions" />
         <div className="grid md:grid-cols-2 gap-6">
           {[
@@ -97,7 +117,33 @@ const RiskRecoveryPage = () => (
         </div>
       </div>
     </section>
-    <CTABanner />
+
+    {/* FAQ */}
+    <section className="section-padding bg-surface">
+      <div className="container max-w-4xl">
+        <SectionHeading title="Risk & Recovery FAQs" subtitle="Common questions about LASIK safety and recovery" />
+        <Accordion type="single" collapsible className="space-y-3">
+          {faqs.map((faq, i) => (
+            <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-sm">
+              <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-4 text-sm">{faq.q}</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4">{faq.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+
+    {/* Procedure Navigation */}
+    <ProcedureNavStrip />
+
+    {/* Bottom CTA */}
+    <section className="section-padding hero-gradient">
+      <div className="container max-w-2xl text-center">
+        <h2 className="font-display font-bold text-2xl text-primary-foreground mb-3">Still Have Questions About LASIK Safety?</h2>
+        <p className="text-primary-foreground/80 mb-6">Speak to our LASIK specialist for a personalized risk assessment — completely free.</p>
+        <ConsultationForm variant="compact" />
+      </div>
+    </section>
   </Layout>
 );
 
