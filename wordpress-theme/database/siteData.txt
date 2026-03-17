@@ -1,0 +1,203 @@
+================================================================================
+CENTRE FOR LASIK — COMPLETE SITE DATABASE
+================================================================================
+Website: https://laser.fyi
+Phone: +91-9667770450 | Display: +91-96677 70450
+Discount: 30%
+Tagline: See the World Without Glasses
+
+================================================================================
+PROCEDURES (6 Total)
+================================================================================
+
+--- 1. Standard LASIK ---
+Slug: standard-lasik
+Price: ₹8,999/eye (MRP ₹15,000 — 40% OFF)
+Badge: Value
+Tagline: Affordable bladeless laser vision correction — proven & trusted
+USP: Budget-friendly LASIK with proven excimer laser technology for clear vision
+Technology: Excimer Laser Platform
+Duration: 10–15 minutes per eye
+Recovery: 2–3 days
+Tech Type: Flap | Blade Free: No | Flapless: No | Topo Guided: No
+Incision: 100μ flap | Laser Speed: 250 Hz | Dry Eye Risk: Moderate | Thin Cornea Safe: No
+Features: Most Affordable, Proven Technology, Quick Procedure, EMI from ₹750/mo
+Description: Standard LASIK is the most affordable entry point to laser vision correction. Using a proven excimer laser platform, it corrects myopia, hyperopia, and astigmatism with a quick, painless procedure.
+
+--- 2. WaveLight Plus InnovEyes ---
+Slug: innovEyes
+Price: ₹49,000/eye (MRP ₹70,000 — 30% OFF)
+Badge: Premium
+Tagline: AI-guided 400 Hz — 1,050 eye-tracking points per second
+USP: PerfectPulse Technology® tracks eye 1,050 times/sec for sub-micron precision
+Technology: WaveLight Refractive Suite with InnovEyes + PerfectPulse Technology®
+Duration: 10–15 minutes per eye
+Recovery: 1 day
+Tech Type: Flap | Blade Free: Yes | Flapless: No | Topo Guided: Yes
+Incision: 80μ flap | Laser Speed: 400 Hz | Dry Eye Risk: Low | Thin Cornea Safe: Yes
+Features: PerfectPulse Technology®, 400 Hz High-Speed, 6D Eye Tracking, Personalised Ablation
+Description: WaveLight Plus InnovEyes by Alcon is the most advanced flap-based refractive laser system with 1,050 Hz eye tracking.
+
+--- 3. HD Contoura Vision ---
+Slug: contoura-vision
+Price: ₹25,500/eye (MRP ₹42,500 — 40% OFF)
+Badge: Most Popular
+Tagline: Topography-guided — 22,000 unique corneal data points
+USP: 22,000-point corneal mapping for personalized treatment
+Technology: Wavelight EX500 Excimer Laser + Topolyzer Vario
+Duration: 10–15 minutes per eye
+Recovery: 1–2 days
+Tech Type: Flap | Blade Free: No | Flapless: No | Topo Guided: Yes
+Incision: 100μ flap | Laser Speed: 400 Hz | Dry Eye Risk: Low | Thin Cornea Safe: Yes
+Features: 6/4 Super Sharp Vision, No Halos No Glare, Topography-Guided, Visual Axis Treatment
+Description: Contoura Vision uses 22,000 unique elevation points for corrections beyond spectacle prescription.
+
+--- 4. EPI LASIK ---
+Slug: epi-lasik
+Price: ₹18,000/eye (MRP ₹30,000 — 40% OFF)
+Tagline: Non-detectable laser vision correction — no flap, no cut
+USP: Surface ablation — cornea untouched structurally, ideal for thin corneas
+Technology: Advanced Excimer Laser with Epi-separator
+Duration: 15–20 minutes per eye
+Recovery: 5–7 days
+Tech Type: Flap | Blade Free: Yes | Flapless: Yes | Topo Guided: No
+Incision: No incision | Laser Speed: 400 Hz | Dry Eye Risk: Moderate | Thin Cornea Safe: Yes
+Features: No Flap Created, Structurally Safest, Thin Cornea Friendly, Armed Forces Approved
+Description: Non-detectable flapless surface ablation. Ideal for armed forces and contact sports athletes.
+
+--- 5. SiLK ---
+Slug: silk
+Price: ₹75,000/eye (MRP ₹95,000 — 20% OFF)
+Badge: Latest Tech
+Tagline: Premium lenticule — ultra-smooth stromal bed, best night vision
+USP: Next-gen lenticule tech with sub-2mm incision and ultra-smooth stromal bed
+Technology: Johnson & Johnson elita Platform with SiLK Technology
+Duration: 8–12 minutes per eye
+Recovery: 1 day
+Tech Type: Lenticule | Blade Free: Yes | Flapless: Yes | Topo Guided: No
+Incision: <2mm incision | Laser Speed: 500 Hz | Dry Eye Risk: Lowest | Thin Cornea Safe: Yes
+Features: Ultra-Smooth Stromal Bed, Sub-2mm Incision, Least Biomechanical Impact, Best Night Vision
+Description: Latest evolution in flapless lenticule surgery with superior night vision.
+
+--- 6. SMILE Pro ---
+Slug: smile-pro
+Price: ₹65,000/eye (MRP ₹85,000 — 20% OFF)
+Tagline: Flapless lenticule — 2mm incision, minimal dry eye
+USP: No flap, no blade — 2mm micro-incision only, fastest recovery
+Technology: Carl Zeiss VisuMax 800
+Duration: 7 seconds laser time per eye
+Recovery: 1 day
+Tech Type: Lenticule | Blade Free: Yes | Flapless: Yes | Topo Guided: No
+Incision: 2mm incision | Laser Speed: 500 Hz | Dry Eye Risk: Lowest | Thin Cornea Safe: Yes
+Features: Flapless — No Flap, 2mm Micro-Incision, Minimal Dry Eye, Thin Cornea Friendly
+Description: Flapless lenticule-based surgery with 7-second laser time per eye.
+
+================================================================================
+CENTRES (5 Locations)
+================================================================================
+
+1. Centre for Lasik - Lajpat Nagar
+   Hospital: Centre for Sight
+   Address: E-33, Lajpat Nagar Part 2, New Delhi 110024
+   City: Delhi | State: Delhi NCR
+   Phone: +91-9667770450
+   Coordinates: 28.57, 77.24
+
+2. Centre for Lasik - Rajouri Garden
+   Hospital: Centre for Sight
+   Address: A-29, Rajouri Garden, New Delhi 110027
+   City: Delhi | State: Delhi NCR
+   Phone: +91-9667770450
+   Coordinates: 28.6492, 77.1225
+
+3. Centre for Lasik - Dwarka
+   Hospital: Centre for Sight
+   Address: Sector 6, Dwarka, New Delhi 110075
+   City: Delhi | State: Delhi NCR
+   Phone: +91-9667770450
+   Coordinates: 28.5823, 77.05
+
+4. Centre for Lasik - Noida
+   Hospital: Centre for Sight
+   Address: H-33, Sector 18, Noida 201301
+   City: Noida | State: Delhi NCR
+   Phone: +91-9667770450
+   Coordinates: 28.5706, 77.3219
+
+5. Centre for Lasik - Gurgaon
+   Hospital: Centre for Sight
+   Address: SCO 834, Sector 22, Gurgaon 122002
+   City: Gurgaon | State: Haryana
+   Phone: +91-9667770450
+   Coordinates: 28.4595, 77.0266
+
+================================================================================
+TOP CITIES (10)
+================================================================================
+
+Delhi (Delhi NCR), Noida (Delhi NCR), Gurgaon (Haryana), Mumbai (Maharashtra),
+Pune (Maharashtra), Bangalore (Karnataka), Hyderabad (Telangana),
+Chennai (Tamil Nadu), Kolkata (West Bengal), Jaipur (Rajasthan)
+
+================================================================================
+TESTIMONIALS (6)
+================================================================================
+
+1. Keshav S. | Delhi | Age 36 | ★★★★★
+   "More than fully satisfied with the excellent service and special discount on LASIK surgery."
+
+2. Sania G. | Delhi | Age 23 | ★★★★★
+   "Had budget constraints and high eye power. The team made thin flap SBK LASIK possible within my budget."
+
+3. Habib M. | Noida | Age 29 | ★★★★★
+   "Just wonderful to see clear and sharp without glasses."
+
+4. Pooja M. | Gurgaon | Age 36 | ★★★★★
+   "Used contact lenses for more than 8 years. The right guidance helped me finally get rid of glasses."
+
+5. Raj K. | Delhi | Age 31 | ★★★★★
+   "Contoura Vision gave me better than 6/6 vision. Life-changing experience!"
+
+6. Priya S. | Mumbai | Age 28 | ★★★★★
+   "Got SMILE Pro done and the laser was over in 7 seconds! Back at work in 2 days."
+
+================================================================================
+FAQs (50+ Questions across categories)
+================================================================================
+
+CATEGORY: Technology
+Q: What is WaveLight Plus InnovEyes LASIK?
+A: Most advanced flap-based refractive laser platform with PerfectPulse Technology® tracking at 1,050 Hz and 400 Hz speed.
+
+Q: What is SMILE Pro eye surgery?
+A: Flapless lenticule-based procedure through 2mm incision. Cost: ₹65,000/eye.
+
+Q: What is SiLK eye surgery?
+A: Latest flapless lenticule surgery with ultra-smooth stromal bed through sub-2mm incision. Cost: ₹75,000/eye.
+
+CATEGORY: General
+Q: Is LASIK painful?
+A: No. Anaesthetic eye drops applied. Zero pain — mild pressure lasting a few seconds.
+
+Q: How long does LASIK last?
+A: Permanent corneal reshaping. 95%+ maintain stable vision for decades.
+
+CATEGORY: Eligibility
+Q: Am I eligible for LASIK?
+A: Adults 18+ with stable prescription (12 months). Myopia -0.5D to -12D, hyperopia +0.5D to +6D, astigmatism up to 6D.
+
+CATEGORY: Cost
+Q: How much does LASIK cost in India?
+A: Standard ₹8,999, EPI ₹18,000, Contoura ₹25,500, InnovEyes ₹49,000, SMILE Pro ₹65,000, SiLK ₹75,000 per eye.
+
+CATEGORY: Recovery
+Q: What is the recovery time?
+A: Day 1: 80-90% clear. Day 2-3: Work. Day 7: Drive. Month 1-3: Full stabilization.
+
+CATEGORY: Armed Forces
+Q: Is LASIK eligible for armed forces?
+A: Yes. EPI LASIK preferred — no detectable flap. 6-12 months before medical exam.
+
+================================================================================
+END OF DATABASE
+================================================================================
