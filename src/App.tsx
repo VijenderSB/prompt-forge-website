@@ -9,6 +9,11 @@ import CostPage from "./pages/CostPage";
 import FAQPage from "./pages/FAQPage";
 import WhyUsPage from "./pages/WhyUsPage";
 import CandidatePage from "./pages/CandidatePage";
+import EyeAnatomyPage from "./pages/EyeAnatomyPage";
+import CommonVisionProblemsPage from "./pages/CommonVisionProblemsPage";
+import WhatIsLasikPage from "./pages/WhatIsLasikPage";
+import LasikMythsPage from "./pages/LasikMythsPage";
+import UnfitLasikPage from "./pages/UnfitLasikPage";
 import RiskRecoveryPage from "./pages/RiskRecoveryPage";
 import WhichLasikPage from "./pages/WhichLasikPage";
 import CentresPage from "./pages/CentresPage";
@@ -33,6 +38,11 @@ const App = () => (
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/why-us" element={<WhyUsPage />} />
           <Route path="/am-i-a-candidate" element={<CandidatePage />} />
+          <Route path="/eye-anatomy" element={<EyeAnatomyPage />} />
+          <Route path="/common-vision-problems" element={<CommonVisionProblemsPage />} />
+          <Route path="/what-is-lasik" element={<WhatIsLasikPage />} />
+          <Route path="/lasik-myths-vs-facts" element={<LasikMythsPage />} />
+          <Route path="/unfit-for-lasik" element={<UnfitLasikPage />} />
           <Route path="/risk-recovery" element={<RiskRecoveryPage />} />
           <Route path="/which-lasik-is-best" element={<WhichLasikPage />} />
           <Route path="/centres" element={<CentresPage />} />
