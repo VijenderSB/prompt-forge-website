@@ -7,6 +7,7 @@ import ProcedureCard from "@/components/ProcedureCard";
 import CTABanner from "@/components/CTABanner";
 import StatsBar from "@/components/StatsBar";
 import ConsultationForm from "@/components/ConsultationForm";
+import USPBanner from "@/components/USPBanner";
 import { Button } from "@/components/ui/button";
 import { BRAND, PROCEDURES, FAQS, TESTIMONIALS, formatPrice } from "@/data/siteData";
 import heroImage from "@/assets/hero-lasik.png";
