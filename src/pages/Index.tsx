@@ -38,7 +38,7 @@ const Hero = () => (
           See the World <span className="text-accent">Without Glasses</span>
         </h1>
         <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 max-w-xl leading-relaxed">
-          Just 10 minutes to crystal-clear vision. Safe, painless, and trusted by millions worldwide. Starting at just <strong className="text-primary-foreground">₹18,000</strong> per eye.
+          Just 10 minutes to crystal-clear vision. Safe, painless, and trusted by millions worldwide. Starting at just <strong className="text-primary-foreground">₹8,999</strong> per eye.
         </p>
         <div className="flex items-center gap-8 mb-6">
           <div className="flex -space-x-2">
