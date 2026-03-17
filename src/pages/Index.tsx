@@ -216,11 +216,12 @@ const ExpertInsights = () => (
   </section>
 );
 
-/* ─── FAQ — 20 Questions, Two Columns ─── */
+/* ─── FAQ — Two Columns (no SMILE Pro) ─── */
 const FAQSection = () => {
-  const half = Math.ceil(FAQS.length / 2);
-  const col1 = FAQS.slice(0, half);
-  const col2 = FAQS.slice(half);
+  const filteredFaqs = FAQS.filter(f => !f.q.toLowerCase().includes("smile pro") && !f.a.toLowerCase().includes("smile pro"));
+  const half = Math.ceil(filteredFaqs.length / 2);
+  const col1 = filteredFaqs.slice(0, half);
+  const col2 = filteredFaqs.slice(half);
 
   return (
     <section className="section-padding">
