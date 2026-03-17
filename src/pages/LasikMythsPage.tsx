@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
+import ConsultationForm from "@/components/ConsultationForm";
 import { motion } from "framer-motion";
 import { X, Check } from "lucide-react";
 
