@@ -66,8 +66,6 @@ const FAQPage = () => (
       </div>
     </section>
 
-    {/* USP Section */}
-    <USPBanner variant="full" />
 
     {/* Two-column FAQ sections */}
     <section className="section-padding">
@@ -139,6 +137,9 @@ const FAQPage = () => (
         })}
       </div>
     </section>
+
+    {/* USP Section */}
+    <USPBanner variant="full" />
 
     {/* Lead Form */}
     <section className="section-padding bg-surface border-y border-border">
