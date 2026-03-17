@@ -445,6 +445,46 @@ export const PROCEDURE_TECH_DETAILS: Record<string, { overview: string; howItWor
   },
 };
 
+// Page-specific FAQs for Planning pages
+export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
+  "risk-recovery": [
+    { q: "Is LASIK surgery safe?", a: "Yes. LASIK is one of the safest elective procedures with a 99.5% success rate. Serious complications are extremely rare (<0.1%). Modern technologies like Contoura Vision and SMILE Pro have further reduced risks." },
+    { q: "What are the most common side effects after LASIK?", a: "Temporary dry eyes (20-40% of patients, resolves in 1-3 months), mild halos/glare at night (resolves in 3-6 months), and light sensitivity for a few days. These are managed effectively with prescribed medications." },
+    { q: "How long does LASIK recovery take?", a: "Most patients see clearly within 24 hours. Return to work in 1-2 days for flap-based procedures, 5-7 days for EPI LASIK. Full visual stabilization takes 1-3 months." },
+    { q: "Can LASIK cause blindness?", a: "No documented case of LASIK causing blindness exists in peer-reviewed literature. The laser operates on the corneal surface only and cannot reach deeper structures of the eye." },
+    { q: "What happens if I move my eye during LASIK?", a: "Modern LASIK systems like WaveLight InnovEyes track your eye 1,050 times/second. If significant movement is detected, the laser automatically pauses. It's virtually impossible to cause a problem by moving." },
+    { q: "Is dry eye permanent after LASIK?", a: "No. Post-LASIK dry eye is temporary in the vast majority of cases, resolving within 1-3 months. SMILE Pro and SiLK have the lowest dry eye risk due to their flapless, small-incision approach." },
+    { q: "When can I drive after LASIK?", a: "Most patients can drive within 3-4 days. Your surgeon will confirm at your Day 1 follow-up. Night driving may take 1-2 weeks as halos settle." },
+    { q: "Can I use screens after LASIK?", a: "You should rest your eyes for the first 24 hours. After that, screen use is fine with frequent breaks (20-20-20 rule). Most patients return to desk work in 1-2 days." },
+    { q: "What if LASIK doesn't fully correct my vision?", a: "5-10% of patients may need an enhancement procedure for residual prescription. This is a minor touch-up performed 3-6 months after the original surgery, usually at no additional cost." },
+    { q: "How much does LASIK cost and does risk vary by price?", a: "LASIK ranges from ₹8,999/eye (Standard) to ₹75,000/eye (SiLK). More advanced technologies generally have lower side-effect profiles, but all procedures at Centre for Lasik meet strict safety standards." },
+  ],
+  "blog": [
+    { q: "How do I know which LASIK procedure is right for me?", a: "Our free 90-minute diagnostic evaluates your corneal thickness, prescription, eye health, and lifestyle to recommend the best technology. Book a consultation to get a personalized recommendation." },
+    { q: "What is the latest LASIK technology in 2026?", a: "SiLK by J&J (ultra-smooth lenticule extraction) and WaveLight Plus InnovEyes (AI-guided 400 Hz with PerfectPulse®) are the latest advancements. Both offer superior outcomes compared to older LASIK platforms." },
+    { q: "Can LASIK correct astigmatism?", a: "Yes. HD Contoura Vision and WaveLight InnovEyes are specifically designed for high astigmatism correction up to 6D using topography-guided treatment that maps 22,000 corneal points." },
+    { q: "Is LASIK permanent?", a: "Yes. LASIK permanently reshapes the cornea. Over 95% of patients maintain stable vision for decades. Age-related reading difficulty (presbyopia) after 40 is unrelated to LASIK." },
+    { q: "What is the minimum age for LASIK?", a: "18 years with a stable prescription (unchanged for 12 months). There's no upper age limit, though candidates over 40 may need additional evaluation for presbyopia." },
+    { q: "How much does LASIK cost in India?", a: "Standard LASIK: ₹8,999/eye, EPI LASIK: ₹18,000/eye, Contoura Vision: ₹25,500/eye, InnovEyes: ₹49,000/eye, SMILE Pro: ₹65,000/eye, SiLK: ₹75,000/eye. EMI available from ₹750/month." },
+    { q: "Can I get LASIK if I have dry eyes?", a: "Mild dry eye can often be treated before surgery. SMILE Pro and SiLK are recommended for dry eye patients as they preserve more corneal nerves. Severe dry eye may be a contraindication." },
+    { q: "What diagnostic tests are done before LASIK?", a: "Our free 90-minute pre-op includes: Pentacam corneal tomography, wavefront aberrometry, corneal topography, pachymetry, Schirmer dry eye test, and dilated retinal examination." },
+    { q: "Is LASIK covered by insurance?", a: "Most Indian health insurance plans don't cover LASIK (elective procedure). However, we offer EMI from ₹750/month and corporate tie-ups for affordable access." },
+    { q: "How do I book a free LASIK consultation?", a: "Call +91-96677 70450, fill the consultation form on any page, or visit any of our centres across India. The 90-minute diagnostic is completely free with no obligation." },
+  ],
+  "centres": [
+    { q: "How many LASIK centres does Centre for Lasik have?", a: "We operate through multiple state-of-the-art centres across Delhi NCR including Lajpat Nagar, Rajouri Garden, Dwarka, Noida, and Gurgaon — with more locations coming soon." },
+    { q: "Are all centres equipped with the same technology?", a: "Yes. Every Centre for Lasik location offers the full range of procedures from Standard LASIK (₹8,999/eye) to SiLK (₹75,000/eye) with the same advanced diagnostic and surgical equipment." },
+    { q: "Do I need an appointment for a LASIK consultation?", a: "Walk-ins are welcome, but appointments are recommended to ensure a dedicated 90-minute diagnostic slot. Call +91-96677 70450 or fill the form to book." },
+    { q: "What should I bring to my first consultation?", a: "Bring your current glasses/prescription, any previous eye reports, and a valid ID. If you wear contact lenses, remove soft lenses 3 days before and hard lenses 7 days before the visit." },
+    { q: "Is the consultation really free?", a: "Yes. The comprehensive 90-minute pre-LASIK diagnostic is completely free at all our centres. This includes Pentacam, topography, pachymetry, and retinal examination — no obligation to proceed." },
+    { q: "Can I get LASIK done on the same day as consultation?", a: "Surgery is typically scheduled 1-3 days after the diagnostic to allow for any pre-operative preparation. Same-day surgery may be possible in select cases after complete evaluation." },
+    { q: "What are the operating hours?", a: "All centres are open Monday to Saturday, 9:00 AM to 7:00 PM. Sunday consultations available by appointment at select locations." },
+    { q: "Is parking available at your centres?", a: "Yes, all our centres have dedicated parking facilities. After surgery, we recommend having someone drive you home, so plan accordingly." },
+    { q: "Do you offer pick-up/drop services?", a: "Selected centres offer complimentary pick-up and drop for surgery day. Please ask our team when booking your procedure for availability in your area." },
+    { q: "How do I choose the best centre for me?", a: "All centres offer identical quality. Choose based on proximity and convenience. Our team can help you pick the nearest centre — call +91-96677 70450." },
+  ],
+};
+
 export const slugify = (text: string) =>
   text.toLowerCase().replace(/[&\s]+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-");
 
