@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
+import ConsultationForm from "@/components/ConsultationForm";
 import { motion } from "framer-motion";
 import { X, Check } from "lucide-react";
 
@@ -98,13 +99,8 @@ const LasikMythsPage = () => (
           ))}
         </div>
 
-        <div className="bg-primary/5 border border-primary/20 rounded-xl p-8 text-center">
-          <h3 className="font-display font-bold text-xl text-foreground mb-3">Still Have Questions?</h3>
-          <p className="text-muted-foreground mb-4 text-sm">Our LASIK counsellors can address any concerns during a free, no-obligation consultation.</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a href="/am-i-a-candidate" className="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 cta-gradient text-primary-foreground">Book Free Consultation</a>
-            <a href="/faq" className="inline-flex items-center justify-center rounded-md text-sm font-medium h-11 px-8 border border-border bg-card text-foreground hover:bg-muted transition-colors">Read Full FAQ</a>
-          </div>
+        <div className="mt-12 max-w-lg mx-auto">
+          <ConsultationForm variant="section" />
         </div>
       </div>
     </section>

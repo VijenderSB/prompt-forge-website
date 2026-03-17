@@ -2,6 +2,7 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
+import ConsultationForm from "@/components/ConsultationForm";
 import { Button } from "@/components/ui/button";
 import { Check, X, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -91,6 +92,10 @@ const CandidatePage = () => {
               )}
             </motion.div>
           )}
+
+          <div className="mt-12 max-w-lg mx-auto">
+            <ConsultationForm variant="section" />
+          </div>
         </div>
       </section>
       <CTABanner />

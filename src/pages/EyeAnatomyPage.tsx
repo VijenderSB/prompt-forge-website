@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
+import ConsultationForm from "@/components/ConsultationForm";
 import { motion } from "framer-motion";
 import { Eye, CircleDot, Layers, Focus, Sun, Droplets } from "lucide-react";
 
@@ -123,6 +124,10 @@ const EyeAnatomyPage = () => (
               <p className="text-muted-foreground">No flap is created. SMILE/SiLK extract a lenticule from within the stroma through a tiny incision. EPI LASIK works on the surface. All approaches preserve more corneal nerves and biomechanical strength.</p>
             </div>
           </div>
+        </div>
+
+        <div className="mt-16 max-w-lg mx-auto">
+          <ConsultationForm variant="section" />
         </div>
       </div>
     </section>

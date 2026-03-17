@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
+import ConsultationForm from "@/components/ConsultationForm";
 import { motion } from "framer-motion";
 import { AlertTriangle, ShieldOff, Clock, Eye, Heart, Baby, Droplets, Activity } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -127,11 +128,8 @@ const UnfitLasikPage = () => (
           </div>
         </div>
 
-        <div className="text-center">
-          <p className="text-muted-foreground mb-4">Only a comprehensive eye evaluation can determine your true eligibility. Book a free consultation — we'll find the right solution for your eyes.</p>
-          <Button asChild size="lg" className="cta-gradient border-0 text-primary-foreground">
-            <Link to="/am-i-a-candidate">Get a Free Eye Evaluation</Link>
-          </Button>
+        <div className="mt-12 max-w-lg mx-auto">
+          <ConsultationForm variant="section" />
         </div>
       </div>
     </section>
