@@ -5,9 +5,9 @@ import { BRAND, PROCEDURES } from "@/data/siteData";
 const Footer = () => (
   <footer className="bg-navy text-primary-foreground">
     <div className="container section-padding">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
         {/* Brand */}
-        <div>
+        <div className="lg:col-span-2">
           <h3 className="font-display font-bold text-lg mb-4">{BRAND.name}</h3>
           <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4">
             India's leading LASIK eye surgery platform. Advanced technology, experienced surgeons, and affordable pricing across 3,700+ cities.
@@ -44,13 +44,14 @@ const Footer = () => (
           <h4 className="font-display font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2 text-sm">
             {[
+              { label: "Home", href: "/" },
               { label: "LASIK Cost in India", href: "/cost" },
               { label: "Am I a Candidate?", href: "/am-i-a-candidate" },
               { label: "Which LASIK is Best?", href: "/which-lasik-is-best" },
-              { label: "FAQ", href: "/faq" },
               { label: "Risk & Recovery", href: "/risk-recovery" },
               { label: "Why Choose Us", href: "/why-us" },
               { label: "Our Centres", href: "/centres" },
+              { label: "FAQ", href: "/faq" },
               { label: "Blog", href: "/blog" },
             ].map((link) => (
               <li key={link.href}>
