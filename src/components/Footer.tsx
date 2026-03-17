@@ -41,13 +41,23 @@ const topCities = [
   { label: "LASIK in Delhi", href: "/delhi-ncr/delhi" },
   { label: "LASIK in Noida", href: "/delhi-ncr/noida" },
   { label: "LASIK in Gurgaon", href: "/delhi-ncr/gurgaon" },
-  { label: "LASIK in Mumbai", href: "/delhi-ncr/mumbai" },
-  { label: "LASIK in Pune", href: "/delhi-ncr/pune" },
-  { label: "LASIK in Bangalore", href: "/delhi-ncr/bangalore" },
-  { label: "LASIK in Hyderabad", href: "/delhi-ncr/hyderabad" },
-  { label: "LASIK in Chennai", href: "/delhi-ncr/chennai" },
-  { label: "LASIK in Kolkata", href: "/delhi-ncr/kolkata" },
-  { label: "LASIK in Ahmedabad", href: "/delhi-ncr/ahmedabad" },
+  { label: "LASIK in Faridabad", href: "/delhi-ncr/faridabad" },
+  { label: "LASIK in Ghaziabad", href: "/delhi-ncr/ghaziabad" },
+  { label: "LASIK in Mumbai", href: "/maharashtra/mumbai" },
+  { label: "LASIK in Pune", href: "/maharashtra/pune" },
+  { label: "LASIK in Bangalore", href: "/karnataka/bangalore" },
+  { label: "LASIK in Hyderabad", href: "/telangana/hyderabad" },
+  { label: "LASIK in Chennai", href: "/tamil-nadu/chennai" },
+  { label: "LASIK in Kolkata", href: "/west-bengal/kolkata" },
+  { label: "LASIK in Ahmedabad", href: "/gujarat/ahmedabad" },
+  { label: "LASIK in Jaipur", href: "/rajasthan/jaipur" },
+  { label: "LASIK in Lucknow", href: "/uttar-pradesh/lucknow" },
+  { label: "LASIK in Chandigarh", href: "/chandigarh/chandigarh" },
+  { label: "LASIK in Indore", href: "/madhya-pradesh/indore" },
+  { label: "LASIK in Kochi", href: "/kerala/kochi" },
+  { label: "LASIK in Bhopal", href: "/madhya-pradesh/bhopal" },
+  { label: "LASIK in Nagpur", href: "/maharashtra/nagpur" },
+  { label: "LASIK in Coimbatore", href: "/tamil-nadu/coimbatore" },
 ];
 
 const FooterColumn = ({ title, links }: { title: string; links: { label: string; href: string }[] }) => (
@@ -117,7 +127,7 @@ const Footer = () => (
           {/* Top Cities */}
           <div>
             <h4 className="font-display font-semibold text-sm mb-4 text-primary-foreground">Top Cities</h4>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-sm">
               {topCities.map((city) => (
                 <li key={city.href}>
                   <Link to={city.href} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
@@ -126,6 +136,9 @@ const Footer = () => (
                 </li>
               ))}
             </ul>
+            <Link to="/centres" className="inline-block mt-4 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              View All Locations →
+            </Link>
           </div>
         </div>
       </div>
