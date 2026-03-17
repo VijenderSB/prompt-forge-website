@@ -10,8 +10,10 @@ import {
   PROCEDURE_FAQS,
   PROCEDURE_TESTIMONIALS,
   PROCEDURE_TECH_DETAILS,
+  PROCEDURE_CLINICAL_STUDIES,
   formatPrice,
 } from "@/data/siteData";
+import ClinicalStudiesTable from "@/components/ClinicalStudiesTable";
 import { motion } from "framer-motion";
 import {
   Check,
@@ -41,6 +43,7 @@ const ProcedureHubPage = () => {
   const techDetails = PROCEDURE_TECH_DETAILS[procedure.slug];
   const procedureFaqs = PROCEDURE_FAQS.filter((f) => f.procedure === procedure.slug);
   const procedureTestimonials = PROCEDURE_TESTIMONIALS.filter((t) => t.procedure === procedure.slug);
+  const clinicalStudies = PROCEDURE_CLINICAL_STUDIES[procedure.slug];
 
   return (
     <Layout>
@@ -242,6 +245,11 @@ const ProcedureHubPage = () => {
             </div>
           </div>
         </section>
+      )}
+
+      {/* Clinical Studies */}
+      {clinicalStudies && clinicalStudies.length > 0 && (
+        <ClinicalStudiesTable studies={clinicalStudies} procedureName={procedure.name} />
       )}
 
       {/* Cost + CTA */}

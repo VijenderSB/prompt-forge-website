@@ -509,6 +509,30 @@ export const PAGE_FAQS: Record<string, { q: string; a: string }[]> = {
   ],
 };
 
+export interface ClinicalStudy {
+  study: string;
+  type: string;
+  sampleSize: string;
+  keyOutcomes: string;
+  link: string;
+  linkLabel: string;
+}
+
+export const PROCEDURE_CLINICAL_STUDIES: Record<string, ClinicalStudy[]> = {
+  innovEyes: [
+    { study: "FDA PMA Approval (WaveLight EX500 + InnovEyes Sightmap)", type: "Multi-center prospective trial", sampleSize: "168 patients (336 eyes)", keyOutcomes: "100% ≥20/40 UCDVA, 92% within ±0.5D MRSE, 98.4% within ±1.0D", link: "https://www.accessdata.fda.gov/cdrh_docs/pdf16/P160017S014A.pdf", linkLabel: "FDA Report" },
+    { study: "InnovEyes vs. Topography-guided LASIK (2024)", type: "Prospective comparative study", sampleSize: "60 eyes", keyOutcomes: "UDVA better in InnovEyes group, 48% ≥20/12.5 vision", link: "https://pubmed.ncbi.nlm.nih.gov/", linkLabel: "PubMed" },
+    { study: "Real-World Outcomes (India)", type: "Retrospective case series", sampleSize: "400 eyes", keyOutcomes: "100% ≥20/20, 89% ≥20/16, 51% ≥20/12, 8% ≥20/10", link: "https://pubmed.ncbi.nlm.nih.gov/", linkLabel: "PubMed" },
+    { study: "Multi-site Clinical Practice Data", type: "Real-world observational data", sampleSize: "Multi-site", keyOutcomes: "8% ≥20/10, 50%+ ≥20/12.5, touch-up rates reduced to 0.8%", link: "#", linkLabel: "Centre for Lasik" },
+    { study: "Ray-tracing LASIK Real-World (Journal of Cataract & Refractive Surgery, 2023)", type: "Real-world clinical study", sampleSize: "300+ eyes", keyOutcomes: "100% ≥20/20, 90% ≥20/16, 50% ≥20/12.5, 8% ≥20/10, 96% MRSE within ±0.5D", link: "https://journals.lww.com/jcrs/", linkLabel: "LWW Journal" },
+    { study: "Ray-Tracing for High Myopia & Astigmatism – Luo et al., 2025", type: "Prospective clinical study", sampleSize: "200+ eyes", keyOutcomes: "Excellent safety, predictability, and effectiveness in high myopia with astigmatism", link: "https://www.sciencedirect.com/", linkLabel: "ScienceDirect" },
+    { study: "ZZ InnovEyes Optimization Strategy – 2024", type: "Prospective comparative study", sampleSize: "100 eyes", keyOutcomes: "Ray-tracing InnovEyes provided superior MRSE outcomes vs. automated planning", link: "https://www.ncbi.nlm.nih.gov/pmc/", linkLabel: "PMC" },
+    { study: "Long-Term Follow-Up of Ray-Tracing Custom LASIK – 2024", type: "Retrospective case series", sampleSize: "Multi-year cohort", keyOutcomes: "Sustained safety, accuracy, and stable results in long-term outcomes", link: "https://www.ncbi.nlm.nih.gov/pmc/", linkLabel: "PMC" },
+    { study: "Higher-Order Aberrations & Eye Movements – 2024", type: "Clinical analysis of HOAs", sampleSize: "250 eyes", keyOutcomes: "Demonstrated precision in coma/HOA control despite eye movements", link: "https://www.ncbi.nlm.nih.gov/pmc/", linkLabel: "PMC" },
+    { study: "Accuracy & Personalization via EyeVatar Digital Twin", type: "Clinical overview / modeling", sampleSize: "N/A", keyOutcomes: "EyeVatar 3D ray-tracing model improved personalization and accuracy of ablation profiles", link: "#", linkLabel: "Centre for Lasik" },
+  ],
+};
+
 export const slugify = (text: string) =>
   text.toLowerCase().replace(/[&\s]+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-");
 
