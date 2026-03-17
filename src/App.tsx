@@ -38,6 +38,11 @@ const App = () => (
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/why-us" element={<WhyUsPage />} />
           <Route path="/am-i-a-candidate" element={<CandidatePage />} />
+          <Route path="/eye-anatomy" element={<EyeAnatomyPage />} />
+          <Route path="/common-vision-problems" element={<CommonVisionProblemsPage />} />
+          <Route path="/what-is-lasik" element={<WhatIsLasikPage />} />
+          <Route path="/lasik-myths-vs-facts" element={<LasikMythsPage />} />
+          <Route path="/unfit-for-lasik" element={<UnfitLasikPage />} />
           <Route path="/risk-recovery" element={<RiskRecoveryPage />} />
           <Route path="/which-lasik-is-best" element={<WhichLasikPage />} />
           <Route path="/centres" element={<CentresPage />} />

@@ -16,6 +16,11 @@ const navLinks = [
 const dropdowns: Record<string, { label: string; href: string }[]> = {
   candidate: [
     { label: "Am I a Candidate?", href: "/am-i-a-candidate" },
+    { label: "About Eye Anatomy", href: "/eye-anatomy" },
+    { label: "Common Vision Problems", href: "/common-vision-problems" },
+    { label: "What Is LASIK & Why", href: "/what-is-lasik" },
+    { label: "LASIK Myths vs Facts", href: "/lasik-myths-vs-facts" },
+    { label: "If I Am Unfit for LASIK", href: "/unfit-for-lasik" },
     { label: "Which LASIK is Best?", href: "/which-lasik-is-best" },
   ],
   packages: [
