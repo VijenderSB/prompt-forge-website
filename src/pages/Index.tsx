@@ -168,8 +168,8 @@ const TestimonialsSection = () => (
 
 /* ─── Expert Insights — Full Width, Detailed SEO Content ─── */
 const ExpertInsights = () => (
-  <section className="section-padding bg-surface">
-    <div className="px-4 md:px-8 lg:px-12 xl:px-16">
+    <section className="section-padding bg-surface">
+      <div className="container">
       <div className="text-center mb-4">
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Expert Insights</span>
       </div>
