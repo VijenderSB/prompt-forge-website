@@ -307,6 +307,7 @@ const Homepage = () => (
     <Hero />
     <ProceduresSection />
     <StatsBar />
+    <USPBanner variant="full" />
     <WhyUsSection />
     <TestimonialsSection />
     <CTABanner withForm />
