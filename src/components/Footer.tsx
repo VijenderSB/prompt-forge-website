@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import { BRAND, CENTRES } from "@/data/siteData";
+import { BRAND } from "@/data/siteData";
 
 const candidateLinks = [
   { label: "Am I a Candidate?", href: "/am-i-a-candidate" },
