@@ -247,6 +247,11 @@ const ProcedureHubPage = () => {
         </section>
       )}
 
+      {/* Clinical Studies */}
+      {clinicalStudies && clinicalStudies.length > 0 && (
+        <ClinicalStudiesTable studies={clinicalStudies} procedureName={procedure.name} />
+      )}
+
       {/* Cost + CTA */}
       <section className="section-padding">
         <div className="container max-w-6xl">
