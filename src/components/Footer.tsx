@@ -127,7 +127,7 @@ const Footer = () => (
           {/* Top Cities */}
           <div>
             <h4 className="font-display font-semibold text-sm mb-4 text-primary-foreground">Top Cities</h4>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-sm">
               {topCities.map((city) => (
                 <li key={city.href}>
                   <Link to={city.href} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
@@ -136,6 +136,9 @@ const Footer = () => (
                 </li>
               ))}
             </ul>
+            <Link to="/centres" className="inline-block mt-4 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              View All Locations →
+            </Link>
           </div>
         </div>
       </div>
