@@ -115,10 +115,7 @@ const LasikTechnologyPage = () => {
   const faqs = PAGE_FAQS["lasik-technology"] || [];
 
   return (
-    <Layout
-      title="Available LASIK Technologies in Market — Complete Guide | Centre for Lasik"
-      description="Comprehensive guide to all LASIK technologies: PRK, Femto-LASIK, SMILE, SiLK. Compare laser platforms, generations, and find the right technology for your eyes."
-    >
+    <Layout>
       {/* Hero */}
       <section className="section-padding bg-gradient-to-b from-surface to-background">
         <div className="container max-w-6xl">
