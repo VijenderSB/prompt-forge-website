@@ -30,6 +30,8 @@ const dropdowns: Record<string, { label: string; href: string }[]> = {
   ],
   planning: [
     { label: "Risk & Recovery", href: "/risk-recovery" },
+    { label: "International Guidelines", href: "/international-guidelines" },
+    { label: "LASIK Technologies in Market", href: "/lasik-technology" },
     { label: "Blog", href: "/blog" },
     { label: "Our Centres", href: "/centres" },
   ],

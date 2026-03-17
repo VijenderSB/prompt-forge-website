@@ -15,6 +15,8 @@ import CentresPage from "./pages/CentresPage";
 import CentreDetailPage from "./pages/CentreDetailPage";
 import ProcedureHubPage from "./pages/ProcedureHubPage";
 import BlogPage from "./pages/BlogPage";
+import InternationalGuidelinesPage from "./pages/InternationalGuidelinesPage";
+import LasikTechnologyPage from "./pages/LasikTechnologyPage";
 import { StateHubPage, CityHubPage, LocalityHubPage, ProcedureCityPage } from "./pages/GeoPages";
 
 const queryClient = new QueryClient();
@@ -37,6 +39,8 @@ const App = () => (
           <Route path="/centres/:slug" element={<CentreDetailPage />} />
           <Route path="/procedures/:slug" element={<ProcedureHubPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/international-guidelines" element={<InternationalGuidelinesPage />} />
+          <Route path="/lasik-technology" element={<LasikTechnologyPage />} />
           <Route path="/:state" element={<StateHubPage />} />
           <Route path="/:state/:city" element={<CityHubPage />} />
           <Route path="/:state/:city/:locality" element={<LocalityHubPage />} />
