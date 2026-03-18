@@ -1079,3 +1079,338 @@ html { scroll-behavior: smooth; }
 
 /* ─── SVG Icons Inline Utility ─── */
 .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+
+/* ═══════════════════════════════════════════════════════════ */
+/* LASIK CANDIDATE SECTION PAGES                              */
+/* ═══════════════════════════════════════════════════════════ */
+
+/* ─── CTA Banner Section ─── */
+.cta-banner-section {
+  background: var(--hero-gradient);
+  padding: 4rem 1rem;
+}
+@media (min-width: 768px) { .cta-banner-section { padding: 5rem 2rem; } }
+
+/* ─── Info Box (generic) ─── */
+.info-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+.info-box h3 { font-size: 1.25rem; color: var(--foreground); margin-bottom: 1rem; }
+.info-box p { color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.7; }
+.info-box strong { color: var(--foreground); }
+
+/* ─── Candidate Checker ─── */
+.candidate-checklist { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+.candidate-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.candidate-label { font-weight: 500; font-size: 0.875rem; color: var(--foreground); }
+.candidate-buttons { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.candidate-btn {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  border: none; cursor: pointer;
+  background: var(--muted); color: var(--muted-foreground);
+  transition: all 0.2s;
+}
+.candidate-btn:hover { opacity: 0.8; }
+.candidate-btn.active-yes { background: var(--accent); color: var(--accent-foreground); }
+.candidate-btn.active-no { background: var(--destructive); color: var(--primary-foreground); }
+
+.candidate-result {
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+}
+.candidate-result h3 { font-size: 1.25rem; color: var(--foreground); margin-bottom: 0.5rem; }
+.candidate-result p { color: var(--muted-foreground); margin-bottom: 1rem; font-size: 0.875rem; }
+.candidate-result-icon { margin-bottom: 0.75rem; }
+.candidate-result-icon svg { width: 48px; height: 48px; margin: 0 auto; }
+.candidate-pass { background: hsla(160, 84%, 39%, 0.1); border: 1px solid var(--accent); }
+.candidate-fail { background: hsla(0, 84%, 60%, 0.1); border: 1px solid var(--destructive); }
+
+/* ─── Anatomy Page ─── */
+.anatomy-grid { display: grid; gap: 1.5rem; margin-bottom: 4rem; }
+@media (min-width: 768px) { .anatomy-grid { grid-template-columns: repeat(2, 1fr); } }
+.anatomy-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.anatomy-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+.anatomy-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: hsla(221, 83%, 53%, 0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary);
+}
+.anatomy-card-header h3 { font-size: 1.125rem; color: var(--foreground); }
+.anatomy-desc { color: var(--muted-foreground); font-size: 0.875rem; margin-bottom: 0.75rem; }
+.anatomy-relevance {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+.anatomy-relevance-label {
+  display: block; font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--primary); margin-bottom: 0.25rem;
+}
+.anatomy-relevance p { font-size: 0.875rem; color: var(--foreground); }
+
+/* Corneal layers */
+.cornea-layers { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 4rem; }
+.cornea-layer-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+@media (min-width: 640px) { .cornea-layer-item { flex-direction: row; align-items: center; } }
+.cornea-layer-meta { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+@media (min-width: 640px) { .cornea-layer-meta { width: 12rem; } }
+.cornea-layer-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: hsla(221, 83%, 53%, 0.1); color: var(--primary);
+  font-weight: 700; font-size: 0.875rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.cornea-layer-meta h4 { font-size: 0.875rem; color: var(--foreground); }
+.cornea-layer-thickness { font-size: 0.75rem; color: var(--muted-foreground); }
+.cornea-layer-item > p { font-size: 0.875rem; color: var(--muted-foreground); }
+
+/* Anatomy summary */
+.anatomy-summary {
+  background: hsla(221, 83%, 53%, 0.05);
+  border: 1px solid hsla(221, 83%, 53%, 0.2);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+.anatomy-summary h3 { font-size: 1.25rem; color: var(--foreground); margin-bottom: 1rem; }
+.anatomy-summary-grid { display: grid; gap: 1.5rem; }
+@media (min-width: 768px) { .anatomy-summary-grid { grid-template-columns: 1fr 1fr; } }
+.anatomy-summary h4 { font-weight: 600; color: var(--foreground); margin-bottom: 0.5rem; }
+.anatomy-summary p { color: var(--muted-foreground); font-size: 0.875rem; }
+
+/* ─── Vision Problems Page ─── */
+.vision-problems-list { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 4rem; }
+.vision-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.vision-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.vision-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: hsla(221, 83%, 53%, 0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary); font-weight: 700; font-size: 1.25rem;
+}
+.vision-card-header h3 { font-size: 1.125rem; color: var(--foreground); }
+.vision-power { font-size: 0.75rem; font-weight: 500; color: var(--primary); }
+.vision-desc { color: var(--muted-foreground); font-size: 0.875rem; margin-bottom: 1rem; }
+.vision-details { display: grid; gap: 1rem; margin-bottom: 1rem; }
+@media (min-width: 640px) { .vision-details { grid-template-columns: 1fr 1fr; } }
+.vision-detail-box {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+.vision-detail-label {
+  display: block; font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--muted-foreground); margin-bottom: 0.25rem;
+}
+.vision-detail-box p { font-size: 0.875rem; color: var(--foreground); }
+.vision-procedures { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.vision-proc-label { font-size: 0.75rem; font-weight: 600; color: var(--muted-foreground); }
+.vision-proc-tag {
+  font-size: 0.75rem; font-weight: 500;
+  background: hsla(221, 83%, 53%, 0.1); color: var(--primary);
+  padding: 0.25rem 0.5rem; border-radius: 6px;
+}
+
+/* ─── What Is LASIK Page ─── */
+.benefits-grid { display: grid; gap: 1.5rem; margin-bottom: 4rem; }
+@media (min-width: 768px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .benefits-grid { grid-template-columns: repeat(3, 1fr); } }
+.benefit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.benefit-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: hsla(221, 83%, 53%, 0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary); margin-bottom: 0.75rem;
+}
+.benefit-card h4 { font-size: 1rem; color: var(--foreground); margin-bottom: 0.5rem; }
+.benefit-card p { font-size: 0.875rem; color: var(--muted-foreground); }
+
+/* Steps */
+.steps-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 4rem; }
+.step-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+@media (min-width: 640px) { .step-item { flex-direction: row; } }
+.step-num-wrap { flex-shrink: 0; }
+.step-num {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--cta-gradient); color: var(--primary-foreground);
+  font-weight: 700; font-size: 0.875rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-content { flex: 1; }
+.step-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+.step-header h4 { font-size: 1rem; color: var(--foreground); }
+.step-duration {
+  font-size: 0.75rem; font-weight: 500;
+  background: hsla(221, 83%, 53%, 0.1); color: var(--primary);
+  padding: 0.25rem 0.5rem; border-radius: 6px;
+}
+.step-content > p { font-size: 0.875rem; color: var(--muted-foreground); }
+
+/* Stats inline */
+.stats-inline { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; text-align: center; margin-top: 1.5rem; }
+@media (min-width: 768px) { .stats-inline { grid-template-columns: repeat(4, 1fr); } }
+.stat-inline-value { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; font-family: 'Inter', system-ui, sans-serif; }
+.stat-inline-label { font-size: 0.875rem; color: var(--muted-foreground); }
+
+/* ─── Myths Page ─── */
+.myths-list { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 3rem; }
+.myth-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.myth-section {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 1.25rem;
+  background: hsla(0, 84%, 60%, 0.05);
+  border-bottom: 1px solid var(--border);
+}
+.fact-section {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 1.25rem;
+}
+.myth-icon-wrap {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.myth-icon-bad { background: hsla(0, 84%, 60%, 0.1); color: var(--destructive); }
+.myth-icon-good { background: hsla(160, 84%, 39%, 0.1); color: var(--accent); }
+.myth-label {
+  display: block; font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; margin-bottom: 0.25rem;
+}
+.myth-label-bad { color: var(--destructive); }
+.myth-label-good { color: var(--accent); }
+.myth-text { font-weight: 700; color: var(--foreground); font-size: 0.9375rem; font-family: 'Inter', system-ui, sans-serif; }
+.fact-text { color: var(--muted-foreground); font-size: 0.875rem; }
+
+/* ─── Unfit Page ─── */
+.unfit-list { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 3rem; }
+.unfit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.unfit-card-inner { display: flex; align-items: flex-start; gap: 1rem; }
+.unfit-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: hsla(0, 84%, 60%, 0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--destructive); flex-shrink: 0;
+}
+.unfit-content { flex: 1; }
+.unfit-header { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+.unfit-header h3 { font-size: 1rem; color: var(--foreground); }
+.unfit-desc { color: var(--muted-foreground); font-size: 0.875rem; margin-bottom: 0.75rem; }
+.unfit-alt {
+  background: hsla(160, 84%, 39%, 0.05);
+  border: 1px solid hsla(160, 84%, 39%, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+.unfit-alt-label {
+  display: block; font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.25rem;
+}
+.unfit-alt p { font-size: 0.875rem; color: var(--foreground); }
+
+/* Severity badges */
+.severity-badge {
+  font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; padding: 0.125rem 0.5rem; border-radius: 6px;
+}
+.severity-absolute { background: hsla(0, 84%, 60%, 0.1); color: var(--destructive); }
+.severity-relative { background: hsl(30, 100%, 95%); color: hsl(30, 80%, 45%); }
+.severity-temporary { background: hsla(221, 83%, 53%, 0.1); color: var(--primary); }
+
+.severity-legend {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.severity-legend h4 { font-size: 1rem; color: var(--foreground); margin-bottom: 1rem; }
+.severity-legend-grid { display: grid; gap: 1rem; }
+@media (min-width: 640px) { .severity-legend-grid { grid-template-columns: repeat(3, 1fr); } }
+.severity-legend-item { display: flex; align-items: flex-start; gap: 0.5rem; }
+.severity-legend-item p { font-size: 0.875rem; color: var(--muted-foreground); }
+
+/* ─── Which LASIK Page ─── */
+.comparison-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.8125rem; min-width: 700px;
+}
+.comparison-table th, .comparison-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.comparison-table thead th {
+  background: var(--surface);
+  font-weight: 700; font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--foreground);
+  position: sticky; top: 64px; z-index: 5;
+}
+.comparison-table tbody td { color: var(--muted-foreground); }
+.comparison-table tbody td:first-child { color: var(--foreground); font-weight: 600; white-space: nowrap; }
+
+.recommendation-grid { display: grid; gap: 1.5rem; }
+@media (min-width: 768px) { .recommendation-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .recommendation-grid { grid-template-columns: repeat(4, 1fr); } }
+.recommendation-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+}
+.recommendation-card h3 { font-size: 1rem; color: var(--foreground); margin: 0.75rem 0 0.25rem; }
+.rec-price { font-size: 1.125rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; font-family: 'Inter', system-ui, sans-serif; }
+.rec-reason { font-size: 0.875rem; color: var(--muted-foreground); }
