@@ -77,6 +77,18 @@ const FooterColumn = ({ title, links }: { title: string; links: { label: string;
 
 const Footer = () => (
   <footer className="bg-navy text-primary-foreground">
+    {/* Mobile-only USP strip above footer */}
+    <div className="md:hidden bg-primary/10 border-b border-primary-foreground/10">
+      <div className="container py-3 flex flex-col items-center gap-2 text-xs text-center">
+        <span className="font-bold text-accent uppercase tracking-wide">India's #1 LASIK Platform</span>
+        <span className="text-primary-foreground/70 flex items-center gap-1.5">
+          50+ centres PAN India • VIP rates — up to 30% off
+        </span>
+        <Link to="/why-us" className="text-accent font-semibold hover:underline text-xs">
+          Why us →
+        </Link>
+      </div>
+    </div>
     <div className="container section-padding">
       {/* Top: Brand + Contact */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-12">

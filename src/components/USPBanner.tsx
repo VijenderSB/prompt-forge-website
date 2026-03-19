@@ -75,10 +75,10 @@ const USPBanner = ({ variant = "compact" }: USPBannerProps) => {
     );
   }
 
-  // Compact strip
+  // Compact strip — hidden on mobile (shown above footer instead)
   return (
-    <div className="bg-primary/5 border-y border-primary/10">
-      <div className="container py-3 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-xs sm:text-sm">
+    <div className="hidden md:block bg-primary/5 border-y border-primary/10">
+      <div className="container py-3 flex items-center justify-center gap-6 text-sm">
         <span className="font-bold text-primary uppercase tracking-wide">India's #1 LASIK Platform</span>
         <span className="hidden sm:inline text-border">|</span>
         <span className="text-muted-foreground flex items-center gap-1.5">
