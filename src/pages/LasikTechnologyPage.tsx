@@ -146,7 +146,7 @@ const LasikTechnologyPage = () => {
                 Every LASIK Technology Available in 2026 — Explained
               </h1>
               <p className="text-muted-foreground text-lg mb-6">
-                From 1990s PRK to 2024's SiLK — a thorough guide to every laser vision correction technology, how they work, which platforms power them, and how to choose the right one for your eyes and budget.
+                From 1990s PRK to 2025's AI-guided InnovEyes — a thorough guide to every laser vision correction technology, how they work, which platforms power them, and how to choose the right one for your eyes and budget.
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
