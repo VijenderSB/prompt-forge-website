@@ -171,7 +171,7 @@ const LasikTechnologyPage = () => {
       {/* Technology Timeline */}
       <section className="section-padding bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="The Evolution of LASIK Technology" subtitle="5 generations of laser vision correction — from PRK to next-gen lenticule extraction" />
+          <SectionHeading title="The Evolution of LASIK Technology" subtitle="7 generations of laser vision correction — from PRK to AI-guided refractive surgery" />
           <div className="space-y-6">
             {techGenerations.map((gen, i) => (
               <motion.div
