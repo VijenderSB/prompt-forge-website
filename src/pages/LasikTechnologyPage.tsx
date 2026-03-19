@@ -150,7 +150,7 @@ const LasikTechnologyPage = () => {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { icon: Layers, label: "5 Generations Covered" },
+                  { icon: Layers, label: "7 Generations Covered" },
                   { icon: Cpu, label: "5 Laser Platforms Compared" },
                   { icon: Eye, label: "6 Procedures Available" },
                 ].map((s) => (
