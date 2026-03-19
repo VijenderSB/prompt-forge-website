@@ -58,7 +58,7 @@ const trustNumbers = [
 ];
 
 const WhyUsPage = () => (
-  <Layout hideUSPStrip>
+  <Layout>
     {/* ═══════ HERO ═══════ */}
     <section className="hero-gradient section-padding">
       <div className="container max-w-6xl">
