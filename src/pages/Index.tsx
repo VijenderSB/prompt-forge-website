@@ -212,6 +212,7 @@ const ExpertInsights = () => (
             <Link to="/am-i-a-candidate" className="text-primary font-semibold hover:underline">Book your free 90-minute evaluation today</Link> — our diagnostic tests alone are worth ₹4,000+ and include Pentacam tomography, corneal topography, aberrometry, pachymetry, Schirmer dry eye test, and dilated retinal exam.
           </p>
         </div>
+      </div>
     </div>
   </section>
 );
