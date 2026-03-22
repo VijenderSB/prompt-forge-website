@@ -231,16 +231,14 @@ const FAQSection = () => {
         </div>
         <SectionHeading title="Frequently Asked Questions" subtitle="Everything you need to know about LASIK eye surgery — technologies, eligibility, cost, and recovery." />
         <div className="max-w-3xl mx-auto">
-          {[col1, col2].map((column, colIdx) => (
-            <Accordion key={colIdx} type="single" collapsible className="space-y-3">
-              {column.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${colIdx}-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-sm">
-                  <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-4 text-sm">{faq.q}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4">{faq.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          ))}
+          <Accordion type="single" collapsible className="space-y-3">
+            {filteredFaqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-sm">
+                <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-4 text-sm">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4">{faq.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
         <div className="text-center mt-8">
           <Button asChild variant="outline">
