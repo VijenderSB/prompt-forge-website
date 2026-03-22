@@ -230,7 +230,7 @@ const FAQSection = () => {
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Got Questions?</span>
         </div>
         <SectionHeading title="Frequently Asked Questions" subtitle="Everything you need to know about LASIK eye surgery — technologies, eligibility, cost, and recovery." />
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="max-w-3xl mx-auto">
           {[col1, col2].map((column, colIdx) => (
             <Accordion key={colIdx} type="single" collapsible className="space-y-3">
               {column.map((faq, i) => (
