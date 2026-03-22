@@ -175,7 +175,7 @@ const ExpertInsights = () => (
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Expert Insights</span>
       </div>
       <SectionHeading title="Best LASIK Eye Surgery in India" />
-      <div className="grid lg:grid-cols-2 gap-10">
+      <div className="max-w-3xl mx-auto space-y-0">
         <div className="prose prose-sm max-w-none text-muted-foreground space-y-5">
           <p>
             <strong className="text-foreground">Centre For Lasik</strong> has performed over <strong className="text-foreground">10,00,000 LASIK procedures since 2004</strong>, maintaining a 97% patient satisfaction rate across both flap-based and lenticule-based technologies. Our facilities in Delhi, Noida, and Gurgaon offer every clinically validated vision correction platform available in India — from HD Contoura Vision at ₹25,500/eye to premium SiLK lenticule surgery at ₹75,000/eye.
@@ -188,7 +188,7 @@ const ExpertInsights = () => (
             The five primary technologies offered at our centres are <strong className="text-foreground">WaveLight Plus InnovEyes</strong> (AI-guided, 400 Hz PerfectPulse), <strong className="text-foreground">HD Contoura Vision</strong> (22,000-point topography-guided), <strong className="text-foreground">EPI LASIK</strong> (non-detectable surface ablation for armed forces), <strong className="text-foreground">SiLK</strong> (ultra-smooth lenticule by J&J), and <strong className="text-foreground">SMILE Pro</strong> (flapless by Carl Zeiss). Each technology addresses a different clinical need — from cost-effectiveness to premium night vision quality.
           </p>
         </div>
-        <div className="prose prose-sm max-w-none text-muted-foreground space-y-5">
+        <div className="prose prose-sm max-w-none text-muted-foreground space-y-5 mt-5">
           <h3 className="text-foreground font-display font-bold text-lg">Which Technology Is Right for You?</h3>
           <ul className="space-y-3 list-none pl-0">
             {[
@@ -231,17 +231,15 @@ const FAQSection = () => {
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Got Questions?</span>
         </div>
         <SectionHeading title="Frequently Asked Questions" subtitle="Everything you need to know about LASIK eye surgery — technologies, eligibility, cost, and recovery." />
-        <div className="grid lg:grid-cols-2 gap-6">
-          {[col1, col2].map((column, colIdx) => (
-            <Accordion key={colIdx} type="single" collapsible className="space-y-3">
-              {column.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${colIdx}-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-sm">
-                  <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-4 text-sm">{faq.q}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4">{faq.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          ))}
+        <div className="max-w-3xl mx-auto">
+          <Accordion type="single" collapsible className="space-y-3">
+            {filteredFaqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-sm">
+                <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-4 text-sm">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4">{faq.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
         <div className="text-center mt-8">
           <Button asChild variant="outline">
