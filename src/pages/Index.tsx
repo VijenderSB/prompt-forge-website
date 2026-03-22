@@ -188,7 +188,7 @@ const ExpertInsights = () => (
             The five primary technologies offered at our centres are <strong className="text-foreground">WaveLight Plus InnovEyes</strong> (AI-guided, 400 Hz PerfectPulse), <strong className="text-foreground">HD Contoura Vision</strong> (22,000-point topography-guided), <strong className="text-foreground">EPI LASIK</strong> (non-detectable surface ablation for armed forces), <strong className="text-foreground">SiLK</strong> (ultra-smooth lenticule by J&J), and <strong className="text-foreground">SMILE Pro</strong> (flapless by Carl Zeiss). Each technology addresses a different clinical need — from cost-effectiveness to premium night vision quality.
           </p>
         </div>
-        <div className="prose prose-sm max-w-none text-muted-foreground space-y-5">
+        <div className="prose prose-sm max-w-none text-muted-foreground space-y-5 mt-5">
           <h3 className="text-foreground font-display font-bold text-lg">Which Technology Is Right for You?</h3>
           <ul className="space-y-3 list-none pl-0">
             {[
