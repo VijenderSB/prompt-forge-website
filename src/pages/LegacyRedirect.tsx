@@ -10,6 +10,7 @@ import {
   LEGACY_ROOT_SLUGS,
 } from "@/data/legacyMaps";
 import NotFound from "./NotFound";
+import { StateHubPage } from "./GeoPages";
 
 /**
  * Catch-all resolver for legacy laser.fyi v1 root URLs (/:slug).
@@ -23,8 +24,8 @@ export const LegacyRootResolver = () => {
   if (STATIC_REDIRECTS[slug]) return <Navigate to={STATIC_REDIRECTS[slug]} replace />;
   if (PROCEDURE_REDIRECTS[slug]) return <Navigate to={PROCEDURE_REDIRECTS[slug]} replace />;
   if (KNOWN_STATES.has(slug)) {
-    // Real state hub — let through to /:state route
-    return <Navigate to={`/${slug}/`} replace />;
+    // Render the state hub directly (this resolver replaces /:state route)
+    return <StateHubPage />;
   }
   if (CITY_TO_STATE[slug]) {
     return <Navigate to={`/${CITY_TO_STATE[slug]}/${slug}`} replace />;
