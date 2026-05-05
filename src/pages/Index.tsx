@@ -131,7 +131,7 @@ const TestimonialsSection = () => (
       <div className="text-center mb-4">
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Patient Stories</span>
       </div>
-      <SectionHeading title="Life After LASIK" subtitle="Real experiences from patients who chose to see the world differently." />
+      <SectionHeading title="Life After LASIK — Delhi NCR Patient Stories" subtitle="Real experiences from patients across Delhi, Noida, Gurgaon & Faridabad who chose to see the world differently." />
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {TESTIMONIALS.map((t, i) => (
           <motion.div
