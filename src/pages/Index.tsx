@@ -69,7 +69,7 @@ const ProceduresSection = () => (
       <div className="text-center mb-4">
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Our Procedures</span>
       </div>
-      <SectionHeading title="Advanced Vision Correction Technologies" subtitle="5 globally trusted procedures — from topography-guided LASIK to next-gen flapless lenticule surgery. All US-FDA approved." />
+      <SectionHeading title="LASIK Procedures Available in Delhi NCR" subtitle="All 5 globally trusted LASIK technologies under one roof in Delhi, Noida & Gurgaon — from topography-guided to flapless lenticule surgery. All US-FDA approved." />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
       </div>
