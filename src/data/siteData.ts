@@ -47,7 +47,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "100μ flap", laserSpeed: "250 Hz", dryEyeRisk: "Moderate", thinCorneaSafe: false,
   },
   {
-    id: "1", name: "WaveLight Plus InnovEyes", slug: "innovEyes", price: 49000, originalPrice: 70000, discountPercent: 30,
+    id: "1", name: "WaveLight Plus InnovEyes", slug: "innovEyes", price: 61250, originalPrice: 87500, discountPercent: 30,
     tagline: "AI-guided 400 Hz — 1,050 eye-tracking points per second",
     usp: "PerfectPulse Technology® tracks eye 1,050 times/sec for sub-micron precision",
     technology: "WaveLight Refractive Suite with InnovEyes + PerfectPulse Technology®",
