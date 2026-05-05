@@ -46,12 +46,12 @@ export interface CityData {
 
 // Helper to vary procedure pricing per city using a multiplier off the base MRP
 const BASE = [
-  { slug: "standard-lasik", name: "Standard LASIK", mrp: 15000 },
-  { slug: "contoura-vision", name: "HD Contoura Vision", mrp: 36000 },
-  { slug: "innovEyes", name: "WaveLight Plus InnovEyes", mrp: 70000 },
-  { slug: "epi-lasik", name: "EPI LASIK", mrp: 45000 },
-  { slug: "smile-pro", name: "SMILE Pro", mrp: 85000 },
-  { slug: "silk", name: "SiLK", mrp: 95000 },
+  { slug: "standard-lasik", name: "Standard LASIK", mrp: 18750 },
+  { slug: "contoura-vision", name: "HD Contoura Vision", mrp: 45000 },
+  { slug: "innovEyes", name: "WaveLight Plus InnovEyes", mrp: 87500 },
+  { slug: "epi-lasik", name: "EPI LASIK", mrp: 56250 },
+  { slug: "smile-pro", name: "SMILE Pro", mrp: 106250 },
+  { slug: "silk", name: "SiLK", mrp: 118750 },
 ];
 
 const round500 = (n: number) => Math.round(n / 500) * 500;
