@@ -40,6 +40,7 @@ export interface CityData {
   hospitals: [CityHospital, CityHospital, CityHospital];
   pricing: CityProcedurePrice[];
   testimonial: CityTestimonial;
+  testimonials: CityTestimonial[];
   faqs: CityFAQ[];
 }
 
