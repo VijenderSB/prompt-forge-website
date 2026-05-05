@@ -9,90 +9,52 @@ import {
   LOCALITY_PARENT,
   LEGACY_ROOT_SLUGS,
 } from "@/data/legacyMaps";
-import { CityHubPage, LocalityHubPage, StateHubPage } from "./GeoPages";
 import NotFound from "./NotFound";
 
 /**
- * Catch-all resolver for legacy laser.fyi v1 URLs.
- * Goal: every URL that previously had Google traffic must respond 200 (rendered)
- * or 301-equivalent (Navigate replace) — never 404.
+ * Catch-all resolver for legacy laser.fyi v1 root URLs (/:slug).
+ * Goal: every URL that previously had Google traffic must respond 200 (redirect)
+ * — never 404. Issues client-side 301-equivalent redirects to canonical new URL.
  */
 export const LegacyRootResolver = () => {
   const { slug = "" } = useParams();
   const location = useLocation();
 
-  // 1. Static page redirects
-  if (STATIC_REDIRECTS[slug]) {
-    return <Navigate to={STATIC_REDIRECTS[slug]} replace />;
-  }
-  // 2. Procedure page redirects
-  if (PROCEDURE_REDIRECTS[slug]) {
-    return <Navigate to={PROCEDURE_REDIRECTS[slug]} replace />;
-  }
-  // 3. State hub
+  if (STATIC_REDIRECTS[slug]) return <Navigate to={STATIC_REDIRECTS[slug]} replace />;
+  if (PROCEDURE_REDIRECTS[slug]) return <Navigate to={PROCEDURE_REDIRECTS[slug]} replace />;
   if (KNOWN_STATES.has(slug)) {
-    return <StateHubPage forcedState={slug} />;
+    // Real state hub — let through to /:state route
+    return <Navigate to={`/${slug}/`} replace />;
   }
-  // 4. City — render city hub under inferred state
   if (CITY_TO_STATE[slug]) {
-    const state = CITY_TO_STATE[slug];
-    return <Navigate to={`/${state}/${slug}`} replace />;
+    return <Navigate to={`/${CITY_TO_STATE[slug]}/${slug}`} replace />;
   }
-  // 5. Locality — known parent (state, city)
   if (LOCALITY_PARENT[slug]) {
     const [state, city] = LOCALITY_PARENT[slug];
     return <Navigate to={`/${state}/${city}/${slug}`} replace />;
   }
-  // 6. Was a legacy URL but unmapped — render as a generic locality page so URL stays 200.
-  //    Try to infer parent city from "-cityname" suffix (e.g. "akurdi-pune" → pune).
   if (LEGACY_ROOT_SLUGS.has(slug)) {
+    // Known legacy URL but unmapped — try to infer parent city from "-cityname" suffix
     const inferred = inferParent(slug);
-    return <LocalityHubPage forcedState={inferred.state} forcedCity={inferred.city} forcedLocality={slug} />;
+    return <Navigate to={`/${inferred.state}/${inferred.city}/${slug}`} replace />;
   }
-  // 7. Truly unknown
   console.warn("[LegacyRootResolver] Unknown slug:", slug, location.pathname);
   return <NotFound />;
 };
 
 function inferParent(slug: string): { state: string; city: string } {
   const parts = slug.split("-");
-  // try suffix matches: last 1, 2, 3 tokens joined
   for (let n = 1; n <= 3 && n < parts.length; n++) {
     const candidate = parts.slice(-n).join("-");
     if (CITY_TO_STATE[candidate]) {
       return { state: CITY_TO_STATE[candidate], city: candidate };
     }
   }
-  // default: Delhi NCR hub
   return { state: "delhi", city: "delhi" };
 }
 
 /**
- * Catch-all for legacy 2-segment URLs: /:a/:b
- * Could be /state/city, /city/locality, or /(unknown)/(slug).
- */
-export const LegacyTwoSegResolver = () => {
-  const { a = "", b = "" } = useParams();
-
-  if (KNOWN_STATES.has(a) && CITY_TO_STATE[b] === a) {
-    return <CityHubPage forcedState={a} forcedCity={b} />;
-  }
-  if (KNOWN_STATES.has(a)) {
-    // state/city — render as city hub regardless
-    return <CityHubPage forcedState={a} forcedCity={b} />;
-  }
-  if (CITY_TO_STATE[a]) {
-    // city/locality
-    const state = CITY_TO_STATE[a];
-    return <LocalityHubPage forcedState={state} forcedCity={a} forcedLocality={b} />;
-  }
-  // Unknown 2-seg: try as state/city anyway
-  return <CityHubPage forcedState={a} forcedCity={b} />;
-};
-
-/**
- * Legacy dated blog: /blog/:y/:m/:d/:slug
- * Render a stub so the URL responds 200 with relevant H1; canonical to /blog index.
+ * Legacy dated blog: /blog/:y/:m/:d/:slug — render stub so URL responds 200.
  */
 export const LegacyBlogPost = () => {
   const { slug = "" } = useParams();
@@ -103,7 +65,6 @@ export const LegacyBlogPost = () => {
 
   useEffect(() => {
     document.title = `${title} | Centre for Lasik Blog`;
-    // canonical
     let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!link) {
       link = document.createElement("link");
@@ -134,8 +95,9 @@ export const LegacyBlogPost = () => {
           procedures available at our partner centres.
         </p>
         <div className="flex flex-wrap gap-3 mt-8">
-          <a href="/blog" className="btn btn-primary">Browse all articles →</a>
-          <a href="/am-i-a-candidate" className="btn btn-outline">Check LASIK eligibility</a>
+          <a href="/blog" className="text-primary font-semibold hover:underline">Browse all articles →</a>
+          <span className="text-muted-foreground">·</span>
+          <a href="/am-i-a-candidate" className="text-primary font-semibold hover:underline">Check LASIK eligibility →</a>
         </div>
       </main>
     </div>
