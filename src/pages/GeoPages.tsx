@@ -222,16 +222,6 @@ const CityHubPage = () => {
         </div>
       </section>
 
-      {/* All Procedures */}
-      <section className="section-padding bg-surface">
-        <div className="container max-w-5xl">
-          <SectionHeading title={`All LASIK Procedures Available in ${cityName}`} />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
-          </div>
-        </div>
-      </section>
-
       {/* City Testimonial */}
       <section className="section-padding">
         <div className="container max-w-3xl">
