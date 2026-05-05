@@ -386,7 +386,11 @@ const tier1Built: CityData[] = CITY_DEFS.map((c) => ({
   testimonial: c.testimonial,
   testimonials: [
     c.testimonial,
-    buildSecondTestimonial(c.name, c.slug, `${c.name} resident`),
+    ...buildExtraTestimonials(c.name, c.slug, [
+      `${c.name} resident`,
+      `${c.name}-based professional`,
+      `Long-time ${c.name} local`,
+    ]),
   ],
   faqs: (() => {
     const procs = buildPricing(c.priceMult, c.discount);
