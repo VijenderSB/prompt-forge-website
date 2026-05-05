@@ -217,24 +217,31 @@ const LocationsPage = () => (
     </section>
 
     {/* Top Cities Directory */}
+    {/* Tiered Cities Directory */}
     <section className="section-padding bg-surface">
-      <div className="container max-w-5xl">
-        <SectionHeading title="LASIK in Top Cities" subtitle="Click your city to see procedures, prices and partner centres near you" />
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {TOP_CITIES.map((c) => (
-            <Link
-              key={c.slug}
-              to={`/${slugify(c.state)}/${c.slug}`}
-              className="bg-card border border-border rounded-xl p-4 text-center card-elevated group"
-            >
-              <MapPin className="w-5 h-5 mx-auto mb-2 text-primary" />
-              <span className="font-display font-semibold text-foreground group-hover:text-primary transition-colors block">
-                LASIK in {c.name}
-              </span>
-              <span className="text-xs text-muted-foreground">{c.state}</span>
-            </Link>
-          ))}
-        </div>
+      <div className="container max-w-6xl">
+        <SectionHeading
+          title="LASIK Centres Across India"
+          subtitle="Browse by city tier — pricing, success rates and partner centres curated for your location"
+        />
+        <TierSection
+          tier="1"
+          title="Tier 1 — Metro Cities"
+          desc="Established LASIK centres with high-volume programs, advanced 7th-gen lasers, and internationally trained refractive surgeons."
+          cities={TIER_1}
+        />
+        <TierSection
+          tier="2"
+          title="Tier 2 — Major Cities"
+          desc="Growing LASIK programs with experienced teams, modern equipment, and accessible pricing for regional patients."
+          cities={TIER_2}
+        />
+        <TierSection
+          tier="3"
+          title="Tier 3 — Emerging Cities"
+          desc="Rapidly expanding refractive surgery access with vetted partner centres and the lowest negotiated institutional pricing."
+          cities={TIER_3}
+        />
       </div>
     </section>
 
