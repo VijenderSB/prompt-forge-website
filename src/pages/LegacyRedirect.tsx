@@ -61,20 +61,20 @@ function inferParent(slug: string): { state: string; city: string } {
  * - fallback: render CityHubPage (state hub) so we never 404 a known legacy URL
  */
 export const LegacyTwoSegmentResolver = () => {
-  const { a = "", b = "" } = useParams();
+  const { state = "", city = "" } = useParams();
 
   // Canonical /:state/:city
-  if (KNOWN_STATES.has(a)) return <CityHubPage />;
+  if (KNOWN_STATES.has(state)) return <CityHubPage />;
 
   // Flat legacy /:city/:locality → redirect to canonical hierarchy
-  if (CITY_TO_STATE[a]) {
-    const state = CITY_TO_STATE[a];
-    return <Navigate to={`/${state}/${a}/${b}`} replace />;
+  if (CITY_TO_STATE[state]) {
+    const realState = CITY_TO_STATE[state];
+    return <Navigate to={`/${realState}/${state}/${city}`} replace />;
   }
 
   // Unknown first segment — try inferring (e.g., "north-delhi" → delhi)
-  const inferred = inferParent(a);
-  return <Navigate to={`/${inferred.state}/${inferred.city}/${b}`} replace />;
+  const inferred = inferParent(state);
+  return <Navigate to={`/${inferred.state}/${inferred.city}/${city}`} replace />;
 };
 
 /**
