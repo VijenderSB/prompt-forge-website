@@ -380,7 +380,12 @@ const tier1Built: CityData[] = CITY_DEFS.map((c) => ({
   youthShare: c.youthShare,
   spectacleShare: c.spectacleShare,
   myopiaTrend: c.myopiaTrend,
-  background: `${c.name} is a ${c.population} city with approximately ${c.youthShare} of its population in the 18–40 age band. Independent ophthalmic surveys estimate that ${c.spectacleShare} of this young cohort wears spectacles or contact lenses for distance correction. ${c.bgExtras} ${c.myopiaTrend}`,
+  background: (() => {
+    const pr = buildPricing(c.priceMult, c.discount);
+    const lo = pr[0].price.toLocaleString("en-IN");
+    const hi = pr[5].price.toLocaleString("en-IN");
+    return `${c.name} is a ${c.population} city with approximately ${c.youthShare} of its population in the 18–40 age band. Independent ophthalmic surveys estimate that ${c.spectacleShare} of this young cohort wears spectacles or contact lenses for distance correction. ${c.bgExtras} ${c.myopiaTrend} LASIK eye surgery in ${c.name} has emerged as the preferred permanent solution to remove glasses, with all six FDA-approved procedures — Standard LASIK, Contoura Vision, WaveLight Plus InnovEyes, EPI LASIK, SMILE Pro and SiLK — now available at NABH-accredited eye hospitals across the city. The cost of LASIK surgery in ${c.name} ranges from ₹${lo} per eye for entry-level bladeless LASIK to ₹${hi} per eye for premium flapless lenticule procedures, all inclusive of pre-op tests, surgery, medication and follow-up. Patients searching for the best LASIK surgeon in ${c.name}, lowest LASIK price in ${c.name} or no-cost EMI options for laser eye surgery in ${c.name} get a transparent, hospital-verified quote within minutes — backed by a free 90-minute Pentacam-based eligibility consultation at any partner centre.`;
+  })(),
   hospitals: c.hospitals,
   pricing: buildPricing(c.priceMult, c.discount),
   testimonial: c.testimonial,
