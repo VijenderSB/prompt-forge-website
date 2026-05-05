@@ -60,7 +60,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "80μ flap", laserSpeed: "400 Hz", dryEyeRisk: "Low", thinCorneaSafe: true,
   },
   {
-    id: "2", name: "HD Contoura Vision", slug: "contoura-vision", price: 25500, originalPrice: 42500, discountPercent: 40,
+    id: "2", name: "HD Contoura Vision", slug: "contoura-vision", price: 31875, originalPrice: 53125, discountPercent: 40,
     tagline: "Topography-guided — 22,000 unique corneal data points",
     usp: "22,000-point corneal mapping for personalized treatment",
     technology: "Wavelight EX500 Excimer Laser + Topolyzer Vario",
