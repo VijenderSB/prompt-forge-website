@@ -56,7 +56,7 @@ const App = () => (
           <Route path="/blog/:y/:m/:d/:slug" element={<LegacyBlogPost />} />
           {/* New geo hierarchy */}
           <Route path="/:state/:city/:locality/:procedure" element={<ProcedureCityPage />} />
-          <Route path="/:state/:city/:locality" element={<LocalityHubPage />} />
+          <Route path="/:state/:city/:locality" element={<LegacyThreeSegmentResolver />} />
           <Route path="/:state/:city" element={<LegacyTwoSegmentResolver />} />
           {/* Catch-all root: legacy v1 URLs + state hub. Must be LAST single-segment route. */}
           <Route path="/:slug" element={<LegacyRootResolver />} />
