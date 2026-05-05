@@ -421,7 +421,12 @@ const tier2_3Built: CityData[] = T2_T3.map((c) => ({
   youthShare: c.youthShare,
   spectacleShare: c.spectacleShare,
   myopiaTrend: `${c.name}'s 18–40 spectacle dependence has risen sharply with smartphone adoption and the local growth in ${c.industry}.`,
-  background: `${c.name} is a ${c.population} city in ${c.state}, with approximately ${c.youthShare} of its population in the 18–40 age band. Local ophthalmic data estimates that ${c.spectacleShare} of this young cohort wears spectacles or contact lenses. The city's economy is driven by ${c.industry} — sectors that demand long screen and close-work hours, contributing to rising myopia in the under-40 demographic.`,
+  background: (() => {
+    const pr = buildPricing(c.priceMult, c.discount);
+    const lo = pr[0].price.toLocaleString("en-IN");
+    const hi = pr[5].price.toLocaleString("en-IN");
+    return `${c.name} is a ${c.population} city in ${c.state}, with approximately ${c.youthShare} of its population in the 18–40 age band. Local ophthalmic data estimates that ${c.spectacleShare} of this young cohort wears spectacles or contact lenses. The city's economy is driven by ${c.industry} — sectors that demand long screen and close-work hours, contributing to rising myopia in the under-40 demographic. LASIK eye surgery in ${c.name} is now widely available at NABH-accredited refractive centres, with all six FDA-approved laser vision correction procedures — Standard LASIK, Contoura Vision, WaveLight Plus InnovEyes, EPI LASIK, SMILE Pro and SiLK — performed by fellowship-trained surgeons. The cost of LASIK in ${c.name} ranges from approximately ₹${lo} per eye for bladeless Standard LASIK to ₹${hi} per eye for premium flapless lenticule procedures, with no-cost EMI from leading NBFCs. Patients searching for the best LASIK hospital in ${c.name}, the latest SMILE Pro surgery price in ${c.name}, or affordable Contoura Vision in ${c.name} can compare hospital-verified quotes and book a free 90-minute pre-LASIK Pentacam evaluation at the centre nearest them.`;
+  })(),
   hospitals: [
     { name: c.hospitals[0], area: c.hospitalAreas[0], highlight: "Highest LASIK volume in the city; full diagnostic suite" },
     { name: c.hospitals[1], area: c.hospitalAreas[1], highlight: "Established multispecialty hospital with refractive department" },
