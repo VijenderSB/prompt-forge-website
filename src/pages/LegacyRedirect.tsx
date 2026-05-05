@@ -10,7 +10,7 @@ import {
   LEGACY_ROOT_SLUGS,
 } from "@/data/legacyMaps";
 import NotFound from "./NotFound";
-import { StateHubPage } from "./GeoPages";
+import { StateHubPage, CityHubPage, LocalityHubPage } from "./GeoPages";
 
 /**
  * Catch-all resolver for legacy laser.fyi v1 root URLs (/:slug).
@@ -53,6 +53,29 @@ function inferParent(slug: string): { state: string; city: string } {
   }
   return { state: "delhi", city: "delhi" };
 }
+
+/**
+ * Resolver for legacy 2-segment URLs (/:a/:b).
+ * - /:state/:city  → render CityHubPage
+ * - /:city/:locality (flat legacy pattern) → 301 to /:state/:city/:locality
+ * - fallback: render CityHubPage (state hub) so we never 404 a known legacy URL
+ */
+export const LegacyTwoSegmentResolver = () => {
+  const { state = "", city = "" } = useParams();
+
+  // Canonical /:state/:city
+  if (KNOWN_STATES.has(state)) return <CityHubPage />;
+
+  // Flat legacy /:city/:locality → redirect to canonical hierarchy
+  if (CITY_TO_STATE[state]) {
+    const realState = CITY_TO_STATE[state];
+    return <Navigate to={`/${realState}/${state}/${city}`} replace />;
+  }
+
+  // Unknown first segment — try inferring (e.g., "north-delhi" → delhi)
+  const inferred = inferParent(state);
+  return <Navigate to={`/${inferred.state}/${inferred.city}/${city}`} replace />;
+};
 
 /**
  * Legacy dated blog: /blog/:y/:m/:d/:slug — render stub so URL responds 200.
