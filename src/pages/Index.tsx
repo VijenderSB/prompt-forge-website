@@ -33,13 +33,13 @@ const Hero = () => (
         className="lg:col-span-3"
       >
         <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full mb-5">
-          <Eye className="w-4 h-4" /> WaveLight Plus InnovEyes
+          <MapPin className="w-4 h-4" /> Delhi NCR · WaveLight Plus InnovEyes
         </div>
         <h1 className="font-display font-black text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary-foreground leading-[1.1] mb-6">
-          See the World <span className="text-accent">Without Glasses</span>
+          Best LASIK in <span className="text-accent">Delhi NCR</span> — Without Glasses
         </h1>
         <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 max-w-xl leading-relaxed">
-          Just 10 minutes to crystal-clear vision. Safe, painless, and trusted by millions worldwide. Starting at just <strong className="text-primary-foreground">₹8,999</strong> per eye.
+          Delhi's most trusted LASIK platform — accredited centres in Delhi, Noida & Gurgaon. Just 10 minutes to crystal-clear vision. Starting at just <strong className="text-primary-foreground">₹8,999</strong> per eye.
         </p>
         <div className="flex items-center gap-8 mb-6">
           <div className="flex -space-x-2">
@@ -50,8 +50,8 @@ const Hero = () => (
             ))}
           </div>
           <div className="text-primary-foreground/80 text-sm">
-            <span className="font-bold text-primary-foreground">Trusted by 10L+ patients</span>
-            <span className="block">97% satisfaction rate</span>
+            <span className="font-bold text-primary-foreground">Trusted by 10L+ Delhi NCR patients</span>
+            <span className="block">97% satisfaction · 50+ centres in Delhi NCR</span>
           </div>
         </div>
       </motion.div>
@@ -69,7 +69,7 @@ const ProceduresSection = () => (
       <div className="text-center mb-4">
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Our Procedures</span>
       </div>
-      <SectionHeading title="Advanced Vision Correction Technologies" subtitle="5 globally trusted procedures — from topography-guided LASIK to next-gen flapless lenticule surgery. All US-FDA approved." />
+      <SectionHeading title="LASIK Procedures Available in Delhi NCR" subtitle="All 5 globally trusted LASIK technologies under one roof in Delhi, Noida & Gurgaon — from topography-guided to flapless lenticule surgery. All US-FDA approved." />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
       </div>
@@ -100,7 +100,7 @@ const WhyUsSection = () => {
         <div className="text-center mb-4">
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Why Choose Us</span>
         </div>
-        <SectionHeading title="Your Vision, Our Expertise" subtitle="20+ years of experience. 10L+ happy patients. Every technology under one roof." />
+        <SectionHeading title="Delhi NCR's Most Trusted LASIK Network" subtitle="20+ years in Delhi NCR. 10L+ happy patients across Delhi, Noida & Gurgaon. Every technology under one roof." />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {points.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
@@ -131,7 +131,7 @@ const TestimonialsSection = () => (
       <div className="text-center mb-4">
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Patient Stories</span>
       </div>
-      <SectionHeading title="Life After LASIK" subtitle="Real experiences from patients who chose to see the world differently." />
+      <SectionHeading title="Life After LASIK — Delhi NCR Patient Stories" subtitle="Real experiences from patients across Delhi, Noida, Gurgaon & Faridabad who chose to see the world differently." />
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {TESTIMONIALS.map((t, i) => (
           <motion.div
@@ -174,18 +174,18 @@ const ExpertInsights = () => (
       <div className="text-center mb-4">
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Expert Insights</span>
       </div>
-      <SectionHeading title="Best LASIK Eye Surgery in India" />
+      <SectionHeading title="Best LASIK Eye Surgery in Delhi NCR" />
       <div className="max-w-4xl mx-auto space-y-0">
         <div className="prose prose-sm max-w-none text-muted-foreground space-y-5">
           <p>
-            <strong className="text-foreground">Centre For Lasik</strong> has performed over <strong className="text-foreground">10,00,000 LASIK procedures since 2004</strong>, maintaining a 97% patient satisfaction rate across both flap-based and lenticule-based technologies. Our facilities in Delhi, Noida, and Gurgaon offer every clinically validated vision correction platform available in India — from HD Contoura Vision at ₹25,500/eye to premium SiLK lenticule surgery at ₹75,000/eye.
+            <strong className="text-foreground">Centre For Lasik</strong> is Delhi NCR's largest refractive surgery network, having performed over <strong className="text-foreground">10,00,000 LASIK procedures since 2004</strong> across our flagship centres in <strong className="text-foreground">South Delhi, Noida, Gurgaon, Faridabad and Ghaziabad</strong>. We maintain a 97% patient satisfaction rate across both flap-based and lenticule-based technologies — and offer every clinically validated vision correction platform available in India, from HD Contoura Vision at ₹25,500/eye to premium SiLK lenticule surgery at ₹75,000/eye.
           </p>
           <p>
-            India is one of the world's fastest-growing LASIK markets, with over 5 lakh procedures performed annually across 3,700+ cities. As costs decrease and technology improves, more patients are choosing laser vision correction over a lifetime of glasses and contact lenses. The break-even on LASIK cost versus glasses typically occurs within 3–5 years — after which, patients save significantly.
+            Delhi NCR is India's largest LASIK market — with over 1.2 lakh procedures performed annually across the capital region. With its concentration of top-tier eye hospitals, internationally trained refractive surgeons, and the latest 7th-generation lasers, Delhi consistently sets the national benchmark for LASIK outcomes, safety and pricing transparency.
           </p>
-          <h3 className="text-foreground font-display font-bold text-lg">LASIK Technologies Available in India (2026)</h3>
+          <h3 className="text-foreground font-display font-bold text-lg">LASIK Technologies Available in Delhi NCR (2026)</h3>
           <p>
-            The five primary technologies offered at our centres are <strong className="text-foreground">WaveLight Plus InnovEyes</strong> (AI-guided, 400 Hz PerfectPulse), <strong className="text-foreground">HD Contoura Vision</strong> (22,000-point topography-guided), <strong className="text-foreground">EPI LASIK</strong> (non-detectable surface ablation for armed forces), <strong className="text-foreground">SiLK</strong> (ultra-smooth lenticule by J&J), and <strong className="text-foreground">SMILE Pro</strong> (flapless by Carl Zeiss). Each technology addresses a different clinical need — from cost-effectiveness to premium night vision quality.
+            All five primary technologies are available across our Delhi NCR centres: <strong className="text-foreground">WaveLight Plus InnovEyes</strong> (AI-guided, 400 Hz PerfectPulse), <strong className="text-foreground">HD Contoura Vision</strong> (22,000-point topography-guided), <strong className="text-foreground">EPI LASIK</strong> (non-detectable surface ablation — preferred by Delhi-based armed forces aspirants), <strong className="text-foreground">SiLK</strong> (ultra-smooth lenticule by J&J), and <strong className="text-foreground">SMILE Pro</strong> (flapless by Carl Zeiss). Each technology addresses a different clinical need — from cost-effectiveness to premium night vision quality.
           </p>
         </div>
         <div className="prose prose-sm max-w-none text-muted-foreground space-y-5 mt-5">
@@ -204,12 +204,12 @@ const ExpertInsights = () => (
               </li>
             ))}
           </ul>
-          <h3 className="text-foreground font-display font-bold text-lg">LASIK Cost in India — City-Wise Guide</h3>
+          <h3 className="text-foreground font-display font-bold text-lg">LASIK Cost in Delhi NCR — Locality-Wise Guide</h3>
           <p>
-            LASIK pricing varies across cities: Delhi NCR (₹18,000–₹75,000/eye), Mumbai (₹20,000–₹80,000/eye), Bangalore (₹22,000–₹85,000/eye), Hyderabad (₹18,000–₹70,000/eye), and Chennai (₹15,000–₹65,000/eye). At Centre For Lasik, our prices are fixed and transparent — no hidden charges, no surprise costs. All packages include pre-surgery diagnostics, the procedure, medications, and follow-up visits. EMI from ₹1,500/month.
+            Delhi NCR LASIK pricing typically ranges between ₹18,000–₹75,000/eye depending on the technology and locality: <strong className="text-foreground">South Delhi & Central Delhi</strong> (₹24,000–₹75,000/eye), <strong className="text-foreground">Gurgaon</strong> (₹22,000–₹68,000/eye), <strong className="text-foreground">Noida</strong> (₹21,000–₹65,000/eye), <strong className="text-foreground">Faridabad</strong> (₹18,000–₹54,000/eye), and <strong className="text-foreground">Ghaziabad</strong> (₹18,000–₹52,000/eye). At Centre For Lasik, all Delhi NCR prices are fixed and transparent — no hidden charges, no surprise costs. Packages include pre-surgery diagnostics, the procedure, medications, and follow-up visits. EMI from ₹1,500/month.
           </p>
           <p>
-            <Link to="/am-i-a-candidate" className="text-primary font-semibold hover:underline">Book your free 90-minute evaluation today</Link> — our diagnostic tests alone are worth ₹4,000+ and include Pentacam tomography, corneal topography, aberrometry, pachymetry, Schirmer dry eye test, and dilated retinal exam.
+            <Link to="/am-i-a-candidate" className="text-primary font-semibold hover:underline">Book your free 90-minute evaluation at any Delhi NCR centre</Link> — diagnostic tests alone are worth ₹4,000+ and include Pentacam tomography, corneal topography, aberrometry, pachymetry, Schirmer dry eye test, and dilated retinal exam.
           </p>
         </div>
       </div>
@@ -230,7 +230,7 @@ const FAQSection = () => {
         <div className="text-center mb-4">
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Got Questions?</span>
         </div>
-        <SectionHeading title="Frequently Asked Questions" subtitle="Everything you need to know about LASIK eye surgery — technologies, eligibility, cost, and recovery." />
+        <SectionHeading title="LASIK FAQs — Delhi NCR Patients" subtitle="Everything Delhi NCR patients ask about LASIK eye surgery — technologies, eligibility, cost, and recovery." />
         <div className="max-w-4xl mx-auto">
           <Accordion type="single" collapsible className="space-y-3">
             {filteredFaqs.map((faq, i) => (
