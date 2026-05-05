@@ -100,7 +100,7 @@ const WhyUsSection = () => {
         <div className="text-center mb-4">
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Why Choose Us</span>
         </div>
-        <SectionHeading title="Your Vision, Our Expertise" subtitle="20+ years of experience. 10L+ happy patients. Every technology under one roof." />
+        <SectionHeading title="Delhi NCR's Most Trusted LASIK Network" subtitle="20+ years in Delhi NCR. 10L+ happy patients across Delhi, Noida & Gurgaon. Every technology under one roof." />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {points.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
