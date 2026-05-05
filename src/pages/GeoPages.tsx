@@ -14,7 +14,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "Arun Vihar", "DLF Mall"];
 
 const StateHubPage = () => {
-  const { state } = useParams();
+  const params = useParams();
+  const state = params.state || params.slug;
   const stateName = state?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "State";
   const cities = TOP_CITIES.filter(c => slugify(c.state) === state).length > 0
     ? TOP_CITIES.filter(c => slugify(c.state) === state)
