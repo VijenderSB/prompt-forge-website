@@ -73,7 +73,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "100μ flap", laserSpeed: "400 Hz", dryEyeRisk: "Low", thinCorneaSafe: true,
   },
   {
-    id: "3", name: "EPI LASIK", slug: "epi-lasik", price: 18000, originalPrice: 30000, discountPercent: 40,
+    id: "3", name: "EPI LASIK", slug: "epi-lasik", price: 22500, originalPrice: 37500, discountPercent: 40,
     tagline: "Non-detectable laser vision correction — no flap, no cut",
     usp: "Surface ablation technique — cornea remains untouched structurally, ideal for thin corneas",
     technology: "Advanced Excimer Laser with Epi-separator",
