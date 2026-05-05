@@ -3,10 +3,13 @@ import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
 import ProcedureCard from "@/components/ProcedureCard";
+import ConsultationForm from "@/components/ConsultationForm";
 import { PROCEDURES, TOP_CITIES, slugify, discountedPrice } from "@/data/siteData";
+import { getCityData } from "@/data/cityData";
 import { motion } from "framer-motion";
-import { MapPin, ChevronRight } from "lucide-react";
+import { MapPin, ChevronRight, Building2, Users, Eye, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "Arun Vihar", "DLF Mall"];
 
@@ -62,14 +65,16 @@ const StateHubPage = () => {
 
 const CityHubPage = () => {
   const { state, city } = useParams();
-  const cityName = city?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "City";
-  const stateName = state?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "State";
+  const data = getCityData(city);
+  const cityName = data?.name || city?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "City";
+  const stateName = data?.state || state?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "State";
 
-  return (
-    <Layout>
-      <section className="hero-gradient section-padding">
-        <div className="container text-center max-w-3xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+  // Fallback for unmapped cities — minimal generic content
+  if (!data) {
+    return (
+      <Layout>
+        <section className="hero-gradient section-padding">
+          <div className="container text-center max-w-3xl">
             <nav className="text-primary-foreground/60 text-sm mb-4">
               <Link to="/" className="hover:text-primary-foreground">Home</Link>
               <ChevronRight className="w-3 h-3 inline mx-1" />
@@ -78,32 +83,184 @@ const CityHubPage = () => {
               <span className="text-primary-foreground">{cityName}</span>
             </nav>
             <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Eye Surgery in {cityName}</h1>
-            <p className="text-primary-foreground/80">Best LASIK in {cityName}: Contoura Vision ₹25,500 | ReLEx SMILE ₹40,000 | InnovEyes ₹49,000. 30% off.</p>
-          </motion.div>
+            <p className="text-primary-foreground/80">All 6 FDA-approved LASIK procedures available. Book a free consultation.</p>
+          </div>
+        </section>
+        <section className="section-padding">
+          <div className="container max-w-5xl">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
+            </div>
+          </div>
+        </section>
+        <CTABanner />
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout>
+      {/* Hero */}
+      <section className="hero-gradient section-padding">
+        <div className="container max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <nav className="text-primary-foreground/60 text-sm mb-4">
+                <Link to="/" className="hover:text-primary-foreground">Home</Link>
+                <ChevronRight className="w-3 h-3 inline mx-1" />
+                <Link to={`/${state}`} className="hover:text-primary-foreground">{stateName}</Link>
+                <ChevronRight className="w-3 h-3 inline mx-1" />
+                <span className="text-primary-foreground">{cityName}</span>
+              </nav>
+              <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-3">
+                LASIK Eye Surgery in {cityName}
+              </h1>
+              <p className="text-primary-foreground/85 mb-4">
+                {data.population} • {data.youthShare} aged 18–40 • {data.spectacleShare} of young adults wear glasses
+              </p>
+              <p className="text-primary-foreground/75 text-sm">
+                Standard LASIK from ₹{data.pricing[0].price.toLocaleString("en-IN")}/eye • SMILE Pro from ₹{data.pricing[4].price.toLocaleString("en-IN")}/eye • 30% off MRP at top {cityName} hospitals.
+              </p>
+            </motion.div>
+            <ConsultationForm variant="hero" />
+          </div>
         </div>
       </section>
 
+      {/* Demography & background */}
       <section className="section-padding">
-        <div className="container">
-          <SectionHeading title={`All LASIK Procedures in ${cityName}`} />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="container max-w-5xl">
+          <SectionHeading title={`About ${cityName} & Vision Health`} subtitle="Why LASIK demand is rising fast in this city" />
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
+            <div className="bg-card border border-border rounded-xl p-5 text-center">
+              <Users className="w-6 h-6 mx-auto text-primary mb-2" />
+              <div className="font-display font-black text-2xl text-foreground">{data.population}</div>
+              <div className="text-xs text-muted-foreground mt-1">Population</div>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-5 text-center">
+              <Users className="w-6 h-6 mx-auto text-accent mb-2" />
+              <div className="font-display font-black text-2xl text-foreground">{data.youthShare}</div>
+              <div className="text-xs text-muted-foreground mt-1">Aged 18–40</div>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-5 text-center">
+              <Eye className="w-6 h-6 mx-auto text-primary mb-2" />
+              <div className="font-display font-black text-2xl text-foreground">{data.spectacleShare}</div>
+              <div className="text-xs text-muted-foreground mt-1">18–40 wearing spectacles</div>
+            </div>
+          </div>
+          <div className="bg-card border border-border rounded-xl p-6 max-w-3xl mx-auto">
+            <p className="text-muted-foreground leading-relaxed text-sm">{data.background}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Top 3 Hospitals */}
+      <section className="section-padding bg-surface">
+        <div className="container max-w-5xl">
+          <SectionHeading title={`Top 3 Eye Hospitals in ${cityName}`} subtitle="Accredited partner centres in our network" />
+          <div className="grid md:grid-cols-3 gap-5">
+            {data.hospitals.map((h, i) => (
+              <motion.div
+                key={h.name}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="bg-card border border-border rounded-xl p-6 card-elevated"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <Building2 className="w-5 h-5 text-primary" />
+                  <span className="text-xs uppercase tracking-wide font-semibold text-muted-foreground">#{i + 1}</span>
+                </div>
+                <h3 className="font-display font-bold text-foreground mb-1 leading-snug">{h.name}</h3>
+                <p className="text-xs text-muted-foreground mb-3 flex items-center gap-1">
+                  <MapPin className="w-3 h-3" /> {h.area}
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{h.highlight}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* City-specific Pricing */}
+      <section className="section-padding">
+        <div className="container max-w-4xl">
+          <SectionHeading title={`LASIK Cost in ${cityName}`} subtitle="All-inclusive per-eye pricing — 30% off walk-in MRP" />
+          <div className="bg-card border border-border rounded-xl overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-surface text-foreground">
+                <tr>
+                  <th className="text-left px-4 py-3 font-display font-semibold">Procedure</th>
+                  <th className="text-right px-4 py-3 font-display font-semibold">MRP</th>
+                  <th className="text-right px-4 py-3 font-display font-semibold">Our Price</th>
+                  <th className="text-right px-4 py-3 font-display font-semibold hidden sm:table-cell">You Save</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.pricing.map((p) => (
+                  <tr key={p.procedureSlug} className="border-t border-border">
+                    <td className="px-4 py-3 font-medium text-foreground">{p.procedureName}</td>
+                    <td className="px-4 py-3 text-right text-muted-foreground line-through">₹{p.mrp.toLocaleString("en-IN")}</td>
+                    <td className="px-4 py-3 text-right font-display font-bold text-primary">₹{p.price.toLocaleString("en-IN")}</td>
+                    <td className="px-4 py-3 text-right text-accent font-semibold hidden sm:table-cell">₹{(p.mrp - p.price).toLocaleString("en-IN")}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* All Procedures */}
+      <section className="section-padding bg-surface">
+        <div className="container max-w-5xl">
+          <SectionHeading title={`All LASIK Procedures Available in ${cityName}`} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-surface">
-        <div className="container">
-          <SectionHeading title={`Areas & Localities in ${cityName} We Cover`} />
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
-            {sampleLocalities.map((loc) => (
-              <Link key={loc} to={`/${state}/${city}/${slugify(loc)}`} className="bg-card border border-border rounded-lg px-3 py-2.5 text-sm text-center font-medium text-foreground hover:border-primary hover:text-primary transition-colors">
-                {loc}
-              </Link>
-            ))}
+      {/* City Testimonial */}
+      <section className="section-padding">
+        <div className="container max-w-3xl">
+          <SectionHeading title={`Patient Story from ${cityName}`} subtitle="Real outcomes from a local LASIK patient" />
+          <div className="bg-card border border-border rounded-xl p-8 card-elevated">
+            <Quote className="w-8 h-8 text-primary/40 mb-4" />
+            <p className="text-foreground leading-relaxed text-base mb-6 italic">"{data.testimonial.quote}"</p>
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              <div>
+                <div className="font-display font-bold text-foreground">{data.testimonial.name}, {data.testimonial.age}</div>
+                <div className="text-xs text-muted-foreground">{data.testimonial.occupation} • Power {data.testimonial.power} • {data.testimonial.procedure}</div>
+              </div>
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* City FAQs */}
+      <section className="section-padding bg-surface">
+        <div className="container max-w-3xl">
+          <SectionHeading title={`LASIK in ${cityName} — FAQs`} subtitle="City-specific questions answered" />
+          <Accordion type="single" collapsible className="space-y-3">
+            {data.faqs.map((f, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6">
+                <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-4 text-sm">
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-4">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
       <CTABanner />
     </Layout>
   );
