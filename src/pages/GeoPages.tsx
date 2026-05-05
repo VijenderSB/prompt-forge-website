@@ -127,8 +127,18 @@ const CityHubPage = () => {
         </div>
       </section>
 
-      {/* Demography & background */}
+      {/* All Procedures (moved just below banner) */}
       <section className="section-padding">
+        <div className="container max-w-5xl">
+          <SectionHeading title={`All LASIK Procedures Available in ${cityName}`} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* Demography & background (moved below procedures) */}
+      <section className="section-padding bg-surface">
         <div className="container max-w-5xl">
           <SectionHeading title={`About ${cityName} & Vision Health`} subtitle="Why LASIK demand is rising fast in this city" />
           <div className="grid md:grid-cols-3 gap-4 mb-8">
