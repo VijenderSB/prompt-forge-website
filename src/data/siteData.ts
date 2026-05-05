@@ -34,7 +34,7 @@ export interface Procedure {
 
 export const PROCEDURES: Procedure[] = [
   {
-    id: "0", name: "Standard LASIK", slug: "standard-lasik", price: 8999, originalPrice: 15000, discountPercent: 40,
+    id: "0", name: "Standard LASIK", slug: "standard-lasik", price: 11249, originalPrice: 18750, discountPercent: 40,
     tagline: "Affordable bladeless laser vision correction — proven & trusted",
     usp: "Budget-friendly LASIK with proven excimer laser technology for clear vision",
     technology: "Excimer Laser Platform",
@@ -47,7 +47,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "100μ flap", laserSpeed: "250 Hz", dryEyeRisk: "Moderate", thinCorneaSafe: false,
   },
   {
-    id: "1", name: "WaveLight Plus InnovEyes", slug: "innovEyes", price: 49000, originalPrice: 70000, discountPercent: 30,
+    id: "1", name: "WaveLight Plus InnovEyes", slug: "innovEyes", price: 61250, originalPrice: 87500, discountPercent: 30,
     tagline: "AI-guided 400 Hz — 1,050 eye-tracking points per second",
     usp: "PerfectPulse Technology® tracks eye 1,050 times/sec for sub-micron precision",
     technology: "WaveLight Refractive Suite with InnovEyes + PerfectPulse Technology®",
@@ -60,7 +60,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "80μ flap", laserSpeed: "400 Hz", dryEyeRisk: "Low", thinCorneaSafe: true,
   },
   {
-    id: "2", name: "HD Contoura Vision", slug: "contoura-vision", price: 25500, originalPrice: 42500, discountPercent: 40,
+    id: "2", name: "HD Contoura Vision", slug: "contoura-vision", price: 31875, originalPrice: 53125, discountPercent: 40,
     tagline: "Topography-guided — 22,000 unique corneal data points",
     usp: "22,000-point corneal mapping for personalized treatment",
     technology: "Wavelight EX500 Excimer Laser + Topolyzer Vario",
@@ -73,7 +73,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "100μ flap", laserSpeed: "400 Hz", dryEyeRisk: "Low", thinCorneaSafe: true,
   },
   {
-    id: "3", name: "EPI LASIK", slug: "epi-lasik", price: 18000, originalPrice: 30000, discountPercent: 40,
+    id: "3", name: "EPI LASIK", slug: "epi-lasik", price: 22500, originalPrice: 37500, discountPercent: 40,
     tagline: "Non-detectable laser vision correction — no flap, no cut",
     usp: "Surface ablation technique — cornea remains untouched structurally, ideal for thin corneas",
     technology: "Advanced Excimer Laser with Epi-separator",
@@ -85,7 +85,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "No incision", laserSpeed: "400 Hz", dryEyeRisk: "Moderate", thinCorneaSafe: true,
   },
   {
-    id: "4", name: "SiLK", slug: "silk", price: 75000, originalPrice: 95000, discountPercent: 20,
+    id: "4", name: "SiLK", slug: "silk", price: 93750, originalPrice: 118750, discountPercent: 20,
     tagline: "Premium lenticule — ultra-smooth stromal bed, best night vision",
     usp: "Next-gen lenticule tech with sub-2mm incision and ultra-smooth stromal bed",
     technology: "Johnson & Johnson elita Platform with SiLK Technology",
@@ -98,7 +98,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "<2mm incision", laserSpeed: "500 Hz", dryEyeRisk: "Lowest", thinCorneaSafe: true,
   },
   {
-    id: "5", name: "SMILE Pro", slug: "smile-pro", price: 65000, originalPrice: 85000, discountPercent: 20,
+    id: "5", name: "SMILE Pro", slug: "smile-pro", price: 81250, originalPrice: 106250, discountPercent: 20,
     tagline: "Flapless lenticule — 2mm incision, minimal dry eye",
     usp: "No flap, no blade — 2mm micro-incision only, fastest recovery",
     technology: "Carl Zeiss VisuMax 800",
