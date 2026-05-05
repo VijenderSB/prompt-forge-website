@@ -271,8 +271,11 @@ const CityHubPage = () => {
   );
 };
 
-const LocalityHubPage = () => {
-  const { state, city, locality } = useParams();
+const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string; city: string; locality: string } } = {}) => {
+  const params = useParams();
+  const state = paramsOverride?.state ?? params.state;
+  const city = paramsOverride?.city ?? params.city;
+  const locality = paramsOverride?.locality ?? params.locality;
   const localityName = locality?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "Locality";
   const cityName = city?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "City";
   const stateName = state?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "State";
