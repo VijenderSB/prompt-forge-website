@@ -23,7 +23,7 @@ import BlogPage from "./pages/BlogPage";
 import InternationalGuidelinesPage from "./pages/InternationalGuidelinesPage";
 import LasikTechnologyPage from "./pages/LasikTechnologyPage";
 import { StateHubPage, CityHubPage, LocalityHubPage, ProcedureCityPage } from "./pages/GeoPages";
-import { LegacyRootResolver, LegacyBlogPost, LegacyTwoSegmentResolver } from "./pages/LegacyRedirect";
+import { LegacyRootResolver, LegacyBlogPost, LegacyTwoSegmentResolver, LegacyThreeSegmentResolver } from "./pages/LegacyRedirect";
 
 const queryClient = new QueryClient();
 
