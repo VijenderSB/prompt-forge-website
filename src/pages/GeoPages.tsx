@@ -127,8 +127,18 @@ const CityHubPage = () => {
         </div>
       </section>
 
-      {/* Demography & background */}
+      {/* All Procedures (moved just below banner) */}
       <section className="section-padding">
+        <div className="container max-w-5xl">
+          <SectionHeading title={`All LASIK Procedures Available in ${cityName}`} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* Demography & background (moved below procedures) */}
+      <section className="section-padding bg-surface">
         <div className="container max-w-5xl">
           <SectionHeading title={`About ${cityName} & Vision Health`} subtitle="Why LASIK demand is rising fast in this city" />
           <div className="grid md:grid-cols-3 gap-4 mb-8">
@@ -212,32 +222,26 @@ const CityHubPage = () => {
         </div>
       </section>
 
-      {/* All Procedures */}
-      <section className="section-padding bg-surface">
-        <div className="container max-w-5xl">
-          <SectionHeading title={`All LASIK Procedures Available in ${cityName}`} />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
-          </div>
-        </div>
-      </section>
-
-      {/* City Testimonial */}
+      {/* City Testimonials */}
       <section className="section-padding">
-        <div className="container max-w-3xl">
-          <SectionHeading title={`Patient Story from ${cityName}`} subtitle="Real outcomes from a local LASIK patient" />
-          <div className="bg-card border border-border rounded-xl p-8 card-elevated">
-            <Quote className="w-8 h-8 text-primary/40 mb-4" />
-            <p className="text-foreground leading-relaxed text-base mb-6 italic">"{data.testimonial.quote}"</p>
-            <div className="flex items-center justify-between gap-4 flex-wrap">
-              <div>
-                <div className="font-display font-bold text-foreground">{data.testimonial.name}, {data.testimonial.age}</div>
-                <div className="text-xs text-muted-foreground">{data.testimonial.occupation} • Power {data.testimonial.power} • {data.testimonial.procedure}</div>
+        <div className="container max-w-5xl">
+          <SectionHeading title={`Patient Stories from ${cityName}`} subtitle={`Real outcomes from local ${cityName} LASIK patients`} />
+          <div className="grid md:grid-cols-2 gap-6">
+            {data.testimonials.map((t, idx) => (
+              <div key={idx} className="bg-card border border-border rounded-xl p-8 card-elevated">
+                <Quote className="w-8 h-8 text-primary/40 mb-4" />
+                <p className="text-foreground leading-relaxed text-base mb-6 italic">"{t.quote}"</p>
+                <div className="flex items-center justify-between gap-4 flex-wrap">
+                  <div>
+                    <div className="font-display font-bold text-foreground">{t.name}, {t.age}</div>
+                    <div className="text-xs text-muted-foreground">{t.occupation} • Power {t.power} • {t.procedure}</div>
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+                  </div>
+                </div>
               </div>
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
