@@ -203,9 +203,9 @@ const CityHubPage = () => {
               <thead className="bg-surface text-foreground">
                 <tr>
                   <th className="text-left px-4 py-3 font-display font-semibold">Procedure</th>
-                  <th className="text-right px-4 py-3 font-display font-semibold">MRP</th>
-                  <th className="text-right px-4 py-3 font-display font-semibold">Our Price</th>
-                  <th className="text-right px-4 py-3 font-display font-semibold hidden sm:table-cell">You Save</th>
+                  <th className="text-right px-4 py-3 font-display font-semibold">MRP (per eye)</th>
+                  <th className="text-right px-4 py-3 font-display font-semibold">Our Price (per eye)</th>
+                  <th className="text-right px-4 py-3 font-display font-semibold hidden sm:table-cell">You Save (per eye)</th>
                 </tr>
               </thead>
               <tbody>
