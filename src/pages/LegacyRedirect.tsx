@@ -83,13 +83,16 @@ export const LegacyTwoSegmentResolver = () => {
  * Falls back to LocalityHubPage if first segment is a known state.
  */
 export const LegacyThreeSegmentResolver = () => {
-  const { a = "", b = "", c = "" } = useParams();
+  const { state = "", city = "", locality = "" } = useParams();
+  const a = state, b = city, c = locality;
+  // Canonical /:state/:city/:locality
   if (KNOWN_STATES.has(a)) return <LocalityHubPage />;
-  if (CITY_TO_STATE[b]) {
-    return <Navigate to={`/${CITY_TO_STATE[b]}/${b}/${c}`} replace />;
-  }
+  // /:city/:subcity/:locality (e.g., /mumbai/thane/kalyan)
   if (CITY_TO_STATE[a]) {
     return <Navigate to={`/${CITY_TO_STATE[a]}/${b}/${c}`} replace />;
+  }
+  if (CITY_TO_STATE[b]) {
+    return <Navigate to={`/${CITY_TO_STATE[b]}/${b}/${c}`} replace />;
   }
   const inferred = inferParent(c);
   return <Navigate to={`/${inferred.state}/${inferred.city}/${c}`} replace />;
