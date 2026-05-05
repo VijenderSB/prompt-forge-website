@@ -23,6 +23,7 @@ import BlogPage from "./pages/BlogPage";
 import InternationalGuidelinesPage from "./pages/InternationalGuidelinesPage";
 import LasikTechnologyPage from "./pages/LasikTechnologyPage";
 import { StateHubPage, CityHubPage, LocalityHubPage, ProcedureCityPage } from "./pages/GeoPages";
+import { LegacyRootResolver, LegacyBlogPost } from "./pages/LegacyRedirect";
 
 const queryClient = new QueryClient();
 
@@ -51,10 +52,14 @@ const App = () => (
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/international-guidelines" element={<InternationalGuidelinesPage />} />
           <Route path="/lasik-technology" element={<LasikTechnologyPage />} />
-          <Route path="/:state" element={<StateHubPage />} />
-          <Route path="/:state/:city" element={<CityHubPage />} />
-          <Route path="/:state/:city/:locality" element={<LocalityHubPage />} />
+          {/* Legacy laser.fyi v1 dated blog URLs (e.g. /blog/2019/09/01/post-slug) */}
+          <Route path="/blog/:y/:m/:d/:slug" element={<LegacyBlogPost />} />
+          {/* New geo hierarchy */}
           <Route path="/:state/:city/:locality/:procedure" element={<ProcedureCityPage />} />
+          <Route path="/:state/:city/:locality" element={<LocalityHubPage />} />
+          <Route path="/:state/:city" element={<CityHubPage />} />
+          {/* Catch-all root: legacy v1 URLs + state hub. Must be LAST single-segment route. */}
+          <Route path="/:slug" element={<LegacyRootResolver />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
