@@ -418,6 +418,14 @@ const tier2_3Built: CityData[] = T2_T3.map((c) => ({
     power: c.testimonialPower, procedure: c.testimonialProc,
     quote: `Found ${c.name}'s top LASIK centre through this directory and saved 30% off walk-in MRP. ${c.testimonialProc} was painless — back to work within days with crystal-clear vision.`,
   },
+  testimonials: [
+    {
+      name: c.testimonialName, age: c.testimonialAge, occupation: c.testimonialOcc,
+      power: c.testimonialPower, procedure: c.testimonialProc,
+      quote: `Found ${c.name}'s top LASIK centre through this directory and saved 30% off walk-in MRP. ${c.testimonialProc} was painless — back to work within days with crystal-clear vision.`,
+    },
+    buildSecondTestimonial(c.name, c.slug, `${c.industry.split(",")[0]} professional, ${c.name}`),
+  ],
   faqs: FAQ_TEMPLATE(c),
 }));
 
