@@ -6,7 +6,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ConsultationForm from "@/components/ConsultationForm";
 import ProcedureNavStrip from "@/components/ProcedureNavStrip";
 import CTABanner from "@/components/CTABanner";
-import { STATES, TOP_CITIES, slugify, BRAND } from "@/data/siteData";
+import { STATES, slugify, BRAND } from "@/data/siteData";
 
 type CityTier = {
   name: string;
