@@ -34,7 +34,7 @@ export interface Procedure {
 
 export const PROCEDURES: Procedure[] = [
   {
-    id: "0", name: "Standard LASIK", slug: "standard-lasik", price: 8999, originalPrice: 15000, discountPercent: 40,
+    id: "0", name: "Standard LASIK", slug: "standard-lasik", price: 11249, originalPrice: 18750, discountPercent: 40,
     tagline: "Affordable bladeless laser vision correction — proven & trusted",
     usp: "Budget-friendly LASIK with proven excimer laser technology for clear vision",
     technology: "Excimer Laser Platform",
