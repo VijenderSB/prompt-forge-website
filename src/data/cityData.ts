@@ -378,12 +378,24 @@ const tier1Built: CityData[] = CITY_DEFS.map((c) => ({
   hospitals: c.hospitals,
   pricing: buildPricing(c.priceMult, c.discount),
   testimonial: c.testimonial,
-  faqs: [
-    ...c.faqExtras,
-    { q: `How safe is LASIK at hospitals in ${c.name}?`, a: `All 3 partner hospitals in ${c.name} use FDA-approved laser platforms and are operated by fellowship-trained refractive surgeons. We only onboard NABH/ISO-accredited centres into our directory.` },
-    { q: `Are advanced flapless procedures (SMILE Pro, SiLK) available in ${c.name}?`, a: `Yes — ${c.hospitals[0].name} and ${c.hospitals[2].name} both offer SMILE Pro; SiLK is available at the flagship centre subject to candidacy.` },
-    { q: `How many days off work do I need after LASIK in ${c.name}?`, a: `Most ${c.name} patients return to desk work within 2–3 days for flap-based procedures and 1–2 days for SMILE Pro. Friday-surgery, Monday-back-to-work is the most common pattern.` },
+  testimonials: [
+    c.testimonial,
+    buildSecondTestimonial(c.name, c.slug, `${c.name} resident`),
   ],
+  faqs: (() => {
+    const procs = buildPricing(c.priceMult, c.discount);
+    return [
+      ...c.faqExtras,
+      { q: `How safe is LASIK at hospitals in ${c.name}?`, a: `All 3 partner hospitals in ${c.name} use FDA-approved laser platforms and are operated by fellowship-trained refractive surgeons. We only onboard NABH/ISO-accredited centres into our directory.` },
+      { q: `Are advanced flapless procedures (SMILE Pro, SiLK) available in ${c.name}?`, a: `Yes — ${c.hospitals[0].name} and ${c.hospitals[2].name} both offer SMILE Pro; SiLK is available at the flagship centre subject to candidacy.` },
+      { q: `How many days off work do I need after LASIK in ${c.name}?`, a: `Most ${c.name} patients return to desk work within 2–3 days for flap-based procedures and 1–2 days for SMILE Pro. Friday-surgery, Monday-back-to-work is the most common pattern.` },
+      { q: `Do ${c.name} hospitals offer no-cost EMI for LASIK?`, a: `Yes — all 3 partner hospitals in ${c.name} accept no-cost EMI via Bajaj Finserv, HDFC, ICICI and SaveIn for 6/9/12-month tenures, starting around ₹${Math.round(procs[0].price/12/100)*100}/month.` },
+      { q: `What is the success rate of LASIK in ${c.name}?`, a: `Across our 3 ${c.name} partner centres, 96–98% of patients achieve 6/6 (20/20) vision or better at 1-month follow-up.` },
+      { q: `Is the LASIK consultation free in ${c.name}?`, a: `Yes — pre-LASIK consultations including topography, pachymetry and dry-eye assessment are completely free at all 3 partner hospitals in ${c.name} when booked through our directory.` },
+      { q: `What is the age limit for LASIK in ${c.name}?`, a: `Patients aged 18–45 with a stable prescription for at least 12 months are ideal candidates. ${c.name} surgeons follow AIOS and IMA guidelines.` },
+      { q: `Can I drive after LASIK in ${c.name}?`, a: `Most ${c.name} patients are cleared to drive within 24–48 hours of surgery, after the day-1 follow-up confirms 6/9 or better vision.` },
+    ];
+  })(),
 }));
 
 const tier2_3Built: CityData[] = T2_T3.map((c) => ({
