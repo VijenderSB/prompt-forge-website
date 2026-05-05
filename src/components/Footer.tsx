@@ -28,7 +28,7 @@ const planningLinks = [
   { label: "International Guidelines", href: "/international-guidelines" },
   { label: "LASIK Technologies", href: "/lasik-technology" },
   { label: "Blog", href: "/blog" },
-  { label: "Our Centres", href: "/centres" },
+  { label: "Locations", href: "/locations" },
 ];
 
 const quickLinks = [
@@ -132,7 +132,7 @@ const Footer = () => (
             </li>
           ))}
         </ul>
-        <Link to="/centres" className="inline-block mt-4 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+        <Link to="/locations" className="inline-block mt-4 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors">
           View All Locations →
         </Link>
       </div>

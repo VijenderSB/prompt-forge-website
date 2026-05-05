@@ -38,7 +38,7 @@ const dropdowns: Record<string, { label: string; href: string }[]> = {
     { label: "International Guidelines", href: "/international-guidelines" },
     { label: "LASIK Technologies in Market", href: "/lasik-technology" },
     { label: "Blog", href: "/blog" },
-    { label: "Our Centres", href: "/centres" },
+    { label: "Locations", href: "/locations" },
   ],
 };
 

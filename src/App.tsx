@@ -17,8 +17,7 @@ import LasikMythsPage from "./pages/LasikMythsPage";
 import UnfitLasikPage from "./pages/UnfitLasikPage";
 import RiskRecoveryPage from "./pages/RiskRecoveryPage";
 import WhichLasikPage from "./pages/WhichLasikPage";
-import CentresPage from "./pages/CentresPage";
-import CentreDetailPage from "./pages/CentreDetailPage";
+import LocationsPage from "./pages/LocationsPage";
 import ProcedureHubPage from "./pages/ProcedureHubPage";
 import BlogPage from "./pages/BlogPage";
 import InternationalGuidelinesPage from "./pages/InternationalGuidelinesPage";
@@ -46,8 +45,8 @@ const App = () => (
           <Route path="/unfit-for-lasik" element={<UnfitLasikPage />} />
           <Route path="/risk-recovery" element={<RiskRecoveryPage />} />
           <Route path="/which-lasik-is-best" element={<WhichLasikPage />} />
-          <Route path="/centres" element={<CentresPage />} />
-          <Route path="/centres/:slug" element={<CentreDetailPage />} />
+          <Route path="/locations" element={<LocationsPage />} />
+          <Route path="/centres" element={<LocationsPage />} />
           <Route path="/procedures/:slug" element={<ProcedureHubPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/international-guidelines" element={<InternationalGuidelinesPage />} />
