@@ -10,7 +10,7 @@ import {
   LEGACY_ROOT_SLUGS,
 } from "@/data/legacyMaps";
 import NotFound from "./NotFound";
-import { StateHubPage } from "./GeoPages";
+import { StateHubPage, CityHubPage, LocalityHubPage } from "./GeoPages";
 
 /**
  * Catch-all resolver for legacy laser.fyi v1 root URLs (/:slug).
