@@ -175,7 +175,7 @@ const ExpertInsights = () => (
         <span className="text-xs font-bold uppercase tracking-wider text-primary">Expert Insights</span>
       </div>
       <SectionHeading title="Best LASIK Eye Surgery in India" />
-      <div className="max-w-3xl mx-auto space-y-0">
+      <div className="max-w-4xl mx-auto space-y-0">
         <div className="prose prose-sm max-w-none text-muted-foreground space-y-5">
           <p>
             <strong className="text-foreground">Centre For Lasik</strong> has performed over <strong className="text-foreground">10,00,000 LASIK procedures since 2004</strong>, maintaining a 97% patient satisfaction rate across both flap-based and lenticule-based technologies. Our facilities in Delhi, Noida, and Gurgaon offer every clinically validated vision correction platform available in India — from HD Contoura Vision at ₹25,500/eye to premium SiLK lenticule surgery at ₹75,000/eye.
@@ -231,7 +231,7 @@ const FAQSection = () => {
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Got Questions?</span>
         </div>
         <SectionHeading title="Frequently Asked Questions" subtitle="Everything you need to know about LASIK eye surgery — technologies, eligibility, cost, and recovery." />
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <Accordion type="single" collapsible className="space-y-3">
             {filteredFaqs.map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-sm">
