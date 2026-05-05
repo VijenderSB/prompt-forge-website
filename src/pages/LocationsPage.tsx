@@ -68,7 +68,7 @@ const TIER_3: CityTier[] = [
   { name: "Varanasi", state: "Uttar Pradesh", slug: "varanasi", priceFrom: 13500, priceTo: 43000, success: "96–98%" },
 ];
 
-const fmt = (n: number) => `₹${(n / 1000).toFixed(n % 1000 === 0 ? 0 : 1).replace(/\.0$/, "")},${String(n).slice(-3)}`.replace(",000,000", ",000").replace(/^₹(\d+)\.(\d),/, "₹$1,$2") ;
+// formatPrice below
 const formatPrice = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 const CityCard = ({ c }: { c: CityTier }) => (
