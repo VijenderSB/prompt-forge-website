@@ -98,7 +98,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "<2mm incision", laserSpeed: "500 Hz", dryEyeRisk: "Lowest", thinCorneaSafe: true,
   },
   {
-    id: "5", name: "SMILE Pro", slug: "smile-pro", price: 65000, originalPrice: 85000, discountPercent: 20,
+    id: "5", name: "SMILE Pro", slug: "smile-pro", price: 81250, originalPrice: 106250, discountPercent: 20,
     tagline: "Flapless lenticule — 2mm incision, minimal dry eye",
     usp: "No flap, no blade — 2mm micro-incision only, fastest recovery",
     technology: "Carl Zeiss VisuMax 800",
