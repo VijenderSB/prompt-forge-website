@@ -33,13 +33,13 @@ const Hero = () => (
         className="lg:col-span-3"
       >
         <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full mb-5">
-          <Eye className="w-4 h-4" /> WaveLight Plus InnovEyes
+          <MapPin className="w-4 h-4" /> Delhi NCR · WaveLight Plus InnovEyes
         </div>
         <h1 className="font-display font-black text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary-foreground leading-[1.1] mb-6">
-          See the World <span className="text-accent">Without Glasses</span>
+          Best LASIK in <span className="text-accent">Delhi NCR</span> — Without Glasses
         </h1>
         <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 max-w-xl leading-relaxed">
-          Just 10 minutes to crystal-clear vision. Safe, painless, and trusted by millions worldwide. Starting at just <strong className="text-primary-foreground">₹8,999</strong> per eye.
+          Delhi's most trusted LASIK platform — accredited centres in Delhi, Noida & Gurgaon. Just 10 minutes to crystal-clear vision. Starting at just <strong className="text-primary-foreground">₹8,999</strong> per eye.
         </p>
         <div className="flex items-center gap-8 mb-6">
           <div className="flex -space-x-2">
@@ -50,8 +50,8 @@ const Hero = () => (
             ))}
           </div>
           <div className="text-primary-foreground/80 text-sm">
-            <span className="font-bold text-primary-foreground">Trusted by 10L+ patients</span>
-            <span className="block">97% satisfaction rate</span>
+            <span className="font-bold text-primary-foreground">Trusted by 10L+ Delhi NCR patients</span>
+            <span className="block">97% satisfaction · 50+ centres in Delhi NCR</span>
           </div>
         </div>
       </motion.div>
