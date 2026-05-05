@@ -78,6 +78,24 @@ export const LegacyTwoSegmentResolver = () => {
 };
 
 /**
+ * Legacy 3-segment resolver: /:a/:b/:c where segment-1 is a CITY (not state).
+ * Example: /mumbai/thane/kalyan → /maharashtra/thane/kalyan
+ * Falls back to LocalityHubPage if first segment is a known state.
+ */
+export const LegacyThreeSegmentResolver = () => {
+  const { a = "", b = "", c = "" } = useParams();
+  if (KNOWN_STATES.has(a)) return <LocalityHubPage />;
+  if (CITY_TO_STATE[b]) {
+    return <Navigate to={`/${CITY_TO_STATE[b]}/${b}/${c}`} replace />;
+  }
+  if (CITY_TO_STATE[a]) {
+    return <Navigate to={`/${CITY_TO_STATE[a]}/${b}/${c}`} replace />;
+  }
+  const inferred = inferParent(c);
+  return <Navigate to={`/${inferred.state}/${inferred.city}/${c}`} replace />;
+};
+
+/**
  * Legacy dated blog: /blog/:y/:m/:d/:slug — render stub so URL responds 200.
  */
 export const LegacyBlogPost = () => {
