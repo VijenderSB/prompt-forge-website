@@ -55,6 +55,29 @@ function inferParent(slug: string): { state: string; city: string } {
 }
 
 /**
+ * Resolver for legacy 2-segment URLs (/:a/:b).
+ * - /:state/:city  → render CityHubPage
+ * - /:city/:locality (flat legacy pattern) → 301 to /:state/:city/:locality
+ * - fallback: render CityHubPage (state hub) so we never 404 a known legacy URL
+ */
+export const LegacyTwoSegmentResolver = () => {
+  const { a = "", b = "" } = useParams();
+
+  // Canonical /:state/:city
+  if (KNOWN_STATES.has(a)) return <CityHubPage />;
+
+  // Flat legacy /:city/:locality → redirect to canonical hierarchy
+  if (CITY_TO_STATE[a]) {
+    const state = CITY_TO_STATE[a];
+    return <Navigate to={`/${state}/${a}/${b}`} replace />;
+  }
+
+  // Unknown first segment — try inferring (e.g., "north-delhi" → delhi)
+  const inferred = inferParent(a);
+  return <Navigate to={`/${inferred.state}/${inferred.city}/${b}`} replace />;
+};
+
+/**
  * Legacy dated blog: /blog/:y/:m/:d/:slug — render stub so URL responds 200.
  */
 export const LegacyBlogPost = () => {
