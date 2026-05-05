@@ -3,10 +3,13 @@ import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
 import ProcedureCard from "@/components/ProcedureCard";
+import ConsultationForm from "@/components/ConsultationForm";
 import { PROCEDURES, TOP_CITIES, slugify, discountedPrice } from "@/data/siteData";
+import { getCityData } from "@/data/cityData";
 import { motion } from "framer-motion";
-import { MapPin, ChevronRight } from "lucide-react";
+import { MapPin, ChevronRight, Building2, Users, Eye, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "Arun Vihar", "DLF Mall"];
 
