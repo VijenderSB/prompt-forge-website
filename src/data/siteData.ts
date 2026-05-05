@@ -85,7 +85,7 @@ export const PROCEDURES: Procedure[] = [
     incision: "No incision", laserSpeed: "400 Hz", dryEyeRisk: "Moderate", thinCorneaSafe: true,
   },
   {
-    id: "4", name: "SiLK", slug: "silk", price: 75000, originalPrice: 95000, discountPercent: 20,
+    id: "4", name: "SiLK", slug: "silk", price: 93750, originalPrice: 118750, discountPercent: 20,
     tagline: "Premium lenticule — ultra-smooth stromal bed, best night vision",
     usp: "Next-gen lenticule tech with sub-2mm incision and ultra-smooth stromal bed",
     technology: "Johnson & Johnson elita Platform with SiLK Technology",
