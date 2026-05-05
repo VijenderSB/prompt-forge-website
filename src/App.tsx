@@ -23,7 +23,7 @@ import BlogPage from "./pages/BlogPage";
 import InternationalGuidelinesPage from "./pages/InternationalGuidelinesPage";
 import LasikTechnologyPage from "./pages/LasikTechnologyPage";
 import { StateHubPage, CityHubPage, LocalityHubPage, ProcedureCityPage } from "./pages/GeoPages";
-import { LegacyRootResolver, LegacyBlogPost, LegacyTwoSegmentResolver } from "./pages/LegacyRedirect";
+import { LegacyRootResolver, LegacyBlogPost, LegacyTwoSegmentResolver, LegacyThreeSegmentResolver } from "./pages/LegacyRedirect";
 
 const queryClient = new QueryClient();
 
@@ -56,7 +56,7 @@ const App = () => (
           <Route path="/blog/:y/:m/:d/:slug" element={<LegacyBlogPost />} />
           {/* New geo hierarchy */}
           <Route path="/:state/:city/:locality/:procedure" element={<ProcedureCityPage />} />
-          <Route path="/:state/:city/:locality" element={<LocalityHubPage />} />
+          <Route path="/:state/:city/:locality" element={<LegacyThreeSegmentResolver />} />
           <Route path="/:state/:city" element={<LegacyTwoSegmentResolver />} />
           {/* Catch-all root: legacy v1 URLs + state hub. Must be LAST single-segment route. */}
           <Route path="/:slug" element={<LegacyRootResolver />} />
