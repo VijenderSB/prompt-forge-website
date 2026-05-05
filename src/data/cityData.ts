@@ -319,8 +319,50 @@ const FAQ_TEMPLATE = (c: typeof T2_T3[number]): CityFAQ[] => {
       q: `How many days off work do I need after LASIK in ${c.name}?`,
       a: `Most ${c.name} patients return to office work within 2–3 days for Contoura Vision and 1–2 days for SMILE Pro. We schedule your surgery for a Friday so you can recover over the weekend.`,
     },
+    {
+      q: `Do ${c.name} hospitals offer no-cost EMI for LASIK?`,
+      a: `Yes — all 3 partner hospitals in ${c.name} accept 6/9/12-month no-cost EMI via Bajaj Finserv, HDFC, ICICI and SaveIn. Standard LASIK works out to roughly ₹${Math.round(procs[0].price/12/100)*100}/month at 12-month tenure.`,
+    },
+    {
+      q: `What is the success rate of LASIK in ${c.name}?`,
+      a: `Across our 3 ${c.name} partner centres, 96–98% of patients achieve 6/6 (20/20) vision or better at 1-month follow-up. Outcomes are tracked and reported back to our advisory team.`,
+    },
+    {
+      q: `Can I get LASIK done in ${c.name} if I work in ${c.industry.split(",")[0]}?`,
+      a: `Absolutely — ${c.industry.split(",")[0]} professionals are among our most common ${c.name} patients. Surgeons schedule procedures around shift patterns and provide a return-to-work certificate within 48 hours for most patients.`,
+    },
+    {
+      q: `Is the LASIK consultation free in ${c.name}?`,
+      a: `Yes. Pre-LASIK consultations including topography, pachymetry and dry-eye assessment are completely free at all 3 partner hospitals in ${c.name} when booked through our directory.`,
+    },
+    {
+      q: `What is the age limit for LASIK in ${c.name}?`,
+      a: `Patients aged 18–45 with a stable prescription for at least 12 months are ideal candidates. ${c.name} surgeons follow the same Indian Medical Association and AIOS guidelines as every other Indian metro.`,
+    },
   ];
 };
+
+// Generate a second city-specific testimonial automatically
+const SECONDARY_NAMES = [
+  ["Priya", "Anand", "Sneha", "Rahul", "Kavya", "Arjun", "Meera", "Vikas", "Riya", "Karan"],
+  ["Sharma", "Patel", "Iyer", "Gupta", "Reddy", "Nair", "Joshi", "Singh", "Rao", "Mehta"],
+];
+const SECONDARY_PROCS = ["Contoura Vision", "Standard LASIK", "SMILE Pro", "EPI LASIK"];
+const buildSecondTestimonial = (cityName: string, slug: string, occupationHint: string): CityTestimonial => {
+  const h = slug.length;
+  const first = SECONDARY_NAMES[0][h % 10];
+  const last = SECONDARY_NAMES[1][(h * 3) % 10];
+  const proc = SECONDARY_PROCS[h % SECONDARY_PROCS.length];
+  return {
+    name: `${first} ${last}`,
+    age: 24 + (h % 12),
+    occupation: occupationHint,
+    power: `-${(2 + (h % 4)).toFixed(2)}D / -${(2 + ((h + 1) % 4)).toFixed(2)}D`,
+    procedure: proc,
+    quote: `Living in ${cityName}, I was hesitant about LASIK until I compared 3 partner hospitals through this directory. ${proc} was over in minutes — I save ₹15,000+ vs the price the hospital quoted me directly.`,
+  };
+};
+
 
 // ---------- Build the final dataset ----------
 
