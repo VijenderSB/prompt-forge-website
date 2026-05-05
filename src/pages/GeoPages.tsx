@@ -87,7 +87,7 @@ const CityHubPage = () => {
           </div>
         </section>
         <section className="section-padding">
-          <div className="container max-w-5xl">
+          <div className="container">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
             </div>
@@ -102,7 +102,7 @@ const CityHubPage = () => {
     <Layout>
       {/* Hero */}
       <section className="hero-gradient section-padding">
-        <div className="container max-w-5xl">
+        <div className="container">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
               <nav className="text-primary-foreground/60 text-sm mb-4">
@@ -129,7 +129,7 @@ const CityHubPage = () => {
 
       {/* All Procedures (moved just below banner) */}
       <section className="section-padding">
-        <div className="container max-w-5xl">
+        <div className="container">
           <SectionHeading title={`All LASIK Procedures Available in ${cityName}`} />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
@@ -139,7 +139,7 @@ const CityHubPage = () => {
 
       {/* Demography & background (moved below procedures) */}
       <section className="section-padding bg-surface">
-        <div className="container max-w-5xl">
+        <div className="container">
           <SectionHeading title={`About ${cityName} & Vision Health`} subtitle="Why LASIK demand is rising fast in this city" />
           <div className="grid md:grid-cols-3 gap-4 mb-8">
             <div className="bg-card border border-border rounded-xl p-5 text-center">
@@ -166,7 +166,7 @@ const CityHubPage = () => {
 
       {/* Top 3 Hospitals */}
       <section className="section-padding bg-surface">
-        <div className="container max-w-5xl">
+        <div className="container">
           <SectionHeading title={`Top 3 Eye Hospitals in ${cityName}`} subtitle="Accredited partner centres in our network" />
           <div className="grid md:grid-cols-3 gap-5">
             {data.hospitals.map((h, i) => (
@@ -195,7 +195,7 @@ const CityHubPage = () => {
 
       {/* City-specific Pricing */}
       <section className="section-padding">
-        <div className="container max-w-4xl">
+        <div className="container">
           <SectionHeading title={`LASIK Cost in ${cityName}`} subtitle="All-inclusive per-eye pricing — 30% off walk-in MRP" />
           <div className="bg-card border border-border rounded-xl overflow-hidden">
             <table className="w-full text-sm">
@@ -224,7 +224,7 @@ const CityHubPage = () => {
 
       {/* City Testimonials */}
       <section className="section-padding">
-        <div className="container max-w-5xl">
+        <div className="container">
           <SectionHeading title={`Patient Stories from ${cityName}`} subtitle={`Real outcomes from local ${cityName} LASIK patients`} />
           <div className="grid md:grid-cols-2 gap-6">
             {data.testimonials.map((t, idx) => (
