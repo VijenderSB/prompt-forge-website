@@ -1,12 +1,116 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Search, IndianRupee, Users, MessagesSquare, Navigation as NavIcon } from "lucide-react";
+import { MapPin, Phone, Search, IndianRupee, Users, MessagesSquare, Navigation as NavIcon, Building2, ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import ConsultationForm from "@/components/ConsultationForm";
 import ProcedureNavStrip from "@/components/ProcedureNavStrip";
 import CTABanner from "@/components/CTABanner";
 import { STATES, TOP_CITIES, slugify, BRAND } from "@/data/siteData";
+
+type CityTier = {
+  name: string;
+  state: string;
+  slug: string;
+  priceFrom: number;
+  priceTo: number;
+  success: string;
+};
+
+const TIER_1: CityTier[] = [
+  { name: "Ahmedabad", state: "Gujarat", slug: "ahmedabad", priceFrom: 22500, priceTo: 63000, success: "98–99%" },
+  { name: "Bengaluru", state: "Karnataka", slug: "bangalore", priceFrom: 21000, priceTo: 74000, success: "98–99%" },
+  { name: "Chennai", state: "Tamil Nadu", slug: "chennai", priceFrom: 22000, priceTo: 58000, success: "98–99%" },
+  { name: "Hyderabad", state: "Telangana", slug: "hyderabad", priceFrom: 22000, priceTo: 69000, success: "98–99%" },
+  { name: "Kolkata", state: "West Bengal", slug: "kolkata", priceFrom: 20500, priceTo: 66000, success: "98–99%" },
+  { name: "Mumbai", state: "Maharashtra", slug: "mumbai", priceFrom: 19500, priceTo: 61000, success: "98–99%" },
+  { name: "New Delhi", state: "Delhi NCR", slug: "delhi", priceFrom: 24000, priceTo: 74000, success: "98–99%" },
+  { name: "Pune", state: "Maharashtra", slug: "pune", priceFrom: 25000, priceTo: 65000, success: "98–99%" },
+];
+
+const TIER_2: CityTier[] = [
+  { name: "Agra", state: "Uttar Pradesh", slug: "agra", priceFrom: 17000, priceTo: 50000, success: "97–99%" },
+  { name: "Allahabad", state: "Uttar Pradesh", slug: "allahabad", priceFrom: 14500, priceTo: 56000, success: "97–99%" },
+  { name: "Amritsar", state: "Punjab", slug: "amritsar", priceFrom: 14500, priceTo: 52000, success: "97–99%" },
+  { name: "Bhopal", state: "Madhya Pradesh", slug: "bhopal", priceFrom: 16500, priceTo: 51000, success: "97–99%" },
+  { name: "Bhubaneswar", state: "Odisha", slug: "bhubaneswar", priceFrom: 15500, priceTo: 49000, success: "97–99%" },
+  { name: "Chandigarh", state: "Haryana", slug: "chandigarh", priceFrom: 19000, priceTo: 55000, success: "97–99%" },
+  { name: "Coimbatore", state: "Tamil Nadu", slug: "coimbatore", priceFrom: 16000, priceTo: 48000, success: "97–99%" },
+  { name: "Dehradun", state: "Uttarakhand", slug: "dehradun", priceFrom: 15500, priceTo: 47000, success: "97–99%" },
+  { name: "Faridabad", state: "Delhi NCR", slug: "faridabad", priceFrom: 18000, priceTo: 54000, success: "97–99%" },
+  { name: "Gurgaon", state: "Haryana", slug: "gurgaon", priceFrom: 22000, priceTo: 68000, success: "97–99%" },
+  { name: "Indore", state: "Madhya Pradesh", slug: "indore", priceFrom: 16000, priceTo: 50000, success: "97–99%" },
+  { name: "Jaipur", state: "Rajasthan", slug: "jaipur", priceFrom: 18000, priceTo: 58000, success: "97–99%" },
+  { name: "Kanpur", state: "Uttar Pradesh", slug: "kanpur", priceFrom: 14000, priceTo: 48000, success: "97–99%" },
+  { name: "Kochi", state: "Kerala", slug: "kochi", priceFrom: 17500, priceTo: 52000, success: "97–99%" },
+  { name: "Lucknow", state: "Uttar Pradesh", slug: "lucknow", priceFrom: 16500, priceTo: 53000, success: "97–99%" },
+  { name: "Ludhiana", state: "Punjab", slug: "ludhiana", priceFrom: 15500, priceTo: 50000, success: "97–99%" },
+  { name: "Nagpur", state: "Maharashtra", slug: "nagpur", priceFrom: 16000, priceTo: 49000, success: "97–99%" },
+  { name: "Noida", state: "Delhi NCR", slug: "noida", priceFrom: 21000, priceTo: 65000, success: "97–99%" },
+  { name: "Patna", state: "Bihar", slug: "patna", priceFrom: 14000, priceTo: 46000, success: "97–99%" },
+  { name: "Surat", state: "Gujarat", slug: "surat", priceFrom: 17000, priceTo: 52000, success: "97–99%" },
+  { name: "Vadodara", state: "Gujarat", slug: "vadodara", priceFrom: 16500, priceTo: 50000, success: "97–99%" },
+  { name: "Visakhapatnam", state: "Andhra Pradesh", slug: "visakhapatnam", priceFrom: 15000, priceTo: 48000, success: "97–99%" },
+];
+
+const TIER_3: CityTier[] = [
+  { name: "Ajmer", state: "Rajasthan", slug: "ajmer", priceFrom: 13500, priceTo: 42000, success: "96–98%" },
+  { name: "Aurangabad", state: "Maharashtra", slug: "aurangabad", priceFrom: 13500, priceTo: 43000, success: "96–98%" },
+  { name: "Guwahati", state: "Assam", slug: "guwahati", priceFrom: 14000, priceTo: 44000, success: "96–98%" },
+  { name: "Jodhpur", state: "Rajasthan", slug: "jodhpur", priceFrom: 13500, priceTo: 42000, success: "96–98%" },
+  { name: "Madurai", state: "Tamil Nadu", slug: "madurai", priceFrom: 14000, priceTo: 44000, success: "96–98%" },
+  { name: "Mangalore", state: "Karnataka", slug: "mangalore", priceFrom: 14500, priceTo: 45000, success: "96–98%" },
+  { name: "Mysore", state: "Karnataka", slug: "mysore", priceFrom: 14000, priceTo: 44000, success: "96–98%" },
+  { name: "Raipur", state: "Chhattisgarh", slug: "raipur", priceFrom: 13500, priceTo: 43000, success: "96–98%" },
+  { name: "Ranchi", state: "Jharkhand", slug: "ranchi", priceFrom: 13500, priceTo: 42000, success: "96–98%" },
+  { name: "Thiruvananthapuram", state: "Kerala", slug: "thiruvananthapuram", priceFrom: 15000, priceTo: 46000, success: "96–98%" },
+  { name: "Vijayawada", state: "Andhra Pradesh", slug: "vijayawada", priceFrom: 14000, priceTo: 44000, success: "96–98%" },
+  { name: "Varanasi", state: "Uttar Pradesh", slug: "varanasi", priceFrom: 13500, priceTo: 43000, success: "96–98%" },
+];
+
+const fmt = (n: number) => `₹${(n / 1000).toFixed(n % 1000 === 0 ? 0 : 1).replace(/\.0$/, "")},${String(n).slice(-3)}`.replace(",000,000", ",000").replace(/^₹(\d+)\.(\d),/, "₹$1,$2") ;
+const formatPrice = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+
+const CityCard = ({ c }: { c: CityTier }) => (
+  <Link
+    to={`/${slugify(c.state)}/${c.slug}`}
+    className="group bg-card border border-border rounded-xl p-5 card-elevated flex gap-4 items-start"
+  >
+    <div className="w-10 h-10 rounded-lg bg-accent/15 flex items-center justify-center flex-shrink-0">
+      <MapPin className="w-5 h-5 text-accent" />
+    </div>
+    <div className="flex-1 min-w-0">
+      <div className="flex items-center justify-between gap-2 mb-1">
+        <div className="flex items-center gap-2 flex-wrap">
+          <h3 className="font-display font-bold text-foreground group-hover:text-primary transition-colors">{c.name}</h3>
+          <span className="text-[10px] uppercase tracking-wide font-semibold bg-muted text-muted-foreground px-2 py-0.5 rounded">{c.state}</span>
+        </div>
+        <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+      </div>
+      <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2">
+        {c.name} offers world-class LASIK with advanced 7th-gen technology, expert refractive surgeons and accredited centres.
+      </p>
+      <div className="flex items-center gap-2 text-xs">
+        <span className="font-display font-bold text-foreground">{formatPrice(c.priceFrom)} – {formatPrice(c.priceTo)}/eye</span>
+        <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+        <span className="text-muted-foreground">{c.success} success</span>
+      </div>
+    </div>
+  </Link>
+);
+
+const TierSection = ({ tier, title, desc, cities }: { tier: string; title: string; desc: string; cities: CityTier[] }) => (
+  <div className="mb-14 last:mb-0">
+    <div className="flex items-center gap-2 mb-2">
+      <Building2 className="w-5 h-5 text-primary" />
+      <h2 className="font-display font-black text-2xl text-foreground">{title}</h2>
+    </div>
+    <p className="text-sm text-muted-foreground mb-6 max-w-2xl">{desc}</p>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {cities.map((c) => <CityCard key={c.slug} c={c} />)}
+    </div>
+  </div>
+);
 import {
   Accordion,
   AccordionContent,
