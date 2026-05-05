@@ -64,37 +64,58 @@ export const LegacyTwoSegmentResolver = () => {
   const { state = "", city = "" } = useParams();
 
   // Canonical /:state/:city
-  if (KNOWN_STATES.has(state)) return <CityHubPage />;
+  if (KNOWN_STATES.has(state)) {
+    // Union-territory short form: /delhi/<locality> → render LocalityHubPage in place
+    if (city && city !== state && LOCALITY_PARENT[city]) {
+      return <LocalityHubPage paramsOverride={{ state, city: state, locality: city }} />;
+    }
+    return <CityHubPage />;
+  }
 
   // Flat legacy /:city/:locality → redirect to canonical hierarchy
   if (CITY_TO_STATE[state]) {
     const realState = CITY_TO_STATE[state];
+    // If state and city slugs match (delhi, chandigarh, goa), keep flat /<state>/<locality>
+    if (realState === state) {
+      return <LocalityHubPage paramsOverride={{ state: realState, city: state, locality: city }} />;
+    }
     return <Navigate to={`/${realState}/${state}/${city}`} replace />;
   }
 
   // Unknown first segment — try inferring (e.g., "north-delhi" → delhi)
   const inferred = inferParent(state);
+  if (inferred.state === inferred.city) {
+    return <Navigate to={`/${inferred.state}/${city}`} replace />;
+  }
   return <Navigate to={`/${inferred.state}/${inferred.city}/${city}`} replace />;
 };
 
 /**
- * Legacy 3-segment resolver: /:a/:b/:c where segment-1 is a CITY (not state).
- * Example: /mumbai/thane/kalyan → /maharashtra/thane/kalyan
- * Falls back to LocalityHubPage if first segment is a known state.
+ * Legacy 3-segment resolver: /:state/:city/:locality
+ * Collapses /:s/:s/:loc → /:s/:loc for union-territory cities (delhi/delhi/x → /delhi/x).
  */
 export const LegacyThreeSegmentResolver = () => {
   const { state = "", city = "", locality = "" } = useParams();
   const a = state, b = city, c = locality;
-  // Canonical /:state/:city/:locality
-  if (KNOWN_STATES.has(a)) return <LocalityHubPage />;
-  // /:city/:subcity/:locality (e.g., /mumbai/thane/kalyan)
+
+  if (KNOWN_STATES.has(a)) {
+    if (a === b) return <Navigate to={`/${a}/${c}`} replace />;
+    return <LocalityHubPage />;
+  }
   if (CITY_TO_STATE[a]) {
-    return <Navigate to={`/${CITY_TO_STATE[a]}/${b}/${c}`} replace />;
+    const realState = CITY_TO_STATE[a];
+    if (realState === a) return <Navigate to={`/${realState}/${c}`} replace />;
+    return <Navigate to={`/${realState}/${b}/${c}`} replace />;
   }
   if (CITY_TO_STATE[b]) {
-    return <Navigate to={`/${CITY_TO_STATE[b]}/${b}/${c}`} replace />;
+    const realState = CITY_TO_STATE[b];
+    if (realState === b) return <Navigate to={`/${realState}/${c}`} replace />;
+    return <Navigate to={`/${realState}/${b}/${c}`} replace />;
   }
   const inferred = inferParent(c);
+  if (inferred.state === inferred.city) {
+    return <Navigate to={`/${inferred.state}/${c}`} replace />;
+  }
   return <Navigate to={`/${inferred.state}/${inferred.city}/${c}`} replace />;
 };
 
