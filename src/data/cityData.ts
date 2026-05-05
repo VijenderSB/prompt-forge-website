@@ -342,25 +342,31 @@ const FAQ_TEMPLATE = (c: typeof T2_T3[number]): CityFAQ[] => {
   ];
 };
 
-// Generate a second city-specific testimonial automatically
-const SECONDARY_NAMES = [
-  ["Priya", "Anand", "Sneha", "Rahul", "Kavya", "Arjun", "Meera", "Vikas", "Riya", "Karan"],
-  ["Sharma", "Patel", "Iyer", "Gupta", "Reddy", "Nair", "Joshi", "Singh", "Rao", "Mehta"],
+// Generate additional city-specific testimonials automatically
+const FIRST_NAMES = ["Priya", "Anand", "Sneha", "Rahul", "Kavya", "Arjun", "Meera", "Vikas", "Riya", "Karan", "Neha", "Aditya", "Pooja", "Siddharth", "Ananya", "Manish"];
+const LAST_NAMES = ["Sharma", "Patel", "Iyer", "Gupta", "Reddy", "Nair", "Joshi", "Singh", "Rao", "Mehta", "Kapoor", "Bhat", "Chopra", "Menon", "Agarwal", "Pillai"];
+const PROC_POOL = ["Contoura Vision", "Standard LASIK", "SMILE Pro", "EPI LASIK", "WaveLight Plus InnovEyes", "SiLK"];
+const QUOTE_POOL = [
+  (c: string, p: string) => `Living in ${c}, I compared 3 partner hospitals through this directory before booking ${p}. Procedure was over in minutes — saved ₹15,000+ vs the walk-in price quoted at the hospital directly.`,
+  (c: string, p: string) => `As a working professional in ${c}, I needed minimal downtime. ${p} got me back to my desk within 48 hours with crystal-clear vision. The advisor team handled everything including hospital booking.`,
+  (c: string, p: string) => `I had been wearing glasses since school. After comparing options across ${c}, I chose ${p} — the surgeon was patient, the price was transparent, and the results have been life-changing.`,
+  (c: string, p: string) => `${c}'s top eye hospital quoted me ₹50,000+ for ${p}. Through this directory I got the same procedure at the same hospital for 30% less. No hidden costs, no upselling.`,
 ];
-const SECONDARY_PROCS = ["Contoura Vision", "Standard LASIK", "SMILE Pro", "EPI LASIK"];
-const buildSecondTestimonial = (cityName: string, slug: string, occupationHint: string): CityTestimonial => {
-  const h = slug.length;
-  const first = SECONDARY_NAMES[0][h % 10];
-  const last = SECONDARY_NAMES[1][(h * 3) % 10];
-  const proc = SECONDARY_PROCS[h % SECONDARY_PROCS.length];
-  return {
-    name: `${first} ${last}`,
-    age: 24 + (h % 12),
-    occupation: occupationHint,
-    power: `-${(2 + (h % 4)).toFixed(2)}D / -${(2 + ((h + 1) % 4)).toFixed(2)}D`,
-    procedure: proc,
-    quote: `Living in ${cityName}, I was hesitant about LASIK until I compared 3 partner hospitals through this directory. ${proc} was over in minutes — I save ₹15,000+ vs the price the hospital quoted me directly.`,
-  };
+
+const buildExtraTestimonials = (cityName: string, slug: string, occupations: string[]): CityTestimonial[] => {
+  const seed = slug.length;
+  return occupations.map((occ, i) => {
+    const h = seed + i * 7;
+    const proc = PROC_POOL[(h + i) % PROC_POOL.length];
+    return {
+      name: `${FIRST_NAMES[(h + i * 3) % FIRST_NAMES.length]} ${LAST_NAMES[(h * 2 + i) % LAST_NAMES.length]}`,
+      age: 23 + ((h + i * 5) % 15),
+      occupation: occ,
+      power: `-${(2 + ((h + i) % 4)).toFixed(2)}D / -${(2 + ((h + i + 1) % 4)).toFixed(2)}D`,
+      procedure: proc,
+      quote: QUOTE_POOL[(i + 1) % QUOTE_POOL.length](cityName, proc),
+    };
+  });
 };
 
 
