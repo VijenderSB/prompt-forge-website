@@ -230,7 +230,7 @@ const FAQSection = () => {
         <div className="text-center mb-4">
           <span className="text-xs font-bold uppercase tracking-wider text-primary">Got Questions?</span>
         </div>
-        <SectionHeading title="Frequently Asked Questions" subtitle="Everything you need to know about LASIK eye surgery — technologies, eligibility, cost, and recovery." />
+        <SectionHeading title="LASIK FAQs — Delhi NCR Patients" subtitle="Everything Delhi NCR patients ask about LASIK eye surgery — technologies, eligibility, cost, and recovery." />
         <div className="max-w-4xl mx-auto">
           <Accordion type="single" collapsible className="space-y-3">
             {filteredFaqs.map((faq, i) => (
