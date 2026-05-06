@@ -16,6 +16,7 @@ import HealingTouchCentrePage, { isHealingTouchSlug } from "./HealingTouchCentre
 import PoonaEyeCareCentrePage, { isPoonaEyeCareSlug } from "./PoonaEyeCareCentrePage";
 import ArohiCentrePage, { isArohiSlug } from "./ArohiCentrePage";
 import { isCentreSlug } from "@/data/centresData";
+import { LEGACY_BLOG_BY_SLUG } from "@/data/legacyBlogPosts";
 
 /**
  * Catch-all resolver for legacy laser.fyi v1 root URLs (/:slug).
@@ -132,11 +133,14 @@ export const LegacyThreeSegmentResolver = () => {
  * Legacy dated blog: /blog/:y/:m/:d/:slug — render stub so URL responds 200.
  */
 export const LegacyBlogPost = () => {
-  const { slug = "" } = useParams();
-  const title = slug
+  const { slug = "", y = "", m = "", d = "" } = useParams();
+  const meta = LEGACY_BLOG_BY_SLUG[slug];
+  const title = meta?.title || slug
     .split("-")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
+  const date = meta?.date || `${y}-${m}-${d}`;
+  const category = meta?.category || "LASIK Insights";
 
   useEffect(() => {
     document.title = `${title} | Centre for Lasik Blog`;
@@ -156,9 +160,13 @@ export const LegacyBlogPost = () => {
           <a href="/" className="hover:text-primary">Home</a> ›{" "}
           <a href="/blog" className="hover:text-primary">Blog</a>
         </nav>
-        <h1 className="font-display font-black text-3xl md:text-4xl text-foreground mb-4">
+        <h1 className="font-display font-black text-3xl md:text-4xl text-foreground mb-3">
           {title}
         </h1>
+        <p className="text-xs text-muted-foreground mb-6">
+          <span className="inline-block bg-primary/10 text-primary font-medium px-2 py-0.5 rounded-full mr-2">{category}</span>
+          Published {date}
+        </p>
         <p className="text-muted-foreground leading-relaxed mb-6">
           This article is part of the Centre for Lasik knowledge base on LASIK eye
           surgery in India — covering candidacy, procedure options, recovery, costs,

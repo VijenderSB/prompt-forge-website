@@ -3,6 +3,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ConsultationForm from "@/components/ConsultationForm";
 import ProcedureNavStrip from "@/components/ProcedureNavStrip";
 import { PAGE_FAQS } from "@/data/siteData";
+import { LEGACY_BLOG_POSTS } from "@/data/legacyBlogPosts";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Search } from "lucide-react";
@@ -27,20 +28,26 @@ const blogPosts = [
   { slug: "lasik-emi-options", title: "LASIK EMI Options: Make Vision Correction Affordable", excerpt: "Break down your LASIK cost into easy monthly installments starting from ₹2,500/month.", category: "LASIK Cost", date: "2026-02-10" },
 ];
 
-const categories = ["All", ...Array.from(new Set(blogPosts.map(p => p.category)))];
+// Merge curated posts with legacy laser.fyi posts (preserves dated URL paths from sheet).
+const allPosts = [
+  ...blogPosts.map(p => ({ ...p, path: `/blog/${p.slug}` })),
+  ...LEGACY_BLOG_POSTS.map(p => ({ slug: p.slug, title: p.title, excerpt: "", category: p.category, date: p.date, featured: false, path: p.path })),
+].sort((a, b) => b.date.localeCompare(a.date));
+
+const categories = ["All", ...Array.from(new Set(allPosts.map(p => p.category)))];
 const faqs = PAGE_FAQS["blog"] || [];
 
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
 
-  const filtered = blogPosts.filter(post => {
+  const filtered = allPosts.filter(post => {
     const matchCat = activeCategory === "All" || post.category === activeCategory;
-    const matchSearch = !search || post.title.toLowerCase().includes(search.toLowerCase()) || post.excerpt.toLowerCase().includes(search.toLowerCase());
+    const matchSearch = !search || post.title.toLowerCase().includes(search.toLowerCase()) || (post.excerpt || "").toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
   });
 
-  const featured = blogPosts.filter(p => p.featured);
+  const featured = allPosts.filter(p => p.featured);
 
   return (
     <Layout>
@@ -70,7 +77,7 @@ const BlogPage = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {featured.map((post, i) => (
               <motion.article key={post.slug} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                <Link to={`/blog/${post.slug}`} className="block bg-card border border-primary/20 rounded-xl p-6 card-elevated group h-full ring-1 ring-primary/5">
+                <Link to={post.path} className="block bg-card border border-primary/20 rounded-xl p-6 card-elevated group h-full ring-1 ring-primary/5">
                   <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">{post.category}</span>
                   <h2 className="font-display font-bold text-lg text-foreground group-hover:text-primary transition-colors mt-3 mb-2 line-clamp-2">{post.title}</h2>
                   <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
@@ -110,7 +117,7 @@ const BlogPage = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {filtered.map((post, i) => (
               <motion.article key={post.slug} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
-                <Link to={`/blog/${post.slug}`} className="block bg-card border border-border rounded-xl p-6 card-elevated group h-full">
+                <Link to={post.path} className="block bg-card border border-border rounded-xl p-6 card-elevated group h-full">
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">{post.category}</span>
                     <span className="text-xs text-muted-foreground flex items-center gap-1"><Calendar className="w-3 h-3" />{post.date}</span>
