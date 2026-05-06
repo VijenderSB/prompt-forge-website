@@ -75,17 +75,6 @@ export const LegacyTwoSegmentResolver = () => {
 
   // Canonical /:state/:city
   if (KNOWN_STATES.has(state)) {
-    // Procedure-prefixed legacy slug like /delhi/contoura-vision-laser-eye-surgery-in-motihari
-    // — infer real city/state from trailing token and redirect.
-    if (city && /laser-eye-surgery-in-/.test(city)) {
-      const inferred = inferParent(city);
-      if (inferred.state !== state || inferred.city !== city) {
-        if (inferred.state === inferred.city) {
-          return <Navigate to={`/${inferred.state}/${city}`} replace />;
-        }
-        return <Navigate to={`/${inferred.state}/${inferred.city}/${city}`} replace />;
-      }
-    }
     // Union-territory short form: /delhi/<locality> → render LocalityHubPage in place
     if (city && city !== state && LOCALITY_PARENT[city]) {
       return <LocalityHubPage paramsOverride={{ state, city: state, locality: city }} />;
