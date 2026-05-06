@@ -43,9 +43,9 @@ export const LegacyRootResolver = () => {
     const [state, city] = LOCALITY_PARENT[slug];
     return <Navigate to={`/${state}/${city}/${slug}`} replace />;
   }
-  // Procedure-locality slug at root (e.g. /contoura-vision-laser-eye-surgery-in-motihari):
-  // render in place to avoid redirect loops when the locality isn't in our city map.
-  if (/laser-eye-surgery-in-/i.test(slug)) {
+  // Procedure-locality slug at root (e.g. /contoura-vision-laser-eye-surgery-in-motihari
+  // or /epi-innoveyes-laser-eye-surgery-seoni-malwa): render in place.
+  if (/laser-eye-surgery(-in)?-/i.test(slug)) {
     const inferred = inferParent(slug);
     return <LocalityHubPage paramsOverride={{ state: inferred.state, city: inferred.city, locality: slug }} />;
   }
@@ -84,7 +84,7 @@ export const LegacyTwoSegmentResolver = () => {
       return <LocalityHubPage paramsOverride={{ state, city: state, locality: city }} />;
     }
     // Procedure-locality slug mistakenly nested under a state → render in place under that state
-    if (city && /laser-eye-surgery-in-/i.test(city)) {
+    if (city && /laser-eye-surgery(-in)?-/i.test(city)) {
       return <LocalityHubPage paramsOverride={{ state, city: state, locality: city }} />;
     }
     return <CityHubPage />;
