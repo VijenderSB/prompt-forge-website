@@ -19,8 +19,10 @@ const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "A
  * "Lasik & " instead of the redundant "LASIK Eye Surgery in".
  */
 const buildGeoHeading = (name: string, suffix?: string): string => {
-  const full = suffix ? `${name}, ${suffix}` : name;
-  if (/laser eye surgery in/i.test(name)) {
+  const hasProcedure = /laser eye surgery in/i.test(name);
+  // If slug already contains procedure+location, drop redundant suffix.
+  const full = suffix && !hasProcedure ? `${name}, ${suffix}` : name;
+  if (hasProcedure) {
     return `Lasik & ${full}`;
   }
   return `LASIK Eye Surgery in ${full}`;
