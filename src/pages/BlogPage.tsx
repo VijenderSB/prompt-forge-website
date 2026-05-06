@@ -3,6 +3,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ConsultationForm from "@/components/ConsultationForm";
 import ProcedureNavStrip from "@/components/ProcedureNavStrip";
 import { PAGE_FAQS } from "@/data/siteData";
+import { LEGACY_BLOG_POSTS } from "@/data/legacyBlogPosts";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Search } from "lucide-react";
