@@ -28,7 +28,13 @@ const blogPosts = [
   { slug: "lasik-emi-options", title: "LASIK EMI Options: Make Vision Correction Affordable", excerpt: "Break down your LASIK cost into easy monthly installments starting from ₹2,500/month.", category: "LASIK Cost", date: "2026-02-10" },
 ];
 
-const categories = ["All", ...Array.from(new Set(blogPosts.map(p => p.category)))];
+// Merge curated posts with legacy laser.fyi posts (preserves dated URL paths from sheet).
+const allPosts = [
+  ...blogPosts.map(p => ({ ...p, path: `/blog/${p.slug}` })),
+  ...LEGACY_BLOG_POSTS.map(p => ({ slug: p.slug, title: p.title, excerpt: "", category: p.category, date: p.date, featured: false, path: p.path })),
+].sort((a, b) => b.date.localeCompare(a.date));
+
+const categories = ["All", ...Array.from(new Set(allPosts.map(p => p.category)))];
 const faqs = PAGE_FAQS["blog"] || [];
 
 const BlogPage = () => {
