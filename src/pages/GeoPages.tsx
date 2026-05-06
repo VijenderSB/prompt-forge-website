@@ -506,6 +506,14 @@ const ProcedureCityPage = () => {
           </div>
         </div>
       </section>
+      <GeoContentSection location={`${procedure.name}, ${localityName}`} scope="procedure" />
+      <GeoTestimonialsSection location={localityName} />
+      <section className="section-padding bg-surface">
+        <div className="container max-w-2xl">
+          <SectionHeading title={`Book Free ${procedure.name} Consultation`} subtitle="Our LASIK specialist will call you within 30 minutes" />
+          <ConsultationForm variant="section" />
+        </div>
+      </section>
       <CTABanner />
     </Layout>
   );
