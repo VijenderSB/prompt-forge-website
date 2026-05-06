@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Building2, MapPin, Phone, Star, Clock, ChevronRight, Check, ShieldCheck, Award, Quote, GraduationCap, Stethoscope } from "lucide-react";
+import { Building2, MapPin, Phone, Star, Clock, ChevronRight, Check, ShieldCheck, Award, Quote, GraduationCap } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PROCEDURES, BRAND } from "@/data/siteData";
 import { CENTRE_BY_SLUG, type CentreData } from "@/data/centresData";
+import drPiyushKapur from "@/assets/dr-piyush-kapur.png";
 import NotFound from "./NotFound";
 
 const HEALING_TOUCH_SLUGS = new Set([
