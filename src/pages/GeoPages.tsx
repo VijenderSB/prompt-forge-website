@@ -476,8 +476,8 @@ const ProcedureCityPage = () => {
 
       <section className="section-padding">
         <div className="container max-w-3xl">
-          <h2 className="font-display font-bold text-2xl text-foreground mb-4">About {procedure.name}</h2>
-          <p className="text-muted-foreground leading-relaxed mb-8">{procedure.description}</p>
+          <h2 className="font-display font-bold text-2xl text-foreground mb-4">About {procedure.name} in {localityName}</h2>
+          <p className="text-foreground/85 leading-relaxed mb-8 text-[15px]">{buildSeoDescription(localityName, cityName, procedure.name)}</p>
 
           <h2 className="font-display font-bold text-2xl text-foreground mb-4">Cost of {procedure.name} in {cityName}</h2>
           <div className="bg-card border border-border rounded-xl p-6 text-center mb-8">
@@ -498,6 +498,32 @@ const ProcedureCityPage = () => {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section-padding bg-surface">
+        <div className="container max-w-5xl">
+          <SectionHeading title={`${procedure.name} Patient Stories from ${localityName}`} />
+          <div className="grid md:grid-cols-3 gap-5">
+            {buildLocalityTestimonials(localityName, procedure.name).map((t, idx) => (
+              <div key={idx} className="bg-card border border-border rounded-xl p-6 card-elevated">
+                <Quote className="w-7 h-7 text-primary/40 mb-3" />
+                <p className="text-foreground leading-relaxed text-sm mb-5 italic">"{t.quote}"</p>
+                <div className="font-display font-bold text-foreground text-sm">{t.name}, {t.age}</div>
+                <div className="text-xs text-muted-foreground mb-2">{t.occupation} • Power {t.power} • {t.procedure}</div>
+                <div className="flex gap-1">{[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lead form */}
+      <section className="section-padding">
+        <div className="container max-w-2xl">
+          <SectionHeading title={`Book Free ${procedure.name} Consultation in ${localityName}`} subtitle="Our care coordinator will call you within 30 minutes" />
+          <ConsultationForm />
         </div>
       </section>
       <CTABanner />
