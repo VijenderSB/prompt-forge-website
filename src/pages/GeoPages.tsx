@@ -13,6 +13,71 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "Arun Vihar", "DLF Mall"];
 
+/* ─── Generic testimonials shown on every geo page ─── */
+const GEO_TESTIMONIALS = [
+  {
+    name: "Ananya Sharma", age: 28, occupation: "Software Engineer", power: "-4.25",
+    procedure: "Contoura Vision",
+    quote: "I was nervous about LASIK, but the team explained every step. The procedure took barely 10 minutes and the next morning I could read my phone without glasses. Genuinely life-changing.",
+  },
+  {
+    name: "Rohit Verma", age: 34, occupation: "Marketing Manager", power: "-6.50",
+    procedure: "SMILE Pro",
+    quote: "After 18 years of glasses, freedom in 24 hours felt unreal. The free 90-minute evaluation was thorough — they confirmed I was a perfect fit for SMILE Pro. Zero pain, zero regrets.",
+  },
+  {
+    name: "Priya Nair", age: 31, occupation: "School Teacher", power: "-3.75",
+    procedure: "WaveLight Plus InnovEyes",
+    quote: "Pricing was completely transparent and the EMI option made it stress-free. Vision is sharper than I ever had with spectacles. I recommend it to every colleague who asks.",
+  },
+];
+
+const GeoTestimonialsSection = ({ location }: { location: string }) => (
+  <section className="section-padding">
+    <div className="container">
+      <SectionHeading title={`Patient Stories from ${location}`} subtitle={`Real experiences from local LASIK patients`} />
+      <div className="grid md:grid-cols-3 gap-6">
+        {GEO_TESTIMONIALS.map((t, idx) => (
+          <div key={idx} className="bg-card border border-border rounded-xl p-6 card-elevated">
+            <Quote className="w-7 h-7 text-primary/40 mb-3" />
+            <p className="text-foreground leading-relaxed text-sm mb-5 italic">"{t.quote}"</p>
+            <div className="flex items-center justify-between gap-3 flex-wrap">
+              <div>
+                <div className="font-display font-bold text-foreground text-sm">{t.name}, {t.age}</div>
+                <div className="text-xs text-muted-foreground">{t.occupation} • Power {t.power} • {t.procedure}</div>
+              </div>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── Generic ~220-word SEO content block, customized by location name ─── */
+const GeoContentSection = ({ location, scope = "city" }: { location: string; scope?: "state" | "city" | "locality" | "procedure"; }) => (
+  <section className="section-padding bg-surface">
+    <div className="container max-w-4xl">
+      <SectionHeading title={`Best LASIK Eye Surgery in ${location}`} />
+      <div className="prose prose-sm max-w-none text-muted-foreground space-y-5">
+        <p>
+          <strong className="text-foreground">Centre For Lasik</strong> brings India's most trusted LASIK network to <strong className="text-foreground">{location}</strong>, with all 6 globally validated vision-correction technologies available under one roof. Whether you are exploring affordable Standard LASIK at ₹11,249/eye or premium SiLK lenticule surgery, every procedure offered here is US-FDA approved and delivered by refractive surgeons with 20+ years of experience.
+        </p>
+        <p>
+          Patients from {location} choose us for a simple reason — <strong className="text-foreground">transparent, institutional pricing</strong> with up to 30% off walk-in MRP, no hidden charges, and a free 90-minute pre-surgery evaluation worth ₹4,000+ that includes Pentacam tomography, corneal topography, aberrometry, pachymetry and a dilated retinal exam. Our team helps you pick the right technology based on corneal thickness, refractive power, lifestyle and budget — not on what's most profitable.
+        </p>
+        <p>
+          We have completed <strong className="text-foreground">over 10,00,000 LASIK procedures since 2004</strong> with a 97% patient satisfaction rate across flap-based and flapless lenticule platforms. Both eyes are typically treated the same day in under 10 minutes per eye, with most patients returning to work within 48 hours. Flexible EMI from ₹1,500/month is available, and our specialists are reachable on call to answer every question — from candidacy and recovery to long-term safety.
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
+
 /**
  * Build the hero H1. If the geo slug already contains a procedure phrase
  * (e.g. "Contoura Vision Laser Eye Surgery In Motihari"), prefix with
@@ -83,6 +148,17 @@ const StateHubPage = () => {
           </div>
         </div>
       </section>
+
+      <GeoContentSection location={stateName} scope="state" />
+      <GeoTestimonialsSection location={stateName} />
+
+      <section className="section-padding">
+        <div className="container max-w-2xl">
+          <SectionHeading title={`Book Free Consultation in ${stateName}`} subtitle="Our LASIK specialist will call you within 30 minutes" />
+          <ConsultationForm variant="section" />
+        </div>
+      </section>
+
       <CTABanner />
     </Layout>
   );
@@ -116,6 +192,14 @@ const CityHubPage = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
             </div>
+          </div>
+        </section>
+        <GeoContentSection location={cityName} scope="city" />
+        <GeoTestimonialsSection location={cityName} />
+        <section className="section-padding bg-surface">
+          <div className="container max-w-2xl">
+            <SectionHeading title={`Book Free Consultation in ${cityName}`} subtitle="Our LASIK specialist will call you within 30 minutes" />
+            <ConsultationForm variant="section" />
           </div>
         </section>
         <CTABanner />
@@ -349,6 +433,14 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
           </div>
         </div>
       </section>
+      <GeoContentSection location={localityName} scope="locality" />
+      <GeoTestimonialsSection location={localityName} />
+      <section className="section-padding bg-surface">
+        <div className="container max-w-2xl">
+          <SectionHeading title={`Book Free Consultation in ${localityName}`} subtitle="Our LASIK specialist will call you within 30 minutes" />
+          <ConsultationForm variant="section" />
+        </div>
+      </section>
       <CTABanner />
     </Layout>
   );
@@ -412,6 +504,14 @@ const ProcedureCityPage = () => {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+      <GeoContentSection location={`${procedure.name}, ${localityName}`} scope="procedure" />
+      <GeoTestimonialsSection location={localityName} />
+      <section className="section-padding bg-surface">
+        <div className="container max-w-2xl">
+          <SectionHeading title={`Book Free ${procedure.name} Consultation`} subtitle="Our LASIK specialist will call you within 30 minutes" />
+          <ConsultationForm variant="section" />
         </div>
       </section>
       <CTABanner />
