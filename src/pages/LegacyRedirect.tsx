@@ -34,7 +34,6 @@ export const LegacyRootResolver = () => {
   if (STATIC_REDIRECTS[slug]) return <Navigate to={STATIC_REDIRECTS[slug]} replace />;
   if (PROCEDURE_REDIRECTS[slug]) return <Navigate to={PROCEDURE_REDIRECTS[slug]} replace />;
   if (KNOWN_STATES.has(slug)) {
-    // Render the state hub directly (this resolver replaces /:state route)
     return <StateHubPage />;
   }
   if (CITY_TO_STATE[slug]) {
@@ -44,8 +43,13 @@ export const LegacyRootResolver = () => {
     const [state, city] = LOCALITY_PARENT[slug];
     return <Navigate to={`/${state}/${city}/${slug}`} replace />;
   }
+  // Procedure-locality slug at root (e.g. /contoura-vision-laser-eye-surgery-in-motihari):
+  // render in place to avoid redirect loops when the locality isn't in our city map.
+  if (/laser-eye-surgery-in-/i.test(slug)) {
+    const inferred = inferParent(slug);
+    return <LocalityHubPage paramsOverride={{ state: inferred.state, city: inferred.city, locality: slug }} />;
+  }
   if (LEGACY_ROOT_SLUGS.has(slug)) {
-    // Known legacy URL but unmapped — try to infer parent city from "-cityname" suffix
     const inferred = inferParent(slug);
     return <Navigate to={`/${inferred.state}/${inferred.city}/${slug}`} replace />;
   }
