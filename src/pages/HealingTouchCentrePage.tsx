@@ -183,9 +183,11 @@ const HealingTouchCentrePage = () => {
           <SectionHeading title="Meet Your Surgeon" subtitle="Every refractive surgery at this centre is personally performed by Dr. Piyush Kapur." />
           <div className="bg-card border border-border rounded-2xl p-6 md:p-10 card-elevated">
             <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shrink-0">
-                <Stethoscope className="w-10 h-10 text-primary-foreground" />
-              </div>
+              <img
+                src={drPiyushKapur}
+                alt="Dr. Piyush Kapur — Director & Chief Refractive Surgeon, The Healing Touch"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-primary/20 shadow-lg shrink-0"
+              />
               <div className="flex-1">
                 <h3 className="font-display font-bold text-2xl text-foreground">{surgeon.name}</h3>
                 <p className="text-primary font-semibold text-sm mb-1">{surgeon.title}</p>
