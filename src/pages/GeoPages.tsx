@@ -19,12 +19,21 @@ const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "A
  * "Lasik & " instead of the redundant "LASIK Eye Surgery in".
  */
 const buildGeoHeading = (name: string, suffix?: string): string => {
-  const hasProcedure = /laser eye surgery in/i.test(name);
-  // If slug already contains procedure+location, drop redundant suffix.
-  const full = suffix && !hasProcedure ? `${name}, ${suffix}` : name;
-  if (hasProcedure) {
-    return `Lasik & ${full}`;
+  // Case A: slug already contains "Laser Eye Surgery In <Location>"
+  // → "Lasik & <name>"  (e.g. "Lasik & Contoura Vision Laser Eye Surgery In Motihari")
+  if (/laser eye surgery in/i.test(name)) {
+    return `Lasik & ${name}`;
   }
+  // Case B: slug contains "Laser Eye Surgery" but missing the "in" connector
+  // (e.g. "Epi Innoveyes Laser Eye Surgery Seoni Malwa")
+  // → "<Procedure> Laser Eye Surgery in <Location>"
+  const m = name.match(/^(.*?)\s*laser eye surgery\s+(.+)$/i);
+  if (m) {
+    const procedure = m[1].trim();
+    const location = m[2].trim();
+    return `${procedure} Laser Eye Surgery in ${location}`;
+  }
+  const full = suffix ? `${name}, ${suffix}` : name;
   return `LASIK Eye Surgery in ${full}`;
 };
 
