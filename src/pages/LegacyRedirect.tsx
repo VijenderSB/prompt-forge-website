@@ -14,6 +14,7 @@ import { StateHubPage, CityHubPage, LocalityHubPage } from "./GeoPages";
 import CentrePage from "./CentrePage";
 import HealingTouchCentrePage, { isHealingTouchSlug } from "./HealingTouchCentrePage";
 import PoonaEyeCareCentrePage, { isPoonaEyeCareSlug } from "./PoonaEyeCareCentrePage";
+import ArohiCentrePage, { isArohiSlug } from "./ArohiCentrePage";
 import { isCentreSlug } from "@/data/centresData";
 
 /**
