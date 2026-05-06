@@ -102,8 +102,11 @@ const Footer = () => (
             <a href={`tel:${BRAND.phone}`} className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground">
               <Phone className="w-4 h-4" /> {BRAND.phoneDisplay}
             </a>
-            <a href="mailto:info@laser.fyi" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground">
-              <Mail className="w-4 h-4" /> info@laser.fyi
+            <a href="mailto:query@laser.fyi" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground">
+              <Mail className="w-4 h-4" /> query@laser.fyi
+            </a>
+            <a href="mailto:info@transess.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground">
+              <Mail className="w-4 h-4" /> info@transess.com
             </a>
             <div className="flex items-start gap-2 text-primary-foreground/70">
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" /> New Delhi, India
@@ -137,10 +140,14 @@ const Footer = () => (
         </Link>
       </div>
 
-      {/* Copyright */}
+      {/* Legals + Copyright */}
       <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/40">
         <p>© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</p>
-        <p>laser.fyi — India's #1 LASIK Eye Surgery Platform</p>
+        <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <li><Link to="/terms" className="hover:text-primary-foreground transition-colors">Terms &amp; Conditions</Link></li>
+          <li><Link to="/privacy" className="hover:text-primary-foreground transition-colors">Privacy Policy</Link></li>
+          <li><Link to="/disclaimer" className="hover:text-primary-foreground transition-colors">Disclaimer</Link></li>
+        </ul>
       </div>
     </div>
   </footer>
