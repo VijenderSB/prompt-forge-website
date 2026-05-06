@@ -301,8 +301,8 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
   const city = paramsOverride?.city ?? params.city;
   const locality = paramsOverride?.locality ?? params.locality;
   const localityName = locality?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "Locality";
-  const cityName = city?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "City";
-  const stateName = state?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "State";
+  const cityName = city ? city.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : "";
+  const stateName = state ? state.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : "";
 
   return (
     <Layout>
@@ -312,13 +312,21 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
             <nav className="text-primary-foreground/60 text-sm mb-4">
               <Link to="/" className="hover:text-primary-foreground">Home</Link>
               <ChevronRight className="w-3 h-3 inline mx-1" />
-              <Link to={`/${state}`} className="hover:text-primary-foreground">{stateName}</Link>
-              <ChevronRight className="w-3 h-3 inline mx-1" />
-              <Link to={`/${state}/${city}`} className="hover:text-primary-foreground">{cityName}</Link>
-              <ChevronRight className="w-3 h-3 inline mx-1" />
+              {stateName && (
+                <>
+                  <Link to={`/${state}`} className="hover:text-primary-foreground">{stateName}</Link>
+                  <ChevronRight className="w-3 h-3 inline mx-1" />
+                </>
+              )}
+              {cityName && cityName !== stateName && (
+                <>
+                  <Link to={`/${state}/${city}`} className="hover:text-primary-foreground">{cityName}</Link>
+                  <ChevronRight className="w-3 h-3 inline mx-1" />
+                </>
+              )}
               <span className="text-primary-foreground">{localityName}</span>
             </nav>
-            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(localityName, cityName)}</h1>
+            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(localityName, cityName || undefined)}</h1>
             <p className="text-primary-foreground/80">All 6 procedure types from ₹25,500/eye. 30% off this month. Book your free consultation today.</p>
           </motion.div>
         </div>
@@ -330,7 +338,7 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {PROCEDURES.map((p, i) => (
               <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                <Link to={`/${state}/${city}/${locality}/${p.slug}`} className="block bg-card rounded-xl border border-border p-6 card-elevated group">
+                <Link to={state && city ? `/${state}/${city}/${locality}/${p.slug}` : `/${locality}/${p.slug}`} className="block bg-card rounded-xl border border-border p-6 card-elevated group">
                   <h3 className="font-display font-bold text-foreground group-hover:text-primary transition-colors mb-2">{p.name}</h3>
                   <p className="text-sm text-muted-foreground mb-3">{p.tagline}</p>
                   <span className="font-display font-bold text-primary">{`₹${p.price.toLocaleString("en-IN")}`}/eye</span>
