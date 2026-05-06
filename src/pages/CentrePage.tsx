@@ -14,6 +14,21 @@ import { PROCEDURES, BRAND } from "@/data/siteData";
 import { CENTRE_BY_SLUG, type CentreData } from "@/data/centresData";
 import NotFound from "./NotFound";
 
+const centreNarrative = (c: CentreData) => {
+  const loc = c.locality ? c.locality.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ") : null;
+  const where = loc ? `${loc}, ${c.cityName}` : c.cityName;
+  const isAsg = /asg/i.test(c.hospital);
+  const brandLine = isAsg
+    ? `${c.hospital}, ${where} is part of one of India's largest super-specialty eye-care networks, with a national footprint of NABH-aligned hospitals and a clinical reputation built over decades of high-volume refractive and vitreo-retinal surgery.`
+    : `${c.hospital}, ${where} is among the most trusted ophthalmology destinations in ${c.cityName}, recognised for surgical precision, modern diagnostics and patient-first protocols.`;
+  return [
+    brandLine,
+    `For patients seeking spectacle freedom, the ${where} centre delivers the best-in-class laser vision correction experience — Standard LASIK and HD Contoura Vision performed on US-FDA approved excimer and femtosecond platforms, supported by a full pre-operative workup including Pentacam tomography, corneal topography, pachymetry, dry-eye assessment and dilated retinal evaluation. Every case is screened by a fellowship-trained refractive surgeon, and procedures are conducted inside ISO-class modular operating theatres with strict sterile protocols.`,
+    `Beyond LASIK, ${c.hospital}, ${c.cityName} functions as a complete eye-care destination. The centre offers the entire spectrum of ophthalmic services under one roof — phacoemulsification cataract surgery with premium monofocal, toric and trifocal IOLs; medical and surgical retina including intravitreal injections, vitrectomy and diabetic retinopathy management; glaucoma diagnostics and surgery; cornea and keratoconus care including C3R and ICL; oculoplasty, squint and paediatric ophthalmology; neuro-ophthalmology and routine comprehensive eye exams.`,
+    `Booking through Centre for Lasik unlocks transparent institutional pricing, 0% EMI options, free 90-minute diagnostic and a structured post-operative follow-up plan — same surgeon, same OT, same technology, with a single accountable care team coordinating every step.`,
+  ];
+};
+
 const trustBadges = [
   { icon: ShieldCheck, label: "NABH-aligned safety protocols" },
   { icon: Award, label: "US-FDA approved technology" },
