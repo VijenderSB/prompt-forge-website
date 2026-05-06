@@ -11,6 +11,8 @@ import {
 } from "@/data/legacyMaps";
 import NotFound from "./NotFound";
 import { StateHubPage, CityHubPage, LocalityHubPage } from "./GeoPages";
+import CentrePage from "./CentrePage";
+import { isCentreSlug } from "@/data/centresData";
 
 /**
  * Catch-all resolver for legacy laser.fyi v1 root URLs (/:slug).
