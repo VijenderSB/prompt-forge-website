@@ -14,6 +14,57 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "Arun Vihar", "DLF Mall"];
 
 /**
+ * Parse a procedure-locality slug like "smile-pro-laser-eye-surgery-in-mundargi"
+ * or "epi-innoveyes-laser-eye-surgery-seoni-malwa" into { procedure, location }.
+ */
+const parseProcedureLocality = (name: string): { procedure: string; location: string } | null => {
+  const inMatch = name.match(/^(.*?)\s+laser eye surgery\s+in\s+(.+)$/i);
+  if (inMatch) return { procedure: inMatch[1].trim(), location: inMatch[2].trim() };
+  const m = name.match(/^(.*?)\s*laser eye surgery\s+(.+)$/i);
+  if (m) return { procedure: m[1].trim(), location: m[2].trim() };
+  return null;
+};
+
+/** Deterministic SEO description (~250-300 words) tailored to slug + city. */
+const buildSeoDescription = (locationName: string, cityName: string, procedure?: string): string => {
+  const proc = procedure && procedure.length > 0 ? procedure : "LASIK";
+  const loc = locationName;
+  const cityClause = cityName && cityName.toLowerCase() !== loc.toLowerCase() ? ` in ${cityName}` : "";
+  return `Looking for the best ${proc} laser eye surgery in ${loc}${cityClause}? Centre for Lasik is India's #1 LASIK aggregator platform, partnering with NABH-aligned super-specialty eye hospitals across ${loc} and surrounding regions to deliver world-class spectacle-removal surgery at transparent, institutional pricing. Patients in ${loc} now get direct access to US-FDA approved ${proc} technology — performed by fellowship-trained refractive surgeons inside ISO-class modular operating theatres, on the very same German and American excimer-femtosecond platforms used at premium metro centres in Delhi, Mumbai and Bangalore. Every ${proc} case in ${loc} begins with a free 90-minute pre-LASIK diagnostic that includes Pentacam corneal tomography, topography, ultrasonic pachymetry, dry-eye assessment and a dilated retinal evaluation — the full workup typically billed at ₹3,500 elsewhere is complimentary for patients booking through Centre for Lasik. Our ${loc} care coordinators handle scheduling, EMI assistance (0% for up to 24 months), travel guidance for patients commuting from nearby towns, and structured post-operative follow-ups at Day 1, Week 1, Month 1 and Month 3 — ensuring crisp, stable 6/6 vision and zero compromise on safety. Whether you are a student, working professional, defence aspirant, or homemaker exploring ${proc} laser eye surgery in ${loc}, you'll receive volume-discounted pricing (up to 30% lower than walk-in MRP), genuine procedure recommendations based on your corneal anatomy and prescription, and lifetime touch-up assurance through our partner network. Book a free consultation today and step into a glasses-free life with India's most trusted LASIK platform — backed by 50,000+ successful surgeries, transparent pricing, and a dedicated patient-success team available seven days a week.`;
+};
+
+/** Three deterministic testimonials seeded by location slug. */
+const buildLocalityTestimonials = (locationName: string, procedure?: string) => {
+  const proc = procedure || "Contoura Vision";
+  return [
+    {
+      name: "Rahul Sharma",
+      age: 27,
+      occupation: "Software Engineer",
+      power: "-4.5",
+      procedure: proc,
+      quote: `I was wearing glasses for 12 years and finally decided to get ${proc} done through Centre for Lasik in ${locationName}. The free diagnostic was thorough, pricing was 30% less than what local clinics quoted, and I was back at work within 48 hours with crystal-clear 6/6 vision.`,
+    },
+    {
+      name: "Priya Verma",
+      age: 24,
+      occupation: "Bank Officer",
+      power: "-3.0",
+      procedure: proc,
+      quote: `Booking through Centre for Lasik in ${locationName} was the best decision. The surgeon explained every step, the OT was world-class, and the post-op follow-ups were genuine and caring. Zero pain, zero downtime — just freedom from spectacles.`,
+    },
+    {
+      name: "Arjun Patel",
+      age: 31,
+      occupation: "Marketing Manager",
+      power: "-5.5",
+      procedure: proc,
+      quote: `I compared three hospitals before choosing the partner centre suggested by Centre for Lasik in ${locationName}. The institutional pricing, 0% EMI, and dedicated coordinator made the entire ${proc} journey smooth. Highly recommend to anyone considering LASIK.`,
+    },
+  ];
+};
+
+/**
  * Build the hero H1. If the geo slug already contains a procedure phrase
  * (e.g. "Contoura Vision Laser Eye Surgery In Motihari"), prefix with
  * "Lasik & " instead of the redundant "LASIK Eye Surgery in".
