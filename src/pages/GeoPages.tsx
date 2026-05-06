@@ -307,7 +307,7 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
               <ChevronRight className="w-3 h-3 inline mx-1" />
               <span className="text-primary-foreground">{localityName}</span>
             </nav>
-            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Eye Surgery in {localityName}, {cityName}</h1>
+            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(localityName, cityName)}</h1>
             <p className="text-primary-foreground/80">All 6 procedure types from ₹25,500/eye. 30% off this month. Book your free consultation today.</p>
           </motion.div>
         </div>
