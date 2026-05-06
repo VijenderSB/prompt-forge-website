@@ -38,7 +38,7 @@ const CentrePage = () => {
   useEffect(() => {
     if (!centre) return;
     const title = `${centre.hospital}, ${centre.address} | LASIK Centre — Centre for Lasik`;
-    const desc = `Book LASIK eye surgery at ${centre.hospital} in ${centre.address}. Contoura Vision, SMILE Pro and more FDA-approved procedures. Free 90-min consultation. Call ${BRAND.phoneDisplay}.`;
+    const desc = `Book Standard LASIK or HD Contoura Vision at ${centre.hospital} in ${centre.address}. FDA-approved laser vision correction. Free 90-min consultation. Call ${BRAND.phoneDisplay}.`;
     document.title = title;
     let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
     if (!meta) { meta = document.createElement("meta"); meta.name = "description"; document.head.appendChild(meta); }
