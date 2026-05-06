@@ -16,6 +16,7 @@ import HealingTouchCentrePage, { isHealingTouchSlug } from "./HealingTouchCentre
 import PoonaEyeCareCentrePage, { isPoonaEyeCareSlug } from "./PoonaEyeCareCentrePage";
 import ArohiCentrePage, { isArohiSlug } from "./ArohiCentrePage";
 import { isCentreSlug } from "@/data/centresData";
+import { LEGACY_BLOG_BY_SLUG } from "@/data/legacyBlogPosts";
 
 /**
  * Catch-all resolver for legacy laser.fyi v1 root URLs (/:slug).
