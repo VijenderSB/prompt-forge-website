@@ -26,6 +26,7 @@ export const LegacyRootResolver = () => {
   const location = useLocation();
 
   if (isHealingTouchSlug(slug)) return <HealingTouchCentrePage />;
+  if (isPoonaEyeCareSlug(slug)) return <PoonaEyeCareCentrePage />;
   if (isCentreSlug(slug)) return <CentrePage />;
   if (STATIC_REDIRECTS[slug]) return <Navigate to={STATIC_REDIRECTS[slug]} replace />;
   if (PROCEDURE_REDIRECTS[slug]) return <Navigate to={PROCEDURE_REDIRECTS[slug]} replace />;
