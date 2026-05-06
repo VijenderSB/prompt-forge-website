@@ -9,7 +9,6 @@ const navLinks = [
   { label: "LASIK Candidate", href: "/am-i-a-candidate", hasDropdown: true, dropdownKey: "candidate" },
   { label: "LASIK & Packages", href: "/cost", hasDropdown: true, dropdownKey: "packages" },
   { label: "Planning for LASIK", href: "/risk-recovery", hasDropdown: true, dropdownKey: "planning" },
-  { label: "Why Us", href: "/why-us" },
   { label: "FAQ", href: "/faq" },
 ];
 
