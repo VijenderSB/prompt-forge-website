@@ -127,7 +127,7 @@ const CityHubPage = () => {
                 <span className="text-primary-foreground">{cityName}</span>
               </nav>
               <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-3">
-                LASIK Eye Surgery in {cityName}
+                {buildGeoHeading(cityName)}
               </h1>
               <p className="text-primary-foreground/85 mb-4">
                 {data.population} • {data.youthShare} aged 18–40 • {data.spectacleShare} of young adults wear glasses
