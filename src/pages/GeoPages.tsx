@@ -13,6 +13,19 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "Arun Vihar", "DLF Mall"];
 
+/**
+ * Build the hero H1. If the geo slug already contains a procedure phrase
+ * (e.g. "Contoura Vision Laser Eye Surgery In Motihari"), prefix with
+ * "Lasik & " instead of the redundant "LASIK Eye Surgery in".
+ */
+const buildGeoHeading = (name: string, suffix?: string): string => {
+  const full = suffix ? `${name}, ${suffix}` : name;
+  if (/laser eye surgery in/i.test(name)) {
+    return `Lasik & ${full}`;
+  }
+  return `LASIK Eye Surgery in ${full}`;
+};
+
 const StateHubPage = () => {
   const params = useParams();
   const state = params.state || params.slug;
