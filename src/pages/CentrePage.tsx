@@ -153,6 +153,9 @@ const CentrePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Procedures */}
+      <section className="section-padding">
         <div className="container max-w-6xl">
           <SectionHeading title={`LASIK Procedures Available at ${c.hospital}`} subtitle="World-class FDA-approved technology — across all 50+ partner centres in India." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
