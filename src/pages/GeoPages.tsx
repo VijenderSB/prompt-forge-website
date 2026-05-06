@@ -339,14 +339,6 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
             {PROCEDURES.map((p, i) => (
               <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
                 <Link to={state && city ? `/${state}/${city}/${locality}/${p.slug}` : `/${locality}/${p.slug}`} className="block bg-card rounded-xl border border-border p-6 card-elevated group">
-
-      <section className="section-padding">
-        <div className="container">
-          <SectionHeading title={`Procedures Available in ${localityName}`} subtitle="Click any procedure for detailed pricing and information" />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {PROCEDURES.map((p, i) => (
-              <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                <Link to={`/${state}/${city}/${locality}/${p.slug}`} className="block bg-card rounded-xl border border-border p-6 card-elevated group">
                   <h3 className="font-display font-bold text-foreground group-hover:text-primary transition-colors mb-2">{p.name}</h3>
                   <p className="text-sm text-muted-foreground mb-3">{p.tagline}</p>
                   <span className="font-display font-bold text-primary">{`₹${p.price.toLocaleString("en-IN")}`}/eye</span>
