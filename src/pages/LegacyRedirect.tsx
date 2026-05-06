@@ -46,8 +46,9 @@ export const LegacyRootResolver = () => {
   // Procedure-locality slug at root (e.g. /contoura-vision-laser-eye-surgery-in-motihari
   // or /epi-innoveyes-laser-eye-surgery-seoni-malwa): render in place.
   if (/laser-eye-surgery(-in)?-/i.test(slug)) {
-    const inferred = inferParent(slug);
-    return <LocalityHubPage paramsOverride={{ state: inferred.state, city: inferred.city, locality: slug }} />;
+    // Render in place with NO state/city — slug is treated as authoritative,
+    // never prefixed/suffixed with a default geo (e.g. "delhi").
+    return <LocalityHubPage paramsOverride={{ state: "", city: "", locality: slug }} />;
   }
   if (LEGACY_ROOT_SLUGS.has(slug)) {
     const inferred = inferParent(slug);
