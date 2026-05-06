@@ -23,6 +23,15 @@ export const isHealingTouchSlug = (slug: string) => HEALING_TOUCH_SLUGS.has(slug
 
 const TECH_SLUGS = ["innovEyes", "contoura-vision", "epi-lasik", "standard-lasik", "smile-pro", "silk"];
 
+const HEALING_TOUCH_PRICING: Record<string, number> = {
+  "standard-lasik": 14999,
+  "innovEyes": 49999,
+  "contoura-vision": 24999,
+  "epi-lasik": 22500,
+  "silk": 54999,
+  "smile-pro": 69999,
+};
+
 const trustBadges = [
   { icon: ShieldCheck, label: "NABH-aligned safety protocols" },
   { icon: Award, label: "Full LASIK technology suite" },
@@ -228,7 +237,7 @@ const HealingTouchCentrePage = () => {
                 <p className="text-sm text-muted-foreground mb-4">{p.tagline}</p>
                 <div className="mb-4">
                   <p className="text-xs text-muted-foreground">Starting at</p>
-                  <p className="font-display font-black text-2xl text-primary">₹{p.price.toLocaleString("en-IN")}<span className="text-sm text-muted-foreground font-normal">/eye</span></p>
+                  <p className="font-display font-black text-2xl text-primary">₹{(HEALING_TOUCH_PRICING[p.slug] ?? p.price).toLocaleString("en-IN")}<span className="text-sm text-muted-foreground font-normal">/eye</span></p>
                   <p className="text-xs text-muted-foreground">Recovery: {p.recovery} · {p.duration}</p>
                 </div>
                 <ul className="space-y-1.5 mb-4 text-sm">
