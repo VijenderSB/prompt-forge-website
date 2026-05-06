@@ -23,6 +23,15 @@ export const isHealingTouchSlug = (slug: string) => HEALING_TOUCH_SLUGS.has(slug
 
 const TECH_SLUGS = ["innovEyes", "contoura-vision", "epi-lasik", "standard-lasik", "smile-pro", "silk"];
 
+const HEALING_TOUCH_PRICING: Record<string, number> = {
+  "standard-lasik": 14999,
+  "innovEyes": 49999,
+  "contoura-vision": 24999,
+  "epi-lasik": 22500,
+  "silk": 54999,
+  "smile-pro": 69999,
+};
+
 const trustBadges = [
   { icon: ShieldCheck, label: "NABH-aligned safety protocols" },
   { icon: Award, label: "Full LASIK technology suite" },
@@ -50,7 +59,7 @@ const testimonials = [
 
 const faqs = (c: CentreData) => [
   { q: `Which LASIK technologies are available at The Healing Touch, ${c.cityName}?`, a: `The centre offers the complete LASIK technology suite — WaveLight Plus InnovEyes (Alcon), HD Contoura Vision, EPI Contoura, EPI LASIK and conventional Standard LASIK. The right procedure for you is decided after a free 90-minute diagnostic.` },
-  { q: `How much does LASIK cost at The Healing Touch ${c.locality ? c.locality.replace(/-/g, " ") : ""}?`, a: `Indicative pricing through Centre for Lasik: Standard LASIK from ₹11,249/eye, HD Contoura Vision from ₹31,875/eye, EPI LASIK / EPI Contoura from ₹22,500/eye, and WaveLight Plus InnovEyes from ₹61,250/eye. 0% EMI options available up to 24 months.` },
+  { q: `How much does LASIK cost at The Healing Touch ${c.locality ? c.locality.replace(/-/g, " ") : ""}?`, a: `Pricing through Centre for Lasik at this centre: Standard LASIK ₹14,999/eye, HD Contoura Vision ₹24,999/eye, EPI LASIK / EPI Contoura ₹22,500/eye, WaveLight Plus InnovEyes ₹49,999/eye, SiLK ₹54,999/eye and SMILE Pro ₹69,999/eye. 0% EMI options available up to 24 months.` },
   { q: `Who will perform my LASIK procedure?`, a: `Every refractive surgery at The Healing Touch is personally performed by Dr. Piyush Kapur, Director and Chief Refractive Surgeon, with 25+ years of experience and 30,000+ procedures.` },
   { q: `Is the pre-LASIK consultation really free?`, a: `Yes. The complete 90-minute pre-LASIK workup — Pentacam tomography, corneal topography, pachymetry, dry-eye assessment and dilated retinal evaluation — is fully complimentary with no obligation to proceed.` },
   { q: `What is the difference between EPI Contoura and HD Contoura Vision?`, a: `HD Contoura Vision is a flap-based topography-guided LASIK on the WaveLight EX500 platform. EPI Contoura combines surface ablation (no flap, epithelial separation only) with topography guidance — preferred for patients with thin corneas or high-impact lifestyles.` },
@@ -228,7 +237,7 @@ const HealingTouchCentrePage = () => {
                 <p className="text-sm text-muted-foreground mb-4">{p.tagline}</p>
                 <div className="mb-4">
                   <p className="text-xs text-muted-foreground">Starting at</p>
-                  <p className="font-display font-black text-2xl text-primary">₹{p.price.toLocaleString("en-IN")}<span className="text-sm text-muted-foreground font-normal">/eye</span></p>
+                  <p className="font-display font-black text-2xl text-primary">₹{(HEALING_TOUCH_PRICING[p.slug] ?? p.price).toLocaleString("en-IN")}<span className="text-sm text-muted-foreground font-normal">/eye</span></p>
                   <p className="text-xs text-muted-foreground">Recovery: {p.recovery} · {p.duration}</p>
                 </div>
                 <ul className="space-y-1.5 mb-4 text-sm">
