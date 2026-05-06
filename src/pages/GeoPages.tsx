@@ -445,6 +445,8 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
     </Layout>
   );
 };
+
+const ProcedureCityPage = () => {
   const { state, city, locality, procedure: procSlug } = useParams();
   const procedure = PROCEDURES.find(p => p.slug === procSlug) || PROCEDURES[0];
   const localityName = locality?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "Locality";
