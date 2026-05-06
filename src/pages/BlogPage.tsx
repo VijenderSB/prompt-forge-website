@@ -41,13 +41,13 @@ const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
 
-  const filtered = blogPosts.filter(post => {
+  const filtered = allPosts.filter(post => {
     const matchCat = activeCategory === "All" || post.category === activeCategory;
-    const matchSearch = !search || post.title.toLowerCase().includes(search.toLowerCase()) || post.excerpt.toLowerCase().includes(search.toLowerCase());
+    const matchSearch = !search || post.title.toLowerCase().includes(search.toLowerCase()) || (post.excerpt || "").toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
   });
 
-  const featured = blogPosts.filter(p => p.featured);
+  const featured = allPosts.filter(p => p.featured);
 
   return (
     <Layout>
