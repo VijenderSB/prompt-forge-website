@@ -96,7 +96,7 @@ const CityHubPage = () => {
               <ChevronRight className="w-3 h-3 inline mx-1" />
               <span className="text-primary-foreground">{cityName}</span>
             </nav>
-            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Eye Surgery in {cityName}</h1>
+            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(cityName)}</h1>
             <p className="text-primary-foreground/80">All 6 FDA-approved LASIK procedures available. Book a free consultation.</p>
           </div>
         </section>
