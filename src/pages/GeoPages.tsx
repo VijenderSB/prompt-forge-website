@@ -194,6 +194,14 @@ const CityHubPage = () => {
             </div>
           </div>
         </section>
+        <GeoContentSection location={cityName} scope="city" />
+        <GeoTestimonialsSection location={cityName} />
+        <section className="section-padding bg-surface">
+          <div className="container max-w-2xl">
+            <SectionHeading title={`Book Free Consultation in ${cityName}`} subtitle="Our LASIK specialist will call you within 30 minutes" />
+            <ConsultationForm variant="section" />
+          </div>
+        </section>
         <CTABanner />
       </Layout>
     );
