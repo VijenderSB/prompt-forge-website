@@ -13,6 +13,19 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "Arun Vihar", "DLF Mall"];
 
+/**
+ * Build the hero H1. If the geo slug already contains a procedure phrase
+ * (e.g. "Contoura Vision Laser Eye Surgery In Motihari"), prefix with
+ * "Lasik & " instead of the redundant "LASIK Eye Surgery in".
+ */
+const buildGeoHeading = (name: string, suffix?: string): string => {
+  const full = suffix ? `${name}, ${suffix}` : name;
+  if (/laser eye surgery in/i.test(name)) {
+    return `Lasik & ${full}`;
+  }
+  return `LASIK Eye Surgery in ${full}`;
+};
+
 const StateHubPage = () => {
   const params = useParams();
   const state = params.state || params.slug;
@@ -31,7 +44,7 @@ const StateHubPage = () => {
               <ChevronRight className="w-3 h-3 inline mx-1" />
               <span className="text-primary-foreground">{stateName}</span>
             </nav>
-            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Eye Surgery in {stateName}</h1>
+            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(stateName)}</h1>
             <p className="text-primary-foreground/80">Best LASIK centres in {stateName}. Contoura Vision from ₹25,500/eye. 30% off. Book free consultation.</p>
           </motion.div>
         </div>
@@ -83,7 +96,7 @@ const CityHubPage = () => {
               <ChevronRight className="w-3 h-3 inline mx-1" />
               <span className="text-primary-foreground">{cityName}</span>
             </nav>
-            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Eye Surgery in {cityName}</h1>
+            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(cityName)}</h1>
             <p className="text-primary-foreground/80">All 6 FDA-approved LASIK procedures available. Book a free consultation.</p>
           </div>
         </section>
@@ -114,7 +127,7 @@ const CityHubPage = () => {
                 <span className="text-primary-foreground">{cityName}</span>
               </nav>
               <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-3">
-                LASIK Eye Surgery in {cityName}
+                {buildGeoHeading(cityName)}
               </h1>
               <p className="text-primary-foreground/85 mb-4">
                 {data.population} • {data.youthShare} aged 18–40 • {data.spectacleShare} of young adults wear glasses
@@ -294,7 +307,7 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
               <ChevronRight className="w-3 h-3 inline mx-1" />
               <span className="text-primary-foreground">{localityName}</span>
             </nav>
-            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">LASIK Eye Surgery in {localityName}, {cityName}</h1>
+            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(localityName, cityName)}</h1>
             <p className="text-primary-foreground/80">All 6 procedure types from ₹25,500/eye. 30% off this month. Book your free consultation today.</p>
           </motion.div>
         </div>
