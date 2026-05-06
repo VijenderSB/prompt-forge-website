@@ -84,7 +84,7 @@ export const LegacyTwoSegmentResolver = () => {
       return <LocalityHubPage paramsOverride={{ state, city: state, locality: city }} />;
     }
     // Procedure-locality slug mistakenly nested under a state → render in place under that state
-    if (city && /laser-eye-surgery-in-/i.test(city)) {
+    if (city && /laser-eye-surgery(-in)?-/i.test(city)) {
       return <LocalityHubPage paramsOverride={{ state, city: state, locality: city }} />;
     }
     return <CityHubPage />;
