@@ -178,7 +178,7 @@ export const LegacyBlogPost = () => {
         {meta?.contentHtml ? (
           <article
             className="prose prose-slate max-w-none prose-headings:font-display prose-headings:text-foreground prose-a:text-primary prose-img:rounded-lg"
-            dangerouslySetInnerHTML={{ __html: meta.contentHtml }}
+            dangerouslySetInnerHTML={{ __html: meta.contentHtml.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/i, "") }}
           />
         ) : (
           <>
