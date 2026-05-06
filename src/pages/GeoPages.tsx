@@ -433,12 +433,18 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
           </div>
         </div>
       </section>
+      <GeoContentSection location={localityName} scope="locality" />
+      <GeoTestimonialsSection location={localityName} />
+      <section className="section-padding bg-surface">
+        <div className="container max-w-2xl">
+          <SectionHeading title={`Book Free Consultation in ${localityName}`} subtitle="Our LASIK specialist will call you within 30 minutes" />
+          <ConsultationForm variant="section" />
+        </div>
+      </section>
       <CTABanner />
     </Layout>
   );
 };
-
-const ProcedureCityPage = () => {
   const { state, city, locality, procedure: procSlug } = useParams();
   const procedure = PROCEDURES.find(p => p.slug === procSlug) || PROCEDURES[0];
   const localityName = locality?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "Locality";
