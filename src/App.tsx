@@ -24,6 +24,7 @@ import InternationalGuidelinesPage from "./pages/InternationalGuidelinesPage";
 import LasikTechnologyPage from "./pages/LasikTechnologyPage";
 import { StateHubPage, CityHubPage, LocalityHubPage, ProcedureCityPage } from "./pages/GeoPages";
 import { LegacyRootResolver, LegacyBlogPost, LegacyTwoSegmentResolver, LegacyThreeSegmentResolver } from "./pages/LegacyRedirect";
+import { TermsPage, PrivacyPage, DisclaimerPage } from "./pages/LegalPage";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,9 @@ const App = () => (
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/international-guidelines" element={<InternationalGuidelinesPage />} />
           <Route path="/lasik-technology" element={<LasikTechnologyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/disclaimer" element={<DisclaimerPage />} />
           {/* Legacy laser.fyi v1 dated blog URLs (e.g. /blog/2019/09/01/post-slug) */}
           <Route path="/blog/:y/:m/:d/:slug" element={<LegacyBlogPost />} />
           {/* New geo hierarchy */}
