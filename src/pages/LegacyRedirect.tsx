@@ -11,6 +11,8 @@ import {
 } from "@/data/legacyMaps";
 import NotFound from "./NotFound";
 import { StateHubPage, CityHubPage, LocalityHubPage } from "./GeoPages";
+import CentrePage from "./CentrePage";
+import { isCentreSlug } from "@/data/centresData";
 
 /**
  * Catch-all resolver for legacy laser.fyi v1 root URLs (/:slug).
@@ -21,6 +23,7 @@ export const LegacyRootResolver = () => {
   const { slug = "" } = useParams();
   const location = useLocation();
 
+  if (isCentreSlug(slug)) return <CentrePage />;
   if (STATIC_REDIRECTS[slug]) return <Navigate to={STATIC_REDIRECTS[slug]} replace />;
   if (PROCEDURE_REDIRECTS[slug]) return <Navigate to={PROCEDURE_REDIRECTS[slug]} replace />;
   if (KNOWN_STATES.has(slug)) {
