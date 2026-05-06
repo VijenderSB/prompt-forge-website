@@ -31,7 +31,7 @@ const blogPosts = [
 // Merge curated posts with legacy laser.fyi posts (preserves dated URL paths from sheet).
 const allPosts = [
   ...blogPosts.map(p => ({ ...p, path: `/blog/${p.slug}` })),
-  ...LEGACY_BLOG_POSTS.map(p => ({ slug: p.slug, title: p.title, excerpt: "", category: p.category, date: p.date, featured: false, path: p.path })),
+  ...LEGACY_BLOG_POSTS.map(p => ({ slug: p.slug, title: p.title, excerpt: (p.excerptHtml || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().slice(0, 180), category: p.category, date: p.date, featured: false, path: p.path })),
 ].sort((a, b) => b.date.localeCompare(a.date));
 
 const categories = ["All", ...Array.from(new Set(allPosts.map(p => p.category)))];

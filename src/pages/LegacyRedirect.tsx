@@ -167,16 +167,25 @@ export const LegacyBlogPost = () => {
           <span className="inline-block bg-primary/10 text-primary font-medium px-2 py-0.5 rounded-full mr-2">{category}</span>
           Published {date}
         </p>
-        <p className="text-muted-foreground leading-relaxed mb-6">
-          This article is part of the Centre for Lasik knowledge base on LASIK eye
-          surgery in India — covering candidacy, procedure options, recovery, costs,
-          and post-operative care across 3,700+ Indian cities.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-6">
-          Browse our complete LASIK resource library for expert guides on Contoura
-          Vision, SMILE Pro, WaveLight InnovEyes, SiLK, and other FDA-approved
-          procedures available at our partner centres.
-        </p>
+        {meta?.contentHtml ? (
+          <article
+            className="prose prose-slate max-w-none prose-headings:font-display prose-headings:text-foreground prose-a:text-primary prose-img:rounded-lg"
+            dangerouslySetInnerHTML={{ __html: meta.contentHtml }}
+          />
+        ) : (
+          <>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              This article is part of the Centre for Lasik knowledge base on LASIK eye
+              surgery in India — covering candidacy, procedure options, recovery, costs,
+              and post-operative care across 3,700+ Indian cities.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              Browse our complete LASIK resource library for expert guides on Contoura
+              Vision, SMILE Pro, WaveLight InnovEyes, SiLK, and other FDA-approved
+              procedures available at our partner centres.
+            </p>
+          </>
+        )}
         <div className="flex flex-wrap gap-3 mt-8">
           <a href="/blog" className="text-primary font-semibold hover:underline">Browse all articles →</a>
           <span className="text-muted-foreground">·</span>
