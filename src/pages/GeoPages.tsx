@@ -355,29 +355,46 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
   const cityName = city?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "City";
   const stateName = state?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "State";
 
+  const parsed = parseProcedureLocality(localityName);
+  const displayLocation = parsed?.location || localityName;
+  const procedureLabel = parsed?.procedure;
+  const seoDesc = buildSeoDescription(displayLocation, cityName, procedureLabel);
+  const testimonials = buildLocalityTestimonials(displayLocation, procedureLabel);
+
   return (
     <Layout>
       <section className="hero-gradient section-padding">
-        <div className="container text-center max-w-3xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <nav className="text-primary-foreground/60 text-sm mb-4">
-              <Link to="/" className="hover:text-primary-foreground">Home</Link>
-              <ChevronRight className="w-3 h-3 inline mx-1" />
-              <Link to={`/${state}`} className="hover:text-primary-foreground">{stateName}</Link>
-              <ChevronRight className="w-3 h-3 inline mx-1" />
-              <Link to={`/${state}/${city}`} className="hover:text-primary-foreground">{cityName}</Link>
-              <ChevronRight className="w-3 h-3 inline mx-1" />
-              <span className="text-primary-foreground">{localityName}</span>
-            </nav>
-            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(localityName, cityName)}</h1>
-            <p className="text-primary-foreground/80">All 6 procedure types from ₹25,500/eye. 30% off this month. Book your free consultation today.</p>
-          </motion.div>
+        <div className="container">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <nav className="text-primary-foreground/60 text-sm mb-4">
+                <Link to="/" className="hover:text-primary-foreground">Home</Link>
+                <ChevronRight className="w-3 h-3 inline mx-1" />
+                <Link to={`/${state}`} className="hover:text-primary-foreground">{stateName}</Link>
+                <ChevronRight className="w-3 h-3 inline mx-1" />
+                <Link to={`/${state}/${city}`} className="hover:text-primary-foreground">{cityName}</Link>
+                <ChevronRight className="w-3 h-3 inline mx-1" />
+                <span className="text-primary-foreground">{localityName}</span>
+              </nav>
+              <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(localityName, cityName)}</h1>
+              <p className="text-primary-foreground/80">All 6 procedure types from ₹25,500/eye. 30% off this month. Book your free consultation today.</p>
+            </motion.div>
+            <ConsultationForm variant="hero" />
+          </div>
         </div>
       </section>
 
+      {/* SEO description */}
       <section className="section-padding">
+        <div className="container max-w-4xl">
+          <SectionHeading title={`About ${procedureLabel ? `${procedureLabel} ` : ""}LASIK in ${displayLocation}`} />
+          <p className="text-foreground/85 leading-relaxed text-[15px]">{seoDesc}</p>
+        </div>
+      </section>
+
+      <section className="section-padding bg-surface">
         <div className="container">
-          <SectionHeading title={`Procedures Available in ${localityName}`} subtitle="Click any procedure for detailed pricing and information" />
+          <SectionHeading title={`Procedures Available in ${displayLocation}`} subtitle="Click any procedure for detailed pricing and information" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {PROCEDURES.map((p, i) => (
               <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
@@ -390,6 +407,32 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section-padding">
+        <div className="container max-w-5xl">
+          <SectionHeading title={`Patient Stories from ${displayLocation}`} subtitle="Real outcomes from local LASIK patients" />
+          <div className="grid md:grid-cols-3 gap-5">
+            {testimonials.map((t, idx) => (
+              <div key={idx} className="bg-card border border-border rounded-xl p-6 card-elevated">
+                <Quote className="w-7 h-7 text-primary/40 mb-3" />
+                <p className="text-foreground leading-relaxed text-sm mb-5 italic">"{t.quote}"</p>
+                <div className="font-display font-bold text-foreground text-sm">{t.name}, {t.age}</div>
+                <div className="text-xs text-muted-foreground mb-2">{t.occupation} • Power {t.power} • {t.procedure}</div>
+                <div className="flex gap-1">{[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lead form */}
+      <section className="section-padding bg-surface">
+        <div className="container max-w-2xl">
+          <SectionHeading title={`Book Free Consultation in ${displayLocation}`} subtitle="Our care coordinator will call you within 30 minutes" />
+          <ConsultationForm />
         </div>
       </section>
       <CTABanner />
