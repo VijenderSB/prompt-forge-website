@@ -21,9 +21,11 @@ const trustBadges = [
   { icon: Check, label: "Free 90-min diagnostic" },
 ];
 
+
+
 const faqs = (c: CentreData) => [
-  { q: `What LASIK procedures are available at ${c.hospital}, ${c.cityName}?`, a: `This centre offers the full Centre for Lasik procedure menu — Standard LASIK, Contoura Vision, SMILE Pro, WaveLight Plus InnovEyes and SiLK — with the same institutional pricing across India.` },
-  { q: `What is the cost of LASIK at ${c.hospital} in ${c.address}?`, a: `Pricing starts at ₹8,999/eye for Standard LASIK and goes up to ₹75,000/eye for SiLK. You unlock up to 30% off the walk-in MRP through Centre for Lasik's volume-aggregator model.` },
+  { q: `What LASIK procedures are available at ${c.hospital}, ${c.cityName}?`, a: `This centre offers the full Centre for Lasik procedure menu — Standard LASIK, Contoura Vision, SMILE Pro, WaveLight Plus InnovEyes and SiLK — with consistent institutional pricing across India.` },
+  { q: `What is the cost of LASIK at ${c.hospital} in ${c.address}?`, a: `Pricing starts at ₹8,999/eye for Standard LASIK and goes up to ₹75,000/eye for SiLK. Speak to our care team for a personalised quote based on your prescription and chosen procedure.` },
   { q: `Is the consultation at ${c.hospital} really free?`, a: `Yes. The full 90-minute pre-LASIK diagnostic — Pentacam, topography, pachymetry and retinal evaluation — is completely free with no obligation to proceed.` },
   { q: `How do I book an appointment at ${c.hospital}?`, a: `Call ${BRAND.phoneDisplay} or fill the consultation form on this page. Our care team will confirm your slot at the ${c.locality ? `${c.locality.replace(/-/g, " ")}, ` : ""}${c.cityName} centre within 30 minutes.` },
   { q: `What are the operating hours?`, a: `Monday to Saturday, 9:00 AM to 7:00 PM. Sunday consultations available by appointment for select procedures.` },
