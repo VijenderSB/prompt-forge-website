@@ -77,7 +77,7 @@ const BlogPage = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {featured.map((post, i) => (
               <motion.article key={post.slug} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                <Link to={`/blog/${post.slug}`} className="block bg-card border border-primary/20 rounded-xl p-6 card-elevated group h-full ring-1 ring-primary/5">
+                <Link to={post.path} className="block bg-card border border-primary/20 rounded-xl p-6 card-elevated group h-full ring-1 ring-primary/5">
                   <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">{post.category}</span>
                   <h2 className="font-display font-bold text-lg text-foreground group-hover:text-primary transition-colors mt-3 mb-2 line-clamp-2">{post.title}</h2>
                   <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
@@ -117,7 +117,7 @@ const BlogPage = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {filtered.map((post, i) => (
               <motion.article key={post.slug} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
-                <Link to={`/blog/${post.slug}`} className="block bg-card border border-border rounded-xl p-6 card-elevated group h-full">
+                <Link to={post.path} className="block bg-card border border-border rounded-xl p-6 card-elevated group h-full">
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">{post.category}</span>
                     <span className="text-xs text-muted-foreground flex items-center gap-1"><Calendar className="w-3 h-3" />{post.date}</span>
