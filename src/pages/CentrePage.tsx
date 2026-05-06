@@ -76,7 +76,7 @@ const CentrePage = () => {
                 LASIK Eye Surgery at {c.hospital}, {localityDisplay ? `${localityDisplay}, ` : ""}{c.cityName}
               </h1>
               <p className="text-primary-foreground/80 mb-6">
-                Contoura Vision, SMILE Pro, WaveLight Plus InnovEyes and SiLK — all FDA-approved procedures available at this centre. Free 90-minute consultation, no obligation.
+                Standard LASIK and HD Contoura Vision — FDA-approved laser vision correction available at this centre. Free 90-minute consultation, no obligation.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-6 max-w-md">
                 {trustBadges.map(b => (
