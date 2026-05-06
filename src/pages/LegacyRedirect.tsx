@@ -13,6 +13,7 @@ import NotFound from "./NotFound";
 import { StateHubPage, CityHubPage, LocalityHubPage } from "./GeoPages";
 import CentrePage from "./CentrePage";
 import HealingTouchCentrePage, { isHealingTouchSlug } from "./HealingTouchCentrePage";
+import PoonaEyeCareCentrePage, { isPoonaEyeCareSlug } from "./PoonaEyeCareCentrePage";
 import { isCentreSlug } from "@/data/centresData";
 
 /**
