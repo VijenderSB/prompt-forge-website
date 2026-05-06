@@ -14,57 +14,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const sampleLocalities = ["Sector 18", "Sector 62", "Sector 15", "Sector 44", "Arun Vihar", "DLF Mall"];
 
 /**
- * Parse a procedure-locality slug like "smile-pro-laser-eye-surgery-in-mundargi"
- * or "epi-innoveyes-laser-eye-surgery-seoni-malwa" into { procedure, location }.
- */
-const parseProcedureLocality = (name: string): { procedure: string; location: string } | null => {
-  const inMatch = name.match(/^(.*?)\s+laser eye surgery\s+in\s+(.+)$/i);
-  if (inMatch) return { procedure: inMatch[1].trim(), location: inMatch[2].trim() };
-  const m = name.match(/^(.*?)\s*laser eye surgery\s+(.+)$/i);
-  if (m) return { procedure: m[1].trim(), location: m[2].trim() };
-  return null;
-};
-
-/** Deterministic SEO description (~250-300 words) tailored to slug + city. */
-const buildSeoDescription = (locationName: string, cityName: string, procedure?: string): string => {
-  const proc = procedure && procedure.length > 0 ? procedure : "LASIK";
-  const loc = locationName;
-  const cityClause = cityName && cityName.toLowerCase() !== loc.toLowerCase() ? ` in ${cityName}` : "";
-  return `Looking for the best ${proc} laser eye surgery in ${loc}${cityClause}? Centre for Lasik is India's #1 LASIK aggregator platform, partnering with NABH-aligned super-specialty eye hospitals across ${loc} and surrounding regions to deliver world-class spectacle-removal surgery at transparent, institutional pricing. Patients in ${loc} now get direct access to US-FDA approved ${proc} technology — performed by fellowship-trained refractive surgeons inside ISO-class modular operating theatres, on the very same German and American excimer-femtosecond platforms used at premium metro centres in Delhi, Mumbai and Bangalore. Every ${proc} case in ${loc} begins with a free 90-minute pre-LASIK diagnostic that includes Pentacam corneal tomography, topography, ultrasonic pachymetry, dry-eye assessment and a dilated retinal evaluation — the full workup typically billed at ₹3,500 elsewhere is complimentary for patients booking through Centre for Lasik. Our ${loc} care coordinators handle scheduling, EMI assistance (0% for up to 24 months), travel guidance for patients commuting from nearby towns, and structured post-operative follow-ups at Day 1, Week 1, Month 1 and Month 3 — ensuring crisp, stable 6/6 vision and zero compromise on safety. Whether you are a student, working professional, defence aspirant, or homemaker exploring ${proc} laser eye surgery in ${loc}, you'll receive volume-discounted pricing (up to 30% lower than walk-in MRP), genuine procedure recommendations based on your corneal anatomy and prescription, and lifetime touch-up assurance through our partner network. Book a free consultation today and step into a glasses-free life with India's most trusted LASIK platform — backed by 50,000+ successful surgeries, transparent pricing, and a dedicated patient-success team available seven days a week.`;
-};
-
-/** Three deterministic testimonials seeded by location slug. */
-const buildLocalityTestimonials = (locationName: string, procedure?: string) => {
-  const proc = procedure || "Contoura Vision";
-  return [
-    {
-      name: "Rahul Sharma",
-      age: 27,
-      occupation: "Software Engineer",
-      power: "-4.5",
-      procedure: proc,
-      quote: `I was wearing glasses for 12 years and finally decided to get ${proc} done through Centre for Lasik in ${locationName}. The free diagnostic was thorough, pricing was 30% less than what local clinics quoted, and I was back at work within 48 hours with crystal-clear 6/6 vision.`,
-    },
-    {
-      name: "Priya Verma",
-      age: 24,
-      occupation: "Bank Officer",
-      power: "-3.0",
-      procedure: proc,
-      quote: `Booking through Centre for Lasik in ${locationName} was the best decision. The surgeon explained every step, the OT was world-class, and the post-op follow-ups were genuine and caring. Zero pain, zero downtime — just freedom from spectacles.`,
-    },
-    {
-      name: "Arjun Patel",
-      age: 31,
-      occupation: "Marketing Manager",
-      power: "-5.5",
-      procedure: proc,
-      quote: `I compared three hospitals before choosing the partner centre suggested by Centre for Lasik in ${locationName}. The institutional pricing, 0% EMI, and dedicated coordinator made the entire ${proc} journey smooth. Highly recommend to anyone considering LASIK.`,
-    },
-  ];
-};
-
-/**
  * Build the hero H1. If the geo slug already contains a procedure phrase
  * (e.g. "Contoura Vision Laser Eye Surgery In Motihari"), prefix with
  * "Lasik & " instead of the redundant "LASIK Eye Surgery in".
@@ -145,10 +94,8 @@ const CityHubPage = () => {
   const cityName = data?.name || city?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "City";
   const stateName = data?.state || state?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "State";
 
-  // Fallback for unmapped cities — generic but SEO-rich
+  // Fallback for unmapped cities — minimal generic content
   if (!data) {
-    const seoDesc = buildSeoDescription(cityName, cityName);
-    const testimonials = buildLocalityTestimonials(cityName);
     return (
       <Layout>
         <section className="hero-gradient section-padding">
@@ -165,38 +112,10 @@ const CityHubPage = () => {
           </div>
         </section>
         <section className="section-padding">
-          <div className="container max-w-4xl">
-            <SectionHeading title={`About LASIK in ${cityName}`} />
-            <p className="text-foreground/85 leading-relaxed text-[15px]">{seoDesc}</p>
-          </div>
-        </section>
-        <section className="section-padding bg-surface">
           <div className="container">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
             </div>
-          </div>
-        </section>
-        <section className="section-padding">
-          <div className="container max-w-5xl">
-            <SectionHeading title={`Patient Stories from ${cityName}`} />
-            <div className="grid md:grid-cols-3 gap-5">
-              {testimonials.map((t, idx) => (
-                <div key={idx} className="bg-card border border-border rounded-xl p-6 card-elevated">
-                  <Quote className="w-7 h-7 text-primary/40 mb-3" />
-                  <p className="text-foreground leading-relaxed text-sm mb-5 italic">"{t.quote}"</p>
-                  <div className="font-display font-bold text-foreground text-sm">{t.name}, {t.age}</div>
-                  <div className="text-xs text-muted-foreground mb-2">{t.occupation} • Power {t.power} • {t.procedure}</div>
-                  <div className="flex gap-1">{[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="section-padding bg-surface">
-          <div className="container max-w-2xl">
-            <SectionHeading title={`Book Free Consultation in ${cityName}`} subtitle="Our care coordinator will call you within 30 minutes" />
-            <ConsultationForm />
           </div>
         </section>
         <CTABanner />
@@ -385,46 +304,29 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
   const cityName = city?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "City";
   const stateName = state?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "State";
 
-  const parsed = parseProcedureLocality(localityName);
-  const displayLocation = parsed?.location || localityName;
-  const procedureLabel = parsed?.procedure;
-  const seoDesc = buildSeoDescription(displayLocation, cityName, procedureLabel);
-  const testimonials = buildLocalityTestimonials(displayLocation, procedureLabel);
-
   return (
     <Layout>
       <section className="hero-gradient section-padding">
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-              <nav className="text-primary-foreground/60 text-sm mb-4">
-                <Link to="/" className="hover:text-primary-foreground">Home</Link>
-                <ChevronRight className="w-3 h-3 inline mx-1" />
-                <Link to={`/${state}`} className="hover:text-primary-foreground">{stateName}</Link>
-                <ChevronRight className="w-3 h-3 inline mx-1" />
-                <Link to={`/${state}/${city}`} className="hover:text-primary-foreground">{cityName}</Link>
-                <ChevronRight className="w-3 h-3 inline mx-1" />
-                <span className="text-primary-foreground">{localityName}</span>
-              </nav>
-              <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(localityName, cityName)}</h1>
-              <p className="text-primary-foreground/80">All 6 procedure types from ₹25,500/eye. 30% off this month. Book your free consultation today.</p>
-            </motion.div>
-            <ConsultationForm variant="hero" />
-          </div>
+        <div className="container text-center max-w-3xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <nav className="text-primary-foreground/60 text-sm mb-4">
+              <Link to="/" className="hover:text-primary-foreground">Home</Link>
+              <ChevronRight className="w-3 h-3 inline mx-1" />
+              <Link to={`/${state}`} className="hover:text-primary-foreground">{stateName}</Link>
+              <ChevronRight className="w-3 h-3 inline mx-1" />
+              <Link to={`/${state}/${city}`} className="hover:text-primary-foreground">{cityName}</Link>
+              <ChevronRight className="w-3 h-3 inline mx-1" />
+              <span className="text-primary-foreground">{localityName}</span>
+            </nav>
+            <h1 className="font-display font-black text-3xl md:text-4xl text-primary-foreground mb-4">{buildGeoHeading(localityName, cityName)}</h1>
+            <p className="text-primary-foreground/80">All 6 procedure types from ₹25,500/eye. 30% off this month. Book your free consultation today.</p>
+          </motion.div>
         </div>
       </section>
 
-      {/* SEO description */}
       <section className="section-padding">
-        <div className="container max-w-4xl">
-          <SectionHeading title={`About ${procedureLabel ? `${procedureLabel} ` : ""}LASIK in ${displayLocation}`} />
-          <p className="text-foreground/85 leading-relaxed text-[15px]">{seoDesc}</p>
-        </div>
-      </section>
-
-      <section className="section-padding bg-surface">
         <div className="container">
-          <SectionHeading title={`Procedures Available in ${displayLocation}`} subtitle="Click any procedure for detailed pricing and information" />
+          <SectionHeading title={`Procedures Available in ${localityName}`} subtitle="Click any procedure for detailed pricing and information" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {PROCEDURES.map((p, i) => (
               <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
@@ -437,32 +339,6 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="section-padding">
-        <div className="container max-w-5xl">
-          <SectionHeading title={`Patient Stories from ${displayLocation}`} subtitle="Real outcomes from local LASIK patients" />
-          <div className="grid md:grid-cols-3 gap-5">
-            {testimonials.map((t, idx) => (
-              <div key={idx} className="bg-card border border-border rounded-xl p-6 card-elevated">
-                <Quote className="w-7 h-7 text-primary/40 mb-3" />
-                <p className="text-foreground leading-relaxed text-sm mb-5 italic">"{t.quote}"</p>
-                <div className="font-display font-bold text-foreground text-sm">{t.name}, {t.age}</div>
-                <div className="text-xs text-muted-foreground mb-2">{t.occupation} • Power {t.power} • {t.procedure}</div>
-                <div className="flex gap-1">{[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Lead form */}
-      <section className="section-padding bg-surface">
-        <div className="container max-w-2xl">
-          <SectionHeading title={`Book Free Consultation in ${displayLocation}`} subtitle="Our care coordinator will call you within 30 minutes" />
-          <ConsultationForm />
         </div>
       </section>
       <CTABanner />
@@ -506,8 +382,8 @@ const ProcedureCityPage = () => {
 
       <section className="section-padding">
         <div className="container max-w-3xl">
-          <h2 className="font-display font-bold text-2xl text-foreground mb-4">About {procedure.name} in {localityName}</h2>
-          <p className="text-foreground/85 leading-relaxed mb-8 text-[15px]">{buildSeoDescription(localityName, cityName, procedure.name)}</p>
+          <h2 className="font-display font-bold text-2xl text-foreground mb-4">About {procedure.name}</h2>
+          <p className="text-muted-foreground leading-relaxed mb-8">{procedure.description}</p>
 
           <h2 className="font-display font-bold text-2xl text-foreground mb-4">Cost of {procedure.name} in {cityName}</h2>
           <div className="bg-card border border-border rounded-xl p-6 text-center mb-8">
@@ -528,32 +404,6 @@ const ProcedureCityPage = () => {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="section-padding bg-surface">
-        <div className="container max-w-5xl">
-          <SectionHeading title={`${procedure.name} Patient Stories from ${localityName}`} />
-          <div className="grid md:grid-cols-3 gap-5">
-            {buildLocalityTestimonials(localityName, procedure.name).map((t, idx) => (
-              <div key={idx} className="bg-card border border-border rounded-xl p-6 card-elevated">
-                <Quote className="w-7 h-7 text-primary/40 mb-3" />
-                <p className="text-foreground leading-relaxed text-sm mb-5 italic">"{t.quote}"</p>
-                <div className="font-display font-bold text-foreground text-sm">{t.name}, {t.age}</div>
-                <div className="text-xs text-muted-foreground mb-2">{t.occupation} • Power {t.power} • {t.procedure}</div>
-                <div className="flex gap-1">{[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Lead form */}
-      <section className="section-padding">
-        <div className="container max-w-2xl">
-          <SectionHeading title={`Book Free ${procedure.name} Consultation in ${localityName}`} subtitle="Our care coordinator will call you within 30 minutes" />
-          <ConsultationForm />
         </div>
       </section>
       <CTABanner />
