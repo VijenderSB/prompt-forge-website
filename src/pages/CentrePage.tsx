@@ -38,7 +38,7 @@ const CentrePage = () => {
   useEffect(() => {
     if (!centre) return;
     const title = `${centre.hospital}, ${centre.address} | LASIK Centre — Centre for Lasik`;
-    const desc = `Book LASIK eye surgery at ${centre.hospital} in ${centre.address}. Contoura Vision from ₹25,500/eye, up to 30% off. Free 90-min consultation. Call ${BRAND.phoneDisplay}.`;
+    const desc = `Book LASIK eye surgery at ${centre.hospital} in ${centre.address}. Contoura Vision, SMILE Pro and more FDA-approved procedures. Free 90-min consultation. Call ${BRAND.phoneDisplay}.`;
     document.title = title;
     let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
     if (!meta) { meta = document.createElement("meta"); meta.name = "description"; document.head.appendChild(meta); }
@@ -76,7 +76,7 @@ const CentrePage = () => {
                 LASIK Eye Surgery at {c.hospital}, {localityDisplay ? `${localityDisplay}, ` : ""}{c.cityName}
               </h1>
               <p className="text-primary-foreground/80 mb-6">
-                Contoura Vision, SMILE Pro, WaveLight Plus InnovEyes and SiLK — all FDA-approved procedures available at this centre with up to <strong className="text-primary-foreground">30% institutional discount</strong>. Free 90-minute consultation, no obligation.
+                Contoura Vision, SMILE Pro, WaveLight Plus InnovEyes and SiLK — all FDA-approved procedures available at this centre. Free 90-minute consultation, no obligation.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-6 max-w-md">
                 {trustBadges.map(b => (
@@ -140,8 +140,8 @@ const CentrePage = () => {
           <SectionHeading title={`Why Choose ${c.hospital} via Centre for Lasik`} />
           <ul className="space-y-4">
             {[
-              `Up to 30% off MRP through Centre for Lasik's volume-aggregator institutional pricing.`,
-              `Same surgeon, same FDA-approved technology, same operating suite — discounted rate.`,
+              `Institutional pricing across Centre for Lasik's volume-aggregator network.`,
+              `Same surgeon, same FDA-approved technology, same operating suite.`,
               `Pre-LASIK Pentacam, topography, pachymetry, retinal scan included free.`,
               `0% EMI options up to 24 months across all procedures.`,
               `Post-op care plan with follow-ups at Day 1, Week 1, Month 1, Month 3.`,
