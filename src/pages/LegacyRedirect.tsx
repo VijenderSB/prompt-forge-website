@@ -134,14 +134,13 @@ export const LegacyThreeSegmentResolver = () => {
  */
 export const LegacyBlogPost = () => {
   const { slug = "", y = "", m = "", d = "" } = useParams();
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { LEGACY_BLOG_BY_SLUG } = require("@/data/legacyBlogPosts");
   const meta = LEGACY_BLOG_BY_SLUG[slug];
   const title = meta?.title || slug
     .split("-")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
   const date = meta?.date || `${y}-${m}-${d}`;
+  const category = meta?.category || "LASIK Insights";
 
   useEffect(() => {
     document.title = `${title} | Centre for Lasik Blog`;
