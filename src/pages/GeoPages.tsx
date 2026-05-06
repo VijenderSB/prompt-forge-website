@@ -145,8 +145,10 @@ const CityHubPage = () => {
   const cityName = data?.name || city?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "City";
   const stateName = data?.state || state?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") || "State";
 
-  // Fallback for unmapped cities — minimal generic content
+  // Fallback for unmapped cities — generic but SEO-rich
   if (!data) {
+    const seoDesc = buildSeoDescription(cityName, cityName);
+    const testimonials = buildLocalityTestimonials(cityName);
     return (
       <Layout>
         <section className="hero-gradient section-padding">
@@ -163,10 +165,38 @@ const CityHubPage = () => {
           </div>
         </section>
         <section className="section-padding">
+          <div className="container max-w-4xl">
+            <SectionHeading title={`About LASIK in ${cityName}`} />
+            <p className="text-foreground/85 leading-relaxed text-[15px]">{seoDesc}</p>
+          </div>
+        </section>
+        <section className="section-padding bg-surface">
           <div className="container">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {PROCEDURES.map((p, i) => <ProcedureCard key={p.id} procedure={p} index={i} />)}
             </div>
+          </div>
+        </section>
+        <section className="section-padding">
+          <div className="container max-w-5xl">
+            <SectionHeading title={`Patient Stories from ${cityName}`} />
+            <div className="grid md:grid-cols-3 gap-5">
+              {testimonials.map((t, idx) => (
+                <div key={idx} className="bg-card border border-border rounded-xl p-6 card-elevated">
+                  <Quote className="w-7 h-7 text-primary/40 mb-3" />
+                  <p className="text-foreground leading-relaxed text-sm mb-5 italic">"{t.quote}"</p>
+                  <div className="font-display font-bold text-foreground text-sm">{t.name}, {t.age}</div>
+                  <div className="text-xs text-muted-foreground mb-2">{t.occupation} • Power {t.power} • {t.procedure}</div>
+                  <div className="flex gap-1">{[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="section-padding bg-surface">
+          <div className="container max-w-2xl">
+            <SectionHeading title={`Book Free Consultation in ${cityName}`} subtitle="Our care coordinator will call you within 30 minutes" />
+            <ConsultationForm />
           </div>
         </section>
         <CTABanner />
