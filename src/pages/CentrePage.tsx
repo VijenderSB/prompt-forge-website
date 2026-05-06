@@ -139,8 +139,20 @@ const CentrePage = () => {
         </div>
       </section>
 
-      {/* Procedures */}
+      {/* About this centre — narrative */}
       <section className="section-padding bg-surface">
+        <div className="container max-w-4xl">
+          <SectionHeading
+            title={`About ${c.hospital}, ${c.cityName}`}
+            subtitle="A complete eye-care destination — from laser vision correction to retina, cataract and beyond."
+          />
+          <div className="space-y-5">
+            {centreNarrative(c).map((para, i) => (
+              <p key={i} className="text-foreground/85 leading-relaxed text-[15px]">{para}</p>
+            ))}
+          </div>
+        </div>
+      </section>
         <div className="container max-w-6xl">
           <SectionHeading title={`LASIK Procedures Available at ${c.hospital}`} subtitle="World-class FDA-approved technology — across all 50+ partner centres in India." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
