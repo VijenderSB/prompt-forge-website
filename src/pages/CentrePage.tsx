@@ -129,7 +129,7 @@ const CentrePage = () => {
         <div className="container max-w-6xl">
           <SectionHeading title={`LASIK Procedures Available at ${c.hospital}`} subtitle="World-class FDA-approved technology — across all 50+ partner centres in India." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {PROCEDURES.map((p) => (
+            {PROCEDURES.filter(p => p.slug === "standard-lasik" || p.slug === "contoura-vision").map((p) => (
               <Link key={p.id} to={`/procedures/${p.slug}`} className="bg-card border border-border rounded-xl p-5 card-elevated hover:border-primary transition-colors">
                 <h3 className="font-display font-bold text-foreground mb-1">{p.name}</h3>
                 <p className="text-sm text-muted-foreground mb-3">{p.tagline}</p>
