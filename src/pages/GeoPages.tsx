@@ -310,9 +310,69 @@ const CityHubPage = () => {
               <div className="text-xs text-muted-foreground mt-1">18–40 wearing spectacles</div>
             </div>
           </div>
-          <div className="bg-card border border-border rounded-xl p-6 max-w-3xl mx-auto">
-            <p className="text-muted-foreground leading-relaxed text-sm">{data.background}</p>
-          </div>
+          {(() => {
+            // Split the background paragraph into readable chunks for better scannability
+            const sentences = data.background.split(/(?<=\.)\s+/).filter(Boolean);
+            const third = Math.ceil(sentences.length / 3);
+            const para1 = sentences.slice(0, third).join(" ");
+            const para2 = sentences.slice(third, third * 2).join(" ");
+            const para3 = sentences.slice(third * 2).join(" ");
+            const lo = data.pricing[0].price.toLocaleString("en-IN");
+            const hi = data.pricing[5].price.toLocaleString("en-IN");
+            const procedures = ["Standard LASIK", "Contoura Vision", "WaveLight Plus InnovEyes", "EPI LASIK", "SMILE Pro", "SiLK"];
+            return (
+              <div className="max-w-3xl mx-auto space-y-6">
+                <article className="bg-card border border-border rounded-2xl p-6 md:p-8 card-elevated">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Sparkles className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-semibold uppercase tracking-wider text-primary">Local LASIK Overview</span>
+                  </div>
+                  <h3 className="font-display font-bold text-xl md:text-2xl text-foreground mb-4 leading-snug">
+                    LASIK Eye Surgery in {cityName} — {data.state}
+                  </h3>
+                  <div className="space-y-4 text-muted-foreground text-[15px] leading-relaxed">
+                    {para1 && <p>{para1}</p>}
+                    {para2 && <p>{para2}</p>}
+                    {para3 && <p>{para3}</p>}
+                  </div>
+
+                  {/* Price callout */}
+                  <div className="mt-6 grid sm:grid-cols-2 gap-3">
+                    <div className="bg-primary/5 border border-primary/15 rounded-xl p-4 flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <IndianRupee className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">Cost in {cityName}</div>
+                        <div className="font-display font-black text-foreground">₹{lo} – ₹{hi} <span className="text-xs font-medium text-muted-foreground">/eye</span></div>
+                      </div>
+                    </div>
+                    <div className="bg-accent/5 border border-accent/15 rounded-xl p-4 flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                        <ShieldCheck className="w-5 h-5 text-accent" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">Free Evaluation</div>
+                        <div className="font-display font-black text-foreground">90-min Pentacam <span className="text-xs font-medium text-muted-foreground">worth ₹4,000</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Procedure pills */}
+                  <div className="mt-6">
+                    <div className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold mb-3">All 6 FDA-Approved Procedures Available</div>
+                    <div className="flex flex-wrap gap-2">
+                      {procedures.map((p) => (
+                        <span key={p} className="inline-flex items-center gap-1.5 text-xs font-medium bg-muted text-foreground px-3 py-1.5 rounded-full border border-border">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-primary" /> {p}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              </div>
+            );
+          })()}
         </div>
       </section>
 
