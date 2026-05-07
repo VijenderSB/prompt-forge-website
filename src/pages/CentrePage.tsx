@@ -21,6 +21,15 @@ const centreNarrative = (c: CentreData) => {
   const isAsg = /asg/i.test(c.hospital);
   const isDiva = /diva-eye-institute/i.test(c.slug);
   const isKhanna = /khanna-eye-centre/i.test(c.slug);
+  const isIsha = /isha-netralaya/i.test(c.slug);
+  if (isIsha) {
+    return [
+      `Isha Netralaya, ${where} is part of one of the Mumbai Metropolitan Region's most respected ophthalmology networks, with multiple super-specialty centres across Mumbai, Thane, Kalyan, Ambernath and Pimpri-Chinchwad. The group is recognised for its premium refractive programme — particularly Femto Contoura Vision and the next-generation WaveLight Plus InnovEyes flapless platform.`,
+      `For patients seeking spectacle freedom, the ${where} centre delivers a fully personalised laser vision-correction experience. Every case is screened on the Pentacam, corneal topographer and InnovEyes ray-tracing diagnostic suite, then matched to the most appropriate procedure — Femto Contoura Vision, WaveLight Plus InnovEyes Flapless, or full WaveLight Plus InnovEyes — all performed inside ISO-class modular operating theatres on US-FDA approved excimer and femtosecond platforms.`,
+      `Beyond LASIK, Isha Netralaya functions as a complete eye-care destination — premium cataract surgery with monofocal, toric, multifocal and EDOF IOLs; medical and surgical retina; glaucoma, cornea and ICL care; paediatric ophthalmology and comprehensive diagnostics. Operating hours are typically 10:00 AM – 7:00 PM, Monday to Saturday.`,
+      `Booking through Centre for Lasik unlocks transparent institutional pricing, 0% EMI options, free 90-minute diagnostic and a structured post-operative follow-up plan — same surgeon, same OT, same technology, with a single accountable care team coordinating every step.`,
+    ];
+  }
   if (isDiva) {
     return [
       `Diva Eye Institute, ${where} is an NABH-accredited eye-care hospital with over eight years of clinical excellence in advanced ophthalmology. Led by Dr. Dipan Desai and Dr. Kaushik Solanki, the institute has built a strong reputation in Ahmedabad for robotic cataract surgery, modern refractive procedures and a fully integrated, multidisciplinary eye-care model.`,
@@ -379,6 +388,50 @@ const CentrePage = () => {
                     { name: "Femto HD LASIK", best: "Bladeless + HD wavefront-optimised", price: "₹39,999" },
                     { name: "PRK", best: "Surface ablation candidates", price: "₹17,999" },
                     { name: "Epi-LASIK", best: "Thin corneas / surface ablation", price: "₹25,499" },
+                  ].map((row, i) => (
+                    <tr key={row.name} className={i !== 0 ? "border-t border-border" : ""}>
+                      <td className="px-5 py-4 font-semibold text-foreground">{row.name}</td>
+                      <td className="px-5 py-4 text-sm text-muted-foreground hidden sm:table-cell">{row.best}</td>
+                      <td className="px-5 py-4 text-right font-display font-bold text-primary">{row.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mt-4 text-center">
+              Prices are per eye and exclusive of GST. 0% EMI options available up to 24 months. Final eligibility and quote confirmed after free pre-LASIK diagnostic.
+            </p>
+            <div className="flex justify-center mt-6">
+              <Button asChild size="lg" className="font-semibold px-8">
+                <a href="#book">Book Free Pre-LASIK Diagnostic</a>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Centre-specific pricing — Isha Netralaya */}
+      {/isha-netralaya/i.test(c.slug) && (
+        <section className="section-padding bg-surface">
+          <div className="container max-w-5xl">
+            <SectionHeading
+              title={`LASIK & Refractive Pricing at ${c.hospital}`}
+              subtitle="Transparent institutional pricing — per eye, inclusive of pre-op diagnostics and standard post-op follow-ups."
+            />
+            <div className="overflow-hidden rounded-2xl border border-border bg-card card-elevated">
+              <table className="w-full text-left">
+                <thead className="bg-primary/5 border-b border-border">
+                  <tr>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm">Procedure</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm hidden sm:table-cell">Best For</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm text-right">Price (per eye)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { name: "Contoura Vision Femto", best: "Bladeless + topography-guided HD vision", price: "₹45,000" },
+                    { name: "WaveLight Plus InnovEyes Flapless", best: "Flapless ray-tracing personalised LASIK", price: "₹59,999" },
+                    { name: "WaveLight Plus InnovEyes", best: "Premium ray-tracing personalised LASIK", price: "₹74,999" },
                   ].map((row, i) => (
                     <tr key={row.name} className={i !== 0 ? "border-t border-border" : ""}>
                       <td className="px-5 py-4 font-semibold text-foreground">{row.name}</td>

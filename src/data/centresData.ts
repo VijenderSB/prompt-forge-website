@@ -185,6 +185,15 @@ export const CENTRES: CentreData[] = [
   make("centre-for-lasik-diva-eye-institute-ambawadi-ahmedabad", "Diva Eye Institute", "ahmedabad", "Ahmedabad", "gujarat", "Gujarat", "ambawadi"),
   // Khanna Eye Centre
   make("centre-for-lasik-khanna-eye-centre-model-town-new-delhi", "Khanna Eye Centre", "delhi", "New Delhi", "delhi", "Delhi", "model-town"),
+  // Isha Netralaya
+  make("centre-for-lasik-isha-netralaya-ambernath-east-mumbai", "Isha Netralaya", "ambernath", "Ambernath", "maharashtra", "Maharashtra", "ambernath-east"),
+  make("centre-for-lasik-isha-netralaya-kalyan-karnik-road-mumbai", "Isha Netralaya", "kalyan", "Kalyan", "maharashtra", "Maharashtra", "karnik-road"),
+  make("centre-for-lasik-isha-netralaya-kalyan-khadakpada-mumbai", "Isha Netralaya", "kalyan", "Kalyan", "maharashtra", "Maharashtra", "khadakpada"),
+  make("centre-for-lasik-isha-netralaya-dadar-kohinoor-square-mumbai", "Isha Netralaya", "mumbai", "Mumbai", "maharashtra", "Maharashtra", "dadar-kohinoor-square"),
+  make("centre-for-lasik-isha-netralaya-ghatkopar-west-rajhans-helix-mumbai", "Isha Netralaya", "mumbai", "Mumbai", "maharashtra", "Maharashtra", "ghatkopar-west-rajhans-helix"),
+  make("centre-for-lasik-isha-netralaya-pimpri-chinchwad-pune", "Isha Netralaya", "pune", "Pune", "maharashtra", "Maharashtra", "pimpri-chinchwad"),
+  make("centre-for-lasik-isha-netralaya-thane-coral-square-ghodbunder-road", "Isha Netralaya", "thane", "Thane", "maharashtra", "Maharashtra", "coral-square-ghodbunder-road"),
+  make("centre-for-lasik-isha-netralaya-thane-dev-corpora-cadbury-junction", "Isha Netralaya", "thane", "Thane", "maharashtra", "Maharashtra", "dev-corpora-cadbury-junction"),
 ];
 
 export const CENTRE_BY_SLUG: Record<string, CentreData> =
