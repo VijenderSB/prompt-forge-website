@@ -13,6 +13,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { PROCEDURES, BRAND } from "@/data/siteData";
 import { CENTRE_BY_SLUG, type CentreData } from "@/data/centresData";
 import NotFound from "./NotFound";
+import drTewariPhoto from "@/assets/dr-vk-tewari.png";
 
 const centreNarrative = (c: CentreData) => {
   const loc = c.locality ? c.locality.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ") : null;
