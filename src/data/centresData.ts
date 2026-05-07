@@ -178,6 +178,9 @@ export const CENTRES: CentreData[] = [
   make("centre-for-lasik-vasan-eye-care-mukarampura-karimnagar", "Vasan Eye Care", "karimnagar", "Karimnagar", "telangana", "Telangana", "mukarampura"),
   make("centre-for-lasik-vasan-eye-care-nehru-nagar-khammam", "Vasan Eye Care", "khammam", "Khammam", "telangana", "Telangana", "nehru-nagar"),
   make("centre-for-lasik-vasan-eye-care-sai-nagar-hanamkonda", "Vasan Eye Care", "hanamkonda", "Hanamkonda", "telangana", "Telangana", "sai-nagar"),
+  // Tewari Eye Centre
+  make("centre-for-lasik-tewari-eye-centre-sector-55-noida", "Tewari Eye Centre", "noida", "Noida", "uttar-pradesh", "Uttar Pradesh", "sector-55"),
+  make("centre-for-lasik-tewari-eye-centre-vaishali-ghaziabad", "Tewari Eye Centre", "ghaziabad", "Ghaziabad", "uttar-pradesh", "Uttar Pradesh", "vaishali"),
 ];
 
 export const CENTRE_BY_SLUG: Record<string, CentreData> =
