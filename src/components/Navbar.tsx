@@ -49,12 +49,9 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-xl border-b border-border">
-      <div className="container grid grid-cols-3 lg:flex lg:items-center lg:justify-between h-[88px] items-center">
-        {/* Spacer for mobile grid centering */}
-        <div className="lg:hidden" />
-
-        <Link to="/" className="flex items-center justify-center lg:justify-start" aria-label={`${BRAND.name} — laser.fyi`}>
-          <img src={logo} alt={`${BRAND.name} logo`} className="h-[64px] lg:h-[74px] w-auto object-contain" />
+      <div className="container grid grid-cols-3 lg:flex lg:items-center lg:justify-between h-[97px] items-center">
+        <Link to="/" className="flex items-center gap-2 col-start-2 justify-self-center lg:col-auto lg:justify-self-auto" aria-label={BRAND.name}>
+          <img src={logo} alt={`${BRAND.name} logo`} className="h-[70px] lg:h-[81px] w-auto object-contain" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-0.5">
