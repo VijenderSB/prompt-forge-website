@@ -7,9 +7,11 @@ import { useToast } from "@/hooks/use-toast";
 interface ConsultationFormProps {
   variant?: "hero" | "section" | "compact";
   className?: string;
+  centre?: string;
+  centreId?: string;
 }
 
-const ConsultationForm = ({ variant = "hero", className = "" }: ConsultationFormProps) => {
+const ConsultationForm = ({ variant = "hero", className = "", centre, centreId }: ConsultationFormProps) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -29,7 +31,23 @@ const ConsultationForm = ({ variant = "hero", className = "" }: ConsultationForm
       toast({ title: "Security check failed. Please try again.", variant: "destructive" });
       return;
     }
-    toast({ title: "Thank you!", description: "Our LASIK specialist will call you within 30 minutes." });
+    const payload = {
+      name,
+      phone,
+      email,
+      centre: centre || "General enquiry",
+      centreId: centreId || null,
+      source: typeof window !== "undefined" ? window.location.pathname : "",
+      submittedAt: new Date().toISOString(),
+    };
+    // Lead payload — `centre` / `centreId` route the lead to the correct centre team
+    console.info("[lead]", payload);
+    toast({
+      title: "Thank you!",
+      description: centre
+        ? `Our team at ${centre} will call you within 30 minutes.`
+        : "Our LASIK specialist will call you within 30 minutes.",
+    });
     setName(""); setPhone(""); setEmail(""); setCaptcha("");
   };
 
@@ -60,6 +78,11 @@ const ConsultationForm = ({ variant = "hero", className = "" }: ConsultationForm
       <p className="text-sm text-muted-foreground mb-5">
         {isHero ? "Get a callback within 30 minutes" : "Our specialist will call you within 30 minutes"}
       </p>
+      {centre && (
+        <div className="mb-4 rounded-lg border border-primary/20 bg-primary/5 px-3 py-2 text-xs text-foreground">
+          Booking for: <span className="font-semibold text-primary">{centre}</span>
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-3">
         <Input placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} className="bg-background border-border h-11" />
         <Input placeholder="Phone Number" type="tel" value={phone} onChange={e => setPhone(e.target.value)} className="bg-background border-border h-11" />

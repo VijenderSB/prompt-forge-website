@@ -111,7 +111,7 @@ const CentrePage = () => {
                 </a>
               </div>
             </motion.div>
-            <div id="book"><ConsultationForm variant="hero" /></div>
+            <div id="book"><ConsultationForm variant="hero" centre={`${c.hospital}, ${localityDisplay ? `${localityDisplay}, ` : ""}${c.cityName}`} centreId={c.slug} /></div>
           </div>
         </div>
       </section>
