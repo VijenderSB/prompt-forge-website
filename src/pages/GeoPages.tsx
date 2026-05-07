@@ -7,7 +7,7 @@ import ConsultationForm from "@/components/ConsultationForm";
 import { PROCEDURES, TOP_CITIES, slugify, discountedPrice } from "@/data/siteData";
 import { getCityData } from "@/data/cityData";
 import { motion } from "framer-motion";
-import { MapPin, ChevronRight, Building2, Users, Eye, Quote, Star, Globe, BadgePercent, ShieldCheck, Stethoscope, Plane, CreditCard } from "lucide-react";
+import { MapPin, ChevronRight, Building2, Users, Eye, Quote, Star, Globe, BadgePercent, ShieldCheck, Stethoscope, Plane, CreditCard, IndianRupee, CheckCircle2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
