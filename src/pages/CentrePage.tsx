@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Building2, MapPin, Phone, Star, Clock, ChevronRight, Check, ShieldCheck, Award } from "lucide-react";
+import { Building2, MapPin, Phone, Star, Clock, ChevronRight, Check, ShieldCheck, Award, UserRound } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
@@ -153,6 +153,48 @@ const CentrePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Chief Surgeon profile — Tewari Eye Centre only */}
+      {/tewari-eye-centre/i.test(c.slug) && (
+        <section className="section-padding">
+          <div className="container max-w-4xl">
+            <SectionHeading
+              title="Chief Eye Surgeon"
+              subtitle={`Meet the lead refractive surgeon at ${c.hospital}, ${localityDisplay ? `${localityDisplay}, ` : ""}${c.cityName}.`}
+            />
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 card-elevated">
+              <div className="grid md:grid-cols-[140px_1fr] gap-6 items-start">
+                <div className="w-32 h-32 md:w-[140px] md:h-[140px] rounded-2xl bg-primary/10 flex items-center justify-center mx-auto md:mx-0">
+                  <UserRound className="w-16 h-16 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-display font-bold text-2xl text-foreground mb-1">Dr. V. K. Tewari</h3>
+                  <p className="text-primary font-semibold text-sm mb-4">Chief Eye Surgeon · Tewari Eye Centre</p>
+                  <p className="text-foreground/85 leading-relaxed text-[15px] mb-5">
+                    Dr. V. K. Tewari is the Chief Eye Surgeon at Tewari Eye Centre and leads the refractive and cataract surgical programme across both the Sector 55, Noida and Vaishali, Ghaziabad units. With decades of high-volume surgical experience, Dr. Tewari is widely regarded as one of the most trusted refractive and cataract surgeons in the Delhi NCR region.
+                  </p>
+                  <h4 className="font-display font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">Areas of Expertise</h4>
+                  <ul className="grid sm:grid-cols-2 gap-2.5">
+                    {[
+                      "Laser Eye Surgery (LASIK & Contoura Vision)",
+                      "Lasik Cataract Surgery",
+                      "Toric Intraocular Lenses (Toric IOLs)",
+                      "Multifocal & EDOF Lens Implants",
+                      "Implantable Collamer Lenses (ICL)",
+                      "Premium Refractive Cataract Surgery",
+                    ].map(item => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-foreground">
+                        <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Procedures */}
       <section className="section-padding">
