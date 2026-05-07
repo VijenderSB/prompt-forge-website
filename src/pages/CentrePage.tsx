@@ -410,6 +410,50 @@ const CentrePage = () => {
         </section>
       )}
 
+      {/* Centre-specific pricing — Isha Netralaya */}
+      {/isha-netralaya/i.test(c.slug) && (
+        <section className="section-padding bg-surface">
+          <div className="container max-w-5xl">
+            <SectionHeading
+              title={`LASIK & Refractive Pricing at ${c.hospital}`}
+              subtitle="Transparent institutional pricing — per eye, inclusive of pre-op diagnostics and standard post-op follow-ups."
+            />
+            <div className="overflow-hidden rounded-2xl border border-border bg-card card-elevated">
+              <table className="w-full text-left">
+                <thead className="bg-primary/5 border-b border-border">
+                  <tr>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm">Procedure</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm hidden sm:table-cell">Best For</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm text-right">Price (per eye)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { name: "Contoura Vision Femto", best: "Bladeless + topography-guided HD vision", price: "₹45,000" },
+                    { name: "WaveLight Plus InnovEyes Flapless", best: "Flapless ray-tracing personalised LASIK", price: "₹59,999" },
+                    { name: "WaveLight Plus InnovEyes", best: "Premium ray-tracing personalised LASIK", price: "₹74,999" },
+                  ].map((row, i) => (
+                    <tr key={row.name} className={i !== 0 ? "border-t border-border" : ""}>
+                      <td className="px-5 py-4 font-semibold text-foreground">{row.name}</td>
+                      <td className="px-5 py-4 text-sm text-muted-foreground hidden sm:table-cell">{row.best}</td>
+                      <td className="px-5 py-4 text-right font-display font-bold text-primary">{row.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mt-4 text-center">
+              Prices are per eye and exclusive of GST. 0% EMI options available up to 24 months. Final eligibility and quote confirmed after free pre-LASIK diagnostic.
+            </p>
+            <div className="flex justify-center mt-6">
+              <Button asChild size="lg" className="font-semibold px-8">
+                <a href="#book">Book Free Pre-LASIK Diagnostic</a>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Procedures */}
       <section className="section-padding">
         <div className="container max-w-6xl">
