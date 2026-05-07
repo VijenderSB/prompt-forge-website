@@ -99,6 +99,7 @@ const CostPage = () => (
         </div>
       </div>
     </section>
+    <AboutPlatformSection />
     <CTABanner withForm />
   </Layout>
 );
