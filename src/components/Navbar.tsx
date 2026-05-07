@@ -49,9 +49,9 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-xl border-b border-border">
-      <div className="container grid grid-cols-3 lg:flex lg:items-center lg:justify-between h-[110px] lg:h-[97px] items-center">
+      <div className="container grid grid-cols-3 lg:flex lg:items-center lg:justify-between h-[clamp(80px,18vw,110px)] lg:h-[97px] items-center">
         <Link to="/" className="flex items-center gap-2 col-start-2 justify-self-center lg:col-auto lg:justify-self-auto" aria-label={BRAND.name}>
-          <img src={logo} alt={`${BRAND.name} logo`} className="h-[92px] lg:h-[81px] w-auto object-contain" />
+          <img src={logo} alt={`${BRAND.name} logo`} className="h-[clamp(60px,15vw,92px)] sm:h-[clamp(72px,12vw,96px)] lg:h-[81px] w-auto object-contain" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-0.5">
