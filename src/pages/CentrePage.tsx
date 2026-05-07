@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Building2, MapPin, Phone, Star, Clock, ChevronRight, Check, ShieldCheck, Award } from "lucide-react";
+import { Building2, MapPin, Phone, Star, Clock, ChevronRight, Check, ShieldCheck, Award, UserRound } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
