@@ -7,7 +7,7 @@ import ConsultationForm from "@/components/ConsultationForm";
 import { PROCEDURES, TOP_CITIES, slugify, discountedPrice } from "@/data/siteData";
 import { getCityData } from "@/data/cityData";
 import { motion } from "framer-motion";
-import { MapPin, ChevronRight, Building2, Users, Eye, Quote, Star } from "lucide-react";
+import { MapPin, ChevronRight, Building2, Users, Eye, Quote, Star, Globe, BadgePercent, ShieldCheck, Stethoscope, Plane, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -61,21 +61,62 @@ const GeoTestimonialsSection = ({ location }: { location: string }) => (
 const GeoContentSection = ({ location, scope = "city" }: { location: string; scope?: "state" | "city" | "locality" | "procedure"; }) => (
   <section className="section-padding bg-surface">
     <div className="container max-w-4xl">
-      <SectionHeading title={`Best LASIK Eye Surgery in ${location}`} />
+      <SectionHeading title={`About Centre for Lasik — ${location}`} />
       <div className="prose prose-sm max-w-none text-muted-foreground space-y-5">
         <p>
-          <strong className="text-foreground">Centre For Lasik</strong> brings India's most trusted LASIK network to <strong className="text-foreground">{location}</strong>, with all 6 globally validated vision-correction technologies available under one roof. Whether you are exploring affordable Standard LASIK at ₹11,249/eye or premium SiLK lenticule surgery, every procedure offered here is US-FDA approved and delivered by refractive surgeons with 20+ years of experience.
+          <strong className="text-foreground">Centre for Lasik</strong> assists people seeking laser vision correction surgery with the right information, hassle-free appointment booking, free LASIK check-ups, and complete end-to-end support — including travel &amp; stay coordination, flexible EMI options, and cashless mediclaim — guiding them to the best laser eye centre nearest to their location{scope !== "procedure" ? ` in ${location}` : ""}.
         </p>
         <p>
-          Patients from {location} choose us for a simple reason — <strong className="text-foreground">transparent, institutional pricing</strong> with up to 30% off walk-in MRP, no hidden charges, and a free 90-minute pre-surgery evaluation worth ₹4,000+ that includes Pentacam tomography, corneal topography, aberrometry, pachymetry and a dilated retinal exam. Our team helps you pick the right technology based on corneal thickness, refractive power, lifestyle and budget — not on what's most profitable.
+          As India's largest digital aggregator for refractive surgery, we have helped over <strong className="text-foreground">10,00,000 patients achieve glasses-free vision since 2004</strong>. Our network spans 50+ premium eye centres across India, offering all six US-FDA approved LASIK technologies — from affordable Standard LASIK to advanced flapless procedures like SMILE Pro and SiLK. Every procedure is performed by refractive surgeons with 20+ years of experience. Our specialists help you pick the right technology based on your corneal thickness, refractive power, lifestyle and budget — not on what is most profitable.
         </p>
         <p>
-          We have completed <strong className="text-foreground">over 10,00,000 LASIK procedures since 2004</strong> with a 97% patient satisfaction rate across flap-based and flapless lenticule platforms. Both eyes are typically treated the same day in under 10 minutes per eye, with most patients returning to work within 48 hours. Flexible EMI from ₹1,500/month is available, and our specialists are reachable on call to answer every question — from candidacy and recovery to long-term safety.
+          We believe transparency builds trust. That is why we offer institutional volume-discount pricing with up to <strong className="text-foreground">30% off walk-in MRP</strong>, and no hidden charges. Every patient receives a complimentary 90-minute pre-surgery evaluation worth ₹4,000+, including Pentacam tomography, corneal topography, wavefront aberrometry, pachymetry, Schirmer dry eye test, and dilated retinal examination.
+        </p>
+        <p>
+          Our care extends beyond the surgery room. Outstation patients receive travel and hotel assistance. Flexible EMI starts from ₹1,500 per month. Cashless mediclaim is processed through our partner centres. Whether you need guidance on candidacy, technology selection, recovery timelines, or insurance coverage — our LASIK specialists are available on call to support you at every step.
         </p>
       </div>
     </div>
   </section>
 );
+
+/* ─── USP section shown on every geo page ─── */
+const GeoUSPSection = ({ location }: { location: string }) => {
+  const usps = [
+    { icon: Globe, title: "India's #1 LASIK Platform", desc: "50+ premium centres PAN India. World's largest digital aggregator for laser vision correction." },
+    { icon: BadgePercent, title: "Up to 30% Volume Discount", desc: "Institutional pricing through our aggregator model. Same surgeon, same technology — you simply pay less." },
+    { icon: ShieldCheck, title: "US-FDA Approved Technologies", desc: "All 6 platforms vetted. 20+ years experienced surgeons. Zero compromise on quality." },
+    { icon: Stethoscope, title: "Free ₹4,000+ Evaluation", desc: "90-minute pre-op check-up including Pentacam, topography, aberrometry & retinal exam." },
+    { icon: Plane, title: "Travel & Stay Assistance", desc: "Outstation patients get hotel & travel support. We handle logistics so you focus on vision." },
+    { icon: CreditCard, title: "EMI & Cashless Mediclaim", desc: "EMI from ₹1,500/month. Cashless insurance processing at partner centres." },
+  ];
+
+  return (
+    <section className="section-padding">
+      <div className="container">
+        <SectionHeading title={`Why Patients in ${location} Choose Centre for Lasik`} subtitle="India's most trusted LASIK aggregator" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {usps.map(({ icon: Icon, title, desc }, i) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="bg-card border border-border rounded-xl p-6 card-elevated"
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <Icon className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-display font-bold text-foreground mb-2">{title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 
 /**
@@ -150,6 +191,7 @@ const StateHubPage = () => {
       </section>
 
       <GeoContentSection location={stateName} scope="state" />
+      <GeoUSPSection location={stateName} />
       <GeoTestimonialsSection location={stateName} />
 
       <section className="section-padding">
@@ -195,6 +237,7 @@ const CityHubPage = () => {
           </div>
         </section>
         <GeoContentSection location={cityName} scope="city" />
+        <GeoUSPSection location={cityName} />
         <GeoTestimonialsSection location={cityName} />
         <section className="section-padding bg-surface">
           <div className="container max-w-2xl">
@@ -331,6 +374,9 @@ const CityHubPage = () => {
         </div>
       </section>
 
+      <GeoContentSection location={cityName} scope="city" />
+      <GeoUSPSection location={cityName} />
+
       {/* City Testimonials */}
       <section className="section-padding">
         <div className="container">
@@ -434,6 +480,7 @@ const LocalityHubPage = ({ paramsOverride }: { paramsOverride?: { state: string;
         </div>
       </section>
       <GeoContentSection location={localityName} scope="locality" />
+      <GeoUSPSection location={localityName} />
       <GeoTestimonialsSection location={localityName} />
       <section className="section-padding bg-surface">
         <div className="container max-w-2xl">
@@ -507,6 +554,7 @@ const ProcedureCityPage = () => {
         </div>
       </section>
       <GeoContentSection location={`${procedure.name}, ${localityName}`} scope="procedure" />
+      <GeoUSPSection location={localityName} />
       <GeoTestimonialsSection location={localityName} />
       <section className="section-padding bg-surface">
         <div className="container max-w-2xl">
