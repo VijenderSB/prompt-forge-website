@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { BRAND } from "@/data/siteData";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo-centre-for-lasik.png";
 
 const navLinks = [
   { label: "Home", href: "/", hasDropdown: false },
@@ -52,14 +53,8 @@ const Navbar = () => {
         {/* Spacer for mobile grid centering */}
         <div className="lg:hidden" />
 
-        <Link to="/" className="flex items-center gap-2 justify-center lg:justify-start">
-          <div className="w-8 h-8 rounded-lg cta-gradient flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-black text-sm">CL</span>
-          </div>
-          <div className="hidden sm:block">
-            <span className="font-display font-bold text-foreground text-sm">{BRAND.name}</span>
-            <span className="text-muted-foreground text-xs block leading-none">laser.fyi</span>
-          </div>
+        <Link to="/" className="flex items-center justify-center lg:justify-start" aria-label={`${BRAND.name} — laser.fyi`}>
+          <img src={logo} alt={`${BRAND.name} logo`} className="h-10 lg:h-11 w-auto object-contain" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-0.5">
