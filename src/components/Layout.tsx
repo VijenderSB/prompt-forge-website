@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import StickyMobileCTA from "./StickyMobileCTA";
+import StickyDesktopCTA from "./StickyDesktopCTA";
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,7 +16,9 @@ const Layout = ({ children }: LayoutProps) => (
     </main>
     <Footer />
     <StickyMobileCTA />
+    <StickyDesktopCTA />
   </div>
 );
 
 export default Layout;
+
