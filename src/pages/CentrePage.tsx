@@ -20,11 +20,20 @@ const centreNarrative = (c: CentreData) => {
   const where = loc ? `${loc}, ${c.cityName}` : c.cityName;
   const isAsg = /asg/i.test(c.hospital);
   const isDiva = /diva-eye-institute/i.test(c.slug);
+  const isKhanna = /khanna-eye-centre/i.test(c.slug);
   if (isDiva) {
     return [
       `Diva Eye Institute, ${where} is an NABH-accredited eye-care hospital with over eight years of clinical excellence in advanced ophthalmology. Led by Dr. Dipan Desai and Dr. Kaushik Solanki, the institute has built a strong reputation in Ahmedabad for robotic cataract surgery, modern refractive procedures and a fully integrated, multidisciplinary eye-care model.`,
       `The Ambawadi flagship — located near Parimal Garden, Ellis Bridge — and the second branch on Sindhu Bhavan Marg, Bodakdev together deliver the entire spectrum of vision correction. Patients seeking spectacle freedom can choose from Standard LASIK, Topo Guided LASIK, Femto LASIK, Femto Contoura Vision, ReLEx SMILE, PRK and Trans PRK — all performed on US-FDA approved excimer and femtosecond platforms inside ISO-class modular operating theatres.`,
       `Beyond LASIK, Diva Eye Institute functions as a complete eye-care destination — robotic and premium cataract surgery (monofocal, toric, multifocal and EDOF IOLs), medical and surgical retina, glaucoma management, paediatric ophthalmology and comprehensive diagnostics. Operating hours are typically 10:00 AM – 7:00 PM, Monday to Saturday.`,
+      `Booking through Centre for Lasik unlocks transparent institutional pricing, 0% EMI options, free 90-minute diagnostic and a structured post-operative follow-up plan — same surgeon, same OT, same technology, with a single accountable care team coordinating every step.`,
+    ];
+  }
+  if (isKhanna) {
+    return [
+      `Khanna Eye Centre, Model Town, New Delhi is one of North Delhi's most trusted ophthalmology destinations, with a long-standing reputation for laser vision correction, advanced cataract surgery and comprehensive eye care. Led by Dr. Sanjay Khanna, the centre is recognised for surgical precision, patient-first protocols and consistently strong refractive outcomes.`,
+      `For patients seeking spectacle freedom, Khanna Eye Centre offers the complete spectrum of laser vision correction — Standard LASIK, Topo Guided LASIK, Femto LASIK, Femto HD LASIK, PRK and Epi-LASIK — all performed on US-FDA approved excimer and femtosecond platforms. Every case is preceded by a full pre-operative workup including Pentacam tomography, corneal topography, pachymetry, dry-eye assessment and dilated retinal evaluation, conducted inside ISO-class modular operating theatres.`,
+      `Beyond LASIK, Khanna Eye Centre functions as a complete eye-care destination — phacoemulsification cataract surgery with premium monofocal, toric and trifocal IOLs; medical and surgical retina; glaucoma diagnostics and management; cornea, ICL and keratoconus care; paediatric ophthalmology and comprehensive diagnostics.`,
       `Booking through Centre for Lasik unlocks transparent institutional pricing, 0% EMI options, free 90-minute diagnostic and a structured post-operative follow-up plan — same surgeon, same OT, same technology, with a single accountable care team coordinating every step.`,
     ];
   }
@@ -281,6 +290,95 @@ const CentrePage = () => {
                     { name: "ReLEx SMILE", best: "Flapless, minimally invasive", price: "₹64,999" },
                     { name: "PRK", best: "Surface ablation candidates", price: "₹17,999" },
                     { name: "Trans PRK", best: "Touch-free surface ablation", price: "₹42,499" },
+                  ].map((row, i) => (
+                    <tr key={row.name} className={i !== 0 ? "border-t border-border" : ""}>
+                      <td className="px-5 py-4 font-semibold text-foreground">{row.name}</td>
+                      <td className="px-5 py-4 text-sm text-muted-foreground hidden sm:table-cell">{row.best}</td>
+                      <td className="px-5 py-4 text-right font-display font-bold text-primary">{row.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mt-4 text-center">
+              Prices are per eye and exclusive of GST. 0% EMI options available up to 24 months. Final eligibility and quote confirmed after free pre-LASIK diagnostic.
+            </p>
+            <div className="flex justify-center mt-6">
+              <Button asChild size="lg" className="font-semibold px-8">
+                <a href="#book">Book Free Pre-LASIK Diagnostic</a>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Chief Surgeon profile — Khanna Eye Centre only */}
+      {/khanna-eye-centre/i.test(c.slug) && (
+        <section className="section-padding">
+          <div className="container max-w-4xl">
+            <SectionHeading
+              title="Chief Eye Surgeon"
+              subtitle={`Meet the lead refractive surgeon at ${c.hospital}, ${localityDisplay ? `${localityDisplay}, ` : ""}${c.cityName}.`}
+            />
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 card-elevated">
+              <div className="grid md:grid-cols-[180px_1fr] gap-6 items-start">
+                <div className="w-40 h-40 md:w-[180px] md:h-[180px] rounded-2xl overflow-hidden bg-primary/5 mx-auto md:mx-0 border border-border flex items-center justify-center">
+                  <UserRound className="w-20 h-20 text-primary/40" />
+                </div>
+                <div>
+                  <h3 className="font-display font-bold text-2xl text-foreground mb-1">Dr. Sanjay Khanna</h3>
+                  <p className="text-primary font-semibold text-sm mb-4">Chief Eye Surgeon for LASIK · Khanna Eye Centre</p>
+                  <p className="text-foreground/85 leading-relaxed text-[15px] mb-5">
+                    Dr. Sanjay Khanna leads the refractive and cataract surgical programme at Khanna Eye Centre, Model Town, New Delhi. With deep expertise across the full spectrum of laser vision correction — from Standard LASIK to Femto HD LASIK and Epi-LASIK — Dr. Khanna is widely regarded as one of North Delhi's most trusted refractive surgeons.
+                  </p>
+                  <h4 className="font-display font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">Areas of Expertise</h4>
+                  <ul className="grid sm:grid-cols-2 gap-2.5">
+                    {[
+                      "Standard & Topo Guided LASIK",
+                      "Femto LASIK & Femto HD LASIK",
+                      "PRK & Epi-LASIK",
+                      "Premium Cataract Surgery",
+                      "Toric, Multifocal & EDOF IOLs",
+                      "Comprehensive Anterior-Segment Care",
+                    ].map(item => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-foreground">
+                        <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Centre-specific pricing — Khanna Eye Centre */}
+      {/khanna-eye-centre/i.test(c.slug) && (
+        <section className="section-padding bg-surface">
+          <div className="container max-w-5xl">
+            <SectionHeading
+              title={`LASIK & Refractive Pricing at ${c.hospital}`}
+              subtitle="Transparent institutional pricing — per eye, inclusive of pre-op diagnostics and standard post-op follow-ups."
+            />
+            <div className="overflow-hidden rounded-2xl border border-border bg-card card-elevated">
+              <table className="w-full text-left">
+                <thead className="bg-primary/5 border-b border-border">
+                  <tr>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm">Procedure</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm hidden sm:table-cell">Best For</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm text-right">Price (per eye)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { name: "Standard LASIK", best: "Mild to moderate refractive errors", price: "₹14,999" },
+                    { name: "Topo Guided LASIK", best: "Topography-guided HD vision correction", price: "₹19,999" },
+                    { name: "Femto LASIK", best: "Bladeless flap creation", price: "₹34,999" },
+                    { name: "Femto HD LASIK", best: "Bladeless + HD wavefront-optimised", price: "₹39,999" },
+                    { name: "PRK", best: "Surface ablation candidates", price: "₹17,999" },
+                    { name: "Epi-LASIK", best: "Thin corneas / surface ablation", price: "₹25,499" },
                   ].map((row, i) => (
                     <tr key={row.name} className={i !== 0 ? "border-t border-border" : ""}>
                       <td className="px-5 py-4 font-semibold text-foreground">{row.name}</td>
