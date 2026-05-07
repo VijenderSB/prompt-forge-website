@@ -49,7 +49,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-xl border-b border-border">
-      <div className="container grid grid-cols-3 lg:flex lg:items-center lg:justify-between h-16 items-center">
+      <div className="container grid grid-cols-3 lg:flex lg:items-center lg:justify-between h-20 items-center">
         {/* Spacer for mobile grid centering */}
         <div className="lg:hidden" />
 
