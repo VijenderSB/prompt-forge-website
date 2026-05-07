@@ -11,6 +11,7 @@ import USPBanner from "@/components/USPBanner";
 import { Button } from "@/components/ui/button";
 import { BRAND, PROCEDURES, FAQS, TESTIMONIALS, formatPrice } from "@/data/siteData";
 import heroImage from "@/assets/hero-lasik.png";
+import heroImageMobile from "@/assets/hero-lasik-mobile.png";
 import {
   Accordion,
   AccordionContent,
@@ -22,11 +23,14 @@ import {
 const Hero = () => (
   <section className="relative overflow-hidden">
     <div className="absolute inset-0 z-0">
-      <img
-        src={heroImage}
-        alt="Young couple happy after LASIK eye surgery throwing away their glasses"
-        className="w-full h-full object-cover object-[center_top] md:object-[20%_top]"
-      />
+      <picture>
+        <source media="(max-width: 767px)" srcSet={heroImageMobile} />
+        <img
+          src={heroImage}
+          alt="Young couple happy after LASIK eye surgery throwing away their glasses"
+          className="w-full h-full object-cover object-[center_top] md:object-[20%_top]"
+        />
+      </picture>
       {/* Left side darkening for headline readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[hsl(222,47%,11%)]/85 via-[hsl(222,47%,11%)]/55 to-transparent" />
       {/* Mobile bottom darkening so text on top of image stays readable */}
