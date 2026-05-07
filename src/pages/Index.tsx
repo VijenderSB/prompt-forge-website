@@ -22,8 +22,15 @@ import {
 const Hero = () => (
   <section className="relative overflow-hidden">
     <div className="absolute inset-0 z-0">
-      <img src={heroImage} alt="Young woman happy after LASIK eye surgery" className="w-full h-full object-cover object-top" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(222,47%,11%)]/75 via-[hsl(222,47%,11%)]/55 to-transparent" />
+      <img
+        src={heroImage}
+        alt="Young couple happy after LASIK eye surgery throwing away their glasses"
+        className="w-full h-full object-cover object-[center_top] md:object-[20%_top]"
+      />
+      {/* Left side darkening for headline readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(222,47%,11%)]/85 via-[hsl(222,47%,11%)]/55 to-transparent" />
+      {/* Mobile bottom darkening so text on top of image stays readable */}
+      <div className="absolute inset-0 lg:hidden bg-gradient-to-b from-[hsl(222,47%,11%)]/70 via-[hsl(222,47%,11%)]/50 to-[hsl(222,47%,11%)]/80" />
     </div>
     <div className="container relative z-10 grid lg:grid-cols-5 gap-8 lg:gap-12 items-center py-16 md:py-24 px-4 md:px-8">
       <motion.div
