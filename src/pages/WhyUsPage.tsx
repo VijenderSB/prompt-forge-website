@@ -6,11 +6,11 @@ import ConsultationForm from "@/components/ConsultationForm";
 import { BRAND, TESTIMONIALS } from "@/data/siteData";
 import { motion } from "framer-motion";
 import {
-import SEO from "@/components/SEO";
   Globe, Shield, Percent, MapPin, Eye, Award,
   Star, Stethoscope, Heart, Zap, Users, Building2,
   BadgeCheck, ArrowRight, CheckCircle2, Crown, Sparkles,
 } from "lucide-react";
+import SEO from "@/components/SEO";
 
 /* ───── hero bullets ───── */
 const heroBullets = [

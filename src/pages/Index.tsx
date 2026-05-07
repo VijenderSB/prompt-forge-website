@@ -13,12 +13,12 @@ import { BRAND, PROCEDURES, FAQS, TESTIMONIALS, formatPrice } from "@/data/siteD
 import heroImage from "@/assets/hero-lasik.png";
 import heroImageMobile from "@/assets/hero-lasik-mobile.png";
 import {
-import SEO from "@/components/SEO";
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 /* ─── Hero ─── */
 const Hero = () => (

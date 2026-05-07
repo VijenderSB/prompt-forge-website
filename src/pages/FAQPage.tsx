@@ -6,12 +6,12 @@ import ConsultationForm from "@/components/ConsultationForm";
 import { FAQS } from "@/data/siteData";
 import { motion } from "framer-motion";
 import {
-import SEO from "@/components/SEO";
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 const categories = [
   { key: "general", label: "General LASIK Questions" },

@@ -6,12 +6,12 @@ import { PAGE_FAQS } from "@/data/siteData";
 import { motion } from "framer-motion";
 import { Eye, Shield, AlertTriangle } from "lucide-react";
 import {
-import SEO from "@/components/SEO";
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 const timeline = [
   { day: "Day 1", title: "Surgery Day", desc: "Procedure takes 15–30 minutes. You may experience mild discomfort, tearing, and light sensitivity. Rest with eyes closed for 4–6 hours." },

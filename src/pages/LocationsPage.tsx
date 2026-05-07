@@ -112,12 +112,12 @@ const TierSection = ({ tier, title, desc, cities }: { tier: string; title: strin
   </div>
 );
 import {
-import SEO from "@/components/SEO";
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 const valueProps = [
   {

@@ -10,12 +10,12 @@ import { Calendar, ArrowRight, Search } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import {
-import SEO from "@/components/SEO";
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 const blogPosts = [
   { slug: "contoura-vision-explained", title: "Contoura Vision Explained: How 22,000-Point Mapping Transforms Your Vision", excerpt: "Understanding the advanced topographic technology behind India's most popular LASIK procedure.", category: "LASIK Technology", date: "2026-03-10", featured: true },
