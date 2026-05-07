@@ -34,7 +34,7 @@ const Hero = () => (
       {/* Left side darkening for headline readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[hsl(222,47%,11%)]/85 via-[hsl(222,47%,11%)]/55 to-transparent" />
       {/* Mobile bottom darkening so text on top of image stays readable */}
-      <div className="absolute inset-0 lg:hidden bg-gradient-to-b from-[hsl(222,47%,11%)]/70 via-[hsl(222,47%,11%)]/50 to-[hsl(222,47%,11%)]/80" />
+      <div className="absolute inset-0 lg:hidden bg-gradient-to-b from-[hsl(222,47%,11%)]/30 via-[hsl(222,47%,11%)]/40 to-[hsl(222,47%,11%)]/85" />
     </div>
     <div className="container relative z-10 grid lg:grid-cols-5 gap-8 lg:gap-12 items-center py-16 md:py-24 px-4 md:px-8">
       <motion.div
