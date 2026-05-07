@@ -463,6 +463,92 @@ const CentrePage = () => {
         </section>
       )}
 
+      {/* Chief Surgeon profile — Arora Eye Hospital only */}
+      {/arora-eye-hospital/i.test(c.slug) && (
+        <section className="section-padding">
+          <div className="container max-w-4xl">
+            <SectionHeading
+              title="Chief Eye Surgeon"
+              subtitle={`Meet the lead refractive surgeon at ${c.hospital}, ${localityDisplay ? `${localityDisplay}, ` : ""}${c.cityName}.`}
+            />
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 card-elevated">
+              <div className="grid md:grid-cols-[180px_1fr] gap-6 items-start">
+                <div className="w-40 h-40 md:w-[180px] md:h-[180px] rounded-2xl overflow-hidden bg-primary/5 mx-auto md:mx-0 border border-border flex items-center justify-center">
+                  <UserRound className="w-20 h-20 text-primary/40" />
+                </div>
+                <div>
+                  <h3 className="font-display font-bold text-2xl text-foreground mb-1">Dr. Amandeep Singh Arora</h3>
+                  <p className="text-primary font-semibold text-sm mb-4">Chief Eye Surgeon · Arora Eye Hospital and Retina Centre</p>
+                  <p className="text-foreground/85 leading-relaxed text-[15px] mb-5">
+                    Dr. Amandeep Singh Arora leads the refractive, cataract and retina programme at Arora Eye Hospital and Retina Centre, Lajpat Nagar, Jalandhar. With deep expertise across the full spectrum of laser vision correction — from Standard LASIK to iDesign and Femto iDesign — Dr. Arora is widely regarded as one of Punjab's most trusted refractive and retina surgeons.
+                  </p>
+                  <h4 className="font-display font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">Areas of Expertise</h4>
+                  <ul className="grid sm:grid-cols-2 gap-2.5">
+                    {[
+                      "Standard LASIK",
+                      "iDesign Wavefront LASIK",
+                      "Femto iDesign LASIK",
+                      "Premium Cataract Surgery",
+                      "Vitreo-Retinal Surgery",
+                      "Toric, Multifocal & EDOF IOLs",
+                    ].map(item => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-foreground">
+                        <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Centre-specific pricing — Arora Eye Hospital */}
+      {/arora-eye-hospital/i.test(c.slug) && (
+        <section className="section-padding bg-surface">
+          <div className="container max-w-5xl">
+            <SectionHeading
+              title={`LASIK & Refractive Pricing at ${c.hospital}`}
+              subtitle="Transparent institutional pricing — per eye, inclusive of pre-op diagnostics and standard post-op follow-ups."
+            />
+            <div className="overflow-hidden rounded-2xl border border-border bg-card card-elevated">
+              <table className="w-full text-left">
+                <thead className="bg-primary/5 border-b border-border">
+                  <tr>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm">Procedure</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm hidden sm:table-cell">Best For</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm text-right">Price (per eye)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { name: "Standard LASIK", best: "Mild to moderate refractive errors", price: "₹19,999" },
+                    { name: "iDesign LASIK", best: "Wavefront-guided HD vision correction", price: "₹29,999" },
+                    { name: "Femto iDesign", best: "Bladeless + wavefront-guided HD", price: "₹49,999" },
+                  ].map((row, i) => (
+                    <tr key={row.name} className={i !== 0 ? "border-t border-border" : ""}>
+                      <td className="px-5 py-4 font-semibold text-foreground">{row.name}</td>
+                      <td className="px-5 py-4 text-sm text-muted-foreground hidden sm:table-cell">{row.best}</td>
+                      <td className="px-5 py-4 text-right font-display font-bold text-primary">{row.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mt-4 text-center">
+              Prices are per eye and exclusive of GST. 0% EMI options available up to 24 months. Final eligibility and quote confirmed after free pre-LASIK diagnostic.
+            </p>
+            <div className="flex justify-center mt-6">
+              <Button asChild size="lg" className="font-semibold px-8">
+                <a href="#book">Book Free Pre-LASIK Diagnostic</a>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Procedures */}
       <section className="section-padding">
         <div className="container max-w-6xl">
