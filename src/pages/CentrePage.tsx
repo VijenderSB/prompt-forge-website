@@ -249,6 +249,11 @@ const CentrePage = () => {
             <p className="text-xs text-muted-foreground mt-4 text-center">
               Prices are per eye and exclusive of GST. 0% EMI options available up to 24 months. Final eligibility and quote confirmed after free pre-LASIK diagnostic.
             </p>
+            <div className="flex justify-center mt-6">
+              <Button asChild size="lg" className="font-semibold px-8">
+                <a href="#book">Book Free Pre-LASIK Diagnostic</a>
+              </Button>
+            </div>
           </div>
         </section>
       )}
