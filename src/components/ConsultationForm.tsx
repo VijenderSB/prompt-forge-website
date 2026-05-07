@@ -7,9 +7,11 @@ import { useToast } from "@/hooks/use-toast";
 interface ConsultationFormProps {
   variant?: "hero" | "section" | "compact";
   className?: string;
+  centre?: string;
+  centreId?: string;
 }
 
-const ConsultationForm = ({ variant = "hero", className = "" }: ConsultationFormProps) => {
+const ConsultationForm = ({ variant = "hero", className = "", centre, centreId }: ConsultationFormProps) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -29,7 +31,23 @@ const ConsultationForm = ({ variant = "hero", className = "" }: ConsultationForm
       toast({ title: "Security check failed. Please try again.", variant: "destructive" });
       return;
     }
-    toast({ title: "Thank you!", description: "Our LASIK specialist will call you within 30 minutes." });
+    const payload = {
+      name,
+      phone,
+      email,
+      centre: centre || "General enquiry",
+      centreId: centreId || null,
+      source: typeof window !== "undefined" ? window.location.pathname : "",
+      submittedAt: new Date().toISOString(),
+    };
+    // Lead payload — `centre` / `centreId` route the lead to the correct centre team
+    console.info("[lead]", payload);
+    toast({
+      title: "Thank you!",
+      description: centre
+        ? `Our team at ${centre} will call you within 30 minutes.`
+        : "Our LASIK specialist will call you within 30 minutes.",
+    });
     setName(""); setPhone(""); setEmail(""); setCaptcha("");
   };
 
