@@ -23,7 +23,7 @@ import {
 const Hero = () => (
   <section className="relative overflow-hidden">
     <div className="absolute inset-0 z-0">
-      <picture>
+      <picture className="block w-full h-full">
         <source media="(max-width: 767px)" srcSet={heroImageMobile} />
         <img
           src={heroImage}
