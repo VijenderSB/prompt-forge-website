@@ -15,6 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 const blogPosts = [
   { slug: "contoura-vision-explained", title: "Contoura Vision Explained: How 22,000-Point Mapping Transforms Your Vision", excerpt: "Understanding the advanced topographic technology behind India's most popular LASIK procedure.", category: "LASIK Technology", date: "2026-03-10", featured: true },
@@ -51,6 +52,11 @@ const BlogPage = () => {
 
   return (
     <Layout>
+      <SEO
+        title="LASIK Blog — Expert Insights, Recovery Tips & Patient Stories"
+        description="Surgeon-authored articles on LASIK procedures, recovery, costs, and comparisons. Updated weekly with the latest research and patient experiences."
+        path="/blog"
+      />
       {/* Hero with Lead Form */}
       <section className="hero-gradient section-padding">
         <div className="container max-w-5xl">

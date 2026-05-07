@@ -117,6 +117,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 const valueProps = [
   {
@@ -162,6 +163,11 @@ const directoryFaqs = [
 
 const LocationsPage = () => (
   <Layout>
+      <SEO
+        title="LASIK Eye Surgery Near You — Pan-India Coverage (3,700+ Cities)"
+        description="Available in Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata, Ahmedabad, Jaipur and 3,693 more cities across India."
+        path="/locations"
+      />
     {/* Hero with Lead Form */}
     <section className="hero-gradient section-padding">
       <div className="container max-w-5xl">

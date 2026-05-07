@@ -11,6 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 const timeline = [
   { day: "Day 1", title: "Surgery Day", desc: "Procedure takes 15–30 minutes. You may experience mild discomfort, tearing, and light sensitivity. Rest with eyes closed for 4–6 hours." },
@@ -32,6 +33,11 @@ const faqs = PAGE_FAQS["risk-recovery"] || [];
 
 const RiskRecoveryPage = () => (
   <Layout>
+      <SEO
+        title="LASIK Risks, Side Effects & Recovery Timeline (Day-by-Day)"
+        description="Honest guide to LASIK complications (<1%), dry eye, halos, and the day-by-day recovery timeline from day 1 to day 30. Surgeon-reviewed."
+        path="/risk-recovery"
+      />
     {/* Hero with Lead Form */}
     <section className="hero-gradient section-padding">
       <div className="container max-w-5xl">

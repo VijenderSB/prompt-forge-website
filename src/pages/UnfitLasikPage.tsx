@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { AlertTriangle, ShieldOff, Clock, Eye, Heart, Baby, Droplets, Activity } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const contraindications = [
   {
@@ -68,6 +69,11 @@ const contraindications = [
 
 const UnfitLasikPage = () => (
   <Layout>
+      <SEO
+        title="Not a LASIK Candidate? 5 Best Alternatives (ICL, RLE, PRK)"
+        description="If you're unfit for LASIK, ICL, RLE, Phakic IOL or Epi-LASIK may help. Compare cost, suitability and recovery for each alternative procedure."
+        path="/unfit-for-lasik"
+      />
     <section className="section-padding">
       <div className="container max-w-5xl">
         <SectionHeading

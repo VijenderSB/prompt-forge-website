@@ -18,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
 
 /* ─── Hero ─── */
 const Hero = () => (
@@ -313,6 +314,11 @@ const ResourcesSection = () => (
 /* ─── Homepage ─── */
 const Homepage = () => (
   <Layout>
+      <SEO
+        title="LASIK Eye Surgery in India from ₹11,249/Eye"
+        description="India's #1 LASIK platform. Standard LASIK, Contoura Vision, SMILE Pro & WaveLight InnovEyes from ₹11,249/eye across 3,700+ cities. 30% off. Free 90-min consultation."
+        path="/"
+      />
     <Hero />
     <ProceduresSection />
     <StatsBar />

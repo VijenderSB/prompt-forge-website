@@ -4,6 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import ConsultationForm from "@/components/ConsultationForm";
 import { motion } from "framer-motion";
 import { X, Check } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const myths = [
   {
@@ -58,6 +59,11 @@ const myths = [
 
 const LasikMythsPage = () => (
   <Layout>
+      <SEO
+        title="15 LASIK Myths vs Facts — Debunked by Eye Surgeons"
+        description="Is LASIK painful? Permanent? Safe? Affordable? Surgeon-verified answers to the top 15 LASIK myths in India. Updated 2026."
+        path="/lasik-myths-vs-facts"
+      />
     <section className="section-padding">
       <div className="container max-w-4xl">
         <SectionHeading

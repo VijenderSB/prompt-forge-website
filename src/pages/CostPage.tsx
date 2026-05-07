@@ -6,9 +6,15 @@ import { PROCEDURES, formatPrice } from "@/data/siteData";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const CostPage = () => (
   <Layout>
+      <SEO
+        title="LASIK Cost in India 2026 — Price by Procedure & City"
+        description="Compare LASIK prices: Standard ₹11,249, Contoura ₹25,500, SMILE Pro ₹49,000, InnovEyes ₹61,250. EMI from ₹750/mo. Transparent institutional pricing."
+        path="/cost"
+      />
     <section className="hero-gradient section-padding">
       <div className="container text-center max-w-3xl">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

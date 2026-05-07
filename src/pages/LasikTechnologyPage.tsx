@@ -9,6 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, XCircle, ArrowRight, Zap, Eye, Shield, Timer, Layers, Cpu } from "lucide-react";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 const techGenerations = [
   {
@@ -136,6 +137,11 @@ const LasikTechnologyPage = () => {
 
   return (
     <Layout>
+      <SEO
+        title="LASIK Technology 2026 — 7 Generations from PRK to AI Lasers"
+        description="Every laser platform compared: Alcon WaveLight, Carl Zeiss VisuMax, J&J elita. PRK to AI-guided InnovEyes. FDA approvals & specs."
+        path="/lasik-technology"
+      />
       {/* Hero */}
       <section className="section-padding bg-gradient-to-b from-surface to-background">
         <div className="container max-w-6xl">

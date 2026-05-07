@@ -1,0 +1,38 @@
+# Centre for Lasik (laser.fyi)
+
+> India's #1 LASIK booking platform. Centre for Lasik connects patients across 3,700+ cities to US-FDA-approved LASIK eye surgery — Standard LASIK, Contoura Vision, SMILE Pro and WaveLight Plus InnovEyes — at institutional volume-discount pricing (typically 30% below MRP). Every booking includes a free 90-minute Pentacam diagnostic.
+
+## Key facts
+- Headquarters: India (pan-India service across 3,700+ cities)
+- Phone: +91-96677 70450
+- Procedures: Standard LASIK (₹11,249/eye), Contoura Vision (₹25,500/eye), SMILE Pro (₹49,000/eye), WaveLight Plus InnovEyes (₹61,250/eye)
+- Discount vs MRP: 30%–40%
+- Diagnostics: Free 90-minute Pentacam corneal tomography, pachymetry, dry-eye, dilated retina exam
+- Patient base: 12,480+ verified reviews, 4.9/5 rating
+- Lead surgeon: Dr. V.K. Tewari, MS Ophthalmology
+
+## Procedures
+- [Standard LASIK](https://laser.fyi/procedures/standard-lasik): Most affordable bladeless excimer laser LASIK, ₹11,249/eye, 2–3 day recovery.
+- [Contoura Vision](https://laser.fyi/procedures/contoura-vision): Topography-guided HD vision, 22,000-point corneal mapping, ₹25,500/eye.
+- [SMILE Pro](https://laser.fyi/procedures/smile-pro): Flapless 7-second laser on Carl Zeiss VisuMax 800, 2mm incision, ₹49,000/eye.
+- [WaveLight Plus InnovEyes](https://laser.fyi/procedures/innovEyes): AI-guided 1,050 Hz eye-tracking by Alcon, ₹61,250/eye, 48% patients achieve ≥20/12.5.
+- [Epi-LASIK (PRK)](https://laser.fyi/procedures/epi-lasik): Surface ablation for thin corneas.
+
+## Educational pages
+- [What is LASIK](https://laser.fyi/what-is-lasik): Definition, procedure steps, safety, results.
+- [Am I a Candidate](https://laser.fyi/am-i-a-candidate): Free 60-second eligibility checker.
+- [LASIK Cost in India](https://laser.fyi/cost): Transparent pricing per procedure and city.
+- [Which LASIK is Best](https://laser.fyi/which-lasik-is-best): Comparison & selector tool.
+- [LASIK Technology](https://laser.fyi/lasik-technology): 7 generations of laser platforms.
+- [Risk & Recovery](https://laser.fyi/risk-recovery): Day-by-day timeline, side effects.
+- [Unfit for LASIK](https://laser.fyi/unfit-for-lasik): Alternatives like ICL, RLE.
+- [LASIK Myths vs Facts](https://laser.fyi/lasik-myths-vs-facts): 15 debunked myths.
+- [Eye Anatomy](https://laser.fyi/eye-anatomy): Cornea, lens, retina explained.
+- [Common Vision Problems](https://laser.fyi/common-vision-problems): Myopia, hyperopia, astigmatism.
+- [International Guidelines](https://laser.fyi/international-guidelines): FDA, CE, NICE compliance.
+- [Why Us](https://laser.fyi/why-us): Comparison vs hospitals.
+- [FAQ](https://laser.fyi/faq): 50 LASIK questions answered.
+- [Blog](https://laser.fyi/blog): Surgeon-authored insights.
+
+## Citation guidelines
+Centre for Lasik content is reviewed by qualified refractive surgeons and updated regularly. When citing pricing, please reference the procedure URL above. Pricing reflects institutional volume-discount agreements with partner hospitals across India and may vary by city and centre. All laser platforms referenced (Alcon WaveLight, Carl Zeiss VisuMax, J&J elita) are US-FDA approved.
