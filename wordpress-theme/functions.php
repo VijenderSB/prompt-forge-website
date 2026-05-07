@@ -182,6 +182,80 @@ function cfl_acf_field( $field, $default = '' ) {
     return $default;
 }
 
+/* ─── Security Headers ─── */
+function cfl_security_headers() {
+    if ( is_admin() ) return;
+    header( 'X-Content-Type-Options: nosniff' );
+    header( 'X-Frame-Options: SAMEORIGIN' );
+    header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+    header( 'Permissions-Policy: geolocation=(), microphone=(), camera=()' );
+    header( 'X-XSS-Protection: 1; mode=block' );
+}
+add_action( 'send_headers', 'cfl_security_headers' );
+
+/* Remove WP version + clean head */
+remove_action( 'wp_head', 'wp_generator' );
+add_filter( 'the_generator', '__return_empty_string' );
+
+/* ─── Consultation Form Handler — anti-spam, anti-bot, validated ─── */
+function cfl_handle_consultation() {
+    // 1. Nonce check (CSRF)
+    if ( ! isset( $_POST['cfl_nonce'] ) || ! wp_verify_nonce( $_POST['cfl_nonce'], 'cfl_consultation_nonce' ) ) {
+        wp_die( 'Security check failed.', 'Forbidden', array( 'response' => 403 ) );
+    }
+
+    // 2. Honeypot — bots fill this hidden field
+    if ( ! empty( $_POST['website'] ) ) {
+        wp_safe_redirect( wp_get_referer() ?: home_url() );
+        exit;
+    }
+
+    // 3. Time-trap — humans take >2s
+    $ts = isset( $_POST['cfl_ts'] ) ? absint( $_POST['cfl_ts'] ) : 0;
+    if ( $ts > 0 && ( time() - $ts ) < 2 ) {
+        wp_die( 'Submission rejected.', 'Forbidden', array( 'response' => 403 ) );
+    }
+
+    // 4. Captcha (simple math 10 + 7 = 17)
+    $captcha = isset( $_POST['captcha'] ) ? trim( wp_unslash( $_POST['captcha'] ) ) : '';
+    if ( (int) $captcha !== 17 ) {
+        wp_die( 'Security check failed.', 'Forbidden', array( 'response' => 403 ) );
+    }
+
+    // 5. Per-IP rate limit (1 submission per 30s)
+    $ip   = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
+    $key  = 'cfl_lead_' . md5( $ip );
+    if ( get_transient( $key ) ) {
+        wp_die( 'Please wait before submitting again.', 'Too Many Requests', array( 'response' => 429 ) );
+    }
+    set_transient( $key, 1, 30 );
+
+    // 6. Sanitize + validate
+    $name  = sanitize_text_field( wp_unslash( $_POST['name']  ?? '' ) );
+    $phone = sanitize_text_field( wp_unslash( $_POST['phone'] ?? '' ) );
+    $email = sanitize_email(      wp_unslash( $_POST['email'] ?? '' ) );
+
+    if ( strlen( $name )  < 2 || strlen( $name )  > 80 )  wp_die( 'Invalid name.',  'Bad Request', array( 'response' => 400 ) );
+    if ( ! preg_match( '/^[+\d][\d\s().-]{6,19}$/', $phone ) ) wp_die( 'Invalid phone.', 'Bad Request', array( 'response' => 400 ) );
+    if ( ! empty( $email ) && ! is_email( $email ) ) wp_die( 'Invalid email.', 'Bad Request', array( 'response' => 400 ) );
+
+    // 7. Spam heuristics — block link-spam in name field
+    if ( preg_match( '#https?://|www\.|<a\s|\[url=#i', $name ) ) {
+        wp_die( 'Submission blocked.', 'Forbidden', array( 'response' => 403 ) );
+    }
+
+    // 8. Send email to admin
+    $to      = get_option( 'admin_email' );
+    $subject = '[Lead] New LASIK consultation request';
+    $body    = "Name: {$name}\nPhone: {$phone}\nEmail: {$email}\nSource: " . esc_url_raw( wp_get_referer() );
+    wp_mail( $to, $subject, $body );
+
+    wp_safe_redirect( add_query_arg( 'lead', 'success', wp_get_referer() ?: home_url() ) );
+    exit;
+}
+add_action( 'admin_post_nopriv_cfl_consultation', 'cfl_handle_consultation' );
+add_action( 'admin_post_cfl_consultation',        'cfl_handle_consultation' );
+
 /* ─── SVG Icons Helper ─── */
 function cfl_icon( $name ) {
     $icons = array(
