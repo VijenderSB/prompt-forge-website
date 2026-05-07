@@ -18,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => (
     <Footer />
     <StickyMobileCTA />
     <StickyDesktopCTA />
+    <WhatsAppButton />
   </div>
 );
 
