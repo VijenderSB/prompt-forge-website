@@ -13,6 +13,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { PROCEDURES, BRAND } from "@/data/siteData";
 import { CENTRE_BY_SLUG, type CentreData } from "@/data/centresData";
 import NotFound from "./NotFound";
+import drTewariPhoto from "@/assets/dr-vk-tewari.png";
 
 const centreNarrative = (c: CentreData) => {
   const loc = c.locality ? c.locality.split("-").map(w => w[0].toUpperCase() + w.slice(1)).join(" ") : null;
@@ -163,9 +164,9 @@ const CentrePage = () => {
               subtitle={`Meet the lead refractive surgeon at ${c.hospital}, ${localityDisplay ? `${localityDisplay}, ` : ""}${c.cityName}.`}
             />
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8 card-elevated">
-              <div className="grid md:grid-cols-[140px_1fr] gap-6 items-start">
-                <div className="w-32 h-32 md:w-[140px] md:h-[140px] rounded-2xl bg-primary/10 flex items-center justify-center mx-auto md:mx-0">
-                  <UserRound className="w-16 h-16 text-primary" />
+              <div className="grid md:grid-cols-[180px_1fr] gap-6 items-start">
+                <div className="w-40 h-40 md:w-[180px] md:h-[180px] rounded-2xl overflow-hidden bg-primary/5 mx-auto md:mx-0 border border-border">
+                  <img src={drTewariPhoto} alt="Dr. V. K. Tewari, Chief Eye Surgeon at Tewari Eye Centre" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-2xl text-foreground mb-1">Dr. V. K. Tewari</h3>
@@ -211,6 +212,46 @@ const CentrePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Centre-specific pricing — Tewari Eye Centre */}
+      {/tewari-eye-centre/i.test(c.slug) && (
+        <section className="section-padding bg-surface">
+          <div className="container max-w-5xl">
+            <SectionHeading
+              title={`LASIK & ICL Pricing at ${c.hospital}`}
+              subtitle="Transparent institutional pricing — per eye, inclusive of pre-op diagnostics and standard post-op follow-ups."
+            />
+            <div className="overflow-hidden rounded-2xl border border-border bg-card card-elevated">
+              <table className="w-full text-left">
+                <thead className="bg-primary/5 border-b border-border">
+                  <tr>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm">Procedure</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm hidden sm:table-cell">Best For</th>
+                    <th className="px-5 py-4 font-display font-semibold text-foreground text-sm text-right">Price (per eye)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { name: "Standard LASIK", best: "Mild to moderate refractive errors", price: "₹14,999" },
+                    { name: "Contoura Vision", best: "Topography-guided HD vision correction", price: "₹24,999" },
+                    { name: "Epi Contoura", best: "Thin corneas / surface ablation candidates", price: "₹29,000" },
+                    { name: "ICL (Implantable Collamer Lens)", best: "High prescriptions / non-LASIK candidates", price: "₹79,999" },
+                  ].map((row, i) => (
+                    <tr key={row.name} className={i !== 0 ? "border-t border-border" : ""}>
+                      <td className="px-5 py-4 font-semibold text-foreground">{row.name}</td>
+                      <td className="px-5 py-4 text-sm text-muted-foreground hidden sm:table-cell">{row.best}</td>
+                      <td className="px-5 py-4 text-right font-display font-bold text-primary">{row.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mt-4 text-center">
+              Prices are per eye and exclusive of GST. 0% EMI options available up to 24 months. Final eligibility and quote confirmed after free pre-LASIK diagnostic.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Why choose this centre */}
       <section className="section-padding">
