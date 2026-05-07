@@ -48,8 +48,11 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-xl border-b border-border">
-      <div className="container flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center gap-2">
+      <div className="container grid grid-cols-3 lg:flex lg:items-center lg:justify-between h-16 items-center">
+        {/* Spacer for mobile grid centering */}
+        <div className="lg:hidden" />
+
+        <Link to="/" className="flex items-center gap-2 justify-center lg:justify-start">
           <div className="w-8 h-8 rounded-lg cta-gradient flex items-center justify-center">
             <span className="text-primary-foreground font-display font-black text-sm">CL</span>
           </div>
@@ -85,7 +88,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 justify-end">
           <a href={`tel:${BRAND.phone}`} className="hidden md:flex items-center gap-1.5 text-sm font-semibold text-primary">
             <Phone className="w-4 h-4" />
             {BRAND.phoneDisplay}
