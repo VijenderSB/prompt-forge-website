@@ -22,6 +22,15 @@ const centreNarrative = (c: CentreData) => {
   const isDiva = /diva-eye-institute/i.test(c.slug);
   const isKhanna = /khanna-eye-centre/i.test(c.slug);
   const isIsha = /isha-netralaya/i.test(c.slug);
+  const isArora = /arora-eye-hospital/i.test(c.slug);
+  if (isArora) {
+    return [
+      `Arora Eye Hospital and Retina Centre, ${where} is among Punjab's most respected ophthalmology destinations, recognised for advanced laser vision correction, vitreo-retinal surgery and comprehensive eye care. Led by Dr. Amandeep Singh Arora, the centre combines decades of surgical expertise with the latest US-FDA approved refractive technology.`,
+      `For patients seeking spectacle freedom, Arora Eye Hospital offers Standard LASIK, iDesign LASIK and Femto iDesign — all performed on US-FDA approved excimer and femtosecond platforms. Every case is preceded by a full pre-operative workup including Pentacam tomography, corneal topography, pachymetry, dry-eye assessment and dilated retinal evaluation, conducted inside ISO-class modular operating theatres.`,
+      `Beyond LASIK, the centre functions as a complete eye-care destination — premium cataract surgery with monofocal, toric, multifocal and EDOF IOLs; medical and surgical retina including intravitreal injections, vitrectomy and diabetic retinopathy management; glaucoma, cornea and ICL care; paediatric ophthalmology and comprehensive diagnostics.`,
+      `Booking through Centre for Lasik unlocks transparent institutional pricing, 0% EMI options, free 90-minute diagnostic and a structured post-operative follow-up plan — same surgeon, same OT, same technology, with a single accountable care team coordinating every step.`,
+    ];
+  }
   if (isIsha) {
     return [
       `Isha Netralaya, ${where} is part of one of the Mumbai Metropolitan Region's most respected ophthalmology networks, with multiple super-specialty centres across Mumbai, Thane, Kalyan, Ambernath and Pimpri-Chinchwad. The group is recognised for its premium refractive programme — particularly Femto Contoura Vision and the next-generation WaveLight Plus InnovEyes flapless platform.`,
