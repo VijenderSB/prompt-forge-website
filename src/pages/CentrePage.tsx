@@ -164,9 +164,9 @@ const CentrePage = () => {
               subtitle={`Meet the lead refractive surgeon at ${c.hospital}, ${localityDisplay ? `${localityDisplay}, ` : ""}${c.cityName}.`}
             />
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8 card-elevated">
-              <div className="grid md:grid-cols-[140px_1fr] gap-6 items-start">
-                <div className="w-32 h-32 md:w-[140px] md:h-[140px] rounded-2xl bg-primary/10 flex items-center justify-center mx-auto md:mx-0">
-                  <UserRound className="w-16 h-16 text-primary" />
+              <div className="grid md:grid-cols-[180px_1fr] gap-6 items-start">
+                <div className="w-40 h-40 md:w-[180px] md:h-[180px] rounded-2xl overflow-hidden bg-primary/5 mx-auto md:mx-0 border border-border">
+                  <img src={drTewariPhoto} alt="Dr. V. K. Tewari, Chief Eye Surgeon at Tewari Eye Centre" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-2xl text-foreground mb-1">Dr. V. K. Tewari</h3>
