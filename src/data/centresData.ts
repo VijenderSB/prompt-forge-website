@@ -181,6 +181,8 @@ export const CENTRES: CentreData[] = [
   // Tewari Eye Centre
   make("centre-for-lasik-tewari-eye-centre-sector-55-noida", "Tewari Eye Centre", "noida", "Noida", "uttar-pradesh", "Uttar Pradesh", "sector-55"),
   make("centre-for-lasik-tewari-eye-centre-vaishali-ghaziabad", "Tewari Eye Centre", "ghaziabad", "Ghaziabad", "uttar-pradesh", "Uttar Pradesh", "vaishali"),
+  // Diva Eye Institute
+  make("centre-for-lasik-diva-eye-institute-ambawadi-ahmedabad", "Diva Eye Institute", "ahmedabad", "Ahmedabad", "gujarat", "Gujarat", "ambawadi"),
 ];
 
 export const CENTRE_BY_SLUG: Record<string, CentreData> =
