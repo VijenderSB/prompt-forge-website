@@ -6,6 +6,7 @@ import ConsultationForm from "@/components/ConsultationForm";
 import { BRAND, TESTIMONIALS } from "@/data/siteData";
 import { motion } from "framer-motion";
 import {
+import SEO from "@/components/SEO";
   Globe, Shield, Percent, MapPin, Eye, Award,
   Star, Stethoscope, Heart, Zap, Users, Building2,
   BadgeCheck, ArrowRight, CheckCircle2, Crown, Sparkles,
@@ -59,6 +60,11 @@ const trustNumbers = [
 
 const WhyUsPage = () => (
   <Layout>
+      <SEO
+        title="Why Centre for Lasik — India's #1 LASIK Booking Platform"
+        description="12,480+ patients, 4.9★, 3,700+ cities, US-FDA-approved tech, 30% institutional volume-discount pricing. Compare Centre for Lasik vs hospitals."
+        path="/why-us"
+      />
     {/* ═══════ HERO ═══════ */}
     <section className="hero-gradient section-padding">
       <div className="container max-w-6xl">

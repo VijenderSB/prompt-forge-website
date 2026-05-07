@@ -6,6 +6,7 @@ import { PAGE_FAQS } from "@/data/siteData";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Globe, FileCheck, Award, CheckCircle, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 const guidelines = [
   {
@@ -106,6 +107,11 @@ const InternationalGuidelinesPage = () => {
 
   return (
     <Layout>
+      <SEO
+        title="LASIK Safety Standards — FDA, CE, NICE & AAO Guidelines"
+        description="International compliance benchmarks: US FDA, EU CE Mark, UK NICE, AAO. How Centre for Lasik meets each global LASIK safety standard."
+        path="/international-guidelines"
+      />
       {/* Hero */}
       <section className="section-padding bg-gradient-to-b from-surface to-background">
         <div className="container max-w-6xl">

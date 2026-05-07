@@ -6,6 +6,7 @@ import ConsultationForm from "@/components/ConsultationForm";
 import { FAQS } from "@/data/siteData";
 import { motion } from "framer-motion";
 import {
+import SEO from "@/components/SEO";
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -23,6 +24,11 @@ const categories = [
 
 const FAQPage = () => (
   <Layout>
+      <SEO
+        title="LASIK FAQ — 50 Questions Answered by Top Surgeons"
+        description="50 surgeon-verified answers on LASIK safety, cost, recovery, eligibility, side effects, age, results. Reviewed by Dr. V.K. Tewari MS Ophthalmology."
+        path="/faq"
+      />
     {/* Hero */}
     <section className="hero-gradient section-padding">
       <div className="container text-center max-w-3xl">

@@ -10,6 +10,7 @@ import { Calendar, ArrowRight, Search } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import {
+import SEO from "@/components/SEO";
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -51,6 +52,11 @@ const BlogPage = () => {
 
   return (
     <Layout>
+      <SEO
+        title="LASIK Blog — Expert Insights, Recovery Tips & Patient Stories"
+        description="Surgeon-authored articles on LASIK procedures, recovery, costs, and comparisons. Updated weekly with the latest research and patient experiences."
+        path="/blog"
+      />
       {/* Hero with Lead Form */}
       <section className="hero-gradient section-padding">
         <div className="container max-w-5xl">

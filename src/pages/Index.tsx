@@ -13,6 +13,7 @@ import { BRAND, PROCEDURES, FAQS, TESTIMONIALS, formatPrice } from "@/data/siteD
 import heroImage from "@/assets/hero-lasik.png";
 import heroImageMobile from "@/assets/hero-lasik-mobile.png";
 import {
+import SEO from "@/components/SEO";
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -313,6 +314,11 @@ const ResourcesSection = () => (
 /* ─── Homepage ─── */
 const Homepage = () => (
   <Layout>
+      <SEO
+        title="LASIK Eye Surgery in India from ₹11,249/Eye"
+        description="India's #1 LASIK platform. Standard LASIK, Contoura Vision, SMILE Pro & WaveLight InnovEyes from ₹11,249/eye across 3,700+ cities. 30% off. Free 90-min consultation."
+        path="/"
+      />
     <Hero />
     <ProceduresSection />
     <StatsBar />

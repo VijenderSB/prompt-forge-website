@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Minus, Plus, CircleDot, Clock, AlertTriangle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const conditions = [
   {
@@ -57,6 +58,11 @@ const conditions = [
 
 const CommonVisionProblemsPage = () => (
   <Layout>
+      <SEO
+        title="Myopia, Hyperopia & Astigmatism — Causes, Symptoms, Treatment"
+        description="Complete guide to refractive errors in India: myopia, hyperopia, astigmatism, presbyopia. Diagnosis, prescription explained, LASIK vs glasses vs ICL."
+        path="/common-vision-problems"
+      />
     <section className="section-padding">
       <div className="container max-w-5xl">
         <SectionHeading

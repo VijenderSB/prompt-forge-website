@@ -4,6 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import ConsultationForm from "@/components/ConsultationForm";
 import { motion } from "framer-motion";
 import { Eye, CircleDot, Layers, Focus, Sun, Droplets } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const parts = [
   {
@@ -54,6 +55,11 @@ const layers = [
 
 const EyeAnatomyPage = () => (
   <Layout>
+      <SEO
+        title="Human Eye Anatomy — Cornea, Lens, Retina Explained"
+        description="Surgeon-reviewed guide to eye anatomy, how vision works, and how LASIK reshapes the cornea. Diagrams of cornea, iris, lens, retina, optic nerve."
+        path="/eye-anatomy"
+      />
     <section className="section-padding">
       <div className="container max-w-5xl">
         <SectionHeading

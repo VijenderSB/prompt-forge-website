@@ -8,9 +8,15 @@ import { motion } from "framer-motion";
 import { Check, X, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const WhichLasikPage = () => (
   <Layout>
+      <SEO
+        title="Which LASIK is Best for You? Free Procedure Selector Tool"
+        description="Compare Standard LASIK, Contoura, SMILE Pro, WaveLight InnovEyes & ICL. Match the right procedure to your eyes, budget and lifestyle."
+        path="/which-lasik-is-best"
+      />
     <section className="hero-gradient section-padding">
       <div className="container text-center max-w-3xl">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

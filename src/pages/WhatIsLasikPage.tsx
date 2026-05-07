@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Zap, Shield, Clock, TrendingUp, Eye, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const benefits = [
   { icon: Eye, title: "Freedom from Glasses", description: "Over 95% of LASIK patients achieve 6/6 vision or better, eliminating the need for glasses or contact lenses." },
@@ -26,6 +27,11 @@ const steps = [
 
 const WhatIsLasikPage = () => (
   <Layout>
+      <SEO
+        title="What is LASIK Eye Surgery? Procedure, Safety & Results"
+        description="LASIK is FDA-approved laser vision correction with 99.5% success rate. 15-minute procedure, 24-hour recovery. Complete patient guide for India 2026."
+        path="/what-is-lasik"
+      />
     <section className="section-padding">
       <div className="container max-w-5xl">
         <SectionHeading
