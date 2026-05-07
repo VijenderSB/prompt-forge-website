@@ -21,6 +21,15 @@ const centreNarrative = (c: CentreData) => {
   const isAsg = /asg/i.test(c.hospital);
   const isDiva = /diva-eye-institute/i.test(c.slug);
   const isKhanna = /khanna-eye-centre/i.test(c.slug);
+  const isIsha = /isha-netralaya/i.test(c.slug);
+  if (isIsha) {
+    return [
+      `Isha Netralaya, ${where} is part of one of the Mumbai Metropolitan Region's most respected ophthalmology networks, with multiple super-specialty centres across Mumbai, Thane, Kalyan, Ambernath and Pimpri-Chinchwad. The group is recognised for its premium refractive programme — particularly Femto Contoura Vision and the next-generation WaveLight Plus InnovEyes flapless platform.`,
+      `For patients seeking spectacle freedom, the ${where} centre delivers a fully personalised laser vision-correction experience. Every case is screened on the Pentacam, corneal topographer and InnovEyes ray-tracing diagnostic suite, then matched to the most appropriate procedure — Femto Contoura Vision, WaveLight Plus InnovEyes Flapless, or full WaveLight Plus InnovEyes — all performed inside ISO-class modular operating theatres on US-FDA approved excimer and femtosecond platforms.`,
+      `Beyond LASIK, Isha Netralaya functions as a complete eye-care destination — premium cataract surgery with monofocal, toric, multifocal and EDOF IOLs; medical and surgical retina; glaucoma, cornea and ICL care; paediatric ophthalmology and comprehensive diagnostics. Operating hours are typically 10:00 AM – 7:00 PM, Monday to Saturday.`,
+      `Booking through Centre for Lasik unlocks transparent institutional pricing, 0% EMI options, free 90-minute diagnostic and a structured post-operative follow-up plan — same surgeon, same OT, same technology, with a single accountable care team coordinating every step.`,
+    ];
+  }
   if (isDiva) {
     return [
       `Diva Eye Institute, ${where} is an NABH-accredited eye-care hospital with over eight years of clinical excellence in advanced ophthalmology. Led by Dr. Dipan Desai and Dr. Kaushik Solanki, the institute has built a strong reputation in Ahmedabad for robotic cataract surgery, modern refractive procedures and a fully integrated, multidisciplinary eye-care model.`,
