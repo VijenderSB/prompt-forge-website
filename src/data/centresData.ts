@@ -87,7 +87,7 @@ export const CENTRES: CentreData[] = [
   make("centre-for-lasik-asg-eye-hospital-hajipur", "ASG Eye Hospital", "hajipur", "Hajipur", "bihar", "Bihar"),
   make("centre-for-lasik-asg-eye-hospital-cuttack", "ASG Eye Hospital", "cuttack", "Cuttack", "odisha", "Odisha"),
   make("centre-for-lasik-asg-eye-hospital-bhubaneshwar", "ASG Eye Hospital", "bhubaneshwar", "Bhubaneshwar", "odisha", "Odisha"),
-  make("centre-for-lasik-laser-vision-correction-and-advance-cataract-surgery", "Centre for Lasik — Laser Vision Correction & Advanced Cataract Surgery", "hyderabad", "Hyderabad", "telangana", "Telangana"),
+  make("centre-for-lasik-laser-vision-correction-and-advance-cataract-surgery", "Centre for Lasik — Laser Vision Correction & Advanced Cataract Surgery", "india", "India", "india", "India"),
   make("centre-for-lasik-laser-vision-correction-and-advance-cataract-surgery-hyderabad", "Centre for Lasik — Laser Vision Correction & Advanced Cataract Surgery", "hyderabad", "Hyderabad", "telangana", "Telangana"),
   make("centre-for-lasik-poona-eye-care-karve-road-pune", "Poona Eye Care", "pune", "Pune", "maharashtra", "Maharashtra", "karve-road"),
   make("centre-for-lasik-saijyothi-eye-hospital-hyderabad", "SaiJyothi Eye Hospital", "hyderabad", "Hyderabad", "telangana", "Telangana"),
