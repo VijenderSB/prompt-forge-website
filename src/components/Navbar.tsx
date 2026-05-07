@@ -88,9 +88,6 @@ const Navbar = () => {
             <Phone className="w-4 h-4" />
             {BRAND.phoneDisplay}
           </a>
-          <Button asChild className="hidden sm:inline-flex cta-gradient border-0 text-primary-foreground hover:opacity-90 h-9">
-            <Link to="/am-i-a-candidate">Book Free Consultation</Link>
-          </Button>
           <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 text-foreground">
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
