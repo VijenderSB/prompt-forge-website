@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="lg:hidden" />
 
         <Link to="/" className="flex items-center justify-center lg:justify-start" aria-label={`${BRAND.name} — laser.fyi`}>
-          <img src={logo} alt={`${BRAND.name} logo`} className="h-10 lg:h-11 w-auto object-contain" />
+          <img src={logo} alt={`${BRAND.name} logo`} className="h-14 lg:h-16 w-auto object-contain" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-0.5">
