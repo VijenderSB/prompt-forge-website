@@ -35,6 +35,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEO, { faqSchema, medicalProcedureSchema } from "@/components/SEO";
 
 const ProcedureHubPage = () => {
   const { slug } = useParams();
@@ -44,9 +45,25 @@ const ProcedureHubPage = () => {
   const procedureFaqs = PROCEDURE_FAQS.filter((f) => f.procedure === procedure.slug);
   const procedureTestimonials = PROCEDURE_TESTIMONIALS.filter((t) => t.procedure === procedure.slug);
   const clinicalStudies = PROCEDURE_CLINICAL_STUDIES[procedure.slug];
+  const procedurePath = `/procedures/${procedure.slug}`;
+  const procedureUrl = `https://laser.fyi${procedurePath}`;
 
   return (
     <Layout>
+      <SEO
+        title={`${procedure.name} in India — ${formatPrice(procedure.price)}/Eye | Centre for Lasik`}
+        description={`${procedure.tagline} ${procedure.usp} Free 90-min consultation. Call ${BRAND.phoneDisplay}.`.slice(0, 158)}
+        path={procedurePath}
+        schema={[
+          medicalProcedureSchema({
+            name: procedure.name,
+            description: procedure.description,
+            price: procedure.price,
+            url: procedureUrl,
+          }),
+          ...(procedureFaqs.length ? [faqSchema(procedureFaqs.map((f: any) => ({ q: f.q, a: f.a })))] : []),
+        ]}
+      />
       {/* Hero */}
       <section className="relative hero-gradient overflow-hidden">
         <div className="container max-w-6xl grid lg:grid-cols-5 gap-8 lg:gap-12 items-center py-16 md:py-24 px-4 md:px-8">
