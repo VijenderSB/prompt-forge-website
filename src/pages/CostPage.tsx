@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
+import AboutPlatformSection from "@/components/AboutPlatformSection";
 import { PROCEDURES, formatPrice } from "@/data/siteData";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -98,6 +99,7 @@ const CostPage = () => (
         </div>
       </div>
     </section>
+    <AboutPlatformSection />
     <CTABanner withForm />
   </Layout>
 );
