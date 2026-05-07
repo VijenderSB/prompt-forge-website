@@ -20,11 +20,20 @@ const centreNarrative = (c: CentreData) => {
   const where = loc ? `${loc}, ${c.cityName}` : c.cityName;
   const isAsg = /asg/i.test(c.hospital);
   const isDiva = /diva-eye-institute/i.test(c.slug);
+  const isKhanna = /khanna-eye-centre/i.test(c.slug);
   if (isDiva) {
     return [
       `Diva Eye Institute, ${where} is an NABH-accredited eye-care hospital with over eight years of clinical excellence in advanced ophthalmology. Led by Dr. Dipan Desai and Dr. Kaushik Solanki, the institute has built a strong reputation in Ahmedabad for robotic cataract surgery, modern refractive procedures and a fully integrated, multidisciplinary eye-care model.`,
       `The Ambawadi flagship — located near Parimal Garden, Ellis Bridge — and the second branch on Sindhu Bhavan Marg, Bodakdev together deliver the entire spectrum of vision correction. Patients seeking spectacle freedom can choose from Standard LASIK, Topo Guided LASIK, Femto LASIK, Femto Contoura Vision, ReLEx SMILE, PRK and Trans PRK — all performed on US-FDA approved excimer and femtosecond platforms inside ISO-class modular operating theatres.`,
       `Beyond LASIK, Diva Eye Institute functions as a complete eye-care destination — robotic and premium cataract surgery (monofocal, toric, multifocal and EDOF IOLs), medical and surgical retina, glaucoma management, paediatric ophthalmology and comprehensive diagnostics. Operating hours are typically 10:00 AM – 7:00 PM, Monday to Saturday.`,
+      `Booking through Centre for Lasik unlocks transparent institutional pricing, 0% EMI options, free 90-minute diagnostic and a structured post-operative follow-up plan — same surgeon, same OT, same technology, with a single accountable care team coordinating every step.`,
+    ];
+  }
+  if (isKhanna) {
+    return [
+      `Khanna Eye Centre, Model Town, New Delhi is one of North Delhi's most trusted ophthalmology destinations, with a long-standing reputation for laser vision correction, advanced cataract surgery and comprehensive eye care. Led by Dr. Sanjay Khanna, the centre is recognised for surgical precision, patient-first protocols and consistently strong refractive outcomes.`,
+      `For patients seeking spectacle freedom, Khanna Eye Centre offers the complete spectrum of laser vision correction — Standard LASIK, Topo Guided LASIK, Femto LASIK, Femto HD LASIK, PRK and Epi-LASIK — all performed on US-FDA approved excimer and femtosecond platforms. Every case is preceded by a full pre-operative workup including Pentacam tomography, corneal topography, pachymetry, dry-eye assessment and dilated retinal evaluation, conducted inside ISO-class modular operating theatres.`,
+      `Beyond LASIK, Khanna Eye Centre functions as a complete eye-care destination — phacoemulsification cataract surgery with premium monofocal, toric and trifocal IOLs; medical and surgical retina; glaucoma diagnostics and management; cornea, ICL and keratoconus care; paediatric ophthalmology and comprehensive diagnostics.`,
       `Booking through Centre for Lasik unlocks transparent institutional pricing, 0% EMI options, free 90-minute diagnostic and a structured post-operative follow-up plan — same surgeon, same OT, same technology, with a single accountable care team coordinating every step.`,
     ];
   }
