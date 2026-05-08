@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import StickyMobileCTA from "./StickyMobileCTA";
 import StickyDesktopCTA from "./StickyDesktopCTA";
 import WhatsAppButton from "./WhatsAppButton";
+import QuotePopup from "./QuotePopup";
+import QuoteClickInterceptor from "./QuoteClickInterceptor";
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,6 +21,8 @@ const Layout = ({ children }: LayoutProps) => (
     <StickyMobileCTA />
     <StickyDesktopCTA />
     <WhatsAppButton />
+    <QuotePopup />
+    <QuoteClickInterceptor />
   </div>
 );
 
